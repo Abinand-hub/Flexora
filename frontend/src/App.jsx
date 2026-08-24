@@ -110,7 +110,7 @@ function WhatPage({go}){
       <div style={{maxWidth:640,marginBottom:64,animation:"up24 .5s ease"}}>
         <Pill color="var(--red)">REVENUE LEAK DETECTOR</Pill>
         <h1 style={{fontSize:44,fontWeight:600,letterSpacing:"-.03em",lineHeight:1.1,margin:"18px 0 18px"}}>Every failed API call<br/>costs you twice.</h1>
-        <p style={{fontSize:16,color:"var(--gray5)",lineHeight:1.6,marginBottom:28}}>Fluxera watches every API call your product makes, turns the failures into a real dollar number, and tells you exactly what to fix first — before another day of silent loss goes by.</p>
+        <p style={{fontSize:16,color:"var(--gray5)",lineHeight:1.6,marginBottom:28}}>Fluxera watches every API call your product makes, turns the failures into a real dollar number, and tells you exactly what to fix first, before another day of silent loss goes by.</p>
         <div style={{display:"flex",gap:10}}>
           <button onClick={()=>go("overview")} style={{padding:"11px 22px",background:"var(--ink)",color:"var(--white)",border:"none",borderRadius:8,fontSize:13,fontWeight:500,cursor:"pointer"}}>See a live example →</button>
           <button onClick={()=>go("how")} style={{padding:"11px 22px",background:"var(--white)",color:"var(--ink)",border:"1px solid var(--gray2)",borderRadius:8,fontSize:13,fontWeight:500,cursor:"pointer"}}>How it works</button>
