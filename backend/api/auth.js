@@ -18,7 +18,7 @@ async function requireAuth(req, res) {
 
   try {
     const result = await query(
-      'SELECT id, email, company, price_default FROM customers WHERE api_key = $1 AND active = true',
+      'SELECT id, email, company, price_default, abandonment_rate, avg_order_value FROM customers WHERE api_key = $1 AND active = true',
       [apiKey]
     )
     if (!result.rows.length) {

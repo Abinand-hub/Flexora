@@ -90,7 +90,7 @@ router.post('/', async (req, res) => {
       `INSERT INTO request_logs
          (customer_id, request_id, endpoint, status, latency_ms, price, error_type)
        VALUES ${placeholders}
-       ON CONFLICT (customer_id, request_id) DO NOTHING`,
+       ON CONFLICT (customer_id, request_id) WHERE request_id IS NOT NULL DO NOTHING`,
       params
     )
 

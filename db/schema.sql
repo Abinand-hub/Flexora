@@ -16,6 +16,13 @@ CREATE TABLE IF NOT EXISTS customers (
   active        BOOLEAN NOT NULL DEFAULT true
 );
 
+-- Business-impact inputs, customer-configured (used to compute estimated
+-- revenue at risk separately from the technical API cost — see report.js).
+-- Both default to 0, meaning "not configured" — the dashboard only shows
+-- an estimated revenue-at-risk number once the customer sets these.
+ALTER TABLE customers ADD COLUMN IF NOT EXISTS abandonment_rate NUMERIC(5,2) NOT NULL DEFAULT 0;
+ALTER TABLE customers ADD COLUMN IF NOT EXISTS avg_order_value  NUMERIC(10,2) NOT NULL DEFAULT 0;
+
 -- REQUEST LOGS
 -- One row per API call tracked by the SDK
 -- This is the core table. Everything else is derived from it.

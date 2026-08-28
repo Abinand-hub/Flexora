@@ -14,12 +14,18 @@ const reportRoute    = require('./api/report')
 const customerRoute  = require('./api/customers')
 const waitlistRoute  = require('./api/waitlist')
 const healthRoute    = require('./api/health')
+const migrateRoute   = require('./api/migrate')
 
 const { runProcessor } = require('./processor/run')
 const { sendDailyReports } = require('./email/send-report')
 
 const app  = express()
 const PORT = process.env.PORT || 3000
+
+// Railway (and most PaaS hosts) run behind a reverse proxy — without this,
+// express-rate-limit can't safely read X-Forwarded-For and throws on every
+// request. `1` trusts exactly one hop, which matches Railway's setup.
+app.set('trust proxy', 1)
 
 // ─── MIDDLEWARE ───────────────────────────────────────────────
 app.use(helmet())
@@ -39,6 +45,7 @@ app.use('/api/report',    reportRoute)
 app.use('/api/customers', customerRoute)
 app.use('/api/waitlist',  waitlistRoute)
 app.use('/health',        healthRoute)
+app.use('/api/migrate',   migrateRoute)
 
 // 404 catch-all
 app.use((req, res) => res.status(404).json({ error: 'Not found' }))

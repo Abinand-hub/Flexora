@@ -81,7 +81,7 @@ router.get('/me', async (req, res) => {
   try {
     const result = await query(
       `SELECT
-         id, email, company, plan, price_default, created_at,
+         id, email, company, plan, price_default, abandonment_rate, avg_order_value, created_at,
          (SELECT COUNT(*) FROM request_logs WHERE customer_id = $1) AS total_events,
          (SELECT logged_at FROM request_logs WHERE customer_id = $1 ORDER BY logged_at DESC LIMIT 1) AS last_event_at
        FROM customers WHERE id = $1`,
@@ -90,12 +90,14 @@ router.get('/me', async (req, res) => {
 
     const c = result.rows[0]
     return res.status(200).json({
-      id:            c.id,
-      email:         c.email,
-      company:       c.company,
-      plan:          c.plan,
-      price_default: c.price_default,
-      created_at:    c.created_at,
+      id:               c.id,
+      email:            c.email,
+      company:          c.company,
+      plan:             c.plan,
+      price_default:    c.price_default,
+      abandonment_rate: c.abandonment_rate,
+      avg_order_value:  c.avg_order_value,
+      created_at:       c.created_at,
       stats: {
         total_events: parseInt(c.total_events) || 0,
         last_event_at: c.last_event_at,
@@ -103,6 +105,52 @@ router.get('/me', async (req, res) => {
     })
   } catch (err) {
     return res.status(500).json({ error: 'Failed to fetch account' })
+  }
+})
+
+// PATCH /api/customers/me — update self-service settings
+// Body: { price_default?, abandonment_rate?, avg_order_value? }
+router.patch('/me', async (req, res) => {
+  const customer = await requireAuth(req, res)
+  if (!customer) return
+
+  const { price_default, abandonment_rate, avg_order_value } = req.body
+
+  // Validate everything server-side — never trust the frontend's checks alone.
+  const updates = {}
+  if (price_default !== undefined) {
+    const p = Number(price_default)
+    if (!Number.isFinite(p) || p <= 0) return res.status(400).json({ error: 'price_default must be a positive number' })
+    updates.price_default = p
+  }
+  if (abandonment_rate !== undefined) {
+    const a = Number(abandonment_rate)
+    if (!Number.isFinite(a) || a < 0 || a > 100) return res.status(400).json({ error: 'abandonment_rate must be between 0 and 100' })
+    updates.abandonment_rate = a
+  }
+  if (avg_order_value !== undefined) {
+    const v = Number(avg_order_value)
+    if (!Number.isFinite(v) || v < 0) return res.status(400).json({ error: 'avg_order_value must be a non-negative number' })
+    updates.avg_order_value = v
+  }
+
+  if (!Object.keys(updates).length) {
+    return res.status(400).json({ error: 'No valid fields to update' })
+  }
+
+  const setClauses = Object.keys(updates).map((key, i) => `${key} = $${i + 2}`)
+  const values = Object.values(updates)
+
+  try {
+    const result = await query(
+      `UPDATE customers SET ${setClauses.join(', ')} WHERE id = $1
+       RETURNING id, email, company, price_default, abandonment_rate, avg_order_value`,
+      [customer.id, ...values]
+    )
+    return res.status(200).json({ ok: true, customer: result.rows[0] })
+  } catch (err) {
+    console.error('[customers] Update error:', err.message)
+    return res.status(500).json({ error: 'Failed to update account' })
   }
 })
 

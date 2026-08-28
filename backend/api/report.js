@@ -60,12 +60,48 @@ router.get('/', async (req, res) => {
       LIMIT 20
     `, [customer.id])
 
+    // Real daily trend, last 30 days — actual history, not randomized.
+    const trendResult = await query(`
+      SELECT
+        date_trunc('day', logged_at)::date                        AS day,
+        COALESCE(SUM(price) FILTER (WHERE status = 'fail'), 0)    AS revenue_lost
+      FROM request_logs
+      WHERE customer_id = $1
+        AND logged_at   > now() - INTERVAL '30 days'
+      GROUP BY day
+      ORDER BY day ASC
+    `, [customer.id])
+
+    // Most recent logs for the period — real rows, not simulated.
+    const logsResult = await query(`
+      SELECT id, request_id, endpoint, status, latency_ms, price, error_type, logged_at
+      FROM request_logs
+      WHERE customer_id = $1
+        AND logged_at   > now() - INTERVAL '${interval}'
+      ORDER BY logged_at DESC
+      LIMIT 200
+    `, [customer.id])
+
     const summary   = summaryResult.rows[0]
     const endpoints = endpointResult.rows
     const topEndpoint = endpoints[0] || null
 
     // Build the core output
     const revenueLost = parseFloat(summary.revenue_lost) || 0
+    const failedRequests = parseInt(summary.failed_requests) || 0
+
+    // Business-impact estimate — only computed when the customer has
+    // actually configured their abandonment rate + average order value.
+    // Never a made-up multiplier. See Settings for where these come from.
+    const abandonmentRate = parseFloat(customer.abandonment_rate) || 0
+    const avgOrderValue   = parseFloat(customer.avg_order_value) || 0
+    const impactConfigured = abandonmentRate > 0 && avgOrderValue > 0
+    const estimatedUsersAffected = impactConfigured
+      ? Math.round(failedRequests * (abandonmentRate / 100))
+      : null
+    const estimatedRevenueAtRisk = impactConfigured
+      ? Math.round(estimatedUsersAffected * avgOrderValue * 100) / 100
+      : null
 
     const report = {
       customer: {
@@ -75,9 +111,43 @@ router.get('/', async (req, res) => {
       period,
       generated_at: new Date().toISOString(),
 
-      // THE NUMBER — this is what they pay for
+      // THE NUMBER — cost of API calls that failed. Kept as `revenue_lost`
+      // for backward compatibility, plus a clearer alias.
       revenue_lost: revenueLost,
       revenue_lost_formatted: formatDollar(revenueLost),
+      failed_api_cost: revenueLost,
+
+      // Separate, honest estimate of business impact — only present once
+      // the customer configures abandonment_rate + avg_order_value in
+      // Settings. Never inferred from an arbitrary multiplier.
+      business_impact: {
+        configured:               impactConfigured,
+        abandonment_rate:         abandonmentRate,
+        avg_order_value:          avgOrderValue,
+        estimated_users_affected: estimatedUsersAffected,
+        estimated_revenue_at_risk: estimatedRevenueAtRisk,
+        formula: impactConfigured
+          ? 'failed_requests × abandonment_rate × avg_order_value'
+          : null,
+      },
+
+      // Real daily history, last 30 days — not randomized.
+      trend: trendResult.rows.map(r => ({
+        date: r.day,
+        revenue_lost: parseFloat(r.revenue_lost) || 0,
+      })),
+
+      // Real recent request logs for the selected period.
+      logs: logsResult.rows.map(l => ({
+        id:         l.id,
+        request_id: l.request_id,
+        endpoint:   l.endpoint,
+        status:     l.status,
+        latency_ms: l.latency_ms,
+        price:      parseFloat(l.price) || 0,
+        error_type: l.error_type,
+        logged_at:  l.logged_at,
+      })),
 
       summary: {
         total_requests:  parseInt(summary.total_requests)  || 0,
