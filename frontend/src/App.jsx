@@ -104,7 +104,7 @@ function Nav({route,go,hasSession}){
 }
 
 function WhatPage({go}){
-  const demo = mock();
+  const [demo] = useState(() => mock());
   return(
     <div style={{maxWidth:1080,margin:"0 auto",padding:"64px 28px 100px"}}>
       <div style={{maxWidth:640,marginBottom:64,animation:"up24 .5s ease"}}>
@@ -151,7 +151,7 @@ function WhatPage({go}){
           <p style={{fontSize:12,color:"var(--green)",marginTop:9,opacity:.8}}>retry logic on top endpoint</p>
         </div>
       </div>
-      <p style={{fontSize:11,color:"var(--gray3)",marginBottom:64,fontFamily:"DM Mono,monospace"}}>↑ this is the actual product, live — not a mockup</p>
+      <p style={{fontSize:11,color:"var(--gray3)",marginBottom:64,fontFamily:"DM Mono,monospace"}}>↑ interactive preview, powered by simulated data</p>
 
       <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:24,marginBottom:64}}>
         {[
@@ -544,15 +544,28 @@ function Logs({data}){
 
 function Settings({apiKey,company,pricePerReq,setPricePerReq,regen}){
   const[copied,setCopied]=useState(false);
+  const[copyFailed,setCopyFailed]=useState(false);
   const[price,setPrice]=useState(pricePerReq);
   const[saved,setSaved]=useState(false);
-  function copy(){navigator.clipboard.writeText(apiKey);setCopied(true);setTimeout(()=>setCopied(false),2000);}
-  function save(){setPricePerReq(parseFloat(price));regen();setSaved(true);setTimeout(()=>setSaved(false),2000);}
+  const[priceErr,setPriceErr]=useState(false);
+  async function copy(){
+    try{
+      await navigator.clipboard.writeText(apiKey);
+      setCopied(true);setTimeout(()=>setCopied(false),2000);
+    }catch{
+      setCopyFailed(true);setTimeout(()=>setCopyFailed(false),2000);
+    }
+  }
+  function save(){
+    const p=Number(price);
+    if(!Number.isFinite(p)||p<=0){setPriceErr(true);setTimeout(()=>setPriceErr(false),2000);return;}
+    setPricePerReq(p);regen();setSaved(true);setTimeout(()=>setSaved(false),2000);
+  }
   return(
     <div style={{maxWidth:560,display:"flex",flexDirection:"column",gap:14,animation:"up .3s ease"}}>
       {[
-        {title:"API Key",content:<div style={{display:"flex"}}><div style={{flex:1,padding:"9px 12px",background:"var(--gray1)",border:"1px solid var(--gray2)",borderRight:"none",borderRadius:"8px 0 0 8px",fontSize:12,fontFamily:"DM Mono,monospace",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{apiKey||"No key — demo mode"}</div><button onClick={copy} style={{padding:"9px 16px",background:copied?"var(--green-bg)":"var(--white)",border:"1px solid var(--gray2)",borderRadius:"0 8px 8px 0",color:copied?"var(--green)":"var(--gray5)",fontSize:12,cursor:"pointer",fontWeight:500}}>{copied?"Copied ✓":"Copy"}</button></div>},
-        {title:"Price Per Request",sub:"Average cost of one API call in USD",content:<div style={{display:"flex"}}><input type="number" value={price} step={.001} min={.001} onChange={e=>setPrice(e.target.value)} style={{flex:1,padding:"9px 12px",background:"var(--gray1)",border:"1px solid var(--gray2)",borderRight:"none",borderRadius:"8px 0 0 8px",fontSize:12,fontFamily:"DM Mono,monospace",outline:"none"}} /><button onClick={save} style={{padding:"9px 16px",background:saved?"var(--green-bg)":"var(--ink)",border:"none",borderRadius:"0 8px 8px 0",color:saved?"var(--green)":"var(--white)",fontSize:12,cursor:"pointer",fontWeight:500}}>{saved?"Saved ✓":"Save"}</button></div>},
+        {title:"API Key",content:<div style={{display:"flex"}}><div style={{flex:1,padding:"9px 12px",background:"var(--gray1)",border:"1px solid var(--gray2)",borderRight:"none",borderRadius:"8px 0 0 8px",fontSize:12,fontFamily:"DM Mono,monospace",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{apiKey||"No key — demo mode"}</div><button onClick={copy} style={{padding:"9px 16px",background:copied?"var(--green-bg)":copyFailed?"var(--red-bg)":"var(--white)",border:"1px solid var(--gray2)",borderRadius:"0 8px 8px 0",color:copied?"var(--green)":copyFailed?"var(--red)":"var(--gray5)",fontSize:12,cursor:"pointer",fontWeight:500}}>{copied?"Copied ✓":copyFailed?"Copy failed":"Copy"}</button></div>},
+        {title:"Price Per Request",sub:"Average cost of one API call in USD",content:<div style={{display:"flex"}}><input type="number" value={price} step={.001} min={.001} onChange={e=>setPrice(e.target.value)} style={{flex:1,padding:"9px 12px",background:"var(--gray1)",border:"1px solid "+(priceErr?"var(--red)":"var(--gray2)"),borderRight:"none",borderRadius:"8px 0 0 8px",fontSize:12,fontFamily:"DM Mono,monospace",outline:"none"}} /><button onClick={save} style={{padding:"9px 16px",background:saved?"var(--green-bg)":priceErr?"var(--red-bg)":"var(--ink)",border:"none",borderRadius:"0 8px 8px 0",color:saved?"var(--green)":priceErr?"var(--red)":"var(--white)",fontSize:12,cursor:"pointer",fontWeight:500}}>{saved?"Saved ✓":priceErr?"Invalid price":"Save"}</button></div>},
         {title:"SDK Install",content:<div style={{display:"flex",flexDirection:"column",gap:8}}>{[`npm install @fluxera/sdk`,`const fluxera = require('@fluxera/sdk')('${apiKey||"fx_your_key"}')\n\nconst result = await fluxera.track(\n  () => your_api_call(),\n  { endpoint: '/v1/chat', price: ${price} }\n)`].map((c,i)=><pre key={i} style={{background:"var(--ink)",color:"rgba(255,255,255,.8)",padding:"14px 16px",borderRadius:8,fontSize:12,fontFamily:"DM Mono,monospace",lineHeight:1.8,overflowX:"auto",whiteSpace:"pre-wrap",margin:0}}>{c}</pre>)}</div>},
         {title:"Account",content:<div>{[{k:"Company",v:company},{k:"Plan",v:"Starter · $699/month"},{k:"Daily report",v:"8:00 AM UTC"},{k:"Support",v:"support@fluxeratechnologies.ai"}].map(r=><div key={r.k} style={{display:"flex",justifyContent:"space-between",padding:"9px 0",borderBottom:"1px solid var(--gray2)"}}><span style={{fontSize:12,color:"var(--gray4)"}}>{r.k}</span><span style={{fontSize:12,fontWeight:500}}>{r.v}</span></div>)}</div>},
       ].map(s=>(
@@ -571,6 +584,7 @@ export default function App(){
   const[session,setSession]=useState(null);
   const[period,setPeriod]=useState("24h");
   const[data,setData]=useState(null);
+  const[error,setError]=useState(null);
   const[live,setLive]=useState(false);
   const[price,setPrice]=useState(.04);
 
@@ -584,15 +598,24 @@ export default function App(){
 
   const regen=useCallback(async()=>{
     if(!session)return;
+    setError(null);
     if(session.isDemo||!session.apiKey){setData(mock());return;}
     try{
       const r=await fetch(`${API_BASE}/api/report?period=${period}`,{headers:{Authorization:`Bearer ${session.apiKey}`}});
-      if(!r.ok)throw 0;
+      if(!r.ok){
+        if(r.status===401||r.status===403)throw new Error("Your API key is no longer valid. Please sign in again.");
+        if(r.status===429)throw new Error("Rate limited — too many requests. Try again shortly.");
+        throw new Error("Fluxera's server hit an error loading your report. Try again shortly.");
+      }
       const j=await r.json();
       const eps=(j.endpoints||[]).map(ep=>({name:ep.endpoint,total:ep.total||0,failed:ep.failed||0,rate:parseFloat(ep.failure_rate)||0,lost:parseFloat(ep.revenue_lost)||0,avgLatency:parseInt(ep.avg_fail_latency)||0})).sort((a,b)=>b.lost-a.lost);
       const tl=parseFloat(j.revenue_lost)||0,sm=j.summary||{};
       setData({logs:[],totalLost:tl,totalFailed:parseInt(sm.failed_requests)||0,totalRequests:parseInt(sm.total_requests)||0,failRate:parseFloat(sm.failure_rate)||0,avgLatency:parseInt(sm.avg_latency_ms)||0,endpoints:eps,spark:Array.from({length:30},(_,i)=>({day:i+1,lost:tl*(0.7+Math.random()*.6)})),isDemo:false});
-    }catch{setData(mock());}
+    }catch(e){
+      // Real customer data failed to load — never silently substitute fake demo data.
+      setData(null);
+      setError(e.message||"Connection problem — couldn't reach Fluxera's server.");
+    }
   },[session,period]);
 
   useEffect(()=>{if(session&&isProductPage)regen();},[session,regen,isProductPage]);
@@ -629,7 +652,14 @@ export default function App(){
         {route==="why"&&<WhyPage go={enterDashboard} />}
 
         {isProductPage&&!session&&<Login onLogin={setSession} />}
-        {isProductPage&&session&&!data&&<div style={{padding:80,textAlign:"center",color:"var(--gray4)",fontSize:13}}>Loading...</div>}
+        {isProductPage&&session&&!data&&error&&(
+          <div style={{padding:80,textAlign:"center"}}>
+            <p style={{fontSize:14,fontWeight:600,color:"var(--red)",marginBottom:8}}>Unable to load your Fluxera report</p>
+            <p style={{fontSize:13,color:"var(--gray4)",marginBottom:20}}>{error}</p>
+            <button onClick={regen} style={{padding:"9px 20px",background:"var(--ink)",color:"var(--white)",border:"none",borderRadius:8,fontSize:13,fontWeight:500,cursor:"pointer"}}>Try again</button>
+          </div>
+        )}
+        {isProductPage&&session&&!data&&!error&&<div style={{padding:80,textAlign:"center",color:"var(--gray4)",fontSize:13}}>Loading...</div>}
         {isProductPage&&session&&data&&(
           <ProductShell page={route} go={go} company={session.company} isDemo={session.isDemo} live={live} setLive={setLive} period={period} setPeriod={setPeriod} onLogout={()=>{setSession(null);go("what");}}>
             {route==="overview"&&<Overview data={data} />}
