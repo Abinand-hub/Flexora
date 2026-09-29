@@ -13,7 +13,8 @@
     "report":     "node backend/email/send-report.js",
     "migrate":    "node db/migrate.js",
     "seed":       "node db/seed.js",
-    "test":       "node tests/run.js"
+    "seed:intel": "node db/seed-intelligence.js",
+    "test":       "node tests/run.js && node tests/intelligence.test.js"
   },
   "dependencies": {
     "express":        "^4.18.2",

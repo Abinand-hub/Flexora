@@ -12,9 +12,13 @@ const cron       = require('node-cron')
 const ingestRoute    = require('./api/ingest')
 const reportRoute    = require('./api/report')
 const customerRoute  = require('./api/customers')
+const signupRoute    = require('./api/signup')
 const waitlistRoute  = require('./api/waitlist')
 const healthRoute    = require('./api/health')
 const migrateRoute   = require('./api/migrate')
+const workflowRoute  = require('./api/workflows')
+const executionRoute = require('./api/executions')
+const toolRoute      = require('./api/tools')
 
 const { runProcessor } = require('./processor/run')
 const { sendDailyReports } = require('./email/send-report')
@@ -38,14 +42,23 @@ app.use('/api/ingest', rateLimit({
   max: 1000,
   message: { error: 'Too many requests' }
 }))
+app.use('/api/signup', rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 20,
+  message: { error: 'Too many signup attempts' }
+}))
 
 // ─── ROUTES ───────────────────────────────────────────────────
 app.use('/api/ingest',    ingestRoute)
 app.use('/api/report',    reportRoute)
 app.use('/api/customers', customerRoute)
+app.use('/api/signup',    signupRoute)
 app.use('/api/waitlist',  waitlistRoute)
 app.use('/health',        healthRoute)
-app.use('/api/migrate',   migrateRoute)
+app.use('/api/migrate',    migrateRoute)
+app.use('/api/workflows',  workflowRoute)
+app.use('/api/executions', executionRoute)
+app.use('/api/tools',      toolRoute)
 
 // 404 catch-all
 app.use((req, res) => res.status(404).json({ error: 'Not found' }))

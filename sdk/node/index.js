@@ -11,6 +11,11 @@
 const https = require('https')
 const http  = require('http')
 const { randomUUID } = require('crypto')
+const { current } = require('./context')
+const { classifyError } = require('./wrap')
+const { workflow } = require('./workflow')
+const { step } = require('./step')
+const { tool } = require('./tool')
 
 const DEFAULT_HOST    = 'api.fluxeratechnologies.ai'
 const DEFAULT_TIMEOUT = 5000  // 5s — never block your app
@@ -26,11 +31,17 @@ class FluxeraClient {
     this.host      = options.host    || DEFAULT_HOST
     this.timeout   = options.timeout || DEFAULT_TIMEOUT
     this.debug     = options.debug   || false
+    this.port      = options.port
+    this.protocol  = options.protocol
     this.queue     = []
     this.flushTimer = null
 
     this._startFlushTimer()
     this._log('Fluxera SDK initialized')
+
+    this.workflow = (name, fn, opts) => workflow(this, name, fn, opts)
+    this.step     = (name, fn, opts) => step(this, name, fn, opts)
+    this.tool     = (name, fn, opts) => tool(this, name, fn, opts)
   }
 
   // ──────────────────────────────────────────────────────────────
@@ -64,7 +75,9 @@ class FluxeraClient {
     } finally {
       const latency = Date.now() - startedAt
 
+      const ctx = current()
       this._enqueue({
+        kind:       ctx.executionId ? 'api_call' : undefined,
         request_id: requestId,
         endpoint,
         status,
@@ -72,6 +85,9 @@ class FluxeraClient {
         price:      price,
         error_type: errorType,
         timestamp:  new Date().toISOString(),
+        execution_id: ctx.executionId || null,
+        step_id:      ctx.stepId || null,
+        workflow:     ctx.workflow || null,
       })
     }
 
@@ -117,11 +133,14 @@ class FluxeraClient {
 
   async _send(logs) {
     const body = JSON.stringify({ logs })
+    const local = this.host === 'localhost' || this.host === '127.0.0.1'
+    const proto = this.protocol === 'http' || (!this.protocol && local) ? http : https
+    const port  = this.port || (local ? 3000 : 443)
 
     return new Promise((resolve, reject) => {
       const options = {
         hostname: this.host,
-        port:     443,
+        port,
         path:     '/api/ingest',
         method:   'POST',
         headers: {
@@ -133,7 +152,7 @@ class FluxeraClient {
         timeout: this.timeout,
       }
 
-      const req = https.request(options, (res) => {
+      const req = proto.request(options, (res) => {
         let data = ''
         res.on('data', chunk => data += chunk)
         res.on('end', () => {
@@ -168,22 +187,6 @@ class FluxeraClient {
   }
 }
 
-// Classify errors into categories the processor understands
-function classifyError(err) {
-  const msg = (err.message || '').toLowerCase()
-  const code = err.status || err.statusCode || err.code || 0
-
-  if (msg.includes('timeout') || code === 408 || code === 504) return 'timeout'
-  if (msg.includes('rate') || code === 429)                     return 'rate_limit'
-  if (code >= 500)                                              return 'server_error'
-  if (code === 401 || code === 403)                             return 'auth_error'
-  if (msg.includes('context') || msg.includes('token'))        return 'context_length'
-  if (code >= 400)                                              return 'invalid_request'
-  return 'unknown'
-}
-
-// Factory function — main export
-// Usage: const fluxera = require('@fluxera/sdk')('fx_...')
 function createClient(apiKey, options) {
   return new FluxeraClient(apiKey, options)
 }

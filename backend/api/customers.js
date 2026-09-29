@@ -1,5 +1,5 @@
 // backend/api/customers.js
-// POST /api/customers      — create new customer (internal use)
+// POST /api/customers      — create new customer (internal / API_SECRET; public mint is POST /api/signup)
 // GET  /api/customers/me   — get own account info
 
 const express       = require('express')
@@ -9,9 +9,7 @@ const { requireAuth, requireCronSecret } = require('./auth')
 
 const router = express.Router()
 
-// POST /api/customers — create a new customer account
-// This is called when someone signs up for Fluxera
-// In V1: you run this manually or from your waitlist flow
+// POST /api/customers — internal create (seed/ops). Public onboarding uses POST /api/signup.
 router.post('/', async (req, res) => {
   // Only internal calls can create customers (protect with API_SECRET)
   const secret = req.headers['x-api-secret']
@@ -81,7 +79,7 @@ router.get('/me', async (req, res) => {
   try {
     const result = await query(
       `SELECT
-         id, email, company, plan, price_default, abandonment_rate, avg_order_value, created_at,
+         id, email, company, plan, price_default, abandonment_rate, avg_order_value, webhook_url, created_at,
          (SELECT COUNT(*) FROM request_logs WHERE customer_id = $1) AS total_events,
          (SELECT logged_at FROM request_logs WHERE customer_id = $1 ORDER BY logged_at DESC LIMIT 1) AS last_event_at
        FROM customers WHERE id = $1`,
@@ -97,6 +95,7 @@ router.get('/me', async (req, res) => {
       price_default:    c.price_default,
       abandonment_rate: c.abandonment_rate,
       avg_order_value:  c.avg_order_value,
+      webhook_url:      c.webhook_url,
       created_at:       c.created_at,
       stats: {
         total_events: parseInt(c.total_events) || 0,
@@ -114,7 +113,7 @@ router.patch('/me', async (req, res) => {
   const customer = await requireAuth(req, res)
   if (!customer) return
 
-  const { price_default, abandonment_rate, avg_order_value } = req.body
+  const { price_default, abandonment_rate, avg_order_value, webhook_url } = req.body
 
   // Validate everything server-side — never trust the frontend's checks alone.
   const updates = {}
@@ -133,6 +132,15 @@ router.patch('/me', async (req, res) => {
     if (!Number.isFinite(v) || v < 0) return res.status(400).json({ error: 'avg_order_value must be a non-negative number' })
     updates.avg_order_value = v
   }
+  if (webhook_url !== undefined) {
+    if (webhook_url == null || webhook_url === '') {
+      updates.webhook_url = null
+    } else {
+      const u = String(webhook_url)
+      if (!/^https?:\/\//i.test(u)) return res.status(400).json({ error: 'webhook_url must be http or https' })
+      updates.webhook_url = u.slice(0, 2048)
+    }
+  }
 
   if (!Object.keys(updates).length) {
     return res.status(400).json({ error: 'No valid fields to update' })
@@ -144,7 +152,7 @@ router.patch('/me', async (req, res) => {
   try {
     const result = await query(
       `UPDATE customers SET ${setClauses.join(', ')} WHERE id = $1
-       RETURNING id, email, company, price_default, abandonment_rate, avg_order_value`,
+       RETURNING id, email, company, price_default, abandonment_rate, avg_order_value, webhook_url`,
       [customer.id, ...values]
     )
     return res.status(200).json({ ok: true, customer: result.rows[0] })
