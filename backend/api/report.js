@@ -73,12 +73,21 @@ router.get('/', async (req, res) => {
     `, [customer.id])
 
     // Most recent logs for the period — real rows, not simulated.
+    // Workflow/tool names come from the intelligence FKs so the leak
+    // lens can filter the same event stream (standalone leaves stay null).
     const logsResult = await query(`
-      SELECT id, request_id, endpoint, status, latency_ms, price, error_type, logged_at
-      FROM request_logs
-      WHERE customer_id = $1
-        AND logged_at   > now() - INTERVAL '${interval}'
-      ORDER BY logged_at DESC
+      SELECT
+        r.id, r.request_id, r.endpoint, r.status, r.latency_ms, r.price,
+        r.error_type, r.logged_at,
+        w.name AS workflow_name,
+        t.name AS tool_name
+      FROM request_logs r
+      LEFT JOIN workflow_executions e ON e.id = r.execution_id
+      LEFT JOIN workflows w ON w.id = e.workflow_id
+      LEFT JOIN tools t ON t.id = r.tool_id
+      WHERE r.customer_id = $1
+        AND r.logged_at   > now() - INTERVAL '${interval}'
+      ORDER BY r.logged_at DESC
       LIMIT 200
     `, [customer.id])
 
@@ -147,6 +156,8 @@ router.get('/', async (req, res) => {
         price:      parseFloat(l.price) || 0,
         error_type: l.error_type,
         logged_at:  l.logged_at,
+        workflow_name: l.workflow_name || null,
+        tool_name:     l.tool_name || null,
       })),
 
       summary: {
