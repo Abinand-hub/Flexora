@@ -462,4 +462,35 @@ window.selectSdkStep = function(stepNum) {
   }
 };
 
+// ==========================================
+// MOBILE NAVIGATION MENU INITIALIZATION
+// ==========================================
+function initMobileMenu() {
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (toggleBtn && mobileMenu) {
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+    const links = mobileMenu.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMobileMenu);
+} else {
+  initMobileMenu();
+}
+
 

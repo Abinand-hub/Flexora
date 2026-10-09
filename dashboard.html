@@ -42,6 +42,16 @@
     </div>
   </header>
 
+  <!-- Mobile Horizontal Tab Bar -->
+  <div class="md:hidden flex items-center gap-2 overflow-x-auto bg-white border-b border-slate-200 px-4 py-2 sticky top-[57px] z-30 shadow-xs">
+    <button onclick="switchTab('overview')" data-tab="overview" class="tab-btn-mobile text-xs font-semibold px-3.5 py-1.5 rounded-full whitespace-nowrap bg-rose-50 text-rose-700 border border-rose-200">Overview</button>
+    <button onclick="switchTab('workflows')" data-tab="workflows" class="tab-btn-mobile text-xs font-semibold px-3.5 py-1.5 rounded-full whitespace-nowrap text-slate-600 hover:bg-slate-100">Workflows</button>
+    <button onclick="switchTab('tools')" data-tab="tools" class="tab-btn-mobile text-xs font-semibold px-3.5 py-1.5 rounded-full whitespace-nowrap text-slate-600 hover:bg-slate-100">Tools</button>
+    <button onclick="switchTab('executions')" data-tab="executions" class="tab-btn-mobile text-xs font-semibold px-3.5 py-1.5 rounded-full whitespace-nowrap text-slate-600 hover:bg-slate-100">Executions</button>
+    <button onclick="switchTab('logs')" data-tab="logs" class="tab-btn-mobile text-xs font-semibold px-3.5 py-1.5 rounded-full whitespace-nowrap text-slate-600 hover:bg-slate-100">Logs</button>
+    <button onclick="switchTab('settings')" data-tab="settings" class="tab-btn-mobile text-xs font-semibold px-3.5 py-1.5 rounded-full whitespace-nowrap text-slate-600 hover:bg-slate-100">Settings</button>
+  </div>
+
   <div class="flex min-h-[calc(100vh-61px)]">
     <!-- Dedicated Interactive Sidebar -->
     <aside class="w-64 border-r border-slate-200 bg-white p-4 flex flex-col justify-between shrink-0 hidden md:flex">
@@ -901,6 +911,15 @@
           btn.className = "tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-rose-50 text-rose-700 font-semibold border border-rose-200/80 transition-all cursor-pointer";
         } else {
           btn.className = "tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all cursor-pointer";
+        }
+      });
+
+      // Update mobile active buttons
+      document.querySelectorAll('.tab-btn-mobile').forEach(btn => {
+        if (btn.getAttribute('data-tab') === tabId) {
+          btn.className = "tab-btn-mobile text-xs font-semibold px-3.5 py-1.5 rounded-full whitespace-nowrap bg-rose-50 text-rose-700 border border-rose-200 shadow-xs";
+        } else {
+          btn.className = "tab-btn-mobile text-xs font-semibold px-3.5 py-1.5 rounded-full whitespace-nowrap text-slate-600 hover:bg-slate-100 border border-transparent";
         }
       });
 

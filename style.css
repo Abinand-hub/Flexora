@@ -78,6 +78,24 @@ body {
   border-color: rgba(244, 63, 94, 0.45);
 }
 
+/* Mobile Responsiveness Overrides */
+@media (max-width: 768px) {
+  .hero-perspective-stage {
+    perspective: none !important;
+    transform-style: flat !important;
+  }
+  
+  .dashboard-viewport-peek {
+    transform: none !important;
+    box-shadow: 0 12px 35px -5px rgba(244, 63, 94, 0.22), 0 0 0 1px rgba(226, 232, 240, 0.9) !important;
+    border-radius: 1.25rem !important;
+  }
+
+  .dashboard-viewport-peek:hover {
+    transform: none !important;
+  }
+}
+
 /* 3D PURE WHITE iPHONE STYLING */
 .iphone-integrated-stage {
   perspective: 1200px;
