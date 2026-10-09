@@ -268,6 +268,52 @@
           </div>
         </div>
 
+        <!-- LIVE TELEMETRY GRAPH WITH ANIMATED TRAVELING DATA NODES -->
+        <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm relative overflow-hidden">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <h3 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-900">Live Work Recovery Telemetry Stream</h3>
+            </div>
+            <div class="flex items-center gap-4 text-[11px] font-mono">
+              <span class="flex items-center gap-1.5 text-rose-600 font-semibold"><span class="w-2 h-2 rounded-full bg-rose-500"></span> Intercepted Failures</span>
+              <span class="flex items-center gap-1.5 text-emerald-600 font-semibold"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Recovered Work</span>
+            </div>
+          </div>
+          <div class="h-28 w-full relative">
+            <svg class="w-full h-full overflow-visible" viewBox="0 0 500 80" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="emeraldGraphFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#10b981" stop-opacity="0.18" />
+                  <stop offset="100%" stop-color="#10b981" stop-opacity="0.0" />
+                </linearGradient>
+              </defs>
+              <!-- Background Area Fill -->
+              <path d="M0,60 Q125,72 250,22 T500,8 L500,80 L0,80 Z" fill="url(#emeraldGraphFill)" />
+              <!-- Recovered Work Line (Emerald) -->
+              <path d="M0,60 Q125,72 250,22 T500,8" fill="none" stroke="#10b981" stroke-width="2.5" />
+              <!-- Intercepted Failures Line (Rose Dashed) -->
+              <path d="M0,45 Q125,58 250,38 T500,28" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.75" />
+              
+              <!-- Traveling Data Point 1 (Emerald Recovered Node) -->
+              <circle r="4" fill="#10b981" class="filter drop-shadow-[0_0_8px_rgba(16,185,129,0.9)]">
+                <animateMotion path="M0,60 Q125,72 250,22 T500,8" dur="4.2s" repeatCount="indefinite" />
+              </circle>
+
+              <!-- Traveling Data Point 2 (Rose Intercepted Node) -->
+              <circle r="3.5" fill="#f43f5e" class="filter drop-shadow-[0_0_8px_rgba(244,63,94,0.9)]">
+                <animateMotion path="M0,45 Q125,58 250,38 T500,28" dur="5.5s" repeatCount="indefinite" />
+              </circle>
+
+              <!-- Static Pulsing Checkpoint Nodes -->
+              <circle cx="250" cy="22" fill="#10b981" r="3" />
+              <circle cx="250" cy="22" fill="#10b981" r="6" class="animate-ping opacity-60" />
+              <circle cx="400" cy="13" fill="#10b981" r="3" />
+              <circle cx="400" cy="13" fill="#10b981" r="6" class="animate-ping opacity-60" />
+            </svg>
+          </div>
+        </div>
+
         <!-- 3. FAILURE INSIGHTS -->
         <div class="rounded-3xl bg-white border border-slate-200 shadow-sm overflow-hidden">
           <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">

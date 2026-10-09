@@ -1008,9 +1008,14 @@
                     <span class="text-emerald-600 font-bold">94.2%</span>
                   </div>
                   <div class="h-10 w-full">
-                    <svg class="w-full h-full" viewBox="0 0 100 40">
+                    <svg class="w-full h-full overflow-visible" viewBox="0 0 100 40">
                       <path d="M0,30 Q25,35 50,15 T100,8" fill="none" stroke="#f43f5e" stroke-width="2"></path>
                       <path d="M0,30 Q25,35 50,15 T100,8 L100,40 L0,40 Z" fill="rgba(244,63,94,0.12)"></path>
+                      <!-- Traveling Graph Point Animation -->
+                      <circle r="2.5" fill="#38bdf8" class="filter drop-shadow-[0_0_6px_rgba(56,189,248,0.9)]">
+                        <animateMotion path="M0,30 Q25,35 50,15 T100,8" dur="3s" repeatCount="indefinite" />
+                      </circle>
+                      <circle cx="50" cy="15" fill="#f43f5e" r="2.5" class="animate-ping opacity-75"></circle>
                       <circle cx="50" cy="15" fill="#38bdf8" r="2.5"></circle>
                     </svg>
                   </div>
