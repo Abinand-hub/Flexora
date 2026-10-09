@@ -1794,27 +1794,122 @@ export function HowPage({ go }) {
 
 export function WhyPage({ go, onSignUp }) {
   return (
-    <div className="relative min-h-screen py-16 px-4 sm:px-6 lg:px-8 text-center max-w-4xl mx-auto">
+    <div className="relative min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8 text-slate-900 font-sans">
       <ShaderBackground />
       <div className="cosmic-arc-top"></div>
-      <div className="relative z-10 text-left futuristic-card p-8 sm:p-12 shadow-xl border border-rose-200/80 bg-white/95">
-        <span className="px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-200 inline-block mb-3">
-          Built for Fast-Moving Founders
-        </span>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight mb-4">
-          What failed, why, what it cost, and how to recover.
-        </h1>
-        <p className="text-slate-600 text-base mb-8 leading-relaxed">
-          Traditional APMs give you millions of log lines and meaningless CPU graphs. Fluxera gives you one unified revenue and recovery command center that directly answers the critical questions your team and users care about.
-        </p>
 
-        <button
-          onClick={() => onSignUp ? onSignUp() : go("signup")}
-          className="shimmer-btn text-white text-sm font-semibold px-8 py-3.5 rounded-full inline-flex items-center gap-2 group shadow-glow-rose cursor-pointer border-0"
-        >
-          <span>Start Monitoring Free →</span>
-        </button>
-      </div>
+      <main className="relative z-10 max-w-5xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-rose-100 text-rose-700 text-xs font-semibold tracking-wider uppercase mb-4 border border-rose-200 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+            <span>ONE RELIABILITY LAYER · VISION &amp; ARCHITECTURE</span>
+          </div>
+          <h1 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight leading-tight mb-4">
+            HOW FLUXERA WORKS
+          </h1>
+          <p className="text-base sm:text-lg text-slate-600 font-medium max-w-2xl mx-auto">
+            Fluxera connects failures, dependencies, execution state, and financial impact into one deterministic recovery engine.
+          </p>
+        </div>
+
+        {/* 3 Core Pillars */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+          {/* Pillar 1 */}
+          <div className="rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 p-7 shadow-xl hover:shadow-2xl hover:border-rose-300 transition-all flex flex-col justify-between">
+            <div>
+              <div className="w-10 h-10 rounded-2xl bg-rose-100 text-rose-600 font-bold flex items-center justify-center mb-5 text-sm font-mono border border-rose-200">
+                01
+              </div>
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-rose-600 block mb-1">Pillar One</span>
+              <h3 className="text-xl font-bold text-slate-950 mb-2">AI RELIABILITY</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Understand what failed and why. Captures execution state across LLM generations, database reads, tool calls, and agent steps.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-slate-100 text-[11px] font-mono text-slate-600 flex justify-between">
+              <span>Model Failover:</span>
+              <span className="text-emerald-600 font-bold">&lt; 12ms</span>
+            </div>
+          </div>
+
+          {/* Pillar 2 */}
+          <div className="rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 p-7 shadow-xl hover:shadow-2xl hover:border-amber-300 transition-all flex flex-col justify-between">
+            <div>
+              <div className="w-10 h-10 rounded-2xl bg-amber-100 text-amber-700 font-bold flex items-center justify-center mb-5 text-sm font-mono border border-amber-200">
+                02
+              </div>
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-700 block mb-1">Pillar Two</span>
+              <h3 className="text-xl font-bold text-slate-950 mb-2">WORK RECOVERY</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Recover what has already been done. Stops full pipeline restarts when step 8 out of 10 fails by resuming deterministically.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-slate-100 text-[11px] font-mono text-slate-600 flex justify-between">
+              <span>Work Preserved:</span>
+              <span className="text-rose-600 font-bold">94%</span>
+            </div>
+          </div>
+
+          {/* Pillar 3 */}
+          <div className="rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 p-7 shadow-xl hover:shadow-2xl hover:border-cyan-300 transition-all flex flex-col justify-between">
+            <div>
+              <div className="w-10 h-10 rounded-2xl bg-cyan-100 text-cyan-700 font-bold flex items-center justify-center mb-5 text-sm font-mono border border-cyan-200">
+                03
+              </div>
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-700 block mb-1">Pillar Three</span>
+              <h3 className="text-xl font-bold text-slate-950 mb-2">VALUE RECOVERY</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Recover what failure wastes. Protects token expenditure, cloud compute spend, customer trust, and engineer sleep.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-slate-100 text-[11px] font-mono text-slate-600 flex justify-between">
+              <span>Silent Churn Cut:</span>
+              <span className="text-cyan-700 font-bold">-86%</span>
+            </div>
+          </div>
+        </div>
+
+        {/* 5-Phase Reliability Loop */}
+        <div className="rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 p-8 shadow-2xl mb-12">
+          <div className="text-center mb-8">
+            <span className="text-xs font-mono font-bold uppercase text-rose-600 tracking-widest block mb-1">THE RELIABILITY LOOP</span>
+            <h2 className="text-2xl font-extrabold text-slate-950">Continuous Closed-Loop Resilience</h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 text-left">
+            {[
+              { num: "01", name: "DETECT", desc: "Intercept failures before users report them.", color: "rose" },
+              { num: "02", name: "UNDERSTAND", desc: "Pinpoint root cause and state mutation points.", color: "amber" },
+              { num: "03", name: "QUANTIFY", desc: "Measure affected users and direct dollar impact.", color: "cyan" },
+              { num: "04", name: "RECOVER", desc: "Resume from in-flight memory boundaries.", color: "rose" },
+              { num: "05", name: "VERIFY", desc: "Confirm outcome met SLA constraints.", color: "emerald" },
+            ].map((step) => (
+              <div key={step.num} className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <div className="font-mono text-xs font-bold text-rose-600 mb-1">{step.num}</div>
+                <div className="text-xs font-bold text-slate-900 mb-1">{step.name}</div>
+                <p className="text-[11px] text-slate-500 leading-normal">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Call to action */}
+        <div className="flex items-center justify-center gap-4">
+          <button
+            onClick={() => go("what")}
+            className="px-6 py-3 rounded-full bg-white border border-slate-200 text-slate-800 font-semibold text-xs shadow-xs hover:bg-slate-50 cursor-pointer"
+          >
+            ← Back to Home
+          </button>
+          <button
+            onClick={() => go("overview")}
+            className="px-6 py-3 rounded-full bg-gradient-to-r from-rose-600 to-rose-500 text-white font-semibold text-xs shadow-lg shadow-rose-500/30 hover:scale-[1.03] transition-all cursor-pointer border-0"
+          >
+            Open Dashboard →
+          </button>
+        </div>
+      </main>
     </div>
   );
 }

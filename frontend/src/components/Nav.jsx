@@ -37,12 +37,12 @@ export function Nav({ route, go, hasSession, onViewDemo, onSignIn, onSignUp }) {
             <li>
               <button
                 onClick={() => {
-                  go("what");
-                  setTimeout(() => {
-                    document.getElementById("why-fluxera")?.scrollIntoView({ behavior: "smooth" });
-                  }, 50);
+                  go("why");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="px-3.5 py-1.5 rounded-full hover:bg-slate-100 hover:text-rose-600 transition-all cursor-pointer border-0 bg-transparent text-slate-700 font-medium"
+                className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer border-0 ${
+                  route === "why" ? "text-slate-900 font-semibold bg-slate-100" : "hover:bg-slate-100 hover:text-rose-600 bg-transparent text-slate-700 font-medium"
+                }`}
               >
                 Vision
               </button>
