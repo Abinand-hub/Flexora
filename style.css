@@ -353,3 +353,67 @@ html, body {
 .pulse-led-ring {
   animation: dotPulseRing 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
+
+/* ========================================================================= */
+/* DESIGN-ORIENTED ARCHITECTURAL BACKGROUND GRID (DOT MATRIX + FINE LINES)   */
+/* ========================================================================= */
+
+.design-dot-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  background-image: 
+    /* Primary Dot Matrix */
+    radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.35) 1.5px, transparent 0),
+    /* Secondary Accent Dot Matrix */
+    radial-gradient(circle at 17px 17px, rgba(244, 63, 94, 0.15) 1.2px, transparent 0),
+    /* Horizontal Architectural Grid Lines */
+    linear-gradient(to right, rgba(226, 232, 240, 0.45) 1px, transparent 1px),
+    /* Vertical Architectural Grid Lines */
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.45) 1px, transparent 1px);
+  background-size: 32px 32px, 32px 32px, 32px 32px, 32px 32px;
+  background-position: -1px -1px;
+  mask-image: radial-gradient(ellipse 90% 85% at 50% 20%, rgba(0,0,0,0.95) 25%, rgba(0,0,0,0.5) 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 20%, rgba(0,0,0,0.95) 25%, rgba(0,0,0,0.5) 70%, transparent 100%);
+}
+
+/* Pulsing Intersection Node Points for Design Grid */
+.grid-node-glow {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f43f5e;
+  box-shadow: 0 0 10px #f43f5e, 0 0 20px rgba(244, 63, 94, 0.6);
+  pointer-events: none;
+  animation: gridNodePulse 3.5s ease-in-out infinite alternate;
+}
+
+.grid-node-glow-sky {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8, 0 0 20px rgba(56, 189, 248, 0.6);
+  pointer-events: none;
+  animation: gridNodePulse 4s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes gridNodePulse {
+  0% { transform: scale(0.75); opacity: 0.35; box-shadow: 0 0 4px currentColor; }
+  100% { transform: scale(1.35); opacity: 0.95; box-shadow: 0 0 14px currentColor, 0 0 28px currentColor; }
+}
+
+.grid-crosshair {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  pointer-events: none;
+  opacity: 0.45;
+  color: #94a3b8;
+  transform: translate(-50%, -50%);
+}
+

@@ -14,9 +14,14 @@
 </head>
 <body class="relative selection:bg-rose-500 selection:text-white">
 
-  <!-- FULL-BLEED AMBIENT WEBGL SHADER BACKGROUND CANVAS -->
-  <div class="fixed inset-0 w-full h-full pointer-events-none -z-10" id="shader-container">
+  <!-- FULL-BLEED AMBIENT WEBGL SHADER & DESIGN-ORIENTED LINE DOT GRID BACKGROUND -->
+  <div class="fixed inset-0 w-full h-full pointer-events-none -z-10 overflow-hidden" id="shader-container">
     <canvas id="shader-canvas" class="w-full h-full block"></canvas>
+    <div class="design-dot-grid"></div>
+    <div class="grid-node-glow top-[15%] left-[12%] hidden lg:block"></div>
+    <div class="grid-node-glow-sky top-[28%] right-[15%] hidden lg:block"></div>
+    <div class="grid-node-glow top-[55%] left-[8%] hidden lg:block"></div>
+    <div class="grid-node-glow-sky top-[72%] right-[10%] hidden lg:block"></div>
   </div>
 
   <!-- SITE NAVIGATION -->
