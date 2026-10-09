@@ -490,10 +490,44 @@ function initMobileMenu() {
   }
 }
 
+// ==========================================
+// AMBIENT BACKGROUND PARTICLES INITIALIZATION
+// ==========================================
+function initAmbientParticles() {
+  const heroSection = document.getElementById('overview') || document.querySelector('main');
+  if (!heroSection) return;
+  
+  const particleContainer = document.createElement('div');
+  particleContainer.className = 'absolute inset-0 pointer-events-none overflow-hidden z-10';
+  particleContainer.id = 'ambient-particles';
+  
+  const particleCount = window.innerWidth < 768 ? 6 : 14;
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'floating-particle';
+    const size = Math.random() * 4 + 2;
+    const isRose = Math.random() > 0.4;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${Math.random() * 95}%`;
+    particle.style.top = `${Math.random() * 85 + 10}%`;
+    particle.style.background = isRose ? 'rgba(244, 63, 94, 0.5)' : 'rgba(56, 189, 248, 0.5)';
+    particle.style.boxShadow = isRose ? '0 0 12px rgba(244, 63, 94, 0.7)' : '0 0 12px rgba(56, 189, 248, 0.7)';
+    particle.style.animationDuration = `${7 + Math.random() * 9}s`;
+    particle.style.animationDelay = `${Math.random() * 6}s`;
+    particleContainer.appendChild(particle);
+  }
+  heroSection.appendChild(particleContainer);
+}
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initMobileMenu);
+  document.addEventListener('DOMContentLoaded', () => {
+    initMobileMenu();
+    initAmbientParticles();
+  });
 } else {
   initMobileMenu();
+  initAmbientParticles();
 }
 
 
