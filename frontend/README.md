@@ -1,16 +1,67 @@
-# React + Vite
+# Fluxera Frontend Dashboard & Landing Suite
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+The client-side interface for **Fluxera — The Reliability & Recovery Engine**. Built with **React 19**, **Vite**, **Tailwind CSS**, and modern glassmorphism 3D spatial design tokens.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📂 Directory Structure
 
-## React Compiler
+```
+frontend/
+├── public/
+│   ├── favicon.svg               # Official Fluxera 'fx' vector brand favicon
+│   ├── icons.svg                 # Shared SVG symbol sprite definitions
+│   └── standalone/               # Zero-dependency, pure HTML/CSS/JS deployable pages
+│       ├── index.html            # Standalone Hero & Landing Page
+│       ├── vision.html           # Standalone How Fluxera Works (Vision & 3D Table)
+│       ├── dashboard.html        # Standalone Live Telemetry & Revenue Dashboard
+│       ├── style.css             # Standalone 3D effects & animation tokens
+│       └── script.js             # Standalone interactive terminal & audio simulator
+├── src/
+│   ├── components/               # Reusable UI component library
+│   │   ├── Navigation.jsx        # Floating glass pill navigation bar
+│   │   ├── ProductShell.jsx      # Workspace wrapper & telemetry bar
+│   │   ├── RecoveryCard.jsx      # Automated recovery & fallback card
+│   │   ├── Tree.jsx              # Interactive execution call tree visualizer
+│   │   └── ui.jsx                # Metric cards, status badges, and buttons
+│   ├── pages/                    # Main application views
+│   │   ├── Landing.jsx           # Interactive Web Landing & Vision views
+│   │   ├── Workflows.jsx         # Registered workflow pipelines & heal rates
+│   │   ├── Tools.jsx             # Third-party dependency health & fallbacks
+│   │   ├── Executions.jsx        # Execution audit log & trace inspector
+│   │   ├── Logs.jsx              # Live streaming telemetry logs feed
+│   │   └── Settings.jsx          # Revenue risk model & SLA thresholds
+│   ├── index.css                 # Global cybernetic styles, animations, & aurora gradients
+│   ├── App.jsx                   # Root application state, auth, & router
+│   └── main.jsx                  # React DOM entrypoint
+├── index.html                    # Vite application root HTML
+├── package.json                  # Frontend dependencies & build scripts
+└── vite.config.js                # Vite build configuration
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🛠️ Development & Build
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```bash
+# Install dependencies
+npm install
+
+# Start local Vite development server
+npm run dev
+
+# Build production bundle to dist/
+npm run build
+
+# Preview production build locally
+npm run preview
+```
+
+---
+
+## 🎨 Design System & Visual Highlights
+
+- **Aurora Cosmic Gradients**: High-tech glow rings, horizon arc domes, and glassmorphism cards.
+- **Continuous Marquee Carousels**: Floating infinite auto-scrolling tech stacks with pause-on-hover physics.
+- **Multi-Tab Telemetry Explorer**: Interactive master-detail terminal with step-by-step code payloads and formula breakdowns.
+- **Pure Standalone Distribution**: Contains full zero-dependency standalone HTML files in `public/standalone/` for instant static hosting.

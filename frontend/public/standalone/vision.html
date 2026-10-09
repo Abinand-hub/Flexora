@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Fluxera | How Fluxera Works - Vision &amp; Reliability Layer</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  
+  <!-- Tailwind CSS CDN with plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fff1f4',
+              100: '#ffe4ea',
+              200: '#fecdd8',
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+              900: '#881337',
+            },
+            cyanic: {
+              300: '#67e8f9',
+              400: '#22d3ee',
+              500: '#06b6d4',
+              600: '#0891b2',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+          boxShadow: {
+            'glow-rose': '0 0 50px -10px rgba(255, 51, 102, 0.35)',
+            'glow-cyan': '0 0 50px -10px rgba(14, 165, 233, 0.28)',
+            'spatial-card': '0 20px 50px -12px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.9) inset',
+            'spatial-lift': '0 28px 70px -15px rgba(244, 63, 94, 0.18), 0 10px 30px -10px rgba(14, 165, 233, 0.15)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Futuristic Spatial Styles -->
+  <style data-purpose="ambient-lighting">
+    body {
+      background-color: #fafbfe;
+      color: #0f172a;
+      overflow-x: hidden;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    
+    /* Cyber Grid Matrix Background */
+    .cyber-grid {
+      background-image: 
+        radial-gradient(circle at 50% 28%, rgba(255, 77, 109, 0.11) 0%, rgba(255, 77, 109, 0.02) 42%, transparent 70%),
+        radial-gradient(circle at 82% 18%, rgba(14, 165, 233, 0.12) 0%, rgba(14, 165, 233, 0.01) 45%, transparent 65%),
+        radial-gradient(circle at 18% 65%, rgba(56, 189, 248, 0.09) 0%, transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(255, 51, 102, 0.08) 0%, transparent 60%),
+        linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    }
+
+    /* Ambient Spatial Orbs */
+    .spatial-orb-rose {
+      background: radial-gradient(circle, rgba(255, 77, 109, 0.22) 0%, rgba(255, 77, 109, 0.08) 45%, rgba(255, 255, 255, 0) 70%);
+      filter: blur(50px);
+    }
+    .spatial-orb-cyan {
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, rgba(14, 165, 233, 0.06) 50%, rgba(255, 255, 255, 0) 72%);
+      filter: blur(55px);
+    }
+
+    /* Horizon Arch Dome with Dual Aura */
+    .horizon-dome-futuristic {
+      background: radial-gradient(ellipse 130% 100% at 50% 100%, #ffffff 32%, rgba(255, 237, 240, 0.85) 60%, rgba(224, 242, 254, 0.7) 82%, rgba(255, 77, 109, 0.25) 100%);
+      box-shadow: 0 -25px 90px -10px rgba(255, 77, 109, 0.28), 0 -10px 40px -5px rgba(14, 165, 233, 0.25);
+    }
+
+    /* Horizon Arc Bottom Dome */
+    .horizon-arc-dome {
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      background: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 241, 242, 0.75) 45%, rgba(254, 205, 211, 0.35) 80%, rgba(244, 63, 94, 0.15) 100%);
+    }
+
+    /* Holographic Borders */
+    .holo-border-rose {
+      position: relative;
+    }
+    .holo-border-rose::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255, 77, 109, 0.6), rgba(255, 255, 255, 0.8), rgba(14, 165, 233, 0.5));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .holo-border-subtle {
+      position: relative;
+    }
+    .holo-border-subtle::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(226, 232, 240, 0.8), rgba(255, 77, 109, 0.35));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+  </style>
+
+  <style data-purpose="3d-perspective">
+    /* High-Depth 3D Spatial Viewport */
+    .perspective-container {
+      perspective: 1500px;
+    }
+    .isometric-board-3d {
+      transform: rotateX(10deg) rotateY(-1deg) scale(0.985);
+      transform-style: preserve-3d;
+      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 
+        0 40px 100px -20px rgba(15, 23, 42, 0.18),
+        0 25px 65px -15px rgba(255, 77, 109, 0.22),
+        0 10px 45px -10px rgba(14, 165, 233, 0.2);
+    }
+    .isometric-board-3d:hover {
+      transform: rotateX(4deg) rotateY(0deg) scale(0.998) translateY(-6px);
+      box-shadow: 
+        0 50px 120px -20px rgba(15, 23, 42, 0.22),
+        0 30px 80px -15px rgba(255, 77, 109, 0.28),
+        0 15px 55px -10px rgba(14, 165, 233, 0.25);
+    }
+    .layer-float-1 {
+      transform: translateZ(28px);
+    }
+    .layer-float-2 {
+      transform: translateZ(46px);
+    }
+
+    /* Spatial Node Connectors */
+    .conduit-line-vertical {
+      background: linear-gradient(180deg, rgba(255, 77, 109, 0.15) 0%, rgba(255, 77, 109, 0.9) 50%, rgba(14, 165, 233, 0.8) 100%);
+      box-shadow: 0 0 12px rgba(255, 77, 109, 0.5);
+    }
+
+    /* Continuous Infinite Auto-Carousel */
+    @keyframes chips-marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .chips-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: chips-marquee 24s linear infinite;
+    }
+    .chips-marquee-track:hover {
+      animation-play-state: paused;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen antialiased selection:bg-rose-500 selection:text-white">
+
+  <!-- High-Tech Cyber Grid & Aurora Glow Layers -->
+  <div class="fixed inset-0 cyber-grid pointer-events-none -z-10"></div>
+  <div class="fixed top-10 left-1/2 -translate-x-1/2 w-[900px] h-[550px] spatial-orb-rose pointer-events-none -z-10"></div>
+  <div class="fixed top-48 right-[-10%] w-[650px] h-[650px] spatial-orb-cyan pointer-events-none -z-10"></div>
+  <div class="fixed bottom-36 left-[-10%] w-[600px] h-[600px] spatial-orb-rose pointer-events-none -z-10"></div>
+
+  <!-- SITE NAVIGATION (Unified: Home, Vision, Sign In, Red Dashboard) -->
+  <header class="fixed top-5 inset-x-0 z-50 flex justify-center px-4" data-purpose="primary-navigation">
+    <nav class="w-full max-w-4xl rounded-full bg-white/85 backdrop-blur-xl border border-slate-200/80 shadow-[0_10px_35px_-8px_rgba(15,23,42,0.08)] px-4 sm:px-6 py-2.5 flex items-center justify-between transition-all duration-300 holo-border-subtle">
+      <!-- Brand Logo Badge -->
+      <a class="flex items-center space-x-2.5 group shrink-0" href="./index.html">
+        <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-rose-600 via-rose-500 to-rose-400 text-white font-bold text-xs flex items-center justify-center shadow-md shadow-rose-500/40 group-hover:scale-105 transition-all font-mono">
+          fx
+        </span>
+        <span class="text-base font-bold tracking-tight text-slate-900 group-hover:text-rose-600 transition-colors">Fluxera</span>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <div class="hidden md:flex items-center space-x-1 sm:space-x-2 text-xs font-medium text-slate-600">
+        <a class="px-3.5 py-1.5 rounded-full hover:bg-slate-100 hover:text-rose-600 transition-all" href="./index.html">Home</a>
+        <a class="px-3.5 py-1.5 rounded-full bg-rose-50 text-rose-600 font-semibold border border-rose-200/80 shadow-xs flex items-center space-x-1.5" href="./vision.html">
+          <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></span>
+          <span>Vision</span>
+        </a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 shrink-0">
+        <a class="text-xs font-semibold text-slate-700 hover:text-rose-600 px-3.5 py-1.5 rounded-full hover:bg-slate-100 transition-all" href="./dashboard.html">
+          Sign In
+        </a>
+        <a class="px-5 py-2 text-xs font-bold rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 hover:from-rose-500 hover:to-rose-600 text-white shadow-md shadow-rose-500/30 transition-all duration-200 hover:shadow-rose-500/50 hover:scale-[1.03]" href="./dashboard.html">
+          Dashboard
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- BEGIN: Hero Section -->
+  <main class="relative pt-32 md:pt-40 pb-0">
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 text-center" data-purpose="hero-header">
+      <!-- Eyebrow Pill Badge -->
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-rose-50 via-white to-sky-50 border border-rose-200/90 text-rose-600 text-[11px] font-semibold tracking-widest uppercase mb-6 shadow-[0_4px_16px_-4px_rgba(255,77,109,0.25)] backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-0.5"></span>
+        <span>HOW FLUXERA WORKS · VISION</span>
+      </div>
+
+      <!-- Hero Main Headline with Dual-Color Cyber Luster -->
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-950 leading-[1.1] mb-5 drop-shadow-sm">
+        ONE RELIABILITY LAYER
+      </h1>
+
+      <!-- Core Value Banner Statement with Holographic Accent -->
+      <div class="inline-block px-6 py-2.5 rounded-2xl bg-gradient-to-r from-rose-50/90 via-white to-sky-50/90 border border-rose-200/80 shadow-[0_8px_25px_-5px_rgba(244,63,94,0.15)] text-xs md:text-sm font-semibold text-rose-950 tracking-tight backdrop-blur-md">
+        Fluxera connects their failures, dependencies, execution state, and impact.
+      </div>
+    </section>
+
+    <!-- BEGIN: 3D Perspective Isometric Architecture Engine -->
+    <section class="max-w-6xl mx-auto px-4 mt-12" data-purpose="isometric-architecture-engine">
+      <div class="perspective-container">
+        <div class="isometric-board-3d rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 p-5 md:p-8 relative overflow-hidden ring-1 ring-slate-900/5 holo-border-rose shadow-2xl">
+          <!-- Neon Glow Gradients Behind Board -->
+          <div class="absolute -top-32 -left-32 w-80 h-80 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-32 -right-32 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <!-- Top Window Header Bar -->
+          <div class="flex flex-wrap items-center justify-between pb-4 border-b border-slate-200/70 gap-2 relative z-10">
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+              <span class="ml-3 text-[11px] font-mono text-slate-500 font-medium">fluxera.runtime / checkpoint-fabric.sys</span>
+            </div>
+            <div class="flex items-center space-x-2.5">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/80 shadow-[0_0_10px_rgba(16,185,129,0.15)]">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span> Checkpoint Shield: 99.98%
+              </span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-[10px] font-mono font-semibold bg-rose-50 text-rose-700 border border-rose-200/80 shadow-[0_0_10px_rgba(244,63,94,0.15)]">
+                <span class="w-1.5 h-1.5 rounded-full bg-rose-500 mr-1.5"></span> In-Flight Interceptor Active
+              </span>
+            </div>
+          </div>
+
+          <!-- Engine Console Layout -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6 relative z-10">
+            <!-- Left Console Pod: Ingress Dependencies -->
+            <div class="lg:col-span-3 space-y-3 font-mono text-xs">
+              <div class="text-[10px] font-bold tracking-widest text-slate-400 uppercase flex items-center justify-between">
+                <span>Monitored In-Flight Nodes</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200/80 hover:border-rose-400 hover:shadow-[0_4px_18px_rgba(244,63,94,0.15)] transition-all duration-300 shadow-sm group">
+                <div class="flex items-center justify-between text-slate-800 font-semibold mb-1">
+                  <span>OpenAI GPT-4o</span>
+                  <span class="text-rose-500 text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-50 border border-rose-200">429 RateLimit</span>
+                </div>
+                <div class="text-[10px] text-slate-500 flex items-center justify-between">
+                  <span>Auto-intercepted in 11ms</span>
+                  <span class="text-emerald-500 font-bold">●</span>
+                </div>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200/80 hover:border-cyan-400 hover:shadow-[0_4px_18px_rgba(6,182,212,0.15)] transition-all duration-300 shadow-sm group">
+                <div class="flex items-center justify-between text-slate-800 font-semibold mb-1">
+                  <span>Pinecone RAG Vector</span>
+                  <span class="text-emerald-600 text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 border border-emerald-200">Preserved (1.2k)</span>
+                </div>
+                <div class="text-[10px] text-slate-500 flex items-center justify-between">
+                  <span>Context cache retained</span>
+                  <span class="text-cyan-500 font-bold">●</span>
+                </div>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200/80 hover:border-amber-300 hover:shadow-sm transition-all duration-300 shadow-sm group">
+                <div class="flex items-center justify-between text-slate-800 font-semibold mb-1">
+                  <span>Stripe Billing Webhook</span>
+                  <span class="text-amber-600 text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-50 border border-amber-200">Replayed</span>
+                </div>
+                <div class="text-[10px] text-slate-500 flex items-center justify-between">
+                  <span>Zero state restart triggered</span>
+                  <span class="text-amber-500 font-bold">●</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Central Hub: Checkpoint Fabric & Circuit -->
+            <div class="lg:col-span-6 flex flex-col justify-between p-6 rounded-2xl bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-white relative shadow-2xl border border-slate-700/60 overflow-hidden layer-float-1">
+              <div class="absolute -top-16 -right-16 w-48 h-48 bg-rose-500/25 rounded-full blur-2xl pointer-events-none"></div>
+              <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none"></div>
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3 relative z-10">
+                <div class="flex items-center space-x-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.8)]"></span>
+                  <span class="text-xs font-semibold text-slate-200 tracking-wider uppercase font-mono">AUTONOMOUS CHECKPOINT CORE</span>
+                </div>
+                <span class="text-[10px] font-mono text-rose-400 bg-rose-950/60 border border-rose-800/80 px-2 py-0.5 rounded-md">Deterministic Engine v2.4</span>
+              </div>
+
+              <!-- Flow Telemetry Visualizer -->
+              <div class="my-6 space-y-4 relative z-10">
+                <div class="flex items-center justify-between text-xs font-mono">
+                  <span class="text-slate-300">Step 4/7: Agent Execution Chain</span>
+                  <span class="text-emerald-400 font-bold tracking-wide drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">STATE FROZEN &amp; RECOVERED</span>
+                </div>
+                <!-- Progress Line with Interception Node -->
+                <div class="relative w-full h-3 bg-slate-800/90 rounded-full overflow-hidden p-0.5 border border-slate-700/80">
+                  <div class="h-full bg-gradient-to-r from-rose-500 via-rose-400 via-sky-400 to-cyan-400 rounded-full w-4/5 shadow-[0_0_12px_rgba(244,63,94,0.8)]"></div>
+                </div>
+                <div class="flex justify-between text-[10px] font-mono text-slate-300">
+                  <span class="text-emerald-400">Prompt Synthesis [✓]</span>
+                  <span class="text-rose-400 font-semibold px-1 rounded bg-rose-950/50">Failure Detected [Interceptor]</span>
+                  <span class="text-cyan-400">Autonomous Resumption [✓]</span>
+                </div>
+              </div>
+
+              <!-- Metrics Footer -->
+              <div class="grid grid-cols-3 gap-2 pt-3 border-t border-slate-800/90 text-center font-mono relative z-10">
+                <div class="p-2 rounded-xl bg-slate-800/50 border border-slate-700/40">
+                  <div class="text-[10px] text-slate-400">Token Spend Saved</div>
+                  <div class="text-sm font-bold text-white tracking-tight">$4,891.20</div>
+                </div>
+                <div class="p-2 rounded-xl bg-slate-800/50 border border-slate-700/40">
+                  <div class="text-[10px] text-slate-400">Work Preserved</div>
+                  <div class="text-sm font-bold text-rose-400 drop-shadow-[0_0_6px_rgba(251,113,133,0.4)]">94.2%</div>
+                </div>
+                <div class="p-2 rounded-xl bg-slate-800/50 border border-slate-700/40">
+                  <div class="text-[10px] text-slate-400">Cold Restart Run</div>
+                  <div class="text-sm font-bold text-cyan-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.4)]">0 ms</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Console Pod: Policy & Blast Radius Matrix -->
+            <div class="lg:col-span-3 space-y-3 font-mono text-xs">
+              <div class="text-[10px] font-bold tracking-widest text-slate-400 uppercase flex items-center justify-between">
+                <span>RESILIENCE POLICY MATRIX</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200/80 shadow-sm hover:border-slate-300 transition-all">
+                <div class="text-[11px] font-bold text-slate-800 mb-0.5">Closed-Loop Recovery</div>
+                <p class="text-[10px] text-slate-500">Autonomous resolution without triggering human on-call fatigue.</p>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200/80 shadow-sm hover:border-slate-300 transition-all">
+                <div class="text-[11px] font-bold text-slate-800 mb-0.5">Dollarized Impact Audit</div>
+                <p class="text-[10px] text-slate-500">Real-time mapping of compute loss, user churn risk, and SLA exposure.</p>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-gradient-to-br from-rose-50/90 to-rose-100/40 border border-rose-200/90 text-rose-950 shadow-sm">
+                <div class="text-[11px] font-bold mb-0.5 text-rose-900">Deterministic Replay</div>
+                <p class="text-[10px] text-rose-700/90">Resume exactly at interrupted node without duplicate side-effects.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEGIN: Connected Systems Automatic Carousel (Below Table) -->
+    <section class="max-w-6xl mx-auto px-4 mt-10 mb-4 overflow-hidden" data-purpose="connected-systems-carousel">
+      <div class="text-center mb-5">
+        <p class="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest flex items-center justify-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+          Connect the systems your software depends on:
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+        </p>
+      </div>
+
+      <!-- Infinite Auto-Scroll Track -->
+      <div class="relative w-full overflow-hidden py-3 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <div class="chips-marquee-track flex gap-3">
+          <!-- Item Set 1 -->
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-rose-400 shadow-sm shadow-rose-400"></span>APIs
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400"></span>Agents
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-rose-500 shadow-sm shadow-rose-500"></span>Models
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-slate-950 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-slate-400"></span>Tools
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-rose-400 shadow-sm shadow-rose-400"></span>Memory
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-cyan-500 shadow-sm shadow-cyan-500"></span>RAG
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-slate-950 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-slate-400"></span>Workflows
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-rose-500 shadow-sm shadow-rose-500"></span>Databases
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400"></span>Infrastructure
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-slate-950 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-slate-400"></span>Third-Party Services
+          </span>
+
+          <!-- Duplicate Set for Seamless Continuous Infinite Carousel Loop -->
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-rose-400 shadow-sm shadow-rose-400"></span>APIs
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400"></span>Agents
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-rose-500 shadow-sm shadow-rose-500"></span>Models
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-slate-950 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-slate-400"></span>Tools
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-rose-400 shadow-sm shadow-rose-400"></span>Memory
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-cyan-500 shadow-sm shadow-cyan-500"></span>RAG
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-slate-950 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-slate-400"></span>Workflows
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-rose-500 shadow-sm shadow-rose-500"></span>Databases
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400"></span>Infrastructure
+          </span>
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-slate-950 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-slate-400"></span>Third-Party Services
+          </span>
+        </div>
+      </div>
+    </section>
+    <!-- END: Connected Systems Automatic Carousel -->
+
+    <!-- BEGIN: The Reliability Loop (5 Phases) -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 mt-20" data-purpose="the-reliability-loop">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-rose-50/90 border border-rose-200 text-rose-600 text-[11px] font-semibold tracking-widest uppercase mb-3 shadow-xs">
+          <span>THE RELIABILITY LOOP</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950">
+          Continuous Closed-Loop Resilience
+        </h2>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base">
+          Fluxera connects failures across your software and turns them into actionable, deterministic recovery.
+        </p>
+      </div>
+
+      <!-- 5 Sequential Cards Grid with 3D Holographic Finish -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+        <!-- Step 01: Detect -->
+        <div class="bg-white/85 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 shadow-spatial-card hover:shadow-spatial-lift hover:border-rose-300 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between holo-border-subtle">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-mono text-xl font-bold text-rose-500 group-hover:scale-110 transition-transform">01</span>
+              <span class="w-8 h-8 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-600 text-xs shadow-xs">🔍</span>
+            </div>
+            <h3 class="font-bold text-slate-900 text-sm tracking-wide mb-2 uppercase">DETECT</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Find failures across your software stack before users report them or workflows collapse.
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-slate-100/90 text-[10px] font-mono text-slate-500 flex items-center justify-between">
+            <span>Stack Coverage: 100%</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+          </div>
+        </div>
+
+        <!-- Step 02: Understand -->
+        <div class="bg-white/85 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 shadow-spatial-card hover:shadow-spatial-lift hover:border-amber-300 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between holo-border-subtle">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-mono text-xl font-bold text-amber-500 group-hover:scale-110 transition-transform">02</span>
+              <span class="w-8 h-8 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 text-xs shadow-xs">⚡</span>
+            </div>
+            <h3 class="font-bold text-slate-900 text-sm tracking-wide mb-2 uppercase">UNDERSTAND</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Identify root cause, state mutation points, and downstream failure propagation chains.
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-slate-100/90 text-[10px] font-mono text-slate-500 flex items-center justify-between">
+            <span>Root Cause Isolation</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+          </div>
+        </div>
+
+        <!-- Step 03: Quantify -->
+        <div class="bg-white/85 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 shadow-spatial-card hover:shadow-spatial-lift hover:border-cyan-300 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between holo-border-subtle">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-mono text-xl font-bold text-cyan-600 group-hover:scale-110 transition-transform">03</span>
+              <span class="w-8 h-8 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-cyan-600 text-xs shadow-xs">📊</span>
+            </div>
+            <h3 class="font-bold text-slate-900 text-sm tracking-wide mb-2 uppercase">QUANTIFY</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Measure affected in-flight work, wasted tokens, affected user counts, and direct dollar impact.
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-slate-100/90 text-[10px] font-mono text-slate-500 flex items-center justify-between">
+            <span>Financial Telemetry</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+          </div>
+        </div>
+
+        <!-- Step 04: Recover (Accent Highlight) -->
+        <div class="bg-gradient-to-b from-rose-50/70 via-white to-white rounded-3xl border-2 border-rose-300/90 p-5 shadow-[0_20px_50px_-10px_rgba(244,63,94,0.22)] hover:border-rose-400 hover:-translate-y-2 transition-all duration-300 group flex flex-col justify-between relative overflow-hidden holo-border-rose">
+          <div class="absolute -top-6 -right-6 w-20 h-20 bg-rose-400/20 rounded-full blur-xl pointer-events-none"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-mono text-xl font-bold text-rose-600 group-hover:scale-110 transition-transform">04</span>
+              <span class="w-8 h-8 rounded-xl bg-rose-100 border border-rose-200 flex items-center justify-center text-rose-600 text-xs shadow-xs">⚙️</span>
+            </div>
+            <h3 class="font-bold text-rose-950 text-sm tracking-wide mb-2 uppercase">RECOVER</h3>
+            <p class="text-xs text-slate-700 leading-relaxed font-medium">
+              Retry · Resume · Restore · Replay · Rerun. Recover what can still be saved instead of raw restart.
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-rose-200/90 text-[10px] font-mono text-rose-700 font-bold flex items-center justify-between">
+            <span>Deterministic Replay</span>
+            <span class="w-2 h-2 rounded-full bg-rose-500 shadow-[0_0_6px_rgba(244,63,94,0.8)]"></span>
+          </div>
+        </div>
+
+        <!-- Step 05: Verify -->
+        <div class="bg-white/85 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 shadow-spatial-card hover:shadow-spatial-lift hover:border-emerald-300 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between holo-border-subtle">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-mono text-xl font-bold text-emerald-500 group-hover:scale-110 transition-transform">05</span>
+              <span class="w-8 h-8 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 text-xs shadow-xs">🛡️</span>
+            </div>
+            <h3 class="font-bold text-slate-900 text-sm tracking-wide mb-2 uppercase">VERIFY</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Confirm that recovery actually restored the intended outcome and met business SLA constraints.
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-slate-100/90 text-[10px] font-mono text-slate-500 flex items-center justify-between">
+            <span>Closed-Loop Certified</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEGIN: Three Core Pillars Section -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 mt-20" data-purpose="three-core-pillars">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-rose-50/90 border border-rose-200 text-rose-600 text-[11px] font-semibold tracking-widest uppercase mb-3 shadow-xs">
+          <span>CORE ARCHITECTURE</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950">
+          THREE CORE PILLARS
+        </h2>
+      </div>
+
+      <!-- 3 Pillar Bento Cards with 3D Depth -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Pillar 1: AI Reliability -->
+        <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 p-7 shadow-spatial-card hover:shadow-spatial-lift hover:border-rose-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle group">
+          <div>
+            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-100 to-rose-50 border border-rose-200 flex items-center justify-center text-rose-600 mb-6 font-bold text-lg shadow-xs group-hover:scale-105 transition-transform">
+              01
+            </div>
+            <div class="text-xs font-mono font-bold uppercase tracking-wider text-rose-600 mb-1">Pillar One</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">AI RELIABILITY</h3>
+            <p class="text-sm font-semibold text-slate-700 mb-3">"Understand what failed and why."</p>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Captures deep execution states across LLM generations, external memory reads, tool calls, and agent steps. Pinpoints hallucinations, timeouts, and rate exhaustion instantly.
+            </p>
+          </div>
+          <div class="mt-8 p-3.5 rounded-2xl bg-slate-50/90 border border-slate-200/70 font-mono text-[11px] space-y-1.5 shadow-inner">
+            <div class="flex justify-between text-slate-600">
+              <span>Agent Execution State:</span>
+              <span class="text-emerald-600 font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Preserved</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Model Fallback SLA:</span>
+              <span class="text-slate-900 font-semibold">&lt; 14ms</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 2: Work Recovery -->
+        <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 p-7 shadow-spatial-card hover:shadow-spatial-lift hover:border-amber-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative holo-border-subtle group">
+          <div>
+            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-100 to-amber-50 border border-amber-200 flex items-center justify-center text-amber-600 mb-6 font-bold text-lg shadow-xs group-hover:scale-105 transition-transform">
+              02
+            </div>
+            <div class="text-xs font-mono font-bold uppercase tracking-wider text-amber-600 mb-1">Pillar Two</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">WORK RECOVERY</h3>
+            <p class="text-sm font-semibold text-slate-700 mb-3">"Recover what has already been done."</p>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Stops full pipeline restarts when step 8 out of 10 fails. Resumes deterministically from in-flight memory boundaries, preserving completed compute and customer progress.
+            </p>
+          </div>
+          <div class="mt-8 p-3.5 rounded-2xl bg-slate-50/90 border border-slate-200/70 font-mono text-[11px] space-y-1.5 shadow-inner">
+            <div class="flex justify-between text-slate-600">
+              <span>Work Preserved Rate:</span>
+              <span class="text-rose-600 font-bold">94%</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Zero Cold Reruns:</span>
+              <span class="text-emerald-600 font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Active</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Value Recovery -->
+        <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 p-7 shadow-spatial-card hover:shadow-spatial-lift hover:border-cyan-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle group">
+          <div>
+            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-cyan-100 to-cyan-50 border border-cyan-200 flex items-center justify-center text-cyan-600 mb-6 font-bold text-lg shadow-xs group-hover:scale-105 transition-transform">
+              03
+            </div>
+            <div class="text-xs font-mono font-bold uppercase tracking-wider text-cyan-600 mb-1">Pillar Three</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">VALUE RECOVERY</h3>
+            <p class="text-sm font-semibold text-slate-700 mb-3">"Recover what failure wastes."</p>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Protects token expenditure, cloud compute spend, customer trust, and engineer on-call sleep by systematically containing failure blast radius before it leaks into production value loss.
+            </p>
+          </div>
+          <div class="mt-8 p-3.5 rounded-2xl bg-slate-50/90 border border-slate-200/70 font-mono text-[11px] space-y-1.5 shadow-inner">
+            <div class="flex justify-between text-slate-600">
+              <span>Monthly Compute Saved:</span>
+              <span class="text-cyan-700 font-bold">$18,450 / avg</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Silent Churn Prevented:</span>
+              <span class="text-emerald-600 font-semibold">-86%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Synthesis Bridge -->
+      <div class="mt-8 p-5 rounded-2xl bg-white/80 backdrop-blur-xl border border-slate-200 shadow-spatial-card flex flex-col sm:flex-row items-center justify-center gap-4 text-center holo-border-subtle">
+        <span class="text-xs font-bold uppercase tracking-widest text-slate-500 font-mono">TOGETHER:</span>
+        <div class="inline-flex items-center space-x-2.5 text-xs md:text-sm font-mono font-semibold">
+          <span class="px-4 py-1.5 rounded-full bg-slate-900 text-white shadow-md shadow-slate-900/20">UNDERSTAND</span>
+          <span class="text-rose-500 font-bold animate-pulse">→</span>
+          <span class="px-4 py-1.5 rounded-full bg-gradient-to-r from-rose-600 to-rose-500 text-white shadow-md shadow-rose-500/25">RECOVER</span>
+          <span class="text-cyan-500 font-bold animate-pulse">→</span>
+          <span class="px-4 py-1.5 rounded-full bg-emerald-600 text-white shadow-md shadow-emerald-600/25">VERIFY</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEGIN: Expansion Vision Section -->
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 mt-20" data-purpose="expansion-vision">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-rose-50/90 border border-rose-200 text-rose-600 text-[11px] font-semibold tracking-widest uppercase mb-3 shadow-xs">
+          <span>EVOLUTIONARY SCOPE</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950 mb-3">
+          BUILT FOR TODAY'S SOFTWARE
+        </h2>
+        <p class="text-sm md:text-base text-slate-600 leading-relaxed font-medium">
+          Fluxera starts with AI-native SaaS, where complex execution chains create a new class of reliability problems. But the underlying problem is much bigger.
+        </p>
+      </div>
+
+      <!-- Sequential Cybernetic Pipeline Horizon Flow -->
+      <div class="p-8 md:p-10 rounded-3xl bg-white/90 backdrop-blur-2xl border border-slate-200 shadow-spatial-card relative overflow-hidden mb-6 holo-border-subtle">
+        <div class="text-center text-xs font-mono font-bold tracking-widest text-slate-400 uppercase mb-8">
+          THE EXPANSION VISION
+        </div>
+        <div class="flex flex-col md:flex-row items-center justify-between gap-3 text-center relative z-10">
+          <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-gradient-to-r from-rose-50 to-white border-2 border-rose-300 text-rose-950 font-mono text-xs font-bold shadow-[0_4px_16px_rgba(244,63,94,0.18)] flex items-center justify-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+            AI-NATIVE SOFTWARE
+          </div>
+          <span class="text-rose-400 font-bold rotate-90 md:rotate-0 text-sm">↓</span>
+          <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 text-slate-800 font-mono text-xs font-medium shadow-xs">
+            ALL SOFTWARE
+          </div>
+          <span class="text-slate-400 font-bold rotate-90 md:rotate-0 text-sm">↓</span>
+          <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 text-slate-800 font-mono text-xs font-medium shadow-xs">
+            DIGITAL INFRASTRUCTURE
+          </div>
+          <span class="text-slate-400 font-bold rotate-90 md:rotate-0 text-sm">↓</span>
+          <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 text-slate-800 font-mono text-xs font-medium shadow-xs">
+            AUTONOMOUS SYSTEMS
+          </div>
+          <span class="text-slate-400 font-bold rotate-90 md:rotate-0 text-sm">↓</span>
+          <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 text-slate-800 font-mono text-xs font-medium shadow-xs">
+            PHYSICAL SYSTEMS
+          </div>
+        </div>
+      </div>
+
+      <!-- Long-Term Mission Box -->
+      <div class="p-6 md:p-8 rounded-3xl bg-gradient-to-r from-rose-50/80 via-white to-sky-50/80 border border-rose-200/90 text-center shadow-spatial-card backdrop-blur-xl holo-border-subtle">
+        <p class="text-sm md:text-base font-semibold text-slate-800 leading-relaxed max-w-3xl mx-auto">
+          "Fluxera's long-term vision is to become a universal reliability intelligence and recovery layer—helping increasingly complex software and autonomous systems understand failures, recover work, preserve value, and eventually prevent failures before they happen."
+        </p>
+      </div>
+    </section>
+
+    <!-- BEGIN: Roadmap / Horizon Timeline -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 mt-20" data-purpose="roadmap-timeline">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-rose-50/90 border border-rose-200 text-rose-600 text-[11px] font-semibold tracking-widest uppercase mb-3 shadow-xs">
+          <span>THE HORIZON</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950">
+          FROM RECOVERY TO AUTONOMOUS RELIABILITY
+        </h2>
+      </div>
+
+      <!-- 3-Phase Horizon Cards with 3D Depth -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Phase 1: Today -->
+        <div class="rounded-3xl bg-white/95 backdrop-blur-xl border-2 border-rose-400/90 p-7 shadow-[0_25px_60px_-15px_rgba(244,63,94,0.22)] flex flex-col justify-between relative overflow-hidden holo-border-rose hover:-translate-y-1.5 transition-all duration-300">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rose-50 text-rose-600 font-mono text-[11px] font-bold uppercase mb-4 self-start border border-rose-200">
+            <span class="w-1.5 h-1.5 rounded-full bg-rose-600 animate-pulse"></span>
+            <span>PHASE 1 · TODAY</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Recovery Core</h3>
+          <p class="text-xs text-slate-600 mb-6 leading-relaxed">
+            Active in-flight checkpointing, blast radius isolation, and deterministic resumption for AI agents and distributed backends.
+          </p>
+          <div class="p-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 font-mono text-xs font-semibold text-slate-800 text-center shadow-xs">
+            Detect → Understand → Recover → Verify
+          </div>
+        </div>
+
+        <!-- Phase 2: Next -->
+        <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-cyan-200/90 p-7 shadow-spatial-card hover:border-cyan-400 hover:shadow-spatial-lift hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-50 text-cyan-700 font-mono text-[11px] font-semibold uppercase mb-4 self-start border border-cyan-200">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+            <span>PHASE 2 · NEXT</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Proactive Shield</h3>
+          <p class="text-xs text-slate-600 mb-6 leading-relaxed">
+            Anticipate failure patterns before execution chains degrade using cross-stack telemetry graphs and dynamic hedging.
+          </p>
+          <div class="p-3.5 rounded-2xl bg-cyan-50/60 border border-cyan-200/80 font-mono text-xs font-semibold text-cyan-900 text-center shadow-xs">
+            Predict → Prevent → Optimize
+          </div>
+        </div>
+
+        <!-- Phase 3: Long Term -->
+        <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 p-7 shadow-spatial-card hover:border-slate-300 hover:shadow-spatial-lift hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-100 text-slate-600 font-mono text-[11px] font-semibold uppercase mb-4 self-start border border-slate-200">
+            <span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
+            <span>PHASE 3 · LONG TERM</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Autonomous Reliability</h3>
+          <p class="text-xs text-slate-500 mb-4">Systems that continuously self-adapt without operator intervention:</p>
+          <div class="p-3 rounded-2xl bg-slate-900 text-slate-200 font-mono text-[10px] leading-relaxed text-center shadow-md">
+            Understand → Predict → Prevent → Recover → Verify → Optimize → Evolve
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER CONVERSION SECTION (HORIZON ARCH DOME) -->
+    <section class="relative pt-20 pb-0 overflow-hidden text-center flex flex-col justify-end items-center" id="early-access">
+      <div class="relative w-full max-w-6xl mx-auto px-4 flex flex-col items-center justify-end">
+        <div class="horizon-arc-dome relative w-full pt-16 pb-20 px-6 sm:px-12 flex flex-col items-center justify-center overflow-hidden border-t-2 border-x border-b-0 border-rose-400/80 shadow-[0_-25px_80px_-15px_rgba(244,63,94,0.35)]">
+          <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-rose-400/25 blur-[100px] pointer-events-none rounded-full"></div>
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-1 bg-gradient-to-r from-transparent via-rose-400 to-transparent blur-[1px] pointer-events-none"></div>
+
+          <div class="max-w-2xl mx-auto relative z-10">
+            <div class="w-12 h-12 mx-auto mb-5 rounded-2xl bg-white border border-rose-200 flex items-center justify-center shadow-lg shadow-rose-500/25">
+              <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-rose-600 to-rose-400 flex items-center justify-center text-white font-mono font-bold text-xs">
+                fx
+              </div>
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight">
+              Stop Losing Work When <br />
+              Dependencies Fail
+            </h2>
+            <p class="mt-3 text-sm sm:text-base text-slate-600 max-w-xl mx-auto font-medium">
+              Deploy the intelligence and recovery layer built for mission-critical modern SaaS architectures.
+            </p>
+            <div class="mt-8 max-w-md mx-auto">
+              <form class="flex flex-col sm:flex-row items-center gap-2 p-1.5 rounded-full bg-white/95 border border-slate-200 shadow-xl shadow-rose-500/15 backdrop-blur-md" onsubmit="event.preventDefault(); alert('Thank you for requesting early access to Fluxera!');">
+                <input class="w-full sm:flex-1 px-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 bg-transparent rounded-full focus:outline-none focus:ring-0 border-0" placeholder="Enter your work email address" required="" type="email" />
+                <button class="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 text-white font-bold text-xs tracking-wide shadow-md shadow-rose-500/35 hover:shadow-rose-500/50 hover:scale-[1.02] transition-all whitespace-nowrap" type="submit">
+                  Get Early Access
+                </button>
+              </form>
+              <p class="text-[11px] text-slate-400 mt-3 font-medium">Limited onboarding cohorts for early SaaS design partners.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="border-t border-slate-200/60 py-6 px-6 text-xs text-slate-500 relative z-10 bg-white/50 backdrop-blur-md" data-purpose="site-footer">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2 order-1">
+        <div class="w-5 h-5 rounded bg-rose-600 flex items-center justify-center text-white text-[10px] font-mono font-bold">fx</div>
+        <span class="font-bold text-slate-800">Fluxera</span>
+        <span class="text-slate-400">© 2026 Fluxera Inc. All Rights Reserved.</span>
+      </div>
+      <div class="flex items-center gap-6 order-2">
+        <a class="hover:text-rose-600 transition-colors" href="./index.html">Home</a>
+        <a class="text-rose-600 font-semibold" href="./vision.html">Vision</a>
+        <a class="hover:text-rose-600 transition-colors" href="./dashboard.html">Dashboard</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

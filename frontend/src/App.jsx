@@ -126,7 +126,7 @@ export default function App(){
           onSignUp={()=>go("signup")}
         />
 
-        {route==="what"&&<WhatPage go={go} onDemo={()=>enterDashboard("overview")} onSignUp={()=>go("signup")} />}
+        {(route==="what"||route==="features")&&<WhatPage go={go} onDemo={()=>enterDashboard("overview")} onSignUp={()=>go("signup")} />}
         {route==="how"&&<HowPage go={go} />}
         {route==="why"&&<WhyPage go={go} onSignUp={()=>go("signup")} />}
         {route==="signup"&&<Onboarding onLogin={setSession} go={go} />}
