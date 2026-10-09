@@ -149,9 +149,9 @@ export function WhatPage({ go, onDemo, onSignUp }) {
             </div>
 
             {/* Main Refined Headline (Scaled down for balance) */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-black tracking-tight text-slate-950 leading-[1.16] mb-3.5">
-              <span className="block sm:inline-block">EVERY MODERN SAAS WILL HAVE A</span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-rose-600 via-rose-500 to-rose-400 drop-shadow-sm block sm:inline-block">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[36px] font-extrabold tracking-tight text-slate-950 leading-[1.28] mb-6">
+              <span className="block">EVERY MODERN SAAS WILL HAVE A</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-rose-600 via-rose-500 to-rose-400 drop-shadow-sm block">
                 RELIABILITY PROBLEM.
               </span>
             </h1>
