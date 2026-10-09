@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluxera — The Reliability &amp; Recovery Engine</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Separated Stylesheet -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="relative selection:bg-rose-500 selection:text-white">
+
+  <!-- FULL-BLEED AMBIENT WEBGL SHADER BACKGROUND CANVAS -->
+  <div class="fixed inset-0 w-full h-full pointer-events-none -z-10" id="shader-container">
+    <canvas id="shader-canvas" class="w-full h-full block"></canvas>
+  </div>
+
+  <!-- SITE NAVIGATION -->
+  <header class="fixed top-5 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none" data-purpose="site-header">
+    <div class="pointer-events-auto flex items-center justify-between gap-4 md:gap-8 px-4 sm:px-6 py-2 rounded-full backdrop-blur-md bg-white/85 border border-slate-200/80 shadow-md shadow-slate-200/40 max-w-4xl w-full">
+      <a aria-label="Fluxera Home" class="flex items-center gap-2.5 group shrink-0" href="#overview">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-rose-600 via-rose-500 to-rose-400 flex items-center justify-center shadow-md shadow-rose-500/30 p-1.5 transition-transform group-hover:scale-105">
+          <span class="text-white font-extrabold tracking-tighter text-xs font-mono">fx</span>
+        </div>
+        <span class="text-slate-900 font-bold text-base tracking-tight">Fluxera</span>
+      </a>
+      
+      <nav class="hidden md:flex items-center text-xs font-medium text-slate-600">
+        <ul class="flex items-center space-x-1 sm:space-x-2">
+          <li><a class="px-3.5 py-1.5 rounded-full text-slate-900 font-semibold hover:bg-slate-100 hover:text-rose-600 transition-all" href="#overview">Home</a></li>
+          <li><a class="px-3.5 py-1.5 rounded-full hover:bg-slate-100 hover:text-rose-600 transition-all font-medium text-slate-700" href="./vision.html">Vision</a></li>
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <a class="text-xs font-semibold text-slate-700 hover:text-rose-600 px-3.5 py-1.5 rounded-full hover:bg-slate-100 transition-all" href="./dashboard.html">
+          Sign In
+        </a>
+        <a class="px-5 py-2 text-xs font-bold rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 hover:from-rose-500 hover:to-rose-600 text-white shadow-md shadow-rose-500/30 transition-all duration-200 hover:shadow-rose-500/50 hover:scale-[1.03]" href="./dashboard.html">
+          Dashboard
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-between pt-24 md:pt-28 pb-8 overflow-visible" id="overview">
+    <div class="cosmic-arc-top"></div>
+    <div class="cosmic-arc-rim"></div>
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[680px] h-[340px] bg-rose-400/25 blur-[120px] pointer-events-none rounded-full"></div>
+
+    <div class="max-w-3xl mx-auto px-4 text-center relative z-20 pt-2 shrink-0">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-rose-100/90 text-rose-700 border border-rose-200/90 shadow-sm mb-3.5 backdrop-blur-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
+        THE RELIABILITY &amp; RECOVERY ENGINE
+      </div>
+
+      <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-black tracking-tight text-slate-950 leading-[1.16] mb-3.5">
+        EVERY MODERN SAAS WILL HAVE A <br class="hidden sm:inline" />
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-rose-600 via-rose-500 to-coral-500 drop-shadow-sm">RELIABILITY PROBLEM.</span>
+      </h1>
+
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-3">
+        <a class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-rose-500/30 hover:shadow-rose-500/45 hover:scale-[1.03] transition-all" href="./dashboard.html">
+          Open Dashboard
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        </a>
+        <a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-slate-50 text-slate-800 hover:text-slate-950 border border-slate-200/90 text-xs sm:text-sm font-semibold transition-all shadow-xs hover:shadow-sm" href="./dashboard.html">
+          <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+          Live Telemetry Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- VIEWPORT PEEKING 3D FLOATING DASHBOARD (ORIGINAL EXACT FLUXERA DASHBOARD) -->
+    <div class="relative w-full max-w-6xl mx-auto px-4 mt-6 md:mt-8 hero-perspective-stage z-20 overflow-visible" id="hero-console">
+      <div class="dashboard-viewport-peek rounded-2xl p-[1px] bg-gradient-to-b from-rose-400/60 via-slate-200/90 to-sky-300/40 relative">
+        <div class="rounded-[15px] bg-white/95 backdrop-blur-2xl border border-slate-200 overflow-hidden shadow-2xl">
+          <!-- Window Header Bar -->
+          <div class="flex items-center justify-between px-4 py-2.5 bg-slate-50/90 border-b border-slate-200 text-xs text-slate-500">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+            </div>
+            <div class="flex items-center gap-2 px-4 py-1 rounded-full bg-white border border-slate-200 text-[11px] text-slate-600 shadow-sm">
+              <svg class="w-3 h-3 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              <span class="font-mono">fluxera.ai/dashboard/overview</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 text-[10px] bg-emerald-50 text-emerald-700 font-semibold px-2 py-0.5 rounded-full border border-emerald-200">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> DEMO MODE
+              </span>
+            </div>
+          </div>
+
+          <!-- The Original Fluxera Dashboard Layout with Left Sidebar & Overview -->
+          <div class="grid grid-cols-12 min-h-[500px] text-left">
+            <!-- Left Sidebar -->
+            <aside class="col-span-12 md:col-span-3 border-r border-slate-200 bg-white/90 p-4 flex flex-col justify-between">
+              <div>
+                <div class="pb-3 mb-3 border-b border-slate-100">
+                  <p class="text-[10px] font-semibold text-slate-400 tracking-wider uppercase mb-0.5">WORKSPACE</p>
+                  <p class="text-xs font-bold text-slate-900">Demo</p>
+                  <span class="inline-block mt-1 text-[10px] font-semibold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200">
+                    DEMO MODE
+                  </span>
+                </div>
+                <ul class="space-y-1 text-xs font-medium">
+                  <li>
+                    <a class="flex items-center justify-between px-3 py-2 rounded-xl bg-rose-50 text-rose-700 font-semibold border border-rose-200/80 hover:bg-rose-100 transition-colors" href="./dashboard.html?tab=overview">
+                      <span>Overview</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="flex items-center px-3 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="./dashboard.html?tab=workflows">
+                      <span>Workflows</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="flex items-center px-3 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="./dashboard.html?tab=tools">
+                      <span>Tools</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="flex items-center px-3 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="./dashboard.html?tab=executions">
+                      <span>Executions</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="flex items-center px-3 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="./dashboard.html?tab=logs">
+                      <span>Logs</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="flex items-center px-3 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="./dashboard.html?tab=settings">
+                      <span>Settings</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
+                <div class="flex items-center justify-center gap-2 p-2 rounded-lg bg-rose-50 border border-rose-200 text-rose-600 font-mono text-[11px] font-semibold">
+                  <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                  <span>STATIC DEMO</span>
+                </div>
+              </div>
+            </aside>
+
+            <!-- Main Dashboard Area -->
+            <main class="col-span-12 md:col-span-9 p-5 flex flex-col justify-between bg-[#fafbfd]">
+              <div>
+                <!-- Top Overview Bar -->
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200/80">
+                  <h3 class="text-base font-bold text-slate-900">Overview</h3>
+                  <div class="flex items-center gap-2">
+                    <span class="hidden sm:inline-block text-xs font-medium text-slate-700 px-3 py-1 rounded-lg border border-slate-200 bg-white">
+                      History
+                    </span>
+                    <div class="flex items-center bg-slate-100 p-0.5 rounded-lg text-xs font-medium text-slate-600">
+                      <span class="px-2.5 py-0.5 rounded bg-white text-rose-600 font-semibold shadow-sm">24h</span>
+                      <span class="px-2 py-0.5">7d</span>
+                      <span class="px-2 py-0.5">30d</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2 Primary KPI Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                  <!-- FAILED API COST -->
+                  <div class="p-5 rounded-2xl bg-white border border-rose-200/80 shadow-sm relative">
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-[10px] font-mono font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200 tracking-wider uppercase">
+                        FAILED API COST · LAST 24H
+                      </span>
+                      <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                    </div>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-rose-600 tracking-tight mb-1">
+                      $7.13
+                    </div>
+                    <p class="text-[11px] text-slate-500">
+                      <strong class="font-mono text-slate-800">152</strong> failed API calls across all workflows
+                    </p>
+                  </div>
+
+                  <!-- EST. REVENUE AT RISK -->
+                  <div class="p-5 rounded-2xl bg-white border border-amber-200/80 shadow-sm relative">
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-[10px] font-mono font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 tracking-wider uppercase">
+                        EST. REVENUE AT RISK · LAST 24H
+                      </span>
+                      <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                    </div>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-amber-600 tracking-tight mb-1">
+                      $5,185.00
+                    </div>
+                    <p class="text-[11px] text-slate-500">
+                      ~<strong class="font-mono text-slate-800">61</strong> users impacted · <strong class="font-mono text-slate-800">40%</strong> cart abandonment
+                    </p>
+                  </div>
+                </div>
+
+                <!-- 4 Secondary Metrics -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                  <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+                    <span class="text-[10px] font-mono font-semibold text-slate-400 uppercase block mb-1">Failure Rate</span>
+                    <div class="text-lg font-bold text-rose-600">19.0%</div>
+                  </div>
+                  <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+                    <span class="text-[10px] font-mono font-semibold text-slate-400 uppercase block mb-1">Avg Fail Latency</span>
+                    <div class="text-lg font-bold text-slate-900">859ms</div>
+                  </div>
+                  <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+                    <span class="text-[10px] font-mono font-semibold text-slate-400 uppercase block mb-1">Total Requests</span>
+                    <div class="text-lg font-bold text-slate-900">800</div>
+                  </div>
+                  <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+                    <span class="text-[10px] font-mono font-semibold text-slate-400 uppercase block mb-1">Monthly Run-Rate</span>
+                    <div class="text-lg font-bold text-rose-600">$213.95</div>
+                  </div>
+                </div>
+
+                <!-- Leaking Endpoints Table -->
+                <div class="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+                  <div class="px-4 py-2.5 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-slate-900">
+                      <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                      <span>Leaking Endpoints &amp; Services</span>
+                    </div>
+                    <span class="text-[10px] font-mono text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">
+                      LAST 24H
+                    </span>
+                  </div>
+                  <div class="divide-y divide-slate-100 text-xs">
+                    <div class="px-4 py-2.5 grid grid-cols-12 gap-2 items-center hover:bg-rose-50/30 transition-colors">
+                      <div class="col-span-6">
+                        <div class="font-mono text-[11px] font-bold text-slate-800">/v1/chat/completions</div>
+                        <div class="w-full h-1 bg-slate-100 rounded-full mt-1 overflow-hidden">
+                          <div class="h-full bg-rose-600 rounded-full" style="width: 100%"></div>
+                        </div>
+                      </div>
+                      <div class="col-span-2 text-center text-slate-500 font-mono text-[11px]">67 failed</div>
+                      <div class="col-span-2 text-center">
+                        <span class="bg-rose-50 text-rose-600 font-mono text-[10px] font-bold px-1.5 py-0.5 rounded border border-rose-100">21.5%</span>
+                      </div>
+                      <div class="col-span-2 text-right font-mono font-bold text-rose-600 text-xs sm:text-sm">$3.98</div>
+                    </div>
+                    <div class="px-4 py-2.5 grid grid-cols-12 gap-2 items-center hover:bg-rose-50/30 transition-colors">
+                      <div class="col-span-6">
+                        <div class="font-mono text-[11px] font-bold text-slate-800">/v1/completions</div>
+                        <div class="w-full h-1 bg-slate-100 rounded-full mt-1 overflow-hidden">
+                          <div class="h-full bg-rose-400 rounded-full" style="width: 45%"></div>
+                        </div>
+                      </div>
+                      <div class="col-span-2 text-center text-slate-500 font-mono text-[11px]">41 failed</div>
+                      <div class="col-span-2 text-center">
+                        <span class="bg-rose-50 text-rose-600 font-mono text-[10px] font-bold px-1.5 py-0.5 rounded border border-rose-100">19.1%</span>
+                      </div>
+                      <div class="col-span-2 text-right font-mono font-bold text-rose-600 text-xs sm:text-sm">$1.63</div>
+                    </div>
+                    <div class="px-4 py-2.5 grid grid-cols-12 gap-2 items-center hover:bg-rose-50/30 transition-colors">
+                      <div class="col-span-6">
+                        <div class="font-mono text-[11px] font-bold text-slate-800">/v1/images/generate</div>
+                        <div class="w-full h-1 bg-slate-100 rounded-full mt-1 overflow-hidden">
+                          <div class="h-full bg-rose-400 rounded-full" style="width: 28%"></div>
+                        </div>
+                      </div>
+                      <div class="col-span-2 text-center text-slate-500 font-mono text-[11px]">12 failed</div>
+                      <div class="col-span-2 text-center">
+                        <span class="bg-rose-50 text-rose-600 font-mono text-[10px] font-bold px-1.5 py-0.5 rounded border border-rose-100">12.8%</span>
+                      </div>
+                      <div class="col-span-2 text-right font-mono font-bold text-rose-600 text-xs sm:text-sm">$0.98</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLOATING CONTINUOUS CAROUSEL OF CONNECTED APIS / SERVICES / TOOLS (BELOW DASHBOARD) -->
+    <div class="relative w-full max-w-6xl mx-auto px-4 mt-10 md:mt-14 overflow-hidden z-20" data-purpose="connected-integrations-carousel">
+      <div class="text-center mb-4">
+        <p class="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest flex items-center justify-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></span>
+          <span>Automatic Telemetry &amp; Failover Across Your Entire Stack</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+        </p>
+      </div>
+
+      <!-- Infinite Floating Auto-Carousel Track with Edge Masking -->
+      <div class="relative w-full overflow-hidden py-3 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <div class="tool-marquee-track flex items-center gap-3">
+          <!-- Item Set 1 -->
+          <!-- 1: OpenAI -->
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-emerald-400 hover:shadow-[0_8px_20px_-4px_rgba(16,185,129,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-600">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M22.28 9.82a5.98 5.98 0 0 0-.51-4.91 6.05 6.05 0 0 0-6.51-2.9 6.07 6.07 0 0 0-4.28 2.17 5.98 5.98 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.1 5.98 5.98 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.51 2.9 5.98 5.98 0 0 0 3.74 1.91 6.06 6.06 0 0 0 5.77-4.2 5.99 5.99 0 0 0 4-2.9 6.06 6.06 0 0 0-.75-7.08zm-9.02 12.61a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.8.8 0 0 0 .39-.68v-6.74l2.02 1.17c.02.01.04.03.04.05v5.58a4.5 4.5 0 0 1-4.49 4.5zM3.6 17.91a4.47 4.47 0 0 1-.53-3.01l.14.08 4.78 2.76a.77.77 0 0 0 .78 0l5.85-3.37v2.33c0 .03-.02.05-.04.06L9.74 19.95a4.5 4.5 0 0 1-6.14-2.04zm-1.88-8.84a4.47 4.47 0 0 1 2.34-1.97l-.01.16v5.52a.78.78 0 0 0 .39.68l5.84 3.37-2.02 1.17a.08.08 0 0 1-.07 0l-4.83-2.8a4.5 4.5 0 0 1-1.64-6.13zm16.6 3.86-5.85-3.37 2.02-1.17a.08.08 0 0 1 .07 0l4.83 2.8a4.5 4.5 0 0 1-.68 8.1v-5.68a.79.79 0 0 0-.39-.68zm2.01-3.02-.14-.09-4.78-2.78a.78.78 0 0 0-.78 0L8.81 10.4V8.07c0-.02.01-.05.03-.06l4.88-2.82a4.5 4.5 0 0 1 6.68 4.2zM12 13.5l-2.6-1.5L12 10.5l2.6 1.5-2.6 1.5z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">OpenAI</span>
+            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200/70">AI Models</span>
+          </div>
+
+          <!-- 2: Anthropic Claude -->
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-amber-400 hover:shadow-[0_8px_20px_-4px_rgba(245,158,11,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-[#D97757]/10 border border-[#D97757]/30 flex items-center justify-center text-[#D97757] font-serif font-black text-xs">
+              C
+            </div>
+            <span class="text-xs font-bold text-slate-800">Claude</span>
+            <span class="text-[10px] font-mono text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded font-semibold border border-amber-200/70">LLM APIs</span>
+          </div>
+
+          <!-- 3: Stripe -->
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-indigo-400 hover:shadow-[0_8px_20px_-4px_rgba(99,91,255,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-indigo-50 border border-indigo-200/60 flex items-center justify-center text-[#635BFF] font-bold text-xs font-mono">
+              S
+            </div>
+            <span class="text-xs font-bold text-slate-800">Stripe</span>
+            <span class="text-[10px] font-mono text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded font-semibold border border-indigo-200/70">Payments</span>
+          </div>
+
+          <!-- 4: PostgreSQL -->
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-sky-400 hover:shadow-[0_8px_20px_-4px_rgba(56,189,248,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-sky-50 border border-sky-200/60 flex items-center justify-center text-[#336791]">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">PostgreSQL</span>
+            <span class="text-[10px] font-mono text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded font-semibold border border-sky-200/70">Databases</span>
+          </div>
+
+          <!-- 5: AWS Cloud -->
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-amber-400 hover:shadow-[0_8px_20px_-4px_rgba(245,158,11,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-amber-50 border border-amber-200/60 flex items-center justify-center text-[#FF9900]">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">AWS Cloud</span>
+            <span class="text-[10px] font-mono text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded font-semibold border border-amber-200/70">Infrastructure</span>
+          </div>
+
+          <!-- 6: LangChain -->
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-emerald-400 hover:shadow-[0_8px_20px_-4px_rgba(16,185,129,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-600 font-bold text-[10px]">
+              🦜
+            </div>
+            <span class="text-xs font-bold text-slate-800">LangChain</span>
+            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200/70">AI Agents</span>
+          </div>
+
+          <!-- 7: Supabase -->
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-emerald-400 hover:shadow-[0_8px_20px_-4px_rgba(16,185,129,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-[#3ECF8E]">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M21.36 9.87a1.44 1.44 0 0 0-1.2-.64H13.5V1.44A1.44 1.44 0 0 0 11.04.42l-9.6 12.24a1.44 1.44 0 0 0 1.13 2.32h6.67v7.79a1.44 1.44 0 0 0 2.46 1.02l9.6-12.24a1.44 1.44 0 0 0 .06-1.68z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">Supabase</span>
+            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200/70">Database / Auth</span>
+          </div>
+
+          <!-- 8: Pinecone -->
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-cyan-400 hover:shadow-[0_8px_20px_-4px_rgba(6,182,212,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-cyan-50 border border-cyan-200/60 flex items-center justify-center text-cyan-600 font-bold text-xs">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">Pinecone</span>
+            <span class="text-[10px] font-mono text-cyan-700 bg-cyan-50 px-1.5 py-0.5 rounded font-semibold border border-cyan-200/70">Vector DB / RAG</span>
+          </div>
+
+          <!-- 9: Redis -->
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-rose-400 hover:shadow-[0_8px_20px_-4px_rgba(244,63,94,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-rose-50 border border-rose-200/60 flex items-center justify-center text-[#DC382D]">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7.5v9L12 22l10-5.5v-9L12 2zm0 3.3l7 3.85-7 3.85-7-3.85 7-3.85zM4.5 9.8l6.5 3.58v6.82L4.5 16.62V9.8zm15 6.82l-6.5 3.58v-6.82l6.5-3.58v6.82z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">Redis</span>
+            <span class="text-[10px] font-mono text-rose-700 bg-rose-50 px-1.5 py-0.5 rounded font-semibold border border-rose-200/70">Cache &amp; Memory</span>
+          </div>
+
+          <!-- 10: Vercel -->
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-slate-400 hover:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 1 12 21H0z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">Vercel</span>
+            <span class="text-[10px] font-mono text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded font-semibold border border-slate-200">Edge &amp; Workflows</span>
+          </div>
+
+          <!-- 11: GitHub -->
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-slate-400 hover:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">GitHub</span>
+            <span class="text-[10px] font-mono text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded font-semibold border border-slate-200">Webhooks</span>
+          </div>
+
+          <!-- 12: Resend -->
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-slate-400 hover:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900 font-mono font-bold text-xs">
+              ✉
+            </div>
+            <span class="text-xs font-bold text-slate-800">Resend</span>
+            <span class="text-[10px] font-mono text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded font-semibold border border-slate-200">Email APIs</span>
+          </div>
+
+          <!-- Item Set 2 (Duplicate for Seamless Endless Loop) -->
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-emerald-400 hover:shadow-[0_8px_20px_-4px_rgba(16,185,129,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-600">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M22.28 9.82a5.98 5.98 0 0 0-.51-4.91 6.05 6.05 0 0 0-6.51-2.9 6.07 6.07 0 0 0-4.28 2.17 5.98 5.98 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.1 5.98 5.98 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.51 2.9 5.98 5.98 0 0 0 3.74 1.91 6.06 6.06 0 0 0 5.77-4.2 5.99 5.99 0 0 0 4-2.9 6.06 6.06 0 0 0-.75-7.08zm-9.02 12.61a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.8.8 0 0 0 .39-.68v-6.74l2.02 1.17c.02.01.04.03.04.05v5.58a4.5 4.5 0 0 1-4.49 4.5zM3.6 17.91a4.47 4.47 0 0 1-.53-3.01l.14.08 4.78 2.76a.77.77 0 0 0 .78 0l5.85-3.37v2.33c0 .03-.02.05-.04.06L9.74 19.95a4.5 4.5 0 0 1-6.14-2.04zm-1.88-8.84a4.47 4.47 0 0 1 2.34-1.97l-.01.16v5.52a.78.78 0 0 0 .39.68l5.84 3.37-2.02 1.17a.08.08 0 0 1-.07 0l-4.83-2.8a4.5 4.5 0 0 1-1.64-6.13zm16.6 3.86-5.85-3.37 2.02-1.17a.08.08 0 0 1 .07 0l4.83 2.8a4.5 4.5 0 0 1-.68 8.1v-5.68a.79.79 0 0 0-.39-.68zm2.01-3.02-.14-.09-4.78-2.78a.78.78 0 0 0-.78 0L8.81 10.4V8.07c0-.02.01-.05.03-.06l4.88-2.82a4.5 4.5 0 0 1 6.68 4.2zM12 13.5l-2.6-1.5L12 10.5l2.6 1.5-2.6 1.5z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">OpenAI</span>
+            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200/70">AI Models</span>
+          </div>
+
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-amber-400 hover:shadow-[0_8px_20px_-4px_rgba(245,158,11,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-[#D97757]/10 border border-[#D97757]/30 flex items-center justify-center text-[#D97757] font-serif font-black text-xs">
+              C
+            </div>
+            <span class="text-xs font-bold text-slate-800">Claude</span>
+            <span class="text-[10px] font-mono text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded font-semibold border border-amber-200/70">LLM APIs</span>
+          </div>
+
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-indigo-400 hover:shadow-[0_8px_20px_-4px_rgba(99,91,255,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-indigo-50 border border-indigo-200/60 flex items-center justify-center text-[#635BFF] font-bold text-xs font-mono">
+              S
+            </div>
+            <span class="text-xs font-bold text-slate-800">Stripe</span>
+            <span class="text-[10px] font-mono text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded font-semibold border border-indigo-200/70">Payments</span>
+          </div>
+
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-sky-400 hover:shadow-[0_8px_20px_-4px_rgba(56,189,248,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-sky-50 border border-sky-200/60 flex items-center justify-center text-[#336791]">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">PostgreSQL</span>
+            <span class="text-[10px] font-mono text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded font-semibold border border-sky-200/70">Databases</span>
+          </div>
+
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-amber-400 hover:shadow-[0_8px_20px_-4px_rgba(245,158,11,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-amber-50 border border-amber-200/60 flex items-center justify-center text-[#FF9900]">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">AWS Cloud</span>
+            <span class="text-[10px] font-mono text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded font-semibold border border-amber-200/70">Infrastructure</span>
+          </div>
+
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-emerald-400 hover:shadow-[0_8px_20px_-4px_rgba(16,185,129,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-600 font-bold text-[10px]">
+              🦜
+            </div>
+            <span class="text-xs font-bold text-slate-800">LangChain</span>
+            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200/70">AI Agents</span>
+          </div>
+
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-emerald-400 hover:shadow-[0_8px_20px_-4px_rgba(16,185,129,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-[#3ECF8E]">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M21.36 9.87a1.44 1.44 0 0 0-1.2-.64H13.5V1.44A1.44 1.44 0 0 0 11.04.42l-9.6 12.24a1.44 1.44 0 0 0 1.13 2.32h6.67v7.79a1.44 1.44 0 0 0 2.46 1.02l9.6-12.24a1.44 1.44 0 0 0 .06-1.68z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">Supabase</span>
+            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200/70">Database / Auth</span>
+          </div>
+
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-cyan-400 hover:shadow-[0_8px_20px_-4px_rgba(6,182,212,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-cyan-50 border border-cyan-200/60 flex items-center justify-center text-cyan-600 font-bold text-xs">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">Pinecone</span>
+            <span class="text-[10px] font-mono text-cyan-700 bg-cyan-50 px-1.5 py-0.5 rounded font-semibold border border-cyan-200/70">Vector DB / RAG</span>
+          </div>
+
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-rose-400 hover:shadow-[0_8px_20px_-4px_rgba(244,63,94,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-rose-50 border border-rose-200/60 flex items-center justify-center text-[#DC382D]">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7.5v9L12 22l10-5.5v-9L12 2zm0 3.3l7 3.85-7 3.85-7-3.85 7-3.85zM4.5 9.8l6.5 3.58v6.82L4.5 16.62V9.8zm15 6.82l-6.5 3.58v-6.82l6.5-3.58v6.82z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">Redis</span>
+            <span class="text-[10px] font-mono text-rose-700 bg-rose-50 px-1.5 py-0.5 rounded font-semibold border border-rose-200/70">Cache &amp; Memory</span>
+          </div>
+
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-slate-400 hover:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 1 12 21H0z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">Vercel</span>
+            <span class="text-[10px] font-mono text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded font-semibold border border-slate-200">Edge &amp; Workflows</span>
+          </div>
+
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-slate-400 hover:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800">GitHub</span>
+            <span class="text-[10px] font-mono text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded font-semibold border border-slate-200">Webhooks</span>
+          </div>
+
+          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-sm hover:border-slate-400 hover:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
+            <div class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900 font-mono font-bold text-xs">
+              ✉
+            </div>
+            <span class="text-xs font-bold text-slate-800">Resend</span>
+            <span class="text-[10px] font-mono text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded font-semibold border border-slate-200">Email APIs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: HOW IT WORKS (3-STEP DEVELOPER INTEGRATION WALKTHROUGH) -->
+  <section class="relative pt-16 pb-12 px-4 max-w-6xl mx-auto reveal-on-scroll" id="how-it-works" data-purpose="developer-sdk-steps">
+    <div class="text-center mb-8 sm:mb-10">
+      <span class="px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-200">
+        INTEGRATION IN 2 MINUTES
+      </span>
+      <h2 class="mt-3 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-950 tracking-tight">
+        HOW FLUXERA WORKS
+      </h2>
+      <p class="mt-2 text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
+        Click each step below to inspect the code, payload, and financial formula in the live terminal.
+      </p>
+    </div>
+
+    <!-- MOBILE-ONLY SEGMENTED TABS (Visible on < lg screens) -->
+    <div class="lg:hidden mb-4">
+      <div class="flex items-center justify-between p-1 bg-slate-100 rounded-2xl border border-slate-200">
+        <button
+          type="button"
+          onclick="selectSdkStep(1)"
+          id="sdk-tab-btn-1"
+          class="flex-1 py-2 px-2 text-center rounded-xl font-mono text-xs font-bold transition-all bg-white text-rose-600 shadow-sm border border-rose-200/80"
+        >
+          01 Wrap API
+        </button>
+        <button
+          type="button"
+          onclick="selectSdkStep(2)"
+          id="sdk-tab-btn-2"
+          class="flex-1 py-2 px-2 text-center rounded-xl font-mono text-xs font-semibold transition-all text-slate-600 hover:text-slate-900"
+        >
+          02 Telemetry
+        </button>
+        <button
+          type="button"
+          onclick="selectSdkStep(3)"
+          id="sdk-tab-btn-3"
+          class="flex-1 py-2 px-2 text-center rounded-xl font-mono text-xs font-semibold transition-all text-slate-600 hover:text-slate-900"
+        >
+          03 Dollars
+        </button>
+      </div>
+
+      <!-- Mobile Active Step Info Banner -->
+      <div class="mt-3 p-4 rounded-2xl bg-white border border-slate-200 shadow-xs text-left" id="sdk-mobile-desc">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="text-[10px] font-mono font-bold tracking-widest text-rose-600 uppercase" id="sdk-mobile-step-tag">STEP 1</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+        </div>
+        <h4 class="text-base font-bold text-slate-900" id="sdk-mobile-step-title">Wrap your API calls</h4>
+        <p class="text-xs text-slate-500 mt-1" id="sdk-mobile-step-text">
+          Install the SDK. Wrap the API calls you want tracked with a small function call.
+        </p>
+      </div>
+    </div>
+
+    <!-- Master-Detail Grid: Desktop Side-by-Side & Mobile Terminal Viewport -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      
+      <!-- DESKTOP LEFT COLUMN: 3 CLICKABLE STEP CARDS (Hidden on < lg, visible on lg+) -->
+      <div class="hidden lg:flex lg:col-span-5 flex-col justify-between gap-3.5">
+        <!-- Step 1 Button -->
+        <button
+          type="button"
+          onclick="selectSdkStep(1)"
+          id="sdk-step-btn-1"
+          class="sdk-step-card text-left p-5 sm:p-6 rounded-2xl border-2 transition-all duration-300 cursor-pointer w-full bg-white shadow-md border-rose-500 ring-2 ring-rose-500/20"
+        >
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-[11px] font-mono font-bold tracking-widest text-rose-600 uppercase">STEP 1</span>
+            <span class="sdk-step-indicator w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-slate-900 tracking-tight mb-1.5">Wrap your API calls</h3>
+          <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+            Install the SDK. Wrap the API calls you want tracked with a small function call.
+          </p>
+        </button>
+
+        <!-- Step 2 Button -->
+        <button
+          type="button"
+          onclick="selectSdkStep(2)"
+          id="sdk-step-btn-2"
+          class="sdk-step-card text-left p-5 sm:p-6 rounded-2xl border-2 transition-all duration-300 cursor-pointer w-full bg-white/70 hover:bg-white border-slate-200 shadow-sm hover:border-slate-300"
+        >
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-[11px] font-mono font-bold tracking-widest text-slate-400 uppercase">STEP 2</span>
+            <span class="sdk-step-indicator w-2.5 h-2.5 rounded-full bg-transparent"></span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-slate-900 tracking-tight mb-1.5">Every call is logged</h3>
+          <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+            Success, failure, latency, and cost are recorded automatically. Nothing changes about how your API behaves.
+          </p>
+        </button>
+
+        <!-- Step 3 Button -->
+        <button
+          type="button"
+          onclick="selectSdkStep(3)"
+          id="sdk-step-btn-3"
+          class="sdk-step-card text-left p-5 sm:p-6 rounded-2xl border-2 transition-all duration-300 cursor-pointer w-full bg-white/70 hover:bg-white border-slate-200 shadow-sm hover:border-slate-300"
+        >
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-[11px] font-mono font-bold tracking-widest text-slate-400 uppercase">STEP 3</span>
+            <span class="sdk-step-indicator w-2.5 h-2.5 rounded-full bg-transparent"></span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-slate-900 tracking-tight mb-1.5">Failures become dollars</h3>
+          <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+            <code class="font-mono text-xs bg-rose-50 text-rose-700 px-1.5 py-0.5 rounded border border-rose-100">failed_requests × avg_price</code> is the failed API cost — always shown.
+          </p>
+        </button>
+      </div>
+
+      <!-- RIGHT COLUMN: DYNAMIC LIVE TERMINAL WINDOW -->
+      <div class="lg:col-span-7 flex flex-col">
+        <div class="bg-[#070b14] rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl border border-slate-800/90 flex flex-col justify-between h-full min-h-[320px] sm:min-h-[360px] relative overflow-hidden">
+          <!-- Terminal Header with Tabs & Dots -->
+          <div class="flex items-center justify-between pb-3 sm:pb-4 border-b border-slate-800/80 mb-3 sm:mb-5">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-rose-500/90"></span>
+              <span class="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-amber-400/90"></span>
+              <span class="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-emerald-400/90"></span>
+              <span id="terminal-filename" class="ml-2 sm:ml-3 font-mono text-[11px] sm:text-xs text-slate-400 font-medium">fluxera-sdk.js</span>
+            </div>
+            <div class="flex items-center gap-2 font-mono text-[10px] sm:text-[11px] text-slate-500">
+              <span id="terminal-badge" class="px-2 sm:px-2.5 py-0.5 rounded-md bg-rose-950/60 border border-rose-800/70 text-rose-400 font-semibold">Step 1 of 3</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Terminal Body Snippets -->
+          <div class="flex-1 flex flex-col justify-center overflow-x-auto py-2">
+            <!-- Snippet 1 -->
+            <div id="terminal-code-1" class="terminal-snippet block">
+              <pre class="font-mono text-[11px] sm:text-xs md:text-sm text-slate-200 leading-relaxed overflow-x-auto"><code><span class="text-[#ff5c8a]">const</span> fluxera = <span class="text-[#38bdf8]">require</span>(<span class="text-[#34d399]">'@fluxera/sdk'</span>)(<span class="text-[#fbbf24]">'fx_your_key'</span>)
+
+<span class="text-[#ff5c8a]">const</span> result = <span class="text-[#ff5c8a]">await</span> fluxera.<span class="text-[#38bdf8]">track</span>(
+  () =&gt; <span class="text-[#fbbf24]">your_api_call</span>(),
+  { <span class="text-slate-300">endpoint</span>: <span class="text-[#34d399]">'/v1/chat'</span>, <span class="text-slate-300">price</span>: <span class="text-[#facc15]">0.04</span> }
+)</code></pre>
+            </div>
+
+            <!-- Snippet 2 -->
+            <div id="terminal-code-2" class="terminal-snippet hidden">
+              <pre class="font-mono text-[11px] sm:text-xs md:text-sm text-slate-200 leading-relaxed overflow-x-auto"><code>{
+  <span class="text-[#38bdf8]">"endpoint"</span>: <span class="text-[#34d399]">"/v1/chat"</span>,
+  <span class="text-[#38bdf8]">"status"</span>: <span class="text-[#ff5c8a]">"fail"</span>,
+  <span class="text-[#38bdf8]">"latency_ms"</span>: <span class="text-[#facc15]">4200</span>,
+  <span class="text-[#38bdf8]">"price"</span>: <span class="text-[#facc15]">0.04</span>,
+  <span class="text-[#38bdf8]">"error_type"</span>: <span class="text-[#ff5c8a]">"timeout"</span>
+}</code></pre>
+            </div>
+
+            <!-- Snippet 3 -->
+            <div id="terminal-code-3" class="terminal-snippet hidden">
+              <pre class="font-mono text-[11px] sm:text-xs md:text-sm text-slate-200 leading-relaxed overflow-x-auto"><code><span class="text-[#38bdf8]">failed_api_cost</span> = <span class="text-slate-300">failed_requests</span> × <span class="text-slate-300">avg_price</span>
+
+<span class="text-[#64748b]">// Only if you've set these in Settings:</span>
+<span class="text-[#fbbf24]">revenue_at_risk</span> = (<span class="text-slate-300">failed_requests</span> × <span class="text-slate-300">abandonment_rate</span>)
+                  × <span class="text-slate-300">avg_order_value</span>
+
+<span class="text-slate-400">Example:</span>
+<span class="text-[#34d399]">140 failures</span> × <span class="text-[#facc15]">$0.05</span> = <span class="text-[#fb7185] font-bold">$7.00 failed API cost</span></code></pre>
+            </div>
+          </div>
+
+          <!-- Terminal Footer Status -->
+          <div class="pt-3 sm:pt-4 mt-3 sm:mt-4 border-t border-slate-800/80 flex items-center justify-between text-[10px] sm:text-xs font-mono text-slate-500">
+            <span class="flex items-center gap-1.5 truncate"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span><span id="terminal-status-text" class="truncate">Ready to execute in Node.js / Python</span></span>
+            <span class="text-slate-600 shrink-0 ml-2">UTF-8</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 1: FAILURE SPREAD CASCADE -->
+  <section class="relative pt-12 pb-16 px-4 max-w-5xl mx-auto reveal-on-scroll" data-purpose="cascade-deepdive">
+    <div class="futuristic-card rounded-3xl p-8 sm:p-12 text-center border-slate-200/90 shadow-xl bg-white/95">
+      <h3 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Software is becoming more connected.</h3>
+      <p class="mt-4 text-base sm:text-lg text-slate-600 font-medium max-w-2xl mx-auto">Every dependency creates another possible point of failure.</p>
+      <p class="text-xs sm:text-sm uppercase tracking-wider font-extrabold text-slate-500 pt-5">And when one fails, the impact can spread:</p>
+      
+      <div class="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-bold">
+        <div class="px-4 py-2 rounded-xl bg-rose-50 text-rose-700 border border-rose-200 shadow-sm flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-rose-500"></span><span>Failure</span>
+        </div>
+        <span class="text-slate-400 font-black">→</span>
+        <div class="px-4 py-2 rounded-xl bg-amber-50 text-amber-800 border border-amber-200 shadow-sm flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-amber-500"></span><span>Interrupted Work</span>
+        </div>
+        <span class="text-slate-400 font-black">→</span>
+        <div class="px-4 py-2 rounded-xl bg-rose-50 text-rose-700 border border-rose-200 shadow-sm flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-rose-500"></span><span>User Impact</span>
+        </div>
+        <span class="text-slate-400 font-black">→</span>
+        <div class="px-4 py-2 rounded-xl bg-amber-50 text-amber-800 border border-amber-200 shadow-sm flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-amber-500"></span><span>Wasted Cost</span>
+        </div>
+        <span class="text-slate-400 font-black">→</span>
+        <div class="px-4 py-2 rounded-xl bg-rose-100 text-rose-950 border border-rose-300 shadow-md flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-rose-600 animate-pulse"></span><span>Business Impact</span>
+        </div>
+      </div>
+
+      <div class="mt-8 p-4 rounded-2xl bg-gradient-to-r from-rose-50 via-white to-sky-50 border border-rose-200/80 max-w-2xl mx-auto shadow-sm">
+        <p class="text-base sm:text-lg font-black text-slate-900 tracking-tight">The problem isn't simply that software breaks. It's what happens after it breaks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECTOR 2 -->
+  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-1 pointer-events-none z-10">
+    <div class="h-20 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
+    <div class="w-4 h-4 rounded-full border-2 border-rose-500 bg-white flex items-center justify-center shadow-md shadow-rose-500/30">
+      <div class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></div>
+    </div>
+  </div>
+
+  <!-- SECTION A: WHY SAAS COMPANIES NEED FLUXERA -->
+  <section class="relative py-20 px-4 max-w-6xl mx-auto reveal-on-scroll" id="why-fluxera">
+    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-rose-300/20 blur-[100px] pointer-events-none rounded-full"></div>
+    <div class="text-center mb-12 relative z-10">
+      <span class="px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-200">THE PROBLEM SPACE</span>
+      <h2 class="mt-4 text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight">WHY SAAS COMPANIES NEED FLUXERA</h2>
+      <div class="mt-4 max-w-2xl mx-auto space-y-2">
+        <p class="text-base text-slate-700 font-medium">A workflow can be mostly complete when one dependency fails.</p>
+        <p class="text-sm text-slate-600">Without recovery, software may repeat work, waste compute and API spend, lose progress, frustrate users, and create business losses.</p>
+        <p class="text-base sm:text-lg text-rose-600 font-bold pt-1">Your software can be running while your work is failing.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-7 relative z-10">
+      <!-- Traditional vs Modern SaaS -->
+      <div class="md:col-span-12 futuristic-card rounded-3xl p-8 relative overflow-hidden border border-slate-200/90">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 border-b lg:border-b-0 lg:border-r border-slate-200/80 pb-6 lg:pb-0 lg:pr-8">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-3">Traditional Observability</div>
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Traditional observability tells you:</p>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight mt-1">“Something failed.”</h3>
+            <p class="mt-3 text-sm text-slate-600 leading-relaxed">Pages engineers with empty alerts. Fails to save in-flight tokens, state, or user sessions.</p>
+            <div class="mt-5 p-3.5 rounded-xl bg-slate-100/80 border border-slate-200 text-xs font-mono text-slate-700">
+              <span class="text-amber-600 font-bold">⚠️ HTTP 502 at Step 8/9</span><br />
+              <span class="text-rose-600 font-semibold">State dropped. Customer forced to restart.</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 bg-white/90 border border-rose-200/80 rounded-2xl p-6 shadow-xl shadow-rose-500/5 relative">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+              <div>
+                <h4 class="text-sm font-extrabold text-slate-900">But modern SaaS needs to know:</h4>
+                <p class="text-[11px] text-slate-500">Autonomous recovery answers what traditional alerts ignore</p>
+              </div>
+              <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-2.5 py-1 rounded-full border border-rose-200">Closed-Loop Answers</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-3 rounded-xl bg-rose-50/70 border border-rose-200/70"><span class="font-bold text-rose-950 block text-[13px]">Why did it fail?</span><span class="text-slate-600 text-[11px] mt-0.5 block">Pinpoint upstream dependencies &amp; root cause.</span></div>
+              <div class="p-3 rounded-xl bg-rose-50/70 border border-rose-200/70"><span class="font-bold text-rose-950 block text-[13px]">What did it affect?</span><span class="text-slate-600 text-[11px] mt-0.5 block">Trace downstream tasks &amp; blast radius.</span></div>
+              <div class="p-3 rounded-xl bg-amber-50/70 border border-amber-200/70"><span class="font-bold text-amber-950 block text-[13px]">What work was lost?</span><span class="text-slate-600 text-[11px] mt-0.5 block">Audit in-flight progress &amp; interrupted state.</span></div>
+              <div class="p-3 rounded-xl bg-sky-50/70 border border-sky-200/70"><span class="font-bold text-sky-950 block text-[13px]">What did it cost?</span><span class="text-slate-600 text-[11px] mt-0.5 block">Measure wasted compute, tokens &amp; API fees.</span></div>
+              <div class="p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/80"><span class="font-bold text-emerald-950 block text-[13px]">What can be recovered?</span><span class="text-slate-600 text-[11px] mt-0.5 block">Resume deterministically from point of halt.</span></div>
+              <div class="p-3 rounded-xl bg-indigo-50/80 border border-indigo-200/80"><span class="font-bold text-indigo-950 block text-[13px]">Did recovery actually work?</span><span class="text-slate-600 text-[11px] mt-0.5 block">Verify expected end-state completion.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 94% Work Preserved Gauge -->
+      <div class="md:col-span-6 futuristic-card rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between">
+        <div>
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-100 text-rose-700 border border-rose-200 text-xs font-bold">
+            <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Work Recovery Pod
+          </div>
+          <h3 class="text-xl font-extrabold text-slate-900 mt-3">Prevent Cascading State Restarts</h3>
+          <p class="text-xs text-slate-600 mt-1">Why restart multi-step runs from scratch when one API drops? Fluxera preserves in-flight states.</p>
+        </div>
+        <div class="my-6 flex flex-col items-center justify-center relative">
+          <div class="relative w-44 h-44 flex items-center justify-center">
+            <div class="absolute inset-0 rounded-full border border-dashed border-rose-300/60 gauge-glow-ring"></div>
+            <div class="absolute inset-2 rounded-full border border-sky-200/50"></div>
+            <svg class="w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" fill="transparent" r="40" stroke="#f1f5f9" stroke-linecap="round" stroke-width="7"></circle>
+              <circle class="filter drop-shadow-[0_0_8px_rgba(244,63,94,0.45)]" cx="50" cy="50" fill="transparent" r="40" stroke="url(#roseHoloGauge)" stroke-dasharray="251" stroke-dashoffset="15" stroke-linecap="round" stroke-width="8"></circle>
+              <defs>
+                <linearGradient id="roseHoloGauge" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f43f5e"></stop>
+                  <stop offset="60%" stop-color="#fb7185"></stop>
+                  <stop offset="100%" stop-color="#38bdf8"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+              <span class="text-4xl font-black text-slate-900 tracking-tight">94%</span>
+              <span class="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Work Preserved</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-emerald-600 mt-3 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Zero Cold Reruns on Mid-Flight Failures
+          </span>
+        </div>
+      </div>
+
+      <!-- Zero Compute Drain -->
+      <div class="md:col-span-6 futuristic-card rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between">
+        <div>
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-100 text-sky-800 border border-sky-200 text-xs font-bold">
+            <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Zero Compute Drain
+          </div>
+          <h3 class="text-xl font-extrabold text-slate-900 mt-3">Slashes Unnecessary Retries</h3>
+          <p class="text-xs text-slate-600 mt-1">Eliminate silent token expenditure and cloud run churn by replaying only the severed node.</p>
+        </div>
+        <div class="my-4 relative pt-4">
+          <div class="flex items-center justify-between mb-3 bg-white/80 p-2.5 rounded-xl border border-slate-200 shadow-sm">
+            <div>
+              <span class="text-[10px] text-slate-500 font-medium">Token Waste Prevented</span>
+              <div class="text-sm font-extrabold text-slate-900">$18,450 / mo avg</div>
+            </div>
+            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-lg border border-emerald-200">-88% Spend Waste</span>
+          </div>
+          <svg class="w-full h-32" fill="none" viewBox="0 0 320 110">
+            <defs>
+              <linearGradient id="glowCurveGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.3"></stop>
+                <stop offset="100%" stop-color="#f43f5e" stop-opacity="0.0"></stop>
+              </linearGradient>
+            </defs>
+            <path d="M5 95 Q 40 90, 80 85 T 160 75 T 240 68 T 315 62" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="2"></path>
+            <path d="M5 75 Q 40 50, 80 32 T 160 20 T 240 12 T 315 10 L 315 110 L 5 110 Z" fill="url(#glowCurveGrad)"></path>
+            <path class="filter drop-shadow-[0_0_6px_rgba(244,63,94,0.45)]" d="M5 75 Q 40 50, 80 32 T 160 20 T 240 12 T 315 10" stroke="#f43f5e" stroke-linecap="round" stroke-width="3"></path>
+            <circle cx="240" cy="12" fill="#FFFFFF" r="4.5" stroke="#f43f5e" stroke-width="3"></circle>
+          </svg>
+          <div class="flex items-center justify-between text-[11px] text-slate-500 mt-2">
+            <span class="flex items-center gap-1.5 font-semibold text-rose-600"><span class="w-2 h-2 rounded-full bg-rose-500"></span> Fluxera Resumption</span>
+            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-slate-400"></span> Silent Compute Drain</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PURE WHITE 3D iPHONE SHOWCASE -->
+    <div class="mt-8 futuristic-card rounded-3xl p-8 sm:p-10 relative overflow-hidden border border-slate-200/90 bg-gradient-to-br from-white via-rose-50/20 to-sky-50/20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-200">
+            <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span> REAL-TIME TELEMETRY ON ANY DEVICE
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight leading-tight">
+            Live Autonomous Recovery in the Palm of Your Hand
+          </h3>
+          <p class="text-sm text-slate-600 leading-relaxed font-medium">
+            Whether managing complex agent workflows, database deadlocks, or third-party webhooks, Fluxera automatically checkpoints state in-flight and broadcasts instant recovery confirmations to your on-call engineers.
+          </p>
+          <div class="pt-2 grid grid-cols-2 gap-3 text-xs">
+            <div class="p-3 rounded-2xl bg-white/90 border border-slate-200 shadow-sm">
+              <span class="font-bold text-slate-900 block text-xs">Dynamic Island Alerts</span>
+              <span class="text-slate-500 text-[11px] mt-0.5 block">Sub-15ms push notices for intercepted cascades</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-white/90 border border-slate-200 shadow-sm">
+              <span class="font-bold text-slate-900 block text-xs">Zero-Cold-Rerun SLA</span>
+              <span class="text-slate-500 text-[11px] mt-0.5 block">Instant confirmation of preserved runtime state</span>
+            </div>
+          </div>
+          <div class="pt-2 flex items-center gap-4 text-xs font-bold text-slate-700">
+            <span class="flex items-center gap-1.5 text-emerald-600"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> 99.98% Checkpoint Fidelity</span>
+            <span class="text-slate-300">•</span>
+            <span class="flex items-center gap-1.5 text-rose-600"><span class="w-2 h-2 rounded-full bg-rose-500"></span> Real-time Deterministic Replay</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 relative flex justify-center lg:justify-end overflow-hidden pt-4 pb-0 h-[380px] lg:h-[400px]">
+          <div class="iphone-integrated-stage w-72 relative">
+            <div class="iphone-half-peek rounded-t-[44px] rounded-b-none p-3 pb-16 bg-white border-t-2 border-x-2 border-slate-200 shadow-2xl relative w-full h-[520px]">
+              <div class="absolute inset-0 rounded-t-[44px] border-t-2 border-x-2 border-white pointer-events-none"></div>
+              <div class="rounded-t-[36px] bg-white overflow-hidden text-slate-900 p-3.5 border-t border-x border-slate-200 shadow-sm relative h-full">
+                <div class="w-48 h-6 mx-auto bg-slate-900 text-white rounded-full flex items-center justify-between px-2.5 mb-3 shadow-md border border-slate-800">
+                  <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                  <span class="text-[8px] text-rose-200 font-mono font-bold tracking-tight">⚠️ Stripe 502 • Resumed 12ms</span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                </div>
+                <div class="flex items-center justify-between text-[10px] text-slate-500 font-semibold px-1 mb-2.5">
+                  <span>9:41</span>
+                  <span class="text-rose-600 text-[9px] font-bold">FLUXERA ON-CALL</span>
+                  <div class="flex items-center gap-1">
+                    <span>5G</span>
+                    <div class="w-4 h-2 border border-slate-400 rounded-xs p-0.5"><div class="h-full w-full bg-emerald-500"></div></div>
+                  </div>
+                </div>
+                <div class="p-2.5 rounded-2xl bg-rose-50/90 border border-rose-200 shadow-sm mb-3">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="flex items-center gap-1 text-[10px] font-bold text-rose-700">
+                      <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></span> INCIDENT INTERCEPTED
+                    </span>
+                    <span class="text-[9px] text-slate-500 font-mono">12ms ago</span>
+                  </div>
+                  <p class="text-[11px] font-bold text-slate-900 leading-tight">Stripe Auth 502 Gateway Dropped</p>
+                  <p class="text-[10px] text-emerald-700 font-mono mt-0.5">$14,783 in-flight state saved</p>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 mb-2.5">
+                  <div class="flex items-center justify-between text-[10px] text-slate-600 mb-1">
+                    <span>Deterministic Replay Engine</span>
+                    <span class="text-emerald-600 font-bold">94.2%</span>
+                  </div>
+                  <div class="h-10 w-full">
+                    <svg class="w-full h-full" viewBox="0 0 100 40">
+                      <path d="M0,30 Q25,35 50,15 T100,8" fill="none" stroke="#f43f5e" stroke-width="2"></path>
+                      <path d="M0,30 Q25,35 50,15 T100,8 L100,40 L0,40 Z" fill="rgba(244,63,94,0.12)"></path>
+                      <circle cx="50" cy="15" fill="#38bdf8" r="2.5"></circle>
+                    </svg>
+                  </div>
+                </div>
+                <div class="p-2 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between">
+                  <span class="text-[10px] font-semibold text-emerald-800">Auto-Checkpoint Verified</span>
+                  <span class="text-[10px] bg-emerald-600 text-white font-bold px-2 py-0.5 rounded-full shadow-xs">RECOVERED</span>
+                </div>
+              </div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none z-20"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECTOR 3 -->
+  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-1 pointer-events-none z-10">
+    <div class="h-20 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
+    <div class="w-4 h-4 rounded-full border-2 border-rose-500 bg-white flex items-center justify-center shadow-md shadow-rose-500/30">
+      <div class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></div>
+    </div>
+  </div>
+
+  <!-- SECTION B: THE 4 PILLARS -->
+  <section class="relative py-20 px-4 max-w-6xl mx-auto reveal-on-scroll" id="recovery-engine">
+    <div class="text-center mb-16">
+      <span class="px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-200">FLUXERA</span>
+      <h2 class="mt-4 text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight">THE RELIABILITY INTELLIGENCE &amp; RECOVERY LAYER</h2>
+      <p class="mt-3 text-base text-slate-600 max-w-2xl mx-auto font-medium">Fluxera connects failures across your software and turns them into actionable recovery.</p>
+    </div>
+
+    <div class="relative">
+      <div class="hidden lg:block absolute top-12 left-10 right-10 h-0.5 bg-gradient-to-r from-rose-300 via-amber-300 to-sky-300 opacity-60 z-0"></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+        <div class="pillar-tile-3d rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-2xl font-black text-rose-600 font-mono tracking-tight">01</span>
+              <span class="w-8 h-8 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-xs shadow-sm">🔍</span>
+            </div>
+            <h3 class="text-lg font-black text-slate-900 tracking-tight uppercase">UNDERSTAND</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed font-medium">Find the root cause and failure chain.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-rose-600 flex items-center justify-between">
+            <span>Root Cause Isolation</span><span>→</span>
+          </div>
+        </div>
+
+        <div class="pillar-tile-3d rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-2xl font-black text-amber-500 font-mono tracking-tight">02</span>
+              <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-xs shadow-sm">💰</span>
+            </div>
+            <h3 class="text-lg font-black text-slate-900 tracking-tight uppercase">QUANTIFY</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed font-medium">Measure affected work, users, costs, and business impact.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-amber-600 flex items-center justify-between">
+            <span>Dollarized Impact</span><span>→</span>
+          </div>
+        </div>
+
+        <div class="pillar-tile-3d rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-2xl font-black text-emerald-500 font-mono tracking-tight">03</span>
+              <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs shadow-sm">⚡</span>
+            </div>
+            <h3 class="text-lg font-black text-slate-900 tracking-tight uppercase">RECOVER</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed font-medium">Retry, resume, restore, replay, or rerun supported failures.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-emerald-600 flex items-center justify-between">
+            <span>Deterministic Replay</span><span>→</span>
+          </div>
+        </div>
+
+        <div class="pillar-tile-3d rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-2xl font-black text-sky-500 font-mono tracking-tight">04</span>
+              <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-xs shadow-sm">🛡️</span>
+            </div>
+            <h3 class="text-lg font-black text-slate-900 tracking-tight uppercase">VERIFY</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed font-medium">Confirm the intended outcome was actually restored.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-sky-600 flex items-center justify-between">
+            <span>Closed-Loop Verification</span><span>→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECTOR 4 -->
+  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-1 pointer-events-none z-10">
+    <div class="h-20 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
+    <div class="w-4 h-4 rounded-full border-2 border-rose-500 bg-white flex items-center justify-center shadow-md shadow-rose-500/30">
+      <div class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></div>
+    </div>
+  </div>
+
+  <!-- SECTION C: CYBERNETIC PIPELINE -->
+  <section class="relative py-20 px-4 overflow-hidden reveal-on-scroll" id="impact-chain">
+    <div class="max-w-4xl mx-auto text-center relative z-10 mb-14">
+      <span class="px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-200">CYBERNETIC PIPELINE</span>
+      <h2 class="mt-4 text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight">FROM FAILURE TO VALUE</h2>
+      <p class="mt-3 text-base sm:text-lg text-slate-700 font-semibold max-w-xl mx-auto">Fluxera connects the entire chain.</p>
+    </div>
+
+    <!-- DESKTOP CHAIN (hidden on mobile, visible on md+) -->
+    <div class="hidden md:block relative max-w-6xl mx-auto my-6 px-4">
+      <div class="hidden xl:block absolute top-1/2 left-8 right-8 h-1.5 -translate-y-1/2 fiber-laser-line rounded-full z-0">
+        <div class="laser-beam-pulse"></div>
+      </div>
+      <div class="grid grid-cols-4 xl:grid-cols-7 gap-3.5 relative z-10">
+        <div class="p-3.5 rounded-2xl bg-white border border-slate-200 text-center shadow-lg hover:border-rose-400 transition-all hover:-translate-y-1.5 cursor-pointer backdrop-blur-md">
+          <div class="w-6 h-6 mx-auto rounded-full bg-rose-100 text-rose-600 font-bold text-xs flex items-center justify-center mb-1.5">01</div>
+          <div class="text-[9px] font-bold text-rose-600 uppercase">Trigger</div>
+          <div class="text-xs font-extrabold text-slate-900 mt-0.5">Technical Failure</div>
+          <span class="text-[9px] text-slate-400 block mt-1">↓</span>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-white border border-slate-200 text-center shadow-lg hover:border-amber-400 transition-all hover:-translate-y-1.5 cursor-pointer backdrop-blur-md">
+          <div class="w-6 h-6 mx-auto rounded-full bg-amber-100 text-amber-600 font-bold text-xs flex items-center justify-center mb-1.5">02</div>
+          <div class="text-[9px] font-bold text-amber-500 uppercase">Cascade</div>
+          <div class="text-xs font-extrabold text-slate-900 mt-0.5">System Impact</div>
+          <span class="text-[9px] text-slate-400 block mt-1">↓</span>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-white border border-slate-200 text-center shadow-lg hover:border-rose-400 transition-all hover:-translate-y-1.5 cursor-pointer backdrop-blur-md">
+          <div class="w-6 h-6 mx-auto rounded-full bg-rose-100 text-rose-600 font-bold text-xs flex items-center justify-center mb-1.5">03</div>
+          <div class="text-[9px] font-bold text-rose-500 uppercase">Progress</div>
+          <div class="text-xs font-extrabold text-slate-900 mt-0.5">Work Impact</div>
+          <span class="text-[9px] text-slate-400 block mt-1">↓</span>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-white border border-slate-200 text-center shadow-lg hover:border-amber-400 transition-all hover:-translate-y-1.5 cursor-pointer backdrop-blur-md">
+          <div class="w-6 h-6 mx-auto rounded-full bg-amber-100 text-amber-700 font-bold text-xs flex items-center justify-center mb-1.5">04</div>
+          <div class="text-[9px] font-bold text-amber-600 uppercase">Customer</div>
+          <div class="text-xs font-extrabold text-slate-900 mt-0.5">User Impact</div>
+          <span class="text-[9px] text-slate-400 block mt-1">↓</span>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-white border border-slate-200 text-center shadow-lg hover:border-rose-400 transition-all hover:-translate-y-1.5 cursor-pointer backdrop-blur-md">
+          <div class="w-6 h-6 mx-auto rounded-full bg-rose-100 text-rose-700 font-bold text-xs flex items-center justify-center mb-1.5">05</div>
+          <div class="text-[9px] font-bold text-rose-600 uppercase">Financial</div>
+          <div class="text-xs font-extrabold text-slate-900 mt-0.5">Business Impact</div>
+          <span class="text-[9px] text-slate-400 block mt-1">↓</span>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-gradient-to-tr from-rose-600 via-rose-500 to-rose-400 border-2 border-white text-white text-center shadow-xl shadow-rose-500/40 hover:-translate-y-2 transition-all cursor-pointer ring-4 ring-rose-200 scale-105">
+          <div class="w-6 h-6 mx-auto rounded-full bg-white/20 text-white font-black text-xs flex items-center justify-center mb-1.5">fx</div>
+          <div class="text-[9px] font-mono uppercase font-black tracking-wider text-rose-100">Deterministic</div>
+          <div class="text-xs font-black mt-0.5">Recovery</div>
+          <span class="text-[9px] text-white/90 block mt-1">↓</span>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-emerald-50/70 border border-emerald-300 text-center shadow-lg hover:border-emerald-500 transition-all hover:-translate-y-1.5 cursor-pointer backdrop-blur-md">
+          <div class="w-6 h-6 mx-auto rounded-full bg-emerald-500 text-white font-bold text-xs flex items-center justify-center mb-1.5">✓</div>
+          <div class="text-[9px] font-bold text-emerald-700 uppercase">Closed-Loop</div>
+          <div class="text-xs font-extrabold text-slate-900 mt-0.5">Verified Outcome</div>
+          <span class="text-[9px] text-emerald-600 font-bold block mt-1">Restored</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE INTERACTIVE AUTOMATIC CAROUSEL (md:hidden) -->
+    <div class="md:hidden relative max-w-sm mx-auto px-2" id="pipeline-mobile-carousel">
+      <!-- Carousel Card Container -->
+      <div class="relative overflow-hidden rounded-3xl p-1 bg-gradient-to-b from-rose-300/60 via-slate-200 to-sky-300/60 shadow-xl">
+        <div class="rounded-[22px] bg-white p-6 text-center min-h-[220px] flex flex-col justify-between transition-all duration-300" id="carousel-card-inner">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Carousel Controls: Prev Button, Dots, Next Button -->
+      <div class="flex items-center justify-between mt-5 px-3">
+        <button id="carousel-prev" aria-label="Previous step" class="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center text-slate-700 hover:text-rose-600 hover:border-rose-300 active:scale-95 transition-all cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <!-- 7 Indicator Dots -->
+        <div class="flex items-center gap-1.5" id="carousel-dots">
+          <!-- Populated by JS -->
+        </div>
+
+        <button id="carousel-next" aria-label="Next step" class="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center text-slate-700 hover:text-rose-600 hover:border-rose-300 active:scale-95 transition-all cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="text-center mt-3">
+        <span class="text-[11px] font-mono text-slate-400">Auto-playing · Swipe or click buttons</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECTOR 5 -->
+  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-1 pointer-events-none z-10">
+    <div class="h-20 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
+    <div class="w-4 h-4 rounded-full border-2 border-rose-500 bg-white flex items-center justify-center shadow-md shadow-rose-500/30">
+      <div class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></div>
+    </div>
+  </div>
+
+  <!-- SECTION D: BOTTOM CALLOUT -->
+  <section class="relative py-16 px-4 max-w-5xl mx-auto reveal-on-scroll" data-purpose="ai-native-callout">
+    <div class="futuristic-card rounded-3xl p-8 sm:p-14 text-center border-rose-200/90 relative overflow-hidden bg-gradient-to-b from-white via-rose-50/30 to-white shadow-2xl">
+      <div class="absolute -left-12 -bottom-12 w-48 h-48 bg-rose-400/25 rounded-full blur-[65px] pointer-events-none"></div>
+      <div class="absolute -right-12 -top-12 w-48 h-48 bg-sky-400/20 rounded-full blur-[65px] pointer-events-none"></div>
+      <span class="px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-200">RELIABILITY FOR THE AI-NATIVE ERA</span>
+      <h2 class="mt-6 text-2xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight leading-tight">
+        IF YOUR SAAS DEPENDS ON SOFTWARE, <br class="hidden sm:inline" />
+        IT DEPENDS ON RELIABILITY.
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-medium leading-relaxed">
+        And as software becomes more AI-native, the reliability problem only gets more complex.
+      </p>
+      <p class="mt-2 text-base sm:text-lg text-rose-600 max-w-2xl mx-auto font-extrabold">Fluxera is built to solve it.</p>
+      <div class="mt-8 flex justify-center">
+        <div class="inline-flex flex-wrap items-center justify-center gap-4 text-xs font-bold text-slate-600">
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Agent Resumption</span>
+          <span class="text-slate-300 hidden sm:inline">•</span>
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-rose-500"></span> State Checkpoints</span>
+          <span class="text-slate-300 hidden sm:inline">•</span>
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-sky-500"></span> Spend Protection</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CONVERSION SECTION (HORIZON ARCH DOME) -->
+  <section class="relative pt-20 pb-0 overflow-hidden text-center reveal-on-scroll flex flex-col justify-end items-center" id="early-access">
+    <div class="relative w-full max-w-6xl mx-auto px-4 flex flex-col items-center justify-end">
+      <div class="horizon-arc-dome relative w-full pt-16 pb-20 px-6 sm:px-12 flex flex-col items-center justify-center overflow-hidden border-t-2 border-x border-b-0 border-rose-400/80 shadow-[0_-25px_80px_-15px_rgba(244,63,94,0.35)]">
+        <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-rose-400/25 blur-[100px] pointer-events-none rounded-full"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-1 bg-gradient-to-r from-transparent via-rose-400 to-transparent blur-[1px] pointer-events-none"></div>
+
+        <div class="max-w-2xl mx-auto relative z-10">
+          <div class="w-12 h-12 mx-auto mb-5 rounded-2xl bg-white border border-rose-200 flex items-center justify-center shadow-lg shadow-rose-500/25">
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-rose-600 to-rose-400 flex items-center justify-center text-white font-mono font-bold text-xs">
+              fx
+            </div>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight">
+            Stop Losing Work When <br />
+            Dependencies Fail
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-slate-600 max-w-xl mx-auto font-medium">
+            Deploy the intelligence and recovery layer built for mission-critical modern SaaS architectures.
+          </p>
+          <div class="mt-8 max-w-md mx-auto">
+            <form class="flex flex-col sm:flex-row items-center gap-2 p-1.5 rounded-full bg-white/95 border border-slate-200 shadow-xl shadow-rose-500/15 backdrop-blur-md" onsubmit="event.preventDefault(); alert('Thank you for requesting early access to Fluxera!');">
+              <input class="w-full sm:flex-1 px-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 bg-transparent rounded-full focus:outline-none focus:ring-0 border-0" placeholder="Enter your work email address" required="" type="email" />
+              <button class="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 text-white font-bold text-xs tracking-wide shadow-md shadow-rose-500/35 hover:shadow-rose-500/50 hover:scale-[1.02] transition-all whitespace-nowrap" type="submit">
+                Get Early Access
+              </button>
+            </form>
+            <p class="text-[11px] text-slate-400 mt-3 font-medium">Limited onboarding cohorts for early SaaS design partners.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SITE FOOTER -->
+  <footer class="border-t border-slate-200/60 py-6 px-6 text-xs text-slate-500 relative z-10 bg-white/50 backdrop-blur-md" data-purpose="site-footer">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2 order-1">
+        <div class="w-5 h-5 rounded bg-rose-600 flex items-center justify-center text-white text-[10px] font-mono font-bold">fx</div>
+        <span class="font-bold text-slate-800">Fluxera</span>
+        <span class="text-slate-400">© 2026 Fluxera Inc. All Rights Reserved.</span>
+      </div>
+      <div class="flex items-center gap-6 order-2">
+        <a class="hover:text-rose-600 transition-colors font-semibold" href="./index.html">Home</a>
+        <a class="hover:text-rose-600 transition-colors" href="./vision.html">Vision</a>
+        <a class="hover:text-rose-600 transition-colors" href="./dashboard.html">Dashboard</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Separated JavaScript -->
+  <script src="./script.js"></script>
+</body>
+</html>

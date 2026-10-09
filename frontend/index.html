@@ -1,13 +1,59 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>fluxera-dashboard</title>
+    <title>Fluxera — AI-Powered API Revenue Leak Detection</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              rosebrand: {
+                50: '#fff1f2',
+                100: '#ffe4e6',
+                200: '#fecdd3',
+                300: '#fda4af',
+                400: '#fb7185',
+                500: '#f43f5e',
+                600: '#e11d48',
+                700: '#be123c',
+                glow: '#ff4b6e',
+              },
+              coolice: {
+                50: '#f8fafc',
+                100: '#f1f5f9',
+                200: '#e2e8f0',
+                300: '#cbd5e1',
+                800: '#1e293b',
+                900: '#0f172a',
+                950: '#090d16',
+              }
+            },
+            boxShadow: {
+              'glow-rose': '0 0 50px -10px rgba(251, 113, 133, 0.35)',
+              'glow-soft': '0 20px 40px -15px rgba(225, 29, 72, 0.15)',
+              'card-glass': '0 8px 30px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(225, 29, 72, 0.08)',
+            }
+          }
+        }
+      }
+    </script>
   </head>
-  <body>
+  <body class="font-sans antialiased bg-[#fafbfd] text-coolice-900 selection:bg-rosebrand-100 selection:text-rosebrand-700">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+

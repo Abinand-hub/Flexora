@@ -1,14 +1,15 @@
 /* ========================================================================= */
-/* FLUXERA DESIGN SYSTEM & 3D CYBERNETIC VISUALS                            */
+/* FLUXERA STANDALONE STYLESHEET (style.css)                                 */
 /* ========================================================================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
 body {
-  background-color: #fafbfd;
+  background-color: transparent;
   color: #0f172a;
   overflow-x: hidden;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  position: relative;
 }
 
 /* Ambient Cosmic Arcs */
@@ -20,7 +21,7 @@ body {
   width: 1100px;
   height: 540px;
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  background: radial-gradient(ellipse at top, rgba(244, 63, 94, 0.32) 0%, rgba(251, 113, 133, 0.2) 35%, rgba(186, 230, 253, 0.25) 70%, transparent 100%);
+  background: radial-gradient(ellipse at top, rgba(244, 63, 94, 0.35) 0%, rgba(251, 113, 133, 0.2) 35%, rgba(186, 230, 253, 0.28) 70%, transparent 100%);
   pointer-events: none;
   filter: blur(5px);
   animation: auraFloat 7s ease-in-out infinite alternate;
@@ -35,23 +36,9 @@ body {
   height: 450px;
   border-top: 2.5px solid rgba(244, 63, 94, 0.95);
   border-radius: 50%;
-  box-shadow: 0 -18px 50px rgba(244, 63, 94, 0.45), 0 -2px 14px rgba(255, 255, 255, 0.95);
+  box-shadow: 0 -18px 50px rgba(244, 63, 94, 0.5), 0 -2px 14px rgba(255, 255, 255, 0.95);
   pointer-events: none;
   animation: rimPulse 6s ease-in-out infinite alternate;
-}
-
-.bottom-arc-rim {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 980px;
-  height: 500px;
-  border-top: 2.5px solid rgba(244, 63, 94, 0.85);
-  border-radius: 50%;
-  box-shadow: 0 -20px 60px rgba(244, 63, 94, 0.4), 0 -2px 16px rgba(255, 255, 255, 0.95);
-  pointer-events: none;
-  animation: rimPulse 5s ease-in-out infinite alternate;
 }
 
 @keyframes auraFloat {
@@ -61,10 +48,10 @@ body {
 
 @keyframes rimPulse {
   0% { opacity: 0.75; filter: drop-shadow(0 -5px 15px rgba(244, 63, 94, 0.35)); }
-  100% { opacity: 1; filter: drop-shadow(0 -15px 40px rgba(244, 63, 94, 0.6)); }
+  100% { opacity: 1; filter: drop-shadow(0 -15px 40px rgba(244, 63, 94, 0.65)); }
 }
 
-/* 3D Dashboard Perspective Container - Clean Centered Viewport Peek */
+/* 3D Dashboard Perspective Stage */
 .hero-perspective-stage {
   perspective: 1600px;
   transform-style: preserve-3d;
@@ -91,7 +78,7 @@ body {
   border-color: rgba(244, 63, 94, 0.45);
 }
 
-/* 3D Integrated Half-Floating iPhone (PURE WHITE CHASSIS & WHITE OLED SCREEN) */
+/* 3D PURE WHITE iPHONE STYLING */
 .iphone-integrated-stage {
   perspective: 1200px;
   transform-style: preserve-3d;
@@ -101,22 +88,22 @@ body {
   transform: rotateY(-8deg) rotateX(5deg) translateY(0px);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   background: #ffffff;
-  border: 2.5px solid rgba(226, 232, 240, 0.95);
+  border: 2px solid rgba(226, 232, 240, 0.95);
   box-shadow: 
-    -18px 28px 60px -12px rgba(244, 63, 94, 0.2),
-    -5px 12px 30px -5px rgba(15, 23, 42, 0.06),
-    0 0 0 3px rgba(255, 255, 255, 1),
-    0 0 35px rgba(244, 63, 94, 0.1);
+    -18px 28px 60px -12px rgba(244, 63, 94, 0.22),
+    -5px 12px 30px -5px rgba(15, 23, 42, 0.08),
+    0 0 0 2px rgba(255, 255, 255, 1),
+    0 0 35px rgba(244, 63, 94, 0.12);
   animation: iphoneFloatLower 6s ease-in-out infinite alternate;
 }
 
 .iphone-half-peek:hover {
   transform: rotateY(-3deg) rotateX(2deg) translateY(-10px) scale(1.02);
   box-shadow: 
-    -22px 36px 75px -12px rgba(244, 63, 94, 0.3),
-    -8px 18px 40px -5px rgba(56, 189, 248, 0.22),
-    0 0 0 3px rgba(255, 255, 255, 1),
-    0 0 45px rgba(244, 63, 94, 0.18);
+    -22px 36px 75px -12px rgba(244, 63, 94, 0.35),
+    -8px 18px 40px -5px rgba(56, 189, 248, 0.25),
+    0 0 0 2px rgba(255, 255, 255, 1),
+    0 0 45px rgba(244, 63, 94, 0.2);
 }
 
 @keyframes iphoneFloatLower {
@@ -124,23 +111,23 @@ body {
   100% { transform: rotateY(-6deg) rotateX(3deg) translateY(-12px); }
 }
 
-/* 3D Holographic Glass Cards with Smooth Curves */
+/* 3D Holographic Glass Cards */
 .futuristic-card {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(226, 232, 240, 0.9);
   border-radius: 28px;
-  box-shadow: 0 20px 50px -10px rgba(244, 63, 94, 0.1), 0 10px 20px -5px rgba(56, 189, 248, 0.08);
+  box-shadow: 0 20px 50px -10px rgba(244, 63, 94, 0.12), 0 10px 20px -5px rgba(56, 189, 248, 0.1);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .futuristic-card:hover {
-  border-color: rgba(244, 63, 94, 0.4);
+  border-color: rgba(244, 63, 94, 0.45);
   transform: translateY(-4px);
-  box-shadow: 0 28px 65px -12px rgba(244, 63, 94, 0.18), 0 15px 30px -6px rgba(56, 189, 248, 0.12);
+  box-shadow: 0 28px 65px -12px rgba(244, 63, 94, 0.2), 0 15px 30px -6px rgba(56, 189, 248, 0.15);
 }
 
-/* 3D Pillars Holographic Tiles */
+/* 3D Pillar Holographic Tiles */
 .pillar-tile-3d {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.98) 100%);
   border: 1px solid rgba(226, 232, 240, 0.9);
@@ -152,10 +139,10 @@ body {
 .pillar-tile-3d:hover {
   transform: translateY(-6px) scale(1.02);
   border-color: rgba(244, 63, 94, 0.5);
-  box-shadow: 0 25px 60px -15px rgba(244, 63, 94, 0.22), 0 0 0 1px rgba(244, 63, 94, 0.2);
+  box-shadow: 0 25px 60px -15px rgba(244, 63, 94, 0.25), 0 0 0 1px rgba(244, 63, 94, 0.2);
 }
 
-/* Cybernetic Vertical Connector Lines & Pulsing Dots */
+/* Cybernetic Vertical Connector Lines */
 .circuit-line-stem {
   width: 2px;
   background: linear-gradient(180deg, rgba(244, 63, 94, 0.1) 0%, rgba(244, 63, 94, 0.8) 50%, rgba(56, 189, 248, 0.8) 100%);
@@ -214,15 +201,21 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* Shimmer Buttons */
-.shimmer-btn {
-  background: linear-gradient(135deg, #fb7185 0%, #e11d48 50%, #be123c 100%);
-  box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+/* Horizon Arc Bottom Dome */
+.horizon-arc-dome {
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 241, 242, 0.75) 45%, rgba(254, 205, 211, 0.35) 80%, rgba(244, 63, 94, 0.15) 100%);
 }
-.shimmer-btn:hover {
-  box-shadow: 0 15px 30px -5px rgba(225, 29, 72, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.6);
-  transform: translateY(-2px);
+
+/* Scroll reveal styling */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Continuous Infinite Connected Services Carousel */
@@ -259,4 +252,3 @@ body {
 .floating-pill:nth-child(4n) {
   animation-delay: 2.4s;
 }
-
