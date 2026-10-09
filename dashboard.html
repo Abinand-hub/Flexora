@@ -13,30 +13,33 @@
 <body class="bg-[#fafbfd] text-slate-900 min-h-screen font-sans selection:bg-rose-500 selection:text-white">
 
   <!-- Top App Navigation Bar -->
-  <header class="bg-white/95 border-b border-slate-200 sticky top-0 z-40 backdrop-blur-md px-4 sm:px-8 py-3">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <a href="./index.html" class="flex items-center gap-2 group">
+  <header class="bg-white/95 border-b border-slate-200 sticky top-0 z-40 backdrop-blur-md px-3 sm:px-6 py-2.5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+      <!-- Left: Logo & Breadcrumb -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
+        <a href="./index.html" class="flex items-center gap-2 group shrink-0">
           <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-rose-600 via-rose-500 to-rose-400 flex items-center justify-center text-white shadow-md shadow-rose-500/25 transition-transform group-hover:scale-105">
             <span class="font-mono font-bold text-xs">fx</span>
           </div>
           <span class="font-bold text-base text-slate-900 group-hover:text-rose-600 transition-colors">Fluxera</span>
         </a>
-        <span class="text-slate-300">/</span>
-        <span id="breadcrumb-title" class="text-xs font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-lg">Overview — Live Reliability &amp; Cost Recovery</span>
+        <span class="text-slate-300 hidden sm:inline">/</span>
+        <span id="breadcrumb-title" class="hidden sm:inline-block text-xs font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-lg truncate max-w-[200px] md:max-w-none">Overview — Live Reliability &amp; Cost Recovery</span>
       </div>
 
-      <div class="flex items-center gap-3">
-        <div class="flex items-center gap-2 text-xs text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200 font-semibold">
+      <!-- Right: Status Badge & Back Button -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <div class="flex items-center gap-1.5 text-[11px] sm:text-xs text-emerald-700 bg-emerald-50 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full border border-emerald-200 font-semibold whitespace-nowrap shrink-0">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
           <span>Engine Active</span>
         </div>
-        <button id="live-stream-btn" class="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 px-3 py-1.5 rounded-full border border-slate-200 bg-white hover:bg-slate-50 transition-all cursor-pointer">
+        <button id="live-stream-btn" class="hidden md:flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 px-3 py-1.5 rounded-full border border-slate-200 bg-white hover:bg-slate-50 transition-all cursor-pointer whitespace-nowrap shrink-0">
           <span id="live-dot" class="w-2 h-2 rounded-full bg-slate-300"></span>
           <span id="live-text">Live Stream Off</span>
         </button>
-        <a href="./index.html" class="text-xs font-semibold text-slate-600 hover:text-slate-900 px-3.5 py-1.5 rounded-full border border-slate-200 bg-white hover:bg-slate-50 transition-all">
-          ← Back to Website
+        <a href="./index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-rose-600 px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full border border-slate-200 bg-white hover:bg-slate-50 shadow-xs transition-all whitespace-nowrap shrink-0">
+          <span>←</span>
+          <span>Back<span class="hidden sm:inline"> to Website</span></span>
         </a>
       </div>
     </div>
