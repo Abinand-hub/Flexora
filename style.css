@@ -78,7 +78,13 @@ body {
   border-color: rgba(244, 63, 94, 0.45);
 }
 
-/* Mobile Responsiveness Overrides */
+/* Mobile Responsiveness & Layout Safety Overrides */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  position: relative;
+}
+
 @media (max-width: 768px) {
   .hero-perspective-stage {
     perspective: none !important;
@@ -93,6 +99,11 @@ body {
 
   .dashboard-viewport-peek:hover {
     transform: none !important;
+  }
+
+  .horizon-arc-dome {
+    border-radius: 2.5rem 2.5rem 0 0 !important;
+    background: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.99) 0%, rgba(255, 241, 242, 0.9) 60%, rgba(254, 205, 211, 0.55) 100%) !important;
   }
 }
 
