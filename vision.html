@@ -216,58 +216,33 @@
     </nav>
   </header>
 
-  <!-- MOBILE NAVIGATION FLOATING OVERLAY & SCREEN CARD -->
-  <div id="mobile-menu-backdrop" class="hidden md:hidden fixed inset-0 bg-slate-950/50 backdrop-blur-sm z-50 transition-opacity duration-300"></div>
-
-  <div id="mobile-menu" class="hidden md:hidden pointer-events-auto fixed top-1/2 left-4 right-4 -translate-y-1/2 max-w-sm mx-auto bg-white/95 backdrop-blur-2xl border border-slate-200/90 shadow-2xl rounded-3xl p-6 z-50 flex flex-col gap-4">
-    <!-- Top Bar with Brand & Close Button -->
-    <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-      <div class="flex items-center gap-2">
-        <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-rose-600 via-rose-500 to-rose-400 flex items-center justify-center text-white font-mono font-bold text-xs shadow-md shadow-rose-500/30">
-          fx
-        </div>
-        <span class="font-extrabold text-base text-slate-900 tracking-tight">Fluxera Menu</span>
-      </div>
-      <button id="mobile-menu-close" aria-label="Close Menu" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-all cursor-pointer">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-
-    <!-- Navigation Links -->
-    <nav class="flex flex-col gap-1 text-sm font-bold text-slate-800">
-      <a class="flex items-center justify-between px-4 py-3 rounded-2xl hover:bg-rose-50 hover:text-rose-600 transition-all border border-transparent hover:border-rose-100" href="./index.html">
-        <span class="flex items-center gap-3">
-          <span class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm">🏠</span>
-          <span>Home</span>
-        </span>
-        <span class="text-xs text-slate-400">→</span>
-      </a>
-      <a class="flex items-center justify-between px-4 py-3 rounded-2xl hover:bg-rose-50 hover:text-rose-600 transition-all border border-transparent hover:border-rose-100" href="./vision.html">
-        <span class="flex items-center gap-3">
-          <span class="w-8 h-8 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-sm">👁️</span>
-          <span>Vision</span>
-        </span>
-        <span class="text-xs text-slate-400">→</span>
-      </a>
-      <a class="flex items-center justify-between px-4 py-3 rounded-2xl hover:bg-rose-50 hover:text-rose-600 transition-all border border-transparent hover:border-rose-100" href="./dashboard.html">
-        <span class="flex items-center gap-3">
-          <span class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-sm">📊</span>
-          <span>Dashboard</span>
-        </span>
-        <span class="text-xs text-slate-400">→</span>
-      </a>
-    </nav>
-
-    <hr class="border-slate-100" />
-
-    <!-- Action Buttons -->
-    <div class="flex flex-col gap-2">
-      <a class="w-full text-center text-xs font-bold text-white py-3 rounded-2xl bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 shadow-lg shadow-rose-500/30 hover:scale-[1.02] transition-transform" href="./dashboard.html">
-        Open Dashboard
-      </a>
-      <a class="w-full text-center text-xs font-semibold text-slate-700 py-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 transition-colors" href="./dashboard.html">
-        Sign In
-      </a>
+  <!-- MOBILE NAVIGATION DROPDOWN MENU (Top Attached Below Header) -->
+  <div id="mobile-menu" class="hidden md:hidden pointer-events-auto fixed top-[72px] left-4 right-4 bg-white/95 backdrop-blur-2xl border border-slate-200/90 shadow-2xl rounded-2xl p-4 z-50 flex flex-col gap-2">
+    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-800 font-bold text-sm hover:bg-rose-50 hover:text-rose-600 transition-colors" href="./index.html#overview">
+      <span class="flex items-center gap-2.5">
+        <span class="text-base">🏠</span>
+        <span>Home</span>
+      </span>
+      <span class="text-xs text-slate-400">→</span>
+    </a>
+    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-800 font-bold text-sm hover:bg-rose-50 hover:text-rose-600 transition-colors" href="./vision.html">
+      <span class="flex items-center gap-2.5">
+        <span class="text-base">👁️</span>
+        <span>Vision</span>
+      </span>
+      <span class="text-xs text-slate-400">→</span>
+    </a>
+    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-800 font-bold text-sm hover:bg-rose-50 hover:text-rose-600 transition-colors" href="./dashboard.html">
+      <span class="flex items-center gap-2.5">
+        <span class="text-base">📊</span>
+        <span>Dashboard</span>
+      </span>
+      <span class="text-xs text-slate-400">→</span>
+    </a>
+    <hr class="border-slate-100 my-1" />
+    <div class="flex items-center gap-2 pt-1">
+      <a class="w-full text-center text-xs font-semibold text-slate-700 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 transition-colors" href="./dashboard.html">Sign In</a>
+      <a class="w-full text-center text-xs font-bold text-white py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-rose-500 shadow-md shadow-rose-500/30 hover:scale-[1.02] transition-transform" href="./dashboard.html">Open Dashboard</a>
     </div>
   </div>
 
