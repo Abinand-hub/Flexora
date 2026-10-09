@@ -191,129 +191,145 @@
               </div>
             </aside>
 
-            <!-- Main Dashboard Area -->
-            <main class="col-span-12 md:col-span-9 p-5 flex flex-col justify-between bg-[#fafbfd]">
+            <!-- Main Dashboard Area (Matches dashboard.html 100%) -->
+            <main class="col-span-12 md:col-span-9 p-5 flex flex-col justify-between bg-[#fafbfd]/90 space-y-6">
               <div>
                 <!-- Top Overview Bar -->
                 <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200/80">
-                  <h3 class="text-base font-bold text-slate-900">Overview</h3>
+                  <div>
+                    <h3 class="text-sm sm:text-base font-bold text-slate-900">Overview — Live Reliability &amp; Cost Recovery</h3>
+                    <p class="text-[11px] text-slate-500">Real-time system telemetry, work continuity, and cost reduction analytics</p>
+                  </div>
                   <div class="flex items-center gap-2">
-                    <span class="hidden sm:inline-block text-xs font-medium text-slate-700 px-3 py-1 rounded-lg border border-slate-200 bg-white">
-                      History
-                    </span>
                     <div class="flex items-center bg-slate-100 p-0.5 rounded-lg text-xs font-medium text-slate-600">
-                      <span class="px-2.5 py-0.5 rounded bg-white text-rose-600 font-semibold shadow-sm">24h</span>
+                      <span class="px-2.5 py-0.5 rounded bg-white text-rose-600 font-semibold shadow-xs">24h</span>
                       <span class="px-2 py-0.5">7d</span>
                       <span class="px-2 py-0.5">30d</span>
                     </div>
                   </div>
                 </div>
 
-                <!-- 2 Primary KPI Cards -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                  <!-- FAILED API COST -->
-                  <div class="p-5 rounded-2xl bg-white border border-rose-200/80 shadow-sm relative">
-                    <div class="flex items-center justify-between mb-2">
-                      <span class="text-[10px] font-mono font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200 tracking-wider uppercase">
-                        FAILED API COST · LAST 24H
-                      </span>
-                      <span class="w-2 h-2 rounded-full bg-rose-500"></span>
-                    </div>
-                    <div class="text-3xl sm:text-4xl font-extrabold text-rose-600 tracking-tight mb-1">
-                      $7.13
-                    </div>
-                    <p class="text-[11px] text-slate-500">
-                      <strong class="font-mono text-slate-800">152</strong> failed API calls across all workflows
-                    </p>
+                <!-- 1. SYSTEMS & SERVICES -->
+                <div class="mb-5">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] font-mono font-bold tracking-widest text-slate-400 uppercase flex items-center gap-1.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                      <span>SYSTEMS &amp; SERVICES</span>
+                    </span>
+                    <span class="text-[9px] font-mono text-slate-400">Measured Telemetry</span>
                   </div>
-
-                  <!-- EST. REVENUE AT RISK -->
-                  <div class="p-5 rounded-2xl bg-white border border-amber-200/80 shadow-sm relative">
-                    <div class="flex items-center justify-between mb-2">
-                      <span class="text-[10px] font-mono font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 tracking-wider uppercase">
-                        EST. REVENUE AT RISK · LAST 24H
-                      </span>
-                      <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-xs">
+                      <span class="text-[9px] font-mono font-semibold text-slate-400 uppercase block">Service Reliability</span>
+                      <div class="text-base font-extrabold text-emerald-600">99.8%</div>
+                      <span class="text-[9px] text-slate-500">All monitored nodes</span>
                     </div>
-                    <div class="text-3xl sm:text-4xl font-extrabold text-amber-600 tracking-tight mb-1">
-                      $5,185.00
+                    <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-xs">
+                      <span class="text-[9px] font-mono font-semibold text-slate-400 uppercase block">Failed Executions</span>
+                      <div class="text-base font-extrabold text-rose-600">152</div>
+                      <span class="text-[9px] text-slate-500">Intercepted 24h</span>
                     </div>
-                    <p class="text-[11px] text-slate-500">
-                      ~<strong class="font-mono text-slate-800">61</strong> users impacted · <strong class="font-mono text-slate-800">40%</strong> cart abandonment
-                    </p>
+                    <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-xs">
+                      <span class="text-[9px] font-mono font-semibold text-slate-400 uppercase block">Recovered Workflows</span>
+                      <div class="text-base font-extrabold text-slate-900">143</div>
+                      <span class="text-[9px] text-slate-500">No cold reruns</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-xs">
+                      <span class="text-[9px] font-mono font-semibold text-slate-400 uppercase block">Recovery Success</span>
+                      <div class="text-base font-extrabold text-emerald-600">94.1%</div>
+                      <span class="text-[9px] text-slate-500">Verified outcomes</span>
+                    </div>
                   </div>
                 </div>
 
-                <!-- 4 Secondary Metrics -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
-                  <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
-                    <span class="text-[10px] font-mono font-semibold text-slate-400 uppercase block mb-1">Failure Rate</span>
-                    <div class="text-lg font-bold text-rose-600">19.0%</div>
+                <!-- 2. COST & WORK RECOVERY -->
+                <div class="mb-5">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] font-mono font-bold tracking-widest text-slate-400 uppercase flex items-center gap-1.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      <span>COST &amp; WORK RECOVERY</span>
+                    </span>
+                    <span class="text-[9px] font-mono text-slate-400">Financial Intelligence</span>
                   </div>
-                  <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
-                    <span class="text-[10px] font-mono font-semibold text-slate-400 uppercase block mb-1">Avg Fail Latency</span>
-                    <div class="text-lg font-bold text-slate-900">859ms</div>
-                  </div>
-                  <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
-                    <span class="text-[10px] font-mono font-semibold text-slate-400 uppercase block mb-1">Total Requests</span>
-                    <div class="text-lg font-bold text-slate-900">800</div>
-                  </div>
-                  <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
-                    <span class="text-[10px] font-mono font-semibold text-slate-400 uppercase block mb-1">Monthly Run-Rate</span>
-                    <div class="text-lg font-bold text-rose-600">$213.95</div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                    <div class="p-3.5 rounded-xl bg-white border border-rose-200/90 shadow-xs">
+                      <span class="text-[9px] font-mono font-bold text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200 tracking-wider uppercase block w-max mb-1">
+                        MEASURED · WASTED API
+                      </span>
+                      <div class="text-xl font-black text-rose-600 tracking-tight">$7.13</div>
+                      <p class="text-[10px] text-slate-500">Direct failed API calls</p>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-white border border-emerald-200/90 shadow-xs">
+                      <span class="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 tracking-wider uppercase block w-max mb-1">
+                        MEASURED · SAVINGS
+                      </span>
+                      <div class="text-xl font-black text-emerald-600 tracking-tight">$18,450.00</div>
+                      <p class="text-[10px] text-slate-500">Costs avoided by recovery</p>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-white border border-sky-200/90 shadow-xs">
+                      <span class="text-[9px] font-mono font-bold text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded border border-sky-200 tracking-wider uppercase block w-max mb-1">
+                        MEASURED · FIDELITY
+                      </span>
+                      <div class="text-xl font-black text-sky-600 tracking-tight">94%</div>
+                      <p class="text-[10px] text-slate-500">Interrupted work preserved</p>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-white border border-amber-200/90 shadow-xs">
+                      <span class="text-[9px] font-mono font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200 tracking-wider uppercase block w-max mb-1">
+                        ESTIMATE · AT RISK
+                      </span>
+                      <div class="text-xl font-black text-amber-600 tracking-tight">$5,185.00</div>
+                      <p class="text-[10px] text-slate-500">Loss at risk (~61 users)</p>
+                    </div>
                   </div>
                 </div>
 
-                <!-- Leaking Endpoints Table -->
-                <div class="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
-                  <div class="px-4 py-2.5 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+                <!-- LIVE TELEMETRY GRAPH PREVIEW -->
+                <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs mb-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase text-slate-800">
+                      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                      <span>Live Telemetry Stream</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-[9px] font-mono">
+                      <span class="text-rose-600 font-bold">● Failures</span>
+                      <span class="text-emerald-600 font-bold">● Recovered</span>
+                    </div>
+                  </div>
+                  <div class="h-14 w-full relative">
+                    <svg class="w-full h-full overflow-visible" viewBox="0 0 500 70" preserveAspectRatio="none">
+                      <path d="M0,50 Q125,60 250,20 T500,8" fill="none" stroke="#10b981" stroke-width="2" />
+                      <path d="M0,38 Q125,48 250,32 T500,24" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.8" />
+                      <circle r="3.5" fill="#10b981" class="filter drop-shadow-[0_0_6px_rgba(16,185,129,0.9)]">
+                        <animateMotion path="M0,50 Q125,60 250,20 T500,8" dur="4s" repeatCount="indefinite" />
+                      </circle>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- 3. FAILURE INSIGHTS PREVIEW -->
+                <div class="rounded-2xl bg-white border border-slate-200 shadow-xs overflow-hidden">
+                  <div class="px-4 py-2 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
                     <div class="flex items-center gap-1.5 text-xs font-bold text-slate-900">
                       <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
-                      <span>Leaking Endpoints &amp; Services</span>
+                      <span>Failure Insights &amp; Verified Outcomes</span>
                     </div>
-                    <span class="text-[10px] font-mono text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">
-                      LAST 24H
+                    <span class="text-[9px] font-mono font-bold text-slate-600 bg-slate-200/80 px-2 py-0.5 rounded border border-slate-300">
+                      Measured vs Estimates Clearly Distinguished
                     </span>
                   </div>
-                  <div class="divide-y divide-slate-100 text-xs">
+                  <div class="divide-y divide-slate-100 text-[11px]">
                     <div class="px-4 py-2.5 grid grid-cols-12 gap-2 items-center hover:bg-rose-50/30 transition-colors">
-                      <div class="col-span-6">
-                        <div class="font-mono text-[11px] font-bold text-slate-800">/v1/chat/completions</div>
-                        <div class="w-full h-1 bg-slate-100 rounded-full mt-1 overflow-hidden">
-                          <div class="h-full bg-rose-600 rounded-full" style="width: 100%"></div>
-                        </div>
+                      <div class="col-span-4 font-mono font-bold text-slate-800">OpenAI /v1/chat</div>
+                      <div class="col-span-3 text-rose-600 font-mono font-bold">429 RateLimit</div>
+                      <div class="col-span-2 font-mono text-slate-500">67 failed</div>
+                      <div class="col-span-3 text-right">
+                        <span class="text-[9px] bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded-full border border-emerald-200">
+                          Auto-Recovered (12ms)
+                        </span>
                       </div>
-                      <div class="col-span-2 text-center text-slate-500 font-mono text-[11px]">67 failed</div>
-                      <div class="col-span-2 text-center">
-                        <span class="bg-rose-50 text-rose-600 font-mono text-[10px] font-bold px-1.5 py-0.5 rounded border border-rose-100">21.5%</span>
-                      </div>
-                      <div class="col-span-2 text-right font-mono font-bold text-rose-600 text-xs sm:text-sm">$3.98</div>
-                    </div>
-                    <div class="px-4 py-2.5 grid grid-cols-12 gap-2 items-center hover:bg-rose-50/30 transition-colors">
-                      <div class="col-span-6">
-                        <div class="font-mono text-[11px] font-bold text-slate-800">/v1/completions</div>
-                        <div class="w-full h-1 bg-slate-100 rounded-full mt-1 overflow-hidden">
-                          <div class="h-full bg-rose-400 rounded-full" style="width: 45%"></div>
-                        </div>
-                      </div>
-                      <div class="col-span-2 text-center text-slate-500 font-mono text-[11px]">41 failed</div>
-                      <div class="col-span-2 text-center">
-                        <span class="bg-rose-50 text-rose-600 font-mono text-[10px] font-bold px-1.5 py-0.5 rounded border border-rose-100">19.1%</span>
-                      </div>
-                      <div class="col-span-2 text-right font-mono font-bold text-rose-600 text-xs sm:text-sm">$1.63</div>
-                    </div>
-                    <div class="px-4 py-2.5 grid grid-cols-12 gap-2 items-center hover:bg-rose-50/30 transition-colors">
-                      <div class="col-span-6">
-                        <div class="font-mono text-[11px] font-bold text-slate-800">/v1/images/generate</div>
-                        <div class="w-full h-1 bg-slate-100 rounded-full mt-1 overflow-hidden">
-                          <div class="h-full bg-rose-400 rounded-full" style="width: 28%"></div>
-                        </div>
-                      </div>
-                      <div class="col-span-2 text-center text-slate-500 font-mono text-[11px]">12 failed</div>
-                      <div class="col-span-2 text-center">
-                        <span class="bg-rose-50 text-rose-600 font-mono text-[10px] font-bold px-1.5 py-0.5 rounded border border-rose-100">12.8%</span>
-                      </div>
-                      <div class="col-span-2 text-right font-mono font-bold text-rose-600 text-xs sm:text-sm">$0.98</div>
                     </div>
                   </div>
                 </div>
