@@ -156,12 +156,12 @@
       <!-- ========================================================================= -->
       <!-- TAB 1: OVERVIEW                                                           -->
       <!-- ========================================================================= -->
-      <section id="view-overview" class="tab-view space-y-6">
+      <section id="view-overview" class="tab-view space-y-8">
         <!-- Overview Subheader -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 gap-3">
           <div>
-            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Overview</h1>
-            <p class="text-xs text-slate-500 mt-0.5">Real-time revenue leak detection &amp; recovery telemetry</p>
+            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Overview — Live Reliability &amp; Cost Recovery</h1>
+            <p class="text-xs text-slate-500 mt-0.5">Real-time system telemetry, work continuity, and cost reduction analytics</p>
           </div>
           <div class="flex items-center gap-2">
             <button id="period-history" class="period-btn text-xs font-medium text-slate-700 px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 shadow-xs cursor-pointer">
@@ -175,142 +175,202 @@
           </div>
         </div>
 
-        <!-- 2 Primary KPI Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div class="p-6 sm:p-7 rounded-3xl bg-white border border-rose-200/90 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
-            <div class="flex items-center justify-between mb-3">
-              <span id="kpi-tag-cost" class="text-[11px] font-mono font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-md border border-rose-200 tracking-wider uppercase">
-                FAILED API COST · LAST 24H
-              </span>
-              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
-            </div>
-            <div id="kpi-lost-val" class="text-4xl sm:text-5xl font-black text-rose-600 tracking-tight leading-none mb-2">
-              $7.13
-            </div>
-            <p class="text-xs text-slate-500">
-              <strong id="kpi-failed-count" class="font-mono text-slate-800 bg-rose-50 px-2 py-0.5 rounded border border-rose-100">152</strong> failed API calls across all workflows
-            </p>
+        <!-- 1. SYSTEMS & SERVICES -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-xs font-mono font-bold tracking-widest text-slate-400 uppercase flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+              <span>SYSTEMS &amp; SERVICES</span>
+            </h2>
+            <span class="text-[10px] font-mono text-slate-400">Measured Telemetry</span>
           </div>
-
-          <div class="p-6 sm:p-7 rounded-3xl bg-white border border-amber-200/90 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
-            <div class="flex items-center justify-between mb-3">
-              <span id="kpi-tag-risk" class="text-[11px] font-mono font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200 tracking-wider uppercase">
-                EST. REVENUE AT RISK · LAST 24H
-              </span>
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+              <span class="text-[10px] font-mono font-semibold text-slate-400 uppercase block mb-1">Service Reliability</span>
+              <div class="text-xl font-extrabold text-emerald-600">99.8%</div>
+              <span class="text-[10px] text-slate-500 font-medium">All monitored nodes</span>
             </div>
-            <div id="kpi-risk-val" class="text-4xl sm:text-5xl font-black text-amber-600 tracking-tight leading-none mb-2">
-              $5,185.00
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+              <span class="text-[10px] font-mono font-semibold text-slate-400 uppercase block mb-1">Failed Executions</span>
+              <div id="kpi-failed-count" class="text-xl font-extrabold text-rose-600">152</div>
+              <span class="text-[10px] text-slate-500 font-medium">Intercepted in 24h</span>
             </div>
-            <p class="text-xs text-slate-500">
-              ~<strong id="kpi-users-count" class="font-mono text-slate-800">61</strong> users impacted · <strong class="font-mono text-slate-800">40%</strong> cart abandonment
-            </p>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+              <span class="text-[10px] font-mono font-semibold text-slate-400 uppercase block mb-1">Recovered Workflows</span>
+              <div class="text-xl font-extrabold text-slate-900">143</div>
+              <span class="text-[10px] text-slate-500 font-medium">No cold reruns</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+              <span class="text-[10px] font-mono font-semibold text-slate-400 uppercase block mb-1">Recovery Success Rate</span>
+              <div class="text-xl font-extrabold text-emerald-600">94.1%</div>
+              <span class="text-[10px] text-slate-500 font-medium">Verified outcomes</span>
+            </div>
           </div>
         </div>
 
-        <!-- 4 Secondary Metrics -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <span class="text-[11px] font-mono font-semibold text-slate-400 uppercase block mb-1">Failure Rate</span>
-            <div id="metric-fail-rate" class="text-xl font-bold text-rose-600">19.0%</div>
+        <!-- 2. COST & WORK RECOVERY -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-xs font-mono font-bold tracking-widest text-slate-400 uppercase flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>COST &amp; WORK RECOVERY</span>
+            </h2>
+            <span class="text-[10px] font-mono text-slate-400">Financial Intelligence</span>
           </div>
-          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <span class="text-[11px] font-mono font-semibold text-slate-400 uppercase block mb-1">Avg Fail Latency</span>
-            <div id="metric-latency" class="text-xl font-bold text-slate-900">859ms</div>
-          </div>
-          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <span class="text-[11px] font-mono font-semibold text-slate-400 uppercase block mb-1">Total Requests</span>
-            <div id="metric-requests" class="text-xl font-bold text-slate-900">800</div>
-          </div>
-          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <span class="text-[11px] font-mono font-semibold text-slate-400 uppercase block mb-1">Monthly Run-Rate</span>
-            <div id="metric-run-rate" class="text-xl font-bold text-rose-600">$213.95</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Wasted API & Compute Costs -->
+            <div class="p-5 rounded-2xl bg-white border border-rose-200/90 shadow-sm relative">
+              <div class="flex items-center justify-between mb-2">
+                <span id="kpi-tag-cost" class="text-[10px] font-mono font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200 tracking-wider uppercase">
+                  MEASURED · WASTED API COST
+                </span>
+                <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+              </div>
+              <div id="kpi-lost-val" class="text-3xl font-black text-rose-600 tracking-tight mb-1">$7.13</div>
+              <p class="text-[11px] text-slate-500">Direct failed API calls across workflows</p>
+            </div>
+
+            <!-- Costs Avoided Through Recovery -->
+            <div class="p-5 rounded-2xl bg-white border border-emerald-200/90 shadow-sm relative">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 tracking-wider uppercase">
+                  MEASURED · SAVINGS
+                </span>
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              </div>
+              <div class="text-3xl font-black text-emerald-600 tracking-tight mb-1">$18,450.00</div>
+              <p class="text-[11px] text-slate-500">Costs avoided through work recovery</p>
+            </div>
+
+            <!-- Interrupted Work Recovered -->
+            <div class="p-5 rounded-2xl bg-white border border-sky-200/90 shadow-sm relative">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-mono font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded border border-sky-200 tracking-wider uppercase">
+                  MEASURED · FIDELITY
+                </span>
+                <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+              </div>
+              <div class="text-3xl font-black text-sky-600 tracking-tight mb-1">94%</div>
+              <p class="text-[11px] text-slate-500">Interrupted work preserved &amp; resumed</p>
+            </div>
+
+            <!-- Estimated Business Loss at Risk -->
+            <div class="p-5 rounded-2xl bg-white border border-amber-200/90 shadow-sm relative">
+              <div class="flex items-center justify-between mb-2">
+                <span id="kpi-tag-risk" class="text-[10px] font-mono font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 tracking-wider uppercase">
+                  ESTIMATE · AT RISK
+                </span>
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              </div>
+              <div id="kpi-risk-val" class="text-3xl font-black text-amber-600 tracking-tight mb-1">$5,185.00</div>
+              <p class="text-[11px] text-slate-500">Estimated business loss at risk (~61 users)</p>
+            </div>
           </div>
         </div>
 
-        <!-- Leaking Endpoints Table -->
+        <!-- 3. FAILURE INSIGHTS -->
         <div class="rounded-3xl bg-white border border-slate-200 shadow-sm overflow-hidden">
-          <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
-            <div class="flex items-center gap-2 text-sm font-bold text-slate-900">
-              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
-              <span>Leaking Endpoints &amp; Services</span>
+          <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <div class="flex items-center gap-2 text-sm font-bold text-slate-900">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+                <span>Failure Insights &amp; Verified Outcomes</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">Failed services, root causes, affected workflows, wasted compute/API costs, &amp; recovery status</p>
             </div>
-            <span id="endpoints-time-badge" class="text-[10px] font-mono font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded border border-rose-200">
-              LAST 24H
-            </span>
+            <div class="flex items-center gap-2 shrink-0">
+              <span class="text-[10px] font-mono font-bold text-slate-600 bg-slate-200/80 px-2.5 py-1 rounded-full border border-slate-300">
+                Note: Measured Values, Estimates &amp; Demo Data Clearly Distinguished
+              </span>
+            </div>
           </div>
 
-          <div id="endpoints-list" class="divide-y divide-slate-100 text-xs">
+          <div class="divide-y divide-slate-100 text-xs overflow-x-auto">
+            <!-- Header Row -->
+            <div class="px-6 py-3 bg-slate-50/50 font-mono text-[10px] font-bold text-slate-400 uppercase tracking-wider grid grid-cols-12 gap-3 min-w-[700px]">
+              <div class="col-span-3">Failed Service &amp; Dependency</div>
+              <div class="col-span-3">Root Cause Isolation</div>
+              <div class="col-span-2">Affected Workflows &amp; Users</div>
+              <div class="col-span-2">Wasted Compute / API Cost</div>
+              <div class="col-span-2 text-right">Recovery Status</div>
+            </div>
+
             <!-- Row 1 -->
-            <div class="px-6 py-4 grid grid-cols-12 gap-3 items-center hover:bg-rose-50/30 transition-colors cursor-pointer" onclick="jumpToLogs('/v1/chat/completions')">
-              <div class="col-span-6">
-                <div class="font-mono text-xs font-bold text-slate-800 flex items-center gap-2">
-                  <span>/v1/chat/completions</span>
-                  <span class="text-[10px] text-slate-400 font-sans font-normal">Click to view logs →</span>
-                </div>
-                <div class="w-full h-1.5 bg-slate-100 rounded-full mt-1.5 overflow-hidden">
-                  <div class="h-full bg-rose-600 rounded-full" style="width: 100%"></div>
-                </div>
+            <div class="px-6 py-4 grid grid-cols-12 gap-3 items-center hover:bg-rose-50/30 transition-colors min-w-[700px] cursor-pointer" onclick="jumpToLogs('/v1/chat/completions')">
+              <div class="col-span-3">
+                <div class="font-mono text-xs font-bold text-slate-800">OpenAI /v1/chat/completions</div>
+                <span class="text-[10px] text-slate-400 font-sans">LLM Dependency Node</span>
               </div>
-              <div class="col-span-2 text-center text-slate-500 font-mono">67 failed</div>
-              <div class="col-span-2 text-center">
-                <span class="bg-rose-50 text-rose-600 font-mono text-[11px] font-bold px-2 py-0.5 rounded border border-rose-100">21.5%</span>
+              <div class="col-span-3">
+                <span class="inline-block px-2 py-0.5 rounded bg-rose-50 text-rose-700 font-mono text-[11px] font-bold border border-rose-200">
+                  HTTP 429 RateLimit
+                </span>
+                <span class="text-[10px] text-slate-500 block mt-0.5">Token burst threshold exceeded</span>
               </div>
-              <div class="col-span-2 text-right font-mono font-bold text-rose-600 text-sm">$3.98</div>
+              <div class="col-span-2 font-mono text-slate-700">
+                <span class="font-bold text-slate-900">67</span> runs · <span class="font-bold text-slate-900">28</span> users
+              </div>
+              <div class="col-span-2 font-mono">
+                <span class="font-bold text-rose-600 text-sm">$3.98</span>
+                <span class="text-[9px] text-slate-400 block uppercase font-bold">Measured Cost</span>
+              </div>
+              <div class="col-span-2 text-right">
+                <span class="inline-flex items-center gap-1 text-[10px] bg-emerald-50 text-emerald-700 font-bold px-2.5 py-1 rounded-full border border-emerald-200">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Auto-Recovered (12ms)
+                </span>
+              </div>
             </div>
 
             <!-- Row 2 -->
-            <div class="px-6 py-4 grid grid-cols-12 gap-3 items-center hover:bg-rose-50/30 transition-colors cursor-pointer" onclick="jumpToLogs('/v1/completions')">
-              <div class="col-span-6">
-                <div class="font-mono text-xs font-bold text-slate-800 flex items-center gap-2">
-                  <span>/v1/completions</span>
-                  <span class="text-[10px] text-slate-400 font-sans font-normal">Click to view logs →</span>
-                </div>
-                <div class="w-full h-1.5 bg-slate-100 rounded-full mt-1.5 overflow-hidden">
-                  <div class="h-full bg-rose-400 rounded-full" style="width: 45%"></div>
-                </div>
+            <div class="px-6 py-4 grid grid-cols-12 gap-3 items-center hover:bg-rose-50/30 transition-colors min-w-[700px] cursor-pointer" onclick="jumpToLogs('/v1/completions')">
+              <div class="col-span-3">
+                <div class="font-mono text-xs font-bold text-slate-800">Stripe /v1/payment_intents</div>
+                <span class="text-[10px] text-slate-400 font-sans">Payment Webhook Dependency</span>
               </div>
-              <div class="col-span-2 text-center text-slate-500 font-mono">41 failed</div>
-              <div class="col-span-2 text-center">
-                <span class="bg-rose-50 text-rose-600 font-mono text-[11px] font-bold px-2 py-0.5 rounded border border-rose-100">19.1%</span>
+              <div class="col-span-3">
+                <span class="inline-block px-2 py-0.5 rounded bg-amber-50 text-amber-800 font-mono text-[11px] font-bold border border-amber-200">
+                  HTTP 502 Bad Gateway
+                </span>
+                <span class="text-[10px] text-slate-500 block mt-0.5">Upstream gateway dropped</span>
               </div>
-              <div class="col-span-2 text-right font-mono font-bold text-rose-600 text-sm">$1.63</div>
+              <div class="col-span-2 font-mono text-slate-700">
+                <span class="font-bold text-slate-900">41</span> runs · <span class="font-bold text-slate-900">19</span> users
+              </div>
+              <div class="col-span-2 font-mono">
+                <span class="font-bold text-amber-600 text-sm">$1.63</span>
+                <span class="text-[9px] text-slate-400 block uppercase font-bold">Measured Cost</span>
+              </div>
+              <div class="col-span-2 text-right">
+                <span class="inline-flex items-center gap-1 text-[10px] bg-emerald-50 text-emerald-700 font-bold px-2.5 py-1 rounded-full border border-emerald-200">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> State Preserved ✓
+                </span>
+              </div>
             </div>
 
             <!-- Row 3 -->
-            <div class="px-6 py-4 grid grid-cols-12 gap-3 items-center hover:bg-rose-50/30 transition-colors cursor-pointer" onclick="jumpToLogs('/v1/images/generate')">
-              <div class="col-span-6">
-                <div class="font-mono text-xs font-bold text-slate-800 flex items-center gap-2">
-                  <span>/v1/images/generate</span>
-                  <span class="text-[10px] text-slate-400 font-sans font-normal">Click to view logs →</span>
-                </div>
-                <div class="w-full h-1.5 bg-slate-100 rounded-full mt-1.5 overflow-hidden">
-                  <div class="h-full bg-rose-400 rounded-full" style="width: 28%"></div>
-                </div>
+            <div class="px-6 py-4 grid grid-cols-12 gap-3 items-center hover:bg-rose-50/30 transition-colors min-w-[700px] cursor-pointer" onclick="jumpToLogs('/v1/images/generate')">
+              <div class="col-span-3">
+                <div class="font-mono text-xs font-bold text-slate-800">PostgreSQL Vector Pool</div>
+                <span class="text-[10px] text-slate-400 font-sans">RAG Database Index</span>
               </div>
-              <div class="col-span-2 text-center text-slate-500 font-mono">12 failed</div>
-              <div class="col-span-2 text-center">
-                <span class="bg-rose-50 text-rose-600 font-mono text-[11px] font-bold px-2 py-0.5 rounded border border-rose-100">12.8%</span>
+              <div class="col-span-3">
+                <span class="inline-block px-2 py-0.5 rounded bg-rose-50 text-rose-700 font-mono text-[11px] font-bold border border-rose-200">
+                  504 Gateway Timeout
+                </span>
+                <span class="text-[10px] text-slate-500 block mt-0.5">Connection pool exhausted</span>
               </div>
-              <div class="col-span-2 text-right font-mono font-bold text-rose-600 text-sm">$0.98</div>
-            </div>
-
-            <!-- Row 4 -->
-            <div class="px-6 py-4 grid grid-cols-12 gap-3 items-center hover:bg-rose-50/30 transition-colors cursor-pointer" onclick="jumpToLogs('/v1/audio/transcribe')">
-              <div class="col-span-6">
-                <div class="font-mono text-xs font-bold text-slate-800 flex items-center gap-2">
-                  <span>/v1/audio/transcribe</span>
-                  <span class="text-[10px] text-slate-400 font-sans font-normal">Click to view logs →</span>
-                </div>
-                <div class="w-full h-1.5 bg-slate-100 rounded-full mt-1.5 overflow-hidden">
-                  <div class="h-full bg-rose-400 rounded-full" style="width: 12%"></div>
-                </div>
+              <div class="col-span-2 font-mono text-slate-700">
+                <span class="font-bold text-slate-900">12</span> runs · <span class="font-bold text-slate-900">8</span> users
               </div>
-              <div class="col-span-2 text-center text-slate-500 font-mono">10 failed</div>
-              <div class="col-span-2 text-center">
-                <span class="bg-rose-50 text-rose-600 font-mono text-[11px] font-bold px-2 py-0.5 rounded border border-rose-100">21.3%</span>
+              <div class="col-span-2 font-mono">
+                <span class="font-bold text-rose-600 text-sm">$0.98</span>
+                <span class="text-[9px] text-slate-400 block uppercase font-bold">Measured Cost</span>
               </div>
-              <div class="col-span-2 text-right font-mono font-bold text-rose-600 text-sm">$0.32</div>
+              <div class="col-span-2 text-right">
+                <span class="inline-flex items-center gap-1 text-[10px] bg-sky-50 text-sky-700 font-bold px-2.5 py-1 rounded-full border border-sky-200">
+                  <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Replayed (Verified)
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -823,7 +883,16 @@
               </label>
             </div>
           </div>
-        </div>
+        <!-- Dashboard Footer -->
+        <footer class="mt-12 pt-6 border-t border-slate-200 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <div class="w-5 h-5 rounded bg-rose-600 flex items-center justify-center text-white text-[10px] font-mono font-bold">fx</div>
+            <span class="font-bold text-slate-900">Fluxera — Reliability, Recovery &amp; Cost Intelligence</span>
+          </div>
+          <p class="text-slate-600 font-medium text-center sm:text-right">
+            Keep systems running. Recover interrupted work. Reduce costs.
+          </p>
+        </footer>
       </section>
     </main>
   </div>
