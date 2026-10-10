@@ -183,8 +183,8 @@
   <div class="grid-node-glow top-[55%] left-[8%] hidden lg:block pointer-events-none z-0"></div>
 
   <!-- SITE NAVIGATION (Unified: Home, Vision, Sign In, Red Dashboard) -->
-  <header class="fixed top-5 inset-x-0 z-50 flex justify-center px-4" data-purpose="primary-navigation">
-    <nav class="w-full max-w-4xl rounded-full bg-white/85 backdrop-blur-xl border border-slate-200/80 shadow-[0_10px_35px_-8px_rgba(15,23,42,0.08)] px-4 sm:px-6 py-2.5 flex items-center justify-between transition-all duration-300 holo-border-subtle">
+  <header class="fixed top-5 inset-x-0 z-50 flex justify-center px-4 pointer-events-none" data-purpose="primary-navigation">
+    <nav class="pointer-events-auto w-full max-w-4xl rounded-full bg-white/85 backdrop-blur-xl border border-slate-200/80 shadow-[0_10px_35px_-8px_rgba(15,23,42,0.08)] px-4 sm:px-6 py-2.5 flex items-center justify-between transition-all duration-300 holo-border-subtle">
       <!-- Brand Logo Badge -->
       <a class="flex items-center space-x-2.5 group shrink-0" href="./index.html">
         <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-rose-600 via-rose-500 to-rose-400 text-white font-bold text-xs flex items-center justify-center shadow-md shadow-rose-500/40 group-hover:scale-105 transition-all font-mono">
@@ -820,17 +820,17 @@
                 fx
               </div>
             </div>
-            <h2 class="text-xl sm:text-3xl md:text-5xl font-extrabold text-slate-950 tracking-tight leading-snug px-2 sm:px-4">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-slate-950 tracking-tight leading-snug px-2 sm:px-4">
               Keep Your Systems Running. <br class="hidden sm:inline" />
               <span class="text-rose-600 block sm:inline mt-1 sm:mt-0">Stop Paying for Failed Work.</span>
             </h2>
             <p class="mt-4 text-xs sm:text-base text-slate-600 max-w-xl mx-auto font-medium leading-relaxed px-2">
               Add a reliability and recovery layer to your software stack—designed to restore interrupted work, keep services running, and reduce wasted compute and operational costs.
             </p>
-            <div class="mt-8 max-w-md mx-auto">
-              <form class="flex flex-col sm:flex-row items-center gap-2 p-1.5 rounded-full bg-white/95 border border-slate-200 shadow-xl shadow-rose-500/15 backdrop-blur-md" onsubmit="event.preventDefault(); alert('Thank you for requesting early access to Fluxera!');">
-                <input class="w-full sm:flex-1 px-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 bg-transparent rounded-full focus:outline-none focus:ring-0 border-0" placeholder="Enter your work email address" required="" type="email" />
-                <button class="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 text-white font-bold text-xs tracking-wide shadow-md shadow-rose-500/35 hover:shadow-rose-500/50 hover:scale-[1.02] transition-all whitespace-nowrap" type="submit">
+            <div class="mt-8 max-w-md mx-auto w-full">
+              <form class="flex flex-col sm:flex-row items-center gap-2 p-2 sm:p-1.5 rounded-2xl sm:rounded-full bg-white/95 border border-slate-200/90 shadow-xl shadow-rose-500/15 backdrop-blur-md" onsubmit="event.preventDefault(); alert('Thank you for requesting early access to Fluxera!');">
+                <input class="w-full sm:flex-1 px-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 bg-transparent rounded-xl sm:rounded-full focus:outline-none focus:ring-0 border-0 text-center sm:text-left" placeholder="Enter your work email address" required="" type="email" />
+                <button class="w-full sm:w-auto px-6 py-3 sm:py-2.5 rounded-xl sm:rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 text-white font-bold text-xs tracking-wide shadow-md shadow-rose-500/35 hover:shadow-rose-500/50 hover:scale-[1.02] transition-all whitespace-nowrap" type="submit">
                   Get Early Access
                 </button>
               </form>
@@ -843,16 +843,19 @@
   </main>
 
   <!-- SITE FOOTER -->
-  <footer class="border-t border-slate-200/60 py-6 px-6 text-xs text-slate-500 relative z-10 bg-white/50 backdrop-blur-md" data-purpose="site-footer">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2 order-1">
-        <div class="w-5 h-5 rounded bg-rose-600 flex items-center justify-center text-white text-[10px] font-mono font-bold">fx</div>
-        <span class="font-bold text-slate-800">Fluxera</span>
+  <footer class="border-t border-slate-200/60 py-6 px-4 sm:px-6 text-xs text-slate-500 relative z-10 bg-white/50 backdrop-blur-md" data-purpose="site-footer">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+      <div class="flex flex-col sm:flex-row items-center gap-2 order-1">
+        <div class="flex items-center gap-2">
+          <div class="w-5 h-5 rounded bg-rose-600 flex items-center justify-center text-white text-[10px] font-mono font-bold">fx</div>
+          <span class="font-bold text-slate-800">Fluxera — Reliability &amp; Cost Intelligence</span>
+        </div>
+        <span class="hidden sm:inline text-slate-300">•</span>
         <span class="text-slate-400">© 2026 Fluxera Inc. All Rights Reserved.</span>
       </div>
-      <div class="flex items-center gap-6 order-2">
+      <div class="flex items-center justify-center gap-6 order-2 font-medium">
         <a class="hover:text-rose-600 transition-colors" href="./index.html">Home</a>
-        <a class="text-rose-600 font-semibold" href="./vision.html">Vision</a>
+        <a class="text-rose-600 font-semibold border-b border-rose-500 pb-0.5" href="./vision.html">Vision</a>
         <a class="hover:text-rose-600 transition-colors" href="./dashboard.html">Dashboard</a>
       </div>
     </div>
