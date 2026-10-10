@@ -154,6 +154,230 @@
     }
   }
 
+  // =========================================================================
+  // INTERACTIVE CONSTELLATION MESH & GEOMETRIC NODE NETWORK (PORTFOLIO STYLE)
+  // =========================================================================
+  const constCanvas = document.getElementById('constellation-canvas');
+  if (constCanvas) {
+    const ctx = constCanvas.getContext('2d');
+    if (ctx) {
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+      let nodes = [];
+      let mousePos = { x: -1000, y: -1000, active: false };
+
+      window.addEventListener('mousemove', (e) => {
+        mousePos.x = e.clientX;
+        mousePos.y = e.clientY;
+        mousePos.active = true;
+      });
+
+      window.addEventListener('mouseleave', () => {
+        mousePos.active = false;
+      });
+
+      class Node {
+        constructor(w, h) {
+          this.reset(w, h);
+        }
+
+        reset(w, h) {
+          this.x = Math.random() * (w || window.innerWidth);
+          this.y = Math.random() * (h || window.innerHeight);
+          this.vx = (Math.random() - 0.5) * 0.45;
+          this.vy = (Math.random() - 0.5) * 0.45;
+          this.radius = Math.random() * 1.8 + 1.2;
+          this.pulsePhase = Math.random() * Math.PI * 2;
+          
+          const rnd = Math.random();
+          if (rnd < 0.65) {
+            this.color = 'rgba(148, 163, 184, 0.75)'; // slate-400
+            this.accent = false;
+            this.type = 'slate';
+          } else if (rnd < 0.88) {
+            this.color = 'rgba(244, 63, 94, 0.9)'; // rose-500
+            this.accent = true;
+            this.type = 'rose';
+          } else {
+            this.color = 'rgba(56, 189, 248, 0.9)'; // sky-400
+            this.accent = true;
+            this.type = 'sky';
+          }
+        }
+
+        update(w, h) {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.pulsePhase += 0.025;
+
+          if (this.x < -20) this.x = w + 20;
+          if (this.x > w + 20) this.x = -20;
+          if (this.y < -20) this.y = h + 20;
+          if (this.y > h + 20) this.y = -20;
+
+          if (mousePos.active) {
+            const dx = this.x - mousePos.x;
+            const dy = this.y - mousePos.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const maxDist = 160;
+            if (dist < maxDist && dist > 0) {
+              const force = (1 - dist / maxDist) * 0.75;
+              this.x += (dx / dist) * force;
+              this.y += (dy / dist) * force;
+            }
+          }
+        }
+
+        draw(c) {
+          c.beginPath();
+          const r = this.accent ? this.radius + Math.sin(this.pulsePhase) * 0.7 : this.radius;
+          c.arc(this.x, this.y, Math.max(r, 0.8), 0, Math.PI * 2);
+          c.fillStyle = this.color;
+          c.fill();
+
+          if (this.type === 'rose') {
+            c.beginPath();
+            c.arc(this.x, this.y, r * 2.8, 0, Math.PI * 2);
+            c.fillStyle = 'rgba(244, 63, 94, 0.12)';
+            c.fill();
+          } else if (this.type === 'sky') {
+            c.beginPath();
+            c.arc(this.x, this.y, r * 2.8, 0, Math.PI * 2);
+            c.fillStyle = 'rgba(56, 189, 248, 0.12)';
+            c.fill();
+          }
+        }
+      }
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        constCanvas.width = width * dpr;
+        constCanvas.height = height * dpr;
+        ctx.scale(dpr, dpr);
+
+        const targetCount = Math.floor((width * height) / 18000);
+        const count = Math.max(45, Math.min(targetCount, 95));
+
+        nodes = [];
+        for (let i = 0; i < count; i++) {
+          nodes.push(new Node(width, height));
+        }
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        // 1. Draw Architectural Crosshairs (+) on Grid Intersections
+        const gridSize = 128;
+        ctx.strokeStyle = 'rgba(203, 213, 225, 0.28)';
+        ctx.lineWidth = 1;
+        for (let x = gridSize; x < width; x += gridSize * 2) {
+          for (let y = gridSize; y < height; y += gridSize * 2) {
+            ctx.beginPath();
+            ctx.moveTo(x - 4, y);
+            ctx.lineTo(x + 4, y);
+            ctx.moveTo(x, y - 4);
+            ctx.lineTo(x, y + 4);
+            ctx.stroke();
+          }
+        }
+
+        // 2. Update Nodes
+        for (let i = 0; i < nodes.length; i++) {
+          nodes[i].update(width, height);
+        }
+
+        // 3. Draw Geometric Wireframe Triangles & Connections
+        const maxDist = 135;
+        const maxTriangleDist = 105;
+
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < maxDist) {
+              const alpha = (1 - dist / maxDist) * 0.42;
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+
+              if (nodes[i].accent || nodes[j].accent) {
+                ctx.strokeStyle = (nodes[i].type === 'rose' || nodes[j].type === 'rose')
+                  ? `rgba(244, 63, 94, ${alpha * 1.35})`
+                  : `rgba(56, 189, 248, ${alpha * 1.25})`;
+              } else {
+                ctx.strokeStyle = `rgba(148, 163, 184, ${alpha})`;
+              }
+              ctx.lineWidth = 0.85;
+              ctx.stroke();
+
+              for (let k = j + 1; k < nodes.length; k++) {
+                const dx2 = nodes[j].x - nodes[k].x;
+                const dy2 = nodes[j].y - nodes[k].y;
+                const dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+
+                const dx3 = nodes[k].x - nodes[i].x;
+                const dy3 = nodes[k].y - nodes[i].y;
+                const dist3 = Math.sqrt(dx3 * dx3 + dy3 * dy3);
+
+                if (dist2 < maxTriangleDist && dist3 < maxTriangleDist) {
+                  ctx.beginPath();
+                  ctx.moveTo(nodes[i].x, nodes[i].y);
+                  ctx.lineTo(nodes[j].x, nodes[j].y);
+                  ctx.lineTo(nodes[k].x, nodes[k].y);
+                  ctx.closePath();
+
+                  const triAlpha = (1 - Math.max(dist, dist2, dist3) / maxTriangleDist) * 0.065;
+                  if (nodes[i].type === 'rose' || nodes[j].type === 'rose' || nodes[k].type === 'rose') {
+                    ctx.fillStyle = `rgba(244, 63, 94, ${triAlpha * 1.3})`;
+                  } else {
+                    ctx.fillStyle = `rgba(56, 189, 248, ${triAlpha})`;
+                  }
+                  ctx.fill();
+                }
+              }
+            }
+          }
+        }
+
+        // 4. Mouse Interactive Connection Lines
+        if (mousePos.active) {
+          for (let i = 0; i < nodes.length; i++) {
+            const dx = nodes[i].x - mousePos.x;
+            const dy = nodes[i].y - mousePos.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 155) {
+              const alpha = (1 - dist / 155) * 0.55;
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(mousePos.x, mousePos.y);
+              ctx.strokeStyle = `rgba(244, 63, 94, ${alpha})`;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // 5. Draw Node Dots
+        for (let i = 0; i < nodes.length; i++) {
+          nodes[i].draw(ctx);
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+    }
+  }
+
   // ==========================================
   // 2. INTERSECTION OBSERVER SCROLL REVEALS
   // ==========================================
