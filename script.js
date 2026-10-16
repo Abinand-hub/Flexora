@@ -431,7 +431,7 @@
       num: "04",
       badge: "Customer",
       title: "User Impact",
-      desc: "End users experience spinning loading states, failed checkouts, and disruptive error alerts.",
+      desc: "End users experience spinning loading states, failed checkouts, and disruptive service errors.",
       badgeBg: "bg-amber-100 text-amber-800",
       numBg: "bg-amber-100 text-amber-700",
       isSpecial: false,
@@ -653,16 +653,16 @@ window.selectSdkStep = function(stepNum) {
   if (tagEl && titleEl && textEl) {
     if (stepNum === 1) {
       tagEl.textContent = 'STEP 1';
-      titleEl.textContent = 'Wrap your API calls';
-      textEl.textContent = 'Install the SDK. Wrap the API calls you want tracked with a small function call.';
+      titleEl.textContent = 'Understand Work';
+      textEl.textContent = 'Connect and understand the services, models, and workflows your software runs.';
     } else if (stepNum === 2) {
       tagEl.textContent = 'STEP 2';
-      titleEl.textContent = 'Every call is logged';
-      textEl.textContent = 'Success, failure, latency, and cost are recorded automatically. Nothing changes about how your API behaves.';
+      titleEl.textContent = 'Detect Failures';
+      textEl.textContent = 'Identify timeouts, rate limits, 502s, and broken queries across your tech stack in real time.';
     } else if (stepNum === 3) {
       tagEl.textContent = 'STEP 3';
-      titleEl.textContent = 'Failures become dollars';
-      textEl.innerHTML = '<code class="font-mono text-xs bg-rose-50 text-rose-700 px-1 py-0.5 rounded border border-rose-100">failed_requests × avg_price</code> is the failed API cost — always shown.';
+      titleEl.textContent = 'Recover Work';
+      textEl.textContent = 'Preserve state, resume interrupted operations, avoid cold reruns, and recover wasted costs.';
     }
   }
 
