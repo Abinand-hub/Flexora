@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Fluxera | How Fluxera Works - Vision &amp; Reliability Layer</title>
+  <title>Fluxera — Building Self-Evolving Systems · Vision</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="./style.css" />
   
   <!-- Tailwind CSS CDN with plugins -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -84,8 +85,15 @@
 
     /* Horizon Arc Bottom Dome */
     .horizon-arc-dome {
-      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      border-radius: 50% 50% 0 0 / 120px 120px 0 0;
       background: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 241, 242, 0.75) 45%, rgba(254, 205, 211, 0.35) 80%, rgba(244, 63, 94, 0.15) 100%);
+    }
+
+    @media (max-width: 768px) {
+      .horizon-arc-dome {
+        border-radius: 2rem 2rem 0 0 !important;
+        background: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.99) 0%, rgba(255, 241, 242, 0.92) 50%, rgba(254, 205, 211, 0.5) 100%) !important;
+      }
     }
 
     /* Holographic Borders */
@@ -148,6 +156,22 @@
     }
     .layer-float-2 {
       transform: translateZ(46px);
+    }
+
+    @media (max-width: 768px) {
+      .perspective-container {
+        perspective: none !important;
+      }
+      .isometric-board-3d {
+        transform: none !important;
+        box-shadow: 0 15px 40px -10px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.9) !important;
+      }
+      .isometric-board-3d:hover {
+        transform: none !important;
+      }
+      .layer-float-1, .layer-float-2 {
+        transform: none !important;
+      }
     }
 
     /* Spatial Node Connectors */
@@ -250,22 +274,23 @@
   </div>
 
   <!-- BEGIN: Hero Section -->
-  <main class="relative pt-32 md:pt-40 pb-0">
+  <main class="relative pt-28 sm:pt-36 md:pt-40 pb-0">
     <section class="max-w-5xl mx-auto px-4 sm:px-6 text-center" data-purpose="hero-header">
       <!-- Eyebrow Pill Badge -->
       <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-rose-50 via-white to-sky-50 border border-rose-200/90 text-rose-600 text-[11px] font-semibold tracking-widest uppercase mb-6 shadow-[0_4px_16px_-4px_rgba(255,77,109,0.25)] backdrop-blur-md">
         <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
         <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-0.5"></span>
-        <span>THE RELIABILITY &amp; RECOVERY ENGINE · VISION</span>
+        <span>SELF-EVOLVING SYSTEMS · VISION</span>
       </div>
 
       <!-- Hero Main Headline -->
-      <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-950 leading-[1.1] mb-5 drop-shadow-sm">
-        Make Your Systems Self-Healing, Keeps Running. <span class="bg-clip-text text-transparent bg-gradient-to-r from-rose-600 via-rose-500 to-coral-500">Recover Compute Costs.</span>
+      <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-[1.15] mb-5 drop-shadow-sm">
+        Keep Systems Running When Things Fail. <br class="hidden sm:inline" />
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-rose-600 via-rose-500 to-coral-500">Recover the Cost of Failure.</span>
       </h1>
 
       <!-- Core Value Banner Statement -->
-      <div class="max-w-3xl mx-auto px-6 py-3 rounded-2xl bg-gradient-to-r from-rose-50/90 via-white to-sky-50/90 border border-rose-200/80 shadow-[0_8px_25px_-5px_rgba(244,63,94,0.15)] text-xs md:text-sm font-semibold text-slate-700 leading-relaxed tracking-tight backdrop-blur-md">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 py-3 rounded-2xl bg-gradient-to-r from-rose-50/90 via-white to-sky-50/90 border border-rose-200/80 shadow-[0_8px_25px_-5px_rgba(244,63,94,0.15)] text-xs md:text-sm font-semibold text-slate-700 leading-relaxed tracking-tight backdrop-blur-md">
         Fluxera detects and diagnoses failures across your tech stack, recovers interrupted work, keeps services running, and reduces wasted compute, API spend, and operational costs.
       </div>
     </section>
@@ -358,7 +383,7 @@
                 <div class="relative w-full h-3 bg-slate-800/90 rounded-full overflow-hidden p-0.5 border border-slate-700/80">
                   <div class="h-full bg-gradient-to-r from-rose-500 via-rose-400 via-sky-400 to-cyan-400 rounded-full w-4/5 shadow-[0_0_12px_rgba(244,63,94,0.8)]"></div>
                 </div>
-                <div class="flex justify-between text-[10px] font-mono text-slate-300">
+                <div class="flex flex-wrap items-center justify-between gap-1 text-[10px] font-mono text-slate-300">
                   <span class="text-emerald-400">Prompt Synthesis [✓]</span>
                   <span class="text-rose-400 font-semibold px-1 rounded bg-rose-950/50">Failure Detected [Interceptor]</span>
                   <span class="text-cyan-400">Autonomous Resumption [✓]</span>
@@ -366,16 +391,16 @@
               </div>
 
               <!-- Metrics Footer -->
-              <div class="grid grid-cols-3 gap-2 pt-3 border-t border-slate-800/90 text-center font-mono relative z-10">
-                <div class="p-2 rounded-xl bg-slate-800/50 border border-slate-700/40">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-3 border-t border-slate-800/90 text-center font-mono relative z-10">
+                <div class="p-2 sm:p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/40">
                   <div class="text-[10px] text-slate-400">Token Spend Saved</div>
                   <div class="text-sm font-bold text-white tracking-tight">$4,891.20</div>
                 </div>
-                <div class="p-2 rounded-xl bg-slate-800/50 border border-slate-700/40">
+                <div class="p-2 sm:p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/40">
                   <div class="text-[10px] text-slate-400">Work Preserved</div>
                   <div class="text-sm font-bold text-rose-400 drop-shadow-[0_0_6px_rgba(251,113,133,0.4)]">94.2%</div>
                 </div>
-                <div class="p-2 rounded-xl bg-slate-800/50 border border-slate-700/40">
+                <div class="p-2 sm:p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/40">
                   <div class="text-[10px] text-slate-400">Cold Restart Run</div>
                   <div class="text-sm font-bold text-cyan-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.4)]">0 ms</div>
                 </div>
@@ -722,19 +747,23 @@
             <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
             AI-NATIVE SOFTWARE
           </div>
-          <span class="text-rose-400 font-bold rotate-90 md:rotate-0 text-sm">↓</span>
+          <span class="text-rose-400 font-bold text-sm md:hidden">↓</span>
+          <span class="hidden md:inline text-rose-400 font-bold text-sm">→</span>
           <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 text-slate-800 font-mono text-xs font-medium shadow-xs">
             ALL SOFTWARE
           </div>
-          <span class="text-slate-400 font-bold rotate-90 md:rotate-0 text-sm">↓</span>
+          <span class="text-slate-400 font-bold text-sm md:hidden">↓</span>
+          <span class="hidden md:inline text-slate-400 font-bold text-sm">→</span>
           <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 text-slate-800 font-mono text-xs font-medium shadow-xs">
             DIGITAL INFRASTRUCTURE
           </div>
-          <span class="text-slate-400 font-bold rotate-90 md:rotate-0 text-sm">↓</span>
+          <span class="text-slate-400 font-bold text-sm md:hidden">↓</span>
+          <span class="hidden md:inline text-slate-400 font-bold text-sm">→</span>
           <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 text-slate-800 font-mono text-xs font-medium shadow-xs">
             AUTONOMOUS SYSTEMS
           </div>
-          <span class="text-slate-400 font-bold rotate-90 md:rotate-0 text-sm">↓</span>
+          <span class="text-slate-400 font-bold text-sm md:hidden">↓</span>
+          <span class="hidden md:inline text-slate-400 font-bold text-sm">→</span>
           <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 text-slate-800 font-mono text-xs font-medium shadow-xs">
             PHYSICAL SYSTEMS
           </div>
@@ -793,42 +822,54 @@
         </div>
 
         <!-- Phase 3: Long Term -->
-        <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 p-7 shadow-spatial-card hover:border-slate-300 hover:shadow-spatial-lift hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle">
+        <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 p-6 sm:p-7 shadow-spatial-card hover:border-slate-300 hover:shadow-spatial-lift hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle">
           <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-100 text-slate-600 font-mono text-[11px] font-semibold uppercase mb-4 self-start border border-slate-200">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
             <span>PHASE 3 · LONG TERM</span>
           </div>
           <h3 class="text-lg font-bold text-slate-900 mb-2">Autonomous Reliability</h3>
           <p class="text-xs text-slate-500 mb-4">Systems that continuously self-adapt without operator intervention:</p>
-          <div class="p-3 rounded-2xl bg-slate-900 text-slate-200 font-mono text-[10px] leading-relaxed text-center shadow-md">
-            Understand → Predict → Prevent → Recover → Verify → Optimize → Evolve
+          <div class="p-3 rounded-2xl bg-slate-900 text-slate-200 font-mono text-[10px] leading-relaxed text-center shadow-md flex flex-wrap items-center justify-center gap-1.5">
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-rose-300">Understand</span>
+            <span class="text-slate-500 text-[10px]">→</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-cyan-300">Predict</span>
+            <span class="text-slate-500 text-[10px]">→</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-emerald-300">Prevent</span>
+            <span class="text-slate-500 text-[10px]">→</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-rose-300">Recover</span>
+            <span class="text-slate-500 text-[10px]">→</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-cyan-300">Verify</span>
+            <span class="text-slate-500 text-[10px]">→</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-amber-300">Optimize</span>
+            <span class="text-slate-500 text-[10px]">→</span>
+            <span class="px-2 py-0.5 rounded bg-rose-950/80 text-rose-400 border border-rose-800/80 font-bold">Evolve</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- FOOTER CONVERSION SECTION (HORIZON ARCH DOME) -->
-    <section class="relative pt-20 pb-0 overflow-hidden text-center flex flex-col justify-end items-center" id="early-access">
-      <div class="relative w-full max-w-6xl mx-auto px-4 flex flex-col items-center justify-end">
-        <div class="horizon-arc-dome relative w-full pt-16 pb-20 px-6 sm:px-12 flex flex-col items-center justify-center overflow-hidden border-t-2 border-x border-b-0 border-rose-400/80 shadow-[0_-25px_80px_-15px_rgba(244,63,94,0.35)]">
+    <section class="relative pt-16 sm:pt-20 pb-0 overflow-hidden text-center flex flex-col justify-end items-center" id="early-access">
+      <div class="relative w-full max-w-6xl mx-auto px-2 sm:px-4 flex flex-col items-center justify-end">
+        <div class="horizon-arc-dome relative w-full pt-12 sm:pt-16 pb-16 sm:pb-20 px-4 sm:px-12 flex flex-col items-center justify-center overflow-hidden border-t-2 border-x border-b-0 border-rose-400/80 shadow-[0_-25px_80px_-15px_rgba(244,63,94,0.35)]">
           <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-rose-400/25 blur-[100px] pointer-events-none rounded-full"></div>
           <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-1 bg-gradient-to-r from-transparent via-rose-400 to-transparent blur-[1px] pointer-events-none"></div>
 
-          <div class="max-w-2xl mx-auto relative z-10">
+          <div class="max-w-2xl mx-auto relative z-10 w-full px-2">
             <div class="w-12 h-12 mx-auto mb-5 rounded-2xl bg-white border border-rose-200 flex items-center justify-center shadow-lg shadow-rose-500/25">
               <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-rose-600 to-rose-400 flex items-center justify-center text-white font-mono font-bold text-xs">
                 fx
               </div>
             </div>
-            <h2 class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-slate-950 tracking-tight leading-snug px-2 sm:px-4">
-              Keep Your Systems Running. <br class="hidden sm:inline" />
-              <span class="text-rose-600 block sm:inline mt-1 sm:mt-0">Stop Paying for Failed Work.</span>
+            <h2 class="text-xl sm:text-3xl md:text-5xl font-extrabold text-slate-950 tracking-tight leading-snug px-1 sm:px-4">
+              Keep Systems Running. <br class="hidden sm:inline" />
+              <span class="text-rose-600 block sm:inline mt-1 sm:mt-0">Recover the Cost of Failure.</span>
             </h2>
-            <p class="mt-4 text-xs sm:text-base text-slate-600 max-w-xl mx-auto font-medium leading-relaxed px-2">
+            <p class="mt-4 text-xs sm:text-base text-slate-600 max-w-xl mx-auto font-medium leading-relaxed px-1">
               Add a reliability and recovery layer to your software stack—designed to restore interrupted work, keep services running, and reduce wasted compute and operational costs.
             </p>
-            <div class="mt-8 max-w-md mx-auto w-full">
-              <form class="flex flex-col sm:flex-row items-center gap-2 p-2 sm:p-1.5 rounded-2xl sm:rounded-full bg-white/95 border border-slate-200/90 shadow-xl shadow-rose-500/15 backdrop-blur-md" onsubmit="event.preventDefault(); alert('Thank you for requesting early access to Fluxera!');">
+            <div class="mt-8 max-w-md mx-auto w-full px-1">
+              <form class="flex flex-col sm:flex-row items-center gap-2 p-1.5 rounded-2xl sm:rounded-full bg-white/95 border border-slate-200/90 shadow-xl shadow-rose-500/15 backdrop-blur-md" onsubmit="event.preventDefault(); alert('Thank you for requesting early access to Fluxera!');">
                 <input class="w-full sm:flex-1 px-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 bg-transparent rounded-xl sm:rounded-full focus:outline-none focus:ring-0 border-0 text-center sm:text-left" placeholder="Enter your work email address" required="" type="email" />
                 <button class="w-full sm:w-auto px-6 py-3 sm:py-2.5 rounded-xl sm:rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 text-white font-bold text-xs tracking-wide shadow-md shadow-rose-500/35 hover:shadow-rose-500/50 hover:scale-[1.02] transition-all whitespace-nowrap" type="submit">
                   Get Early Access
@@ -848,7 +889,7 @@
       <div class="flex flex-col sm:flex-row items-center gap-2 order-1">
         <div class="flex items-center gap-2">
           <div class="w-5 h-5 rounded bg-rose-600 flex items-center justify-center text-white text-[10px] font-mono font-bold">fx</div>
-          <span class="font-bold text-slate-800">Fluxera — Reliability &amp; Cost Intelligence</span>
+          <span class="font-bold text-slate-800">Fluxera — Building Self-Evolving Systems</span>
         </div>
         <span class="hidden sm:inline text-slate-300">•</span>
         <span class="text-slate-400">© 2026 Fluxera Inc. All Rights Reserved.</span>
