@@ -102,9 +102,10 @@ html, body {
   }
 
   .horizon-arc-dome {
-    border-radius: 2.5rem 2.5rem 0 0 !important;
-    background: radial-gradient(ellipse at bottom, #16161c 0%, #0d0d10 65%, #08080a 100%) !important;
-    border-color: rgba(255, 255, 255, 0.16) !important;
+    width: 170% !important;
+    border-radius: 50% 50% 0 0 / 110px 110px 0 0 !important;
+    padding-top: 3.5rem !important;
+    padding-bottom: 4rem !important;
   }
 }
 
@@ -231,11 +232,41 @@ html, body {
   to { transform: rotate(360deg); }
 }
 
-/* Horizon Arc Bottom Dome */
+/* Horizon Arc Bottom Dome (Smooth Edge-to-Edge Planet Horizon - No Sharp Sides) */
+.horizon-arc-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
 .horizon-arc-dome {
-  border-radius: 50% 50% 0 0 / 120px 120px 0 0;
-  background: radial-gradient(ellipse at bottom, #141418 0%, #0d0d10 65%, #08080a 100%);
-  border-color: rgba(255, 255, 255, 0.16) !important;
+  position: relative;
+  width: 135%;
+  border-radius: 50% 50% 0 0 / 240px 240px 0 0;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  background: radial-gradient(ellipse at 50% 100%, #16161f 0%, #0d0d12 60%, #08080a 100%);
+  box-shadow: 0 -20px 60px -10px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5rem;
+  padding-bottom: 5.5rem;
+}
+
+@media (max-width: 1024px) {
+  .horizon-arc-dome {
+    width: 145%;
+    border-radius: 50% 50% 0 0 / 180px 180px 0 0;
+    padding-top: 4rem;
+    padding-bottom: 4.5rem;
+  }
 }
 
 /* Scroll reveal styling */

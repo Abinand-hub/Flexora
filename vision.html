@@ -83,18 +83,7 @@
       box-shadow: 0 -25px 90px -10px rgba(255, 255, 255, 0.12), 0 -10px 40px -5px rgba(255, 255, 255, 0.06);
     }
 
-    /* Horizon Arc Bottom Dome */
-    .horizon-arc-dome {
-      border-radius: 50% 50% 0 0 / 120px 120px 0 0;
-      background: radial-gradient(ellipse at bottom, #16161f 0%, #0f0f15 50%, #08080a 100%);
-    }
-
-    @media (max-width: 768px) {
-      .horizon-arc-dome {
-        border-radius: 2rem 2rem 0 0 !important;
-        background: radial-gradient(ellipse at bottom, #16161f 0%, #0f0f15 60%, #08080a 100%) !important;
-      }
-    }
+    /* Horizon Arc Bottom Dome styles are loaded from style.css */
 
     /* Holographic Borders */
     .holo-border-rose, .holo-border-subtle {
@@ -830,14 +819,14 @@
       </div>
     </section>
 
-    <!-- FOOTER CONVERSION SECTION (HORIZON ARCH DOME) -->
-    <section class="relative pt-16 sm:pt-20 pb-0 overflow-hidden text-center flex flex-col justify-end items-center" id="early-access">
-      <div class="relative w-full max-w-6xl mx-auto px-2 sm:px-4 flex flex-col items-center justify-end">
-        <div class="horizon-arc-dome relative w-full pt-12 sm:pt-16 pb-16 sm:pb-20 px-4 sm:px-12 flex flex-col items-center justify-center overflow-hidden border-t-2 border-x border-b-0 border-white/25 shadow-[0_-25px_80px_-15px_rgba(255,255,255,0.1)]">
-          <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-rose-400/25 blur-[100px] pointer-events-none rounded-full"></div>
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-1 bg-gradient-to-r from-transparent via-rose-400 to-transparent blur-[1px] pointer-events-none"></div>
+    <!-- FOOTER CONVERSION SECTION (HORIZON ARCH DOME - SMOOTH EDGE-TO-EDGE PLANET HORIZON) -->
+    <section class="relative pt-24 pb-0 overflow-hidden text-center flex flex-col justify-end items-center w-full" id="early-access">
+      <div class="horizon-arc-wrapper w-full">
+        <div class="horizon-arc-dome">
+          <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-white/10 blur-[120px] pointer-events-none rounded-full"></div>
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent blur-[1px] pointer-events-none"></div>
 
-          <div class="max-w-2xl mx-auto relative z-10 w-full px-2">
+          <div class="w-full max-w-[100vw] sm:max-w-2xl mx-auto relative z-10 px-4 sm:px-6">
             <div class="w-12 h-12 mx-auto mb-5 rounded-2xl bg-[#181822] border border-white/20 flex items-center justify-center shadow-lg shadow-white/10">
               <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-white via-slate-200 to-slate-400 flex items-center justify-center text-slate-950 font-mono font-bold text-xs">
                 fx
@@ -851,7 +840,7 @@
               Add a reliability and recovery layer to your software stack—designed to restore interrupted work, keep services running, and reduce wasted compute and operational costs.
             </p>
             <div class="mt-8 max-w-md mx-auto w-full px-1">
-              <form class="flex flex-col sm:flex-row items-center gap-2 p-1.5 rounded-2xl sm:rounded-full bg-[#121217] border border-white/15 shadow-xl shadow-rose-500/15 backdrop-blur-md" onsubmit="event.preventDefault(); alert('Thank you for requesting early access to Fluxera!');">
+              <form class="flex flex-col sm:flex-row items-center gap-2 p-1.5 rounded-2xl sm:rounded-full bg-[#141419] border border-white/25 shadow-xl backdrop-blur-md" onsubmit="event.preventDefault(); alert('Thank you for requesting early access to Fluxera!');">
                 <input class="w-full sm:flex-1 px-4 py-2.5 text-xs text-white placeholder-slate-400 bg-transparent rounded-xl sm:rounded-full focus:outline-none focus:ring-0 border-0 text-center sm:text-left" placeholder="Enter your work email address" required="" type="email" />
                 <button class="w-full sm:w-auto px-6 py-3 sm:py-2.5 rounded-xl sm:rounded-full bg-gradient-to-r from-white via-slate-100 to-slate-300 text-slate-950 font-bold text-xs tracking-wide shadow-md shadow-white/10 hover:shadow-[0_0_25px_rgba(255,255,255,0.35)] hover:scale-[1.02] transition-all whitespace-nowrap" type="submit">
                   Get Early Access
