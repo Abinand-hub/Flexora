@@ -49,8 +49,8 @@
   <!-- Futuristic Spatial Styles -->
   <style data-purpose="ambient-lighting">
     body {
-      background-color: #fafbfe;
-      color: #0f172a;
+      background-color: #08080a;
+      color: #e2e8f0;
       overflow-x: hidden;
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
@@ -58,71 +58,55 @@
     /* Cyber Grid Matrix Background */
     .cyber-grid {
       background-image: 
-        radial-gradient(circle at 50% 28%, rgba(255, 77, 109, 0.11) 0%, rgba(255, 77, 109, 0.02) 42%, transparent 70%),
-        radial-gradient(circle at 82% 18%, rgba(14, 165, 233, 0.12) 0%, rgba(14, 165, 233, 0.01) 45%, transparent 65%),
-        radial-gradient(circle at 18% 65%, rgba(56, 189, 248, 0.09) 0%, transparent 50%),
-        radial-gradient(circle at 50% 85%, rgba(255, 51, 102, 0.08) 0%, transparent 60%),
-        linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+        radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 42%, transparent 70%),
+        radial-gradient(circle at 82% 18%, rgba(200, 215, 230, 0.05) 0%, transparent 65%),
+        radial-gradient(circle at 18% 65%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.05) 0%, transparent 60%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
       background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
     }
 
     /* Ambient Spatial Orbs */
     .spatial-orb-rose {
-      background: radial-gradient(circle, rgba(255, 77, 109, 0.22) 0%, rgba(255, 77, 109, 0.08) 45%, rgba(255, 255, 255, 0) 70%);
-      filter: blur(50px);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 45%, rgba(8, 8, 10, 0) 70%);
+      filter: blur(60px);
     }
     .spatial-orb-cyan {
-      background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, rgba(14, 165, 233, 0.06) 50%, rgba(255, 255, 255, 0) 72%);
-      filter: blur(55px);
+      background: radial-gradient(circle, rgba(200, 215, 230, 0.06) 0%, rgba(200, 215, 230, 0.01) 50%, rgba(8, 8, 10, 0) 72%);
+      filter: blur(65px);
     }
 
     /* Horizon Arch Dome with Dual Aura */
     .horizon-dome-futuristic {
-      background: radial-gradient(ellipse 130% 100% at 50% 100%, #ffffff 32%, rgba(255, 237, 240, 0.85) 60%, rgba(224, 242, 254, 0.7) 82%, rgba(255, 77, 109, 0.25) 100%);
-      box-shadow: 0 -25px 90px -10px rgba(255, 77, 109, 0.28), 0 -10px 40px -5px rgba(14, 165, 233, 0.25);
+      background: radial-gradient(ellipse 130% 100% at 50% 100%, #15151c 32%, #0f0f14 60%, #08080a 100%);
+      box-shadow: 0 -25px 90px -10px rgba(255, 255, 255, 0.12), 0 -10px 40px -5px rgba(255, 255, 255, 0.06);
     }
 
     /* Horizon Arc Bottom Dome */
     .horizon-arc-dome {
       border-radius: 50% 50% 0 0 / 120px 120px 0 0;
-      background: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 241, 242, 0.75) 45%, rgba(254, 205, 211, 0.35) 80%, rgba(244, 63, 94, 0.15) 100%);
+      background: radial-gradient(ellipse at bottom, #16161f 0%, #0f0f15 50%, #08080a 100%);
     }
 
     @media (max-width: 768px) {
       .horizon-arc-dome {
         border-radius: 2rem 2rem 0 0 !important;
-        background: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.99) 0%, rgba(255, 241, 242, 0.92) 50%, rgba(254, 205, 211, 0.5) 100%) !important;
+        background: radial-gradient(ellipse at bottom, #16161f 0%, #0f0f15 60%, #08080a 100%) !important;
       }
     }
 
     /* Holographic Borders */
-    .holo-border-rose {
+    .holo-border-rose, .holo-border-subtle {
       position: relative;
     }
-    .holo-border-rose::before {
+    .holo-border-rose::before, .holo-border-subtle::before {
       content: '';
       position: absolute;
       inset: -1px;
       border-radius: inherit;
       padding: 1px;
-      background: linear-gradient(135deg, rgba(255, 77, 109, 0.6), rgba(255, 255, 255, 0.8), rgba(14, 165, 233, 0.5));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-
-    .holo-border-subtle {
-      position: relative;
-    }
-    .holo-border-subtle::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(226, 232, 240, 0.8), rgba(255, 77, 109, 0.35));
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.2));
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -140,16 +124,14 @@
       transform-style: preserve-3d;
       transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 
-        0 40px 100px -20px rgba(15, 23, 42, 0.18),
-        0 25px 65px -15px rgba(255, 77, 109, 0.22),
-        0 10px 45px -10px rgba(14, 165, 233, 0.2);
+        0 40px 100px -20px rgba(0, 0, 0, 0.8),
+        0 0 50px -10px rgba(255, 255, 255, 0.08);
     }
     .isometric-board-3d:hover {
       transform: rotateX(4deg) rotateY(0deg) scale(0.998) translateY(-6px);
       box-shadow: 
-        0 50px 120px -20px rgba(15, 23, 42, 0.22),
-        0 30px 80px -15px rgba(255, 77, 109, 0.28),
-        0 15px 55px -10px rgba(14, 165, 233, 0.25);
+        0 50px 120px -20px rgba(0, 0, 0, 0.9),
+        0 0 60px -10px rgba(255, 255, 255, 0.12);
     }
     .layer-float-1 {
       transform: translateZ(28px);
@@ -208,33 +190,33 @@
 
   <!-- SITE NAVIGATION (Unified: Home, Vision, Sign In, Red Dashboard) -->
   <header class="fixed top-5 inset-x-0 z-50 flex justify-center px-4 pointer-events-none" data-purpose="primary-navigation">
-    <nav class="pointer-events-auto w-full max-w-4xl rounded-full bg-white/85 backdrop-blur-xl border border-slate-200/80 shadow-[0_10px_35px_-8px_rgba(15,23,42,0.08)] px-4 sm:px-6 py-2.5 flex items-center justify-between transition-all duration-300 holo-border-subtle">
+    <nav class="pointer-events-auto w-full max-w-4xl rounded-full bg-[#0f0f13]/85 backdrop-blur-xl border border-white/15 shadow-[0_10px_35px_-8px_rgba(0,0,0,0.6)] px-4 sm:px-6 py-2.5 flex items-center justify-between transition-all duration-300 holo-border-subtle">
       <!-- Brand Logo Badge -->
       <a class="flex items-center space-x-2.5 group shrink-0" href="./index.html">
-        <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-rose-600 via-rose-500 to-rose-400 text-white font-bold text-xs flex items-center justify-center shadow-md shadow-rose-500/40 group-hover:scale-105 transition-all font-mono">
+        <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-slate-800 via-slate-700 to-slate-900 border border-white/20 text-white font-bold text-xs flex items-center justify-center shadow-md shadow-black/40 group-hover:scale-105 transition-all font-mono">
           fx
         </span>
-        <span class="text-base font-bold tracking-tight text-slate-900 group-hover:text-rose-600 transition-colors">Fluxera</span>
+        <span class="text-base font-bold tracking-tight text-white group-hover:text-slate-200 transition-colors">Fluxera</span>
       </a>
 
       <!-- Center Navigation Links -->
-      <div class="hidden md:flex items-center space-x-1 sm:space-x-2 text-xs font-medium text-slate-600">
-        <a class="px-3.5 py-1.5 rounded-full hover:bg-slate-100 hover:text-rose-600 transition-all" href="./index.html">Home</a>
-        <a class="px-3.5 py-1.5 rounded-full bg-rose-50 text-rose-600 font-semibold border border-rose-200/80 shadow-xs flex items-center space-x-1.5" href="./vision.html">
-          <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></span>
+      <div class="hidden md:flex items-center space-x-1 sm:space-x-2 text-xs font-medium text-slate-400">
+        <a class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all" href="./index.html">Home</a>
+        <a class="px-3.5 py-1.5 rounded-full bg-white/10 text-white font-semibold border border-white/25 shadow-xs flex items-center space-x-1.5" href="./vision.html">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-300 animate-ping"></span>
           <span>Vision</span>
         </a>
       </div>
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-2 shrink-0">
-        <a class="hidden sm:inline-block text-xs font-semibold text-slate-700 hover:text-rose-600 px-3.5 py-1.5 rounded-full hover:bg-slate-100 transition-all" href="./dashboard.html">
+        <a class="hidden sm:inline-block text-xs font-semibold text-slate-400 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all" href="./dashboard.html">
           Sign In
         </a>
-        <a class="px-4 sm:px-5 py-2 text-xs font-bold rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 hover:from-rose-500 hover:to-rose-600 text-white shadow-md shadow-rose-500/30 transition-all duration-200 hover:shadow-rose-500/50 hover:scale-[1.03]" href="./dashboard.html">
+        <a class="px-4 sm:px-5 py-2 text-xs font-bold rounded-full bg-gradient-to-r from-white via-slate-100 to-slate-300 hover:from-slate-100 hover:to-white text-white shadow-md shadow-white/10 transition-all duration-200 hover:shadow-white/25 hover:scale-[1.03]" href="./dashboard.html">
           Dashboard
         </a>
-        <button id="mobile-menu-toggle" aria-label="Toggle Mobile Menu" class="md:hidden p-1.5 text-slate-700 hover:text-rose-600 focus:outline-none cursor-pointer">
+        <button id="mobile-menu-toggle" aria-label="Toggle Mobile Menu" class="md:hidden p-1.5 text-slate-400 hover:text-white focus:outline-none cursor-pointer">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -244,22 +226,22 @@
   </header>
 
   <!-- MOBILE NAVIGATION DROPDOWN MENU (Top Attached Below Header) -->
-  <div id="mobile-menu" class="hidden md:hidden pointer-events-auto fixed top-[72px] left-4 right-4 bg-white/95 backdrop-blur-2xl border border-slate-200/90 shadow-2xl rounded-2xl p-4 z-50 flex flex-col gap-2">
-    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-800 font-bold text-sm hover:bg-rose-50 hover:text-rose-600 transition-colors" href="./index.html#overview">
+  <div id="mobile-menu" class="hidden md:hidden pointer-events-auto fixed top-[72px] left-4 right-4 bg-[#0f0f14]/95 backdrop-blur-2xl border border-white/15 shadow-2xl rounded-2xl p-4 z-50 flex flex-col gap-2">
+    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-200 font-bold text-sm hover:bg-white/10 hover:text-white transition-colors" href="./index.html#overview">
       <span class="flex items-center gap-2.5">
         <span class="text-base">🏠</span>
         <span>Home</span>
       </span>
       <span class="text-xs text-slate-400">→</span>
     </a>
-    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-800 font-bold text-sm hover:bg-rose-50 hover:text-rose-600 transition-colors" href="./vision.html">
+    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-200 font-bold text-sm hover:bg-white/10 hover:text-white transition-colors" href="./vision.html">
       <span class="flex items-center gap-2.5">
         <span class="text-base">👁️</span>
         <span>Vision</span>
       </span>
       <span class="text-xs text-slate-400">→</span>
     </a>
-    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-800 font-bold text-sm hover:bg-rose-50 hover:text-rose-600 transition-colors" href="./dashboard.html">
+    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-200 font-bold text-sm hover:bg-white/10 hover:text-white transition-colors" href="./dashboard.html">
       <span class="flex items-center gap-2.5">
         <span class="text-base">📊</span>
         <span>Dashboard</span>
@@ -268,8 +250,8 @@
     </a>
     <hr class="border-slate-100 my-1" />
     <div class="flex items-center gap-2 pt-1">
-      <a class="w-full text-center text-xs font-semibold text-slate-700 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 transition-colors" href="./dashboard.html">Sign In</a>
-      <a class="w-full text-center text-xs font-bold text-white py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-rose-500 shadow-md shadow-rose-500/30 hover:scale-[1.02] transition-transform" href="./dashboard.html">Open Dashboard</a>
+      <a class="w-full text-center text-xs font-semibold text-slate-300 py-2.5 rounded-xl bg-[#181822] hover:bg-[#20202e] border border-white/15 transition-colors" href="./dashboard.html">Sign In</a>
+      <a class="w-full text-center text-xs font-bold text-white py-2.5 rounded-xl bg-gradient-to-r from-white via-slate-100 to-slate-300 shadow-md hover:scale-[1.02] transition-transform" href="./dashboard.html">Open Dashboard</a>
     </div>
   </div>
 
@@ -277,20 +259,20 @@
   <main class="relative pt-28 sm:pt-36 md:pt-40 pb-0">
     <section class="max-w-5xl mx-auto px-4 sm:px-6 text-center" data-purpose="hero-header">
       <!-- Eyebrow Pill Badge -->
-      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-rose-50 via-white to-sky-50 border border-rose-200/90 text-rose-600 text-[11px] font-semibold tracking-widest uppercase mb-6 shadow-[0_4px_16px_-4px_rgba(255,77,109,0.25)] backdrop-blur-md">
-        <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
-        <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-0.5"></span>
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/[0.06] border border-white/20 text-slate-200 text-[11px] font-semibold tracking-widest uppercase mb-6 shadow-[0_0_20px_rgba(255,255,255,0.06)] backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-slate-300 animate-ping"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-white mr-0.5"></span>
         <span>SELF-EVOLVING SYSTEMS · VISION</span>
       </div>
 
       <!-- Hero Main Headline -->
-      <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-[1.15] mb-5 drop-shadow-sm">
+      <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.15] mb-5 drop-shadow-sm">
         Keep Systems Running When Things Fail. <br class="hidden sm:inline" />
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-rose-600 via-rose-500 to-coral-500">Recover the Cost of Failure.</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">Recover the Cost of Failure.</span>
       </h1>
 
       <!-- Core Value Banner Statement -->
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 py-3 rounded-2xl bg-gradient-to-r from-rose-50/90 via-white to-sky-50/90 border border-rose-200/80 shadow-[0_8px_25px_-5px_rgba(244,63,94,0.15)] text-xs md:text-sm font-semibold text-slate-700 leading-relaxed tracking-tight backdrop-blur-md">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 py-3 rounded-2xl bg-[#121217] border border-white/15 shadow-xl text-xs md:text-sm font-semibold text-slate-300 leading-relaxed tracking-tight backdrop-blur-md">
         Fluxera detects and diagnoses failures across your tech stack, recovers interrupted work, keeps services running, and reduces wasted compute, API spend, and operational costs.
       </div>
     </section>
@@ -298,13 +280,13 @@
     <!-- BEGIN: 3D Perspective Isometric Architecture Engine -->
     <section class="max-w-6xl mx-auto px-4 mt-12" data-purpose="isometric-architecture-engine">
       <div class="perspective-container">
-        <div class="isometric-board-3d rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 p-5 md:p-8 relative overflow-hidden ring-1 ring-slate-900/5 holo-border-rose shadow-2xl">
+        <div class="isometric-board-3d rounded-3xl bg-[#0f0f14]/95 backdrop-blur-2xl border border-white/15 p-5 md:p-8 relative overflow-hidden ring-1 ring-white/10 holo-border-rose shadow-2xl text-white">
           <!-- Neon Glow Gradients Behind Board -->
           <div class="absolute -top-32 -left-32 w-80 h-80 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
           <div class="absolute -bottom-32 -right-32 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
           <!-- Top Window Header Bar -->
-          <div class="flex flex-wrap items-center justify-between pb-4 border-b border-slate-200/70 gap-2 relative z-10">
+          <div class="flex flex-wrap items-center justify-between pb-4 border-b border-white/10 gap-2 relative z-10">
             <div class="flex items-center space-x-2">
               <span class="w-3 h-3 rounded-full bg-rose-500"></span>
               <span class="w-3 h-3 rounded-full bg-amber-400"></span>
@@ -329,8 +311,8 @@
                 <span>Active In-Flight Nodes</span>
                 <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
               </div>
-              <div class="p-3.5 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200/80 hover:border-rose-400 hover:shadow-[0_4px_18px_rgba(244,63,94,0.15)] transition-all duration-300 shadow-sm group">
-                <div class="flex items-center justify-between text-slate-800 font-semibold mb-1">
+              <div class="p-3.5 rounded-2xl bg-[#16161f] backdrop-blur-md border border-white/15 hover:border-rose-400 hover:shadow-[0_4px_18px_rgba(244,63,94,0.15)] transition-all duration-300 shadow-sm group">
+                <div class="flex items-center justify-between text-slate-200 font-semibold mb-1">
                   <span>OpenAI GPT-4o</span>
                   <span class="text-rose-500 text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-50 border border-rose-200">429 RateLimit</span>
                 </div>
@@ -339,8 +321,8 @@
                   <span class="text-emerald-500 font-bold">●</span>
                 </div>
               </div>
-              <div class="p-3.5 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200/80 hover:border-cyan-400 hover:shadow-[0_4px_18px_rgba(6,182,212,0.15)] transition-all duration-300 shadow-sm group">
-                <div class="flex items-center justify-between text-slate-800 font-semibold mb-1">
+              <div class="p-3.5 rounded-2xl bg-[#16161f] backdrop-blur-md border border-white/15 hover:border-cyan-400 hover:shadow-[0_4px_18px_rgba(6,182,212,0.15)] transition-all duration-300 shadow-sm group">
+                <div class="flex items-center justify-between text-slate-200 font-semibold mb-1">
                   <span>Pinecone RAG Vector</span>
                   <span class="text-emerald-600 text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 border border-emerald-200">Preserved (1.2k)</span>
                 </div>
@@ -349,8 +331,8 @@
                   <span class="text-cyan-500 font-bold">●</span>
                 </div>
               </div>
-              <div class="p-3.5 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200/80 hover:border-amber-300 hover:shadow-sm transition-all duration-300 shadow-sm group">
-                <div class="flex items-center justify-between text-slate-800 font-semibold mb-1">
+              <div class="p-3.5 rounded-2xl bg-[#16161f] backdrop-blur-md border border-white/15 hover:border-amber-300 hover:shadow-sm transition-all duration-300 shadow-sm group">
+                <div class="flex items-center justify-between text-slate-200 font-semibold mb-1">
                   <span>Stripe Billing Webhook</span>
                   <span class="text-amber-600 text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-50 border border-amber-200">Replayed</span>
                 </div>
@@ -413,11 +395,11 @@
                 <span>RESILIENCE POLICY MATRIX</span>
                 <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
               </div>
-              <div class="p-3.5 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200/80 shadow-sm hover:border-slate-300 transition-all">
+              <div class="p-3.5 rounded-2xl bg-[#16161f] backdrop-blur-md border border-white/15 shadow-sm hover:border-slate-300 transition-all">
                 <div class="text-[11px] font-bold text-slate-800 mb-0.5">Closed-Loop Recovery</div>
                 <p class="text-[10px] text-slate-500">Autonomous resolution without triggering human on-call fatigue.</p>
               </div>
-              <div class="p-3.5 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200/80 shadow-sm hover:border-slate-300 transition-all">
+              <div class="p-3.5 rounded-2xl bg-[#16161f] backdrop-blur-md border border-white/15 shadow-sm hover:border-slate-300 transition-all">
                 <div class="text-[11px] font-bold text-slate-800 mb-0.5">Dollarized Impact Audit</div>
                 <p class="text-[10px] text-slate-500">Real-time mapping of compute loss, user churn risk, and SLA exposure.</p>
               </div>
@@ -445,66 +427,66 @@
       <div class="relative w-full overflow-hidden py-3 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div class="chips-marquee-track flex gap-3">
           <!-- Item Set 1 -->
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-rose-400 shadow-sm shadow-rose-400"></span>APIs
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400"></span>Agents
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-rose-500 shadow-sm shadow-rose-500"></span>Models
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-slate-950 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-white transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-slate-400"></span>Tools
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-rose-400 shadow-sm shadow-rose-400"></span>Memory
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-cyan-500 shadow-sm shadow-cyan-500"></span>RAG
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-slate-950 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-white transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-slate-400"></span>Workflows
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-rose-500 shadow-sm shadow-rose-500"></span>Databases
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400"></span>Infrastructure
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-slate-950 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-white transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-slate-400"></span>Third-Party Services
           </span>
 
           <!-- Duplicate Set for Seamless Continuous Infinite Carousel Loop -->
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-rose-400 shadow-sm shadow-rose-400"></span>APIs
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400"></span>Agents
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-rose-500 shadow-sm shadow-rose-500"></span>Models
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-slate-950 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-white transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-slate-400"></span>Tools
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-rose-400 shadow-sm shadow-rose-400"></span>Memory
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-cyan-500 shadow-sm shadow-cyan-500"></span>RAG
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-slate-950 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-white transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-slate-400"></span>Workflows
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:text-rose-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-rose-500 shadow-sm shadow-rose-500"></span>Databases
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:text-cyan-600 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400"></span>Infrastructure
           </span>
-          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-slate-950 transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
+          <span class="group px-4 py-2 text-xs font-mono font-medium rounded-xl bg-[#121217] backdrop-blur-xl border border-white/15 text-slate-800 shadow-xs hover:border-slate-400 hover:shadow-[0_0_15px_rgba(100,116,139,0.25)] hover:text-white transition-all duration-200 cursor-default flex items-center gap-2 shrink-0">
             <span class="w-2 h-2 rounded-full bg-slate-400"></span>Third-Party Services
           </span>
         </div>
@@ -515,13 +497,13 @@
     <!-- BEGIN: The Reliability Loop (5 Phases) -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 mt-20" data-purpose="the-reliability-loop">
       <div class="text-center max-w-3xl mx-auto mb-14">
-        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-rose-50/90 border border-rose-200 text-rose-600 text-[11px] font-semibold tracking-widest uppercase mb-3 shadow-xs">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white/[0.06] border border-white/20 text-slate-300 text-[11px] font-semibold tracking-widest uppercase mb-3 shadow-xs">
           <span>THE RELIABILITY LOOP</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
           Continuous Closed-Loop Resilience
         </h2>
-        <p class="mt-3 text-slate-600 text-sm sm:text-base">
+        <p class="mt-3 text-slate-400 text-sm sm:text-base">
           Fluxera connects failures across your software and turns them into actionable, deterministic recovery.
         </p>
       </div>
@@ -529,14 +511,14 @@
       <!-- 5 Sequential Cards Grid with 3D Holographic Finish -->
       <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
         <!-- Step 01: Detect -->
-        <div class="bg-white/85 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 shadow-spatial-card hover:shadow-spatial-lift hover:border-rose-300 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between holo-border-subtle">
+        <div class="bg-[#121217] backdrop-blur-xl rounded-3xl border border-white/15 p-5 shadow-spatial-card hover:shadow-spatial-lift hover:border-rose-300 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between holo-border-subtle">
           <div>
             <div class="flex items-center justify-between mb-4">
               <span class="font-mono text-xl font-bold text-rose-500 group-hover:scale-110 transition-transform">01</span>
               <span class="w-8 h-8 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-600 text-xs shadow-xs">🔍</span>
             </div>
-            <h3 class="font-bold text-slate-900 text-sm tracking-wide mb-2 uppercase">DETECT</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
+            <h3 class="font-bold text-white text-sm tracking-wide mb-2 uppercase">DETECT</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
               Find failures across your software stack before users report them or workflows collapse.
             </p>
           </div>
@@ -547,14 +529,14 @@
         </div>
 
         <!-- Step 02: Understand -->
-        <div class="bg-white/85 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 shadow-spatial-card hover:shadow-spatial-lift hover:border-amber-300 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between holo-border-subtle">
+        <div class="bg-[#121217] backdrop-blur-xl rounded-3xl border border-white/15 p-5 shadow-spatial-card hover:shadow-spatial-lift hover:border-amber-300 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between holo-border-subtle">
           <div>
             <div class="flex items-center justify-between mb-4">
               <span class="font-mono text-xl font-bold text-amber-500 group-hover:scale-110 transition-transform">02</span>
               <span class="w-8 h-8 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 text-xs shadow-xs">⚡</span>
             </div>
-            <h3 class="font-bold text-slate-900 text-sm tracking-wide mb-2 uppercase">UNDERSTAND</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
+            <h3 class="font-bold text-white text-sm tracking-wide mb-2 uppercase">UNDERSTAND</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
               Identify root cause, state mutation points, and downstream failure propagation chains.
             </p>
           </div>
@@ -565,14 +547,14 @@
         </div>
 
         <!-- Step 03: Quantify -->
-        <div class="bg-white/85 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 shadow-spatial-card hover:shadow-spatial-lift hover:border-cyan-300 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between holo-border-subtle">
+        <div class="bg-[#121217] backdrop-blur-xl rounded-3xl border border-white/15 p-5 shadow-spatial-card hover:shadow-spatial-lift hover:border-cyan-300 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between holo-border-subtle">
           <div>
             <div class="flex items-center justify-between mb-4">
               <span class="font-mono text-xl font-bold text-cyan-600 group-hover:scale-110 transition-transform">03</span>
               <span class="w-8 h-8 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-cyan-600 text-xs shadow-xs">📊</span>
             </div>
-            <h3 class="font-bold text-slate-900 text-sm tracking-wide mb-2 uppercase">QUANTIFY</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
+            <h3 class="font-bold text-white text-sm tracking-wide mb-2 uppercase">QUANTIFY</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
               Measure affected in-flight work, wasted tokens, affected user counts, and direct dollar impact.
             </p>
           </div>
@@ -591,7 +573,7 @@
               <span class="w-8 h-8 rounded-xl bg-rose-100 border border-rose-200 flex items-center justify-center text-rose-600 text-xs shadow-xs">⚙️</span>
             </div>
             <h3 class="font-bold text-rose-950 text-sm tracking-wide mb-2 uppercase">RECOVER</h3>
-            <p class="text-xs text-slate-700 leading-relaxed font-medium">
+            <p class="text-xs text-slate-300 leading-relaxed font-medium">
               Retry · Resume · Restore · Replay · Rerun. Recover what can still be saved instead of raw restart.
             </p>
           </div>
@@ -602,14 +584,14 @@
         </div>
 
         <!-- Step 05: Verify -->
-        <div class="bg-white/85 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 shadow-spatial-card hover:shadow-spatial-lift hover:border-emerald-300 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between holo-border-subtle">
+        <div class="bg-[#121217] backdrop-blur-xl rounded-3xl border border-white/15 p-5 shadow-spatial-card hover:shadow-spatial-lift hover:border-emerald-300 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between holo-border-subtle">
           <div>
             <div class="flex items-center justify-between mb-4">
               <span class="font-mono text-xl font-bold text-emerald-500 group-hover:scale-110 transition-transform">05</span>
               <span class="w-8 h-8 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 text-xs shadow-xs">🛡️</span>
             </div>
-            <h3 class="font-bold text-slate-900 text-sm tracking-wide mb-2 uppercase">VERIFY</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
+            <h3 class="font-bold text-white text-sm tracking-wide mb-2 uppercase">VERIFY</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
               Confirm that recovery actually restored the intended outcome and met business SLA constraints.
             </p>
           </div>
@@ -624,10 +606,10 @@
     <!-- BEGIN: Three Core Pillars Section -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 mt-20" data-purpose="three-core-pillars">
       <div class="text-center max-w-2xl mx-auto mb-12">
-        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-rose-50/90 border border-rose-200 text-rose-600 text-[11px] font-semibold tracking-widest uppercase mb-3 shadow-xs">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white/[0.06] border border-white/20 text-slate-300 text-[11px] font-semibold tracking-widest uppercase mb-3 shadow-xs">
           <span>CORE ARCHITECTURE</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
           THREE CORE PILLARS
         </h2>
       </div>
@@ -635,49 +617,49 @@
       <!-- 3 Pillar Bento Cards with 3D Depth -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Pillar 1: AI Reliability -->
-        <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 p-7 shadow-spatial-card hover:shadow-spatial-lift hover:border-rose-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle group">
+        <div class="rounded-3xl bg-[#121217] backdrop-blur-xl border border-white/15 p-7 shadow-spatial-card hover:shadow-spatial-lift hover:border-rose-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle group">
           <div>
             <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-100 to-rose-50 border border-rose-200 flex items-center justify-center text-rose-600 mb-6 font-bold text-lg shadow-xs group-hover:scale-105 transition-transform">
               01
             </div>
             <div class="text-xs font-mono font-bold uppercase tracking-wider text-rose-600 mb-1">Pillar One</div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3">AI RELIABILITY</h3>
-            <p class="text-sm font-semibold text-slate-700 mb-3">"Understand what failed and why."</p>
+            <h3 class="text-xl font-bold text-white mb-3">AI RELIABILITY</h3>
+            <p class="text-sm font-semibold text-slate-300 mb-3">"Understand what failed and why."</p>
             <p class="text-xs text-slate-500 leading-relaxed">
               Captures deep execution states across LLM generations, external memory reads, tool calls, and agent steps. Pinpoints hallucinations, timeouts, and rate exhaustion instantly.
             </p>
           </div>
-          <div class="mt-8 p-3.5 rounded-2xl bg-slate-50/90 border border-slate-200/70 font-mono text-[11px] space-y-1.5 shadow-inner">
-            <div class="flex justify-between text-slate-600">
+          <div class="mt-8 p-3.5 rounded-2xl bg-slate-50/90 border border-white/10 font-mono text-[11px] space-y-1.5 shadow-inner">
+            <div class="flex justify-between text-slate-400">
               <span>Agent Execution State:</span>
               <span class="text-emerald-600 font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Preserved</span>
             </div>
-            <div class="flex justify-between text-slate-600">
+            <div class="flex justify-between text-slate-400">
               <span>Model Fallback SLA:</span>
-              <span class="text-slate-900 font-semibold">&lt; 14ms</span>
+              <span class="text-white font-semibold">&lt; 14ms</span>
             </div>
           </div>
         </div>
 
         <!-- Pillar 2: Work Recovery -->
-        <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 p-7 shadow-spatial-card hover:shadow-spatial-lift hover:border-amber-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative holo-border-subtle group">
+        <div class="rounded-3xl bg-[#121217] backdrop-blur-xl border border-white/15 p-7 shadow-spatial-card hover:shadow-spatial-lift hover:border-amber-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative holo-border-subtle group">
           <div>
             <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-100 to-amber-50 border border-amber-200 flex items-center justify-center text-amber-600 mb-6 font-bold text-lg shadow-xs group-hover:scale-105 transition-transform">
               02
             </div>
             <div class="text-xs font-mono font-bold uppercase tracking-wider text-amber-600 mb-1">Pillar Two</div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3">WORK RECOVERY</h3>
-            <p class="text-sm font-semibold text-slate-700 mb-3">"Recover what has already been done."</p>
+            <h3 class="text-xl font-bold text-white mb-3">WORK RECOVERY</h3>
+            <p class="text-sm font-semibold text-slate-300 mb-3">"Recover what has already been done."</p>
             <p class="text-xs text-slate-500 leading-relaxed">
               Stops full pipeline restarts when step 8 out of 10 fails. Resumes deterministically from in-flight memory boundaries, preserving completed compute and customer progress.
             </p>
           </div>
-          <div class="mt-8 p-3.5 rounded-2xl bg-slate-50/90 border border-slate-200/70 font-mono text-[11px] space-y-1.5 shadow-inner">
-            <div class="flex justify-between text-slate-600">
+          <div class="mt-8 p-3.5 rounded-2xl bg-slate-50/90 border border-white/10 font-mono text-[11px] space-y-1.5 shadow-inner">
+            <div class="flex justify-between text-slate-400">
               <span>Work Preserved Rate:</span>
               <span class="text-rose-600 font-bold">94%</span>
             </div>
-            <div class="flex justify-between text-slate-600">
+            <div class="flex justify-between text-slate-400">
               <span>Zero Cold Reruns:</span>
               <span class="text-emerald-600 font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Active</span>
             </div>
@@ -685,24 +667,24 @@
         </div>
 
         <!-- Pillar 3: Value Recovery -->
-        <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 p-7 shadow-spatial-card hover:shadow-spatial-lift hover:border-cyan-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle group">
+        <div class="rounded-3xl bg-[#121217] backdrop-blur-xl border border-white/15 p-7 shadow-spatial-card hover:shadow-spatial-lift hover:border-cyan-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle group">
           <div>
             <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-cyan-100 to-cyan-50 border border-cyan-200 flex items-center justify-center text-cyan-600 mb-6 font-bold text-lg shadow-xs group-hover:scale-105 transition-transform">
               03
             </div>
             <div class="text-xs font-mono font-bold uppercase tracking-wider text-cyan-600 mb-1">Pillar Three</div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3">VALUE RECOVERY</h3>
-            <p class="text-sm font-semibold text-slate-700 mb-3">"Recover what failure wastes."</p>
+            <h3 class="text-xl font-bold text-white mb-3">VALUE RECOVERY</h3>
+            <p class="text-sm font-semibold text-slate-300 mb-3">"Recover what failure wastes."</p>
             <p class="text-xs text-slate-500 leading-relaxed">
               Protects token expenditure, cloud compute spend, customer trust, and engineer on-call sleep by systematically containing failure blast radius before it leaks into production value loss.
             </p>
           </div>
-          <div class="mt-8 p-3.5 rounded-2xl bg-slate-50/90 border border-slate-200/70 font-mono text-[11px] space-y-1.5 shadow-inner">
-            <div class="flex justify-between text-slate-600">
+          <div class="mt-8 p-3.5 rounded-2xl bg-slate-50/90 border border-white/10 font-mono text-[11px] space-y-1.5 shadow-inner">
+            <div class="flex justify-between text-slate-400">
               <span>Monthly Compute Saved:</span>
               <span class="text-cyan-700 font-bold">$18,450 / avg</span>
             </div>
-            <div class="flex justify-between text-slate-600">
+            <div class="flex justify-between text-slate-400">
               <span>Silent Churn Prevented:</span>
               <span class="text-emerald-600 font-semibold">-86%</span>
             </div>
@@ -711,7 +693,7 @@
       </div>
 
       <!-- Synthesis Bridge -->
-      <div class="mt-8 p-5 rounded-2xl bg-white/80 backdrop-blur-xl border border-slate-200 shadow-spatial-card flex flex-col sm:flex-row items-center justify-center gap-4 text-center holo-border-subtle">
+      <div class="mt-8 p-5 rounded-2xl bg-[#16161f] backdrop-blur-xl border border-white/15 shadow-spatial-card flex flex-col sm:flex-row items-center justify-center gap-4 text-center holo-border-subtle">
         <span class="text-xs font-bold uppercase tracking-widest text-slate-500 font-mono">TOGETHER:</span>
         <div class="inline-flex items-center space-x-2.5 text-xs md:text-sm font-mono font-semibold">
           <span class="px-4 py-1.5 rounded-full bg-slate-900 text-white shadow-md shadow-slate-900/20">UNDERSTAND</span>
@@ -726,19 +708,19 @@
     <!-- BEGIN: Expansion Vision Section -->
     <section class="max-w-5xl mx-auto px-4 sm:px-6 mt-20" data-purpose="expansion-vision">
       <div class="text-center max-w-3xl mx-auto mb-10">
-        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-rose-50/90 border border-rose-200 text-rose-600 text-[11px] font-semibold tracking-widest uppercase mb-3 shadow-xs">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white/[0.06] border border-white/20 text-slate-300 text-[11px] font-semibold tracking-widest uppercase mb-3 shadow-xs">
           <span>EVOLUTIONARY SCOPE</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950 mb-3">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-3">
           BUILT FOR TODAY'S SOFTWARE
         </h2>
-        <p class="text-sm md:text-base text-slate-600 leading-relaxed font-medium">
+        <p class="text-sm md:text-base text-slate-400 leading-relaxed font-medium">
           Fluxera starts with AI-native SaaS, where complex execution chains create a new class of reliability problems. But the underlying problem is much bigger.
         </p>
       </div>
 
       <!-- Sequential Cybernetic Pipeline Horizon Flow -->
-      <div class="p-8 md:p-10 rounded-3xl bg-white/90 backdrop-blur-2xl border border-slate-200 shadow-spatial-card relative overflow-hidden mb-6 holo-border-subtle">
+      <div class="p-8 md:p-10 rounded-3xl bg-[#121217] backdrop-blur-2xl border border-white/15 shadow-spatial-card relative overflow-hidden mb-6 holo-border-subtle">
         <div class="text-center text-xs font-mono font-bold tracking-widest text-slate-400 uppercase mb-8">
           THE EXPANSION VISION
         </div>
@@ -749,22 +731,22 @@
           </div>
           <span class="text-rose-400 font-bold text-sm md:hidden">↓</span>
           <span class="hidden md:inline text-rose-400 font-bold text-sm">→</span>
-          <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 text-slate-800 font-mono text-xs font-medium shadow-xs">
+          <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-white/15 text-slate-800 font-mono text-xs font-medium shadow-xs">
             ALL SOFTWARE
           </div>
           <span class="text-slate-400 font-bold text-sm md:hidden">↓</span>
           <span class="hidden md:inline text-slate-400 font-bold text-sm">→</span>
-          <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 text-slate-800 font-mono text-xs font-medium shadow-xs">
+          <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-white/15 text-slate-800 font-mono text-xs font-medium shadow-xs">
             DIGITAL INFRASTRUCTURE
           </div>
           <span class="text-slate-400 font-bold text-sm md:hidden">↓</span>
           <span class="hidden md:inline text-slate-400 font-bold text-sm">→</span>
-          <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 text-slate-800 font-mono text-xs font-medium shadow-xs">
+          <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-white/15 text-slate-800 font-mono text-xs font-medium shadow-xs">
             AUTONOMOUS SYSTEMS
           </div>
           <span class="text-slate-400 font-bold text-sm md:hidden">↓</span>
           <span class="hidden md:inline text-slate-400 font-bold text-sm">→</span>
-          <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 text-slate-800 font-mono text-xs font-medium shadow-xs">
+          <div class="w-full md:w-auto px-5 py-3.5 rounded-2xl bg-slate-50/90 border border-white/15 text-slate-800 font-mono text-xs font-medium shadow-xs">
             PHYSICAL SYSTEMS
           </div>
         </div>
@@ -781,10 +763,10 @@
     <!-- BEGIN: Roadmap / Horizon Timeline -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 mt-20" data-purpose="roadmap-timeline">
       <div class="text-center max-w-2xl mx-auto mb-14">
-        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-rose-50/90 border border-rose-200 text-rose-600 text-[11px] font-semibold tracking-widest uppercase mb-3 shadow-xs">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white/[0.06] border border-white/20 text-slate-300 text-[11px] font-semibold tracking-widest uppercase mb-3 shadow-xs">
           <span>THE HORIZON</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
           FROM RECOVERY TO AUTONOMOUS RELIABILITY
         </h2>
       </div>
@@ -792,28 +774,28 @@
       <!-- 3-Phase Horizon Cards with 3D Depth -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Phase 1: Today -->
-        <div class="rounded-3xl bg-white/95 backdrop-blur-xl border-2 border-rose-400/90 p-7 shadow-[0_25px_60px_-15px_rgba(244,63,94,0.22)] flex flex-col justify-between relative overflow-hidden holo-border-rose hover:-translate-y-1.5 transition-all duration-300">
+        <div class="rounded-3xl bg-[#121217] backdrop-blur-xl border-2 border-rose-400/90 p-7 shadow-[0_25px_60px_-15px_rgba(244,63,94,0.22)] flex flex-col justify-between relative overflow-hidden holo-border-rose hover:-translate-y-1.5 transition-all duration-300">
           <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rose-50 text-rose-600 font-mono text-[11px] font-bold uppercase mb-4 self-start border border-rose-200">
             <span class="w-1.5 h-1.5 rounded-full bg-rose-600 animate-pulse"></span>
             <span>PHASE 1 · TODAY</span>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-3">Recovery Core</h3>
-          <p class="text-xs text-slate-600 mb-6 leading-relaxed">
+          <h3 class="text-lg font-bold text-white mb-3">Recovery Core</h3>
+          <p class="text-xs text-slate-400 mb-6 leading-relaxed">
             Active in-flight checkpointing, blast radius isolation, and deterministic resumption for AI agents and distributed backends.
           </p>
-          <div class="p-3.5 rounded-2xl bg-slate-50/90 border border-slate-200 font-mono text-xs font-semibold text-slate-800 text-center shadow-xs">
+          <div class="p-3.5 rounded-2xl bg-slate-50/90 border border-white/15 font-mono text-xs font-semibold text-slate-800 text-center shadow-xs">
             Detect → Understand → Recover → Verify
           </div>
         </div>
 
         <!-- Phase 2: Next -->
-        <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-cyan-200/90 p-7 shadow-spatial-card hover:border-cyan-400 hover:shadow-spatial-lift hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle">
+        <div class="rounded-3xl bg-[#121217] backdrop-blur-xl border border-cyan-200/90 p-7 shadow-spatial-card hover:border-cyan-400 hover:shadow-spatial-lift hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle">
           <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-50 text-cyan-700 font-mono text-[11px] font-semibold uppercase mb-4 self-start border border-cyan-200">
             <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
             <span>PHASE 2 · NEXT</span>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-3">Proactive Shield</h3>
-          <p class="text-xs text-slate-600 mb-6 leading-relaxed">
+          <h3 class="text-lg font-bold text-white mb-3">Proactive Shield</h3>
+          <p class="text-xs text-slate-400 mb-6 leading-relaxed">
             Anticipate failure patterns before execution chains degrade using cross-stack telemetry graphs and dynamic hedging.
           </p>
           <div class="p-3.5 rounded-2xl bg-cyan-50/60 border border-cyan-200/80 font-mono text-xs font-semibold text-cyan-900 text-center shadow-xs">
@@ -822,12 +804,12 @@
         </div>
 
         <!-- Phase 3: Long Term -->
-        <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 p-6 sm:p-7 shadow-spatial-card hover:border-slate-300 hover:shadow-spatial-lift hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-100 text-slate-600 font-mono text-[11px] font-semibold uppercase mb-4 self-start border border-slate-200">
+        <div class="rounded-3xl bg-[#121217] backdrop-blur-xl border border-white/15 p-6 sm:p-7 shadow-spatial-card hover:border-slate-300 hover:shadow-spatial-lift hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between holo-border-subtle">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-100 text-slate-400 font-mono text-[11px] font-semibold uppercase mb-4 self-start border border-white/15">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
             <span>PHASE 3 · LONG TERM</span>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Autonomous Reliability</h3>
+          <h3 class="text-lg font-bold text-white mb-2">Autonomous Reliability</h3>
           <p class="text-xs text-slate-500 mb-4">Systems that continuously self-adapt without operator intervention:</p>
           <div class="p-3 rounded-2xl bg-slate-900 text-slate-200 font-mono text-[10px] leading-relaxed text-center shadow-md flex flex-wrap items-center justify-center gap-1.5">
             <span class="px-2 py-0.5 rounded bg-slate-800 text-rose-300">Understand</span>
@@ -851,27 +833,27 @@
     <!-- FOOTER CONVERSION SECTION (HORIZON ARCH DOME) -->
     <section class="relative pt-16 sm:pt-20 pb-0 overflow-hidden text-center flex flex-col justify-end items-center" id="early-access">
       <div class="relative w-full max-w-6xl mx-auto px-2 sm:px-4 flex flex-col items-center justify-end">
-        <div class="horizon-arc-dome relative w-full pt-12 sm:pt-16 pb-16 sm:pb-20 px-4 sm:px-12 flex flex-col items-center justify-center overflow-hidden border-t-2 border-x border-b-0 border-rose-400/80 shadow-[0_-25px_80px_-15px_rgba(244,63,94,0.35)]">
+        <div class="horizon-arc-dome relative w-full pt-12 sm:pt-16 pb-16 sm:pb-20 px-4 sm:px-12 flex flex-col items-center justify-center overflow-hidden border-t-2 border-x border-b-0 border-white/25 shadow-[0_-25px_80px_-15px_rgba(255,255,255,0.1)]">
           <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-rose-400/25 blur-[100px] pointer-events-none rounded-full"></div>
           <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-1 bg-gradient-to-r from-transparent via-rose-400 to-transparent blur-[1px] pointer-events-none"></div>
 
           <div class="max-w-2xl mx-auto relative z-10 w-full px-2">
-            <div class="w-12 h-12 mx-auto mb-5 rounded-2xl bg-white border border-rose-200 flex items-center justify-center shadow-lg shadow-rose-500/25">
-              <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-rose-600 to-rose-400 flex items-center justify-center text-white font-mono font-bold text-xs">
+            <div class="w-12 h-12 mx-auto mb-5 rounded-2xl bg-[#181822] border border-white/20 flex items-center justify-center shadow-lg shadow-white/10">
+              <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-white via-slate-200 to-slate-400 flex items-center justify-center text-slate-950 font-mono font-bold text-xs">
                 fx
               </div>
             </div>
-            <h2 class="text-xl sm:text-3xl md:text-5xl font-extrabold text-slate-950 tracking-tight leading-snug px-1 sm:px-4">
+            <h2 class="text-xl sm:text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-snug px-1 sm:px-4">
               Keep Systems Running. <br class="hidden sm:inline" />
-              <span class="text-rose-600 block sm:inline mt-1 sm:mt-0">Recover the Cost of Failure.</span>
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400 block sm:inline mt-1 sm:mt-0">Recover the Cost of Failure.</span>
             </h2>
-            <p class="mt-4 text-xs sm:text-base text-slate-600 max-w-xl mx-auto font-medium leading-relaxed px-1">
+            <p class="mt-4 text-xs sm:text-base text-slate-400 max-w-xl mx-auto font-medium leading-relaxed px-1">
               Add a reliability and recovery layer to your software stack—designed to restore interrupted work, keep services running, and reduce wasted compute and operational costs.
             </p>
             <div class="mt-8 max-w-md mx-auto w-full px-1">
-              <form class="flex flex-col sm:flex-row items-center gap-2 p-1.5 rounded-2xl sm:rounded-full bg-white/95 border border-slate-200/90 shadow-xl shadow-rose-500/15 backdrop-blur-md" onsubmit="event.preventDefault(); alert('Thank you for requesting early access to Fluxera!');">
-                <input class="w-full sm:flex-1 px-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 bg-transparent rounded-xl sm:rounded-full focus:outline-none focus:ring-0 border-0 text-center sm:text-left" placeholder="Enter your work email address" required="" type="email" />
-                <button class="w-full sm:w-auto px-6 py-3 sm:py-2.5 rounded-xl sm:rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 text-white font-bold text-xs tracking-wide shadow-md shadow-rose-500/35 hover:shadow-rose-500/50 hover:scale-[1.02] transition-all whitespace-nowrap" type="submit">
+              <form class="flex flex-col sm:flex-row items-center gap-2 p-1.5 rounded-2xl sm:rounded-full bg-[#121217] border border-white/15 shadow-xl shadow-rose-500/15 backdrop-blur-md" onsubmit="event.preventDefault(); alert('Thank you for requesting early access to Fluxera!');">
+                <input class="w-full sm:flex-1 px-4 py-2.5 text-xs text-white placeholder-slate-400 bg-transparent rounded-xl sm:rounded-full focus:outline-none focus:ring-0 border-0 text-center sm:text-left" placeholder="Enter your work email address" required="" type="email" />
+                <button class="w-full sm:w-auto px-6 py-3 sm:py-2.5 rounded-xl sm:rounded-full bg-gradient-to-r from-white via-slate-100 to-slate-300 text-slate-950 font-bold text-xs tracking-wide shadow-md shadow-white/10 hover:shadow-[0_0_25px_rgba(255,255,255,0.35)] hover:scale-[1.02] transition-all whitespace-nowrap" type="submit">
                   Get Early Access
                 </button>
               </form>
@@ -884,20 +866,20 @@
   </main>
 
   <!-- SITE FOOTER -->
-  <footer class="border-t border-slate-200/60 py-6 px-4 sm:px-6 text-xs text-slate-500 relative z-10 bg-white/50 backdrop-blur-md" data-purpose="site-footer">
+  <footer class="border-t border-white/15/60 py-6 px-4 sm:px-6 text-xs text-slate-500 relative z-10 bg-white/50 backdrop-blur-md" data-purpose="site-footer">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
       <div class="flex flex-col sm:flex-row items-center gap-2 order-1">
         <div class="flex items-center gap-2">
-          <div class="w-5 h-5 rounded bg-rose-600 flex items-center justify-center text-white text-[10px] font-mono font-bold">fx</div>
+          <div class="w-5 h-5 rounded bg-[#181822] border border-white/20 flex items-center justify-center text-white text-[10px] font-mono font-bold">fx</div>
           <span class="font-bold text-slate-800">Fluxera — Building Self-Evolving Systems</span>
         </div>
         <span class="hidden sm:inline text-slate-300">•</span>
         <span class="text-slate-400">© 2026 Fluxera Inc. All Rights Reserved.</span>
       </div>
       <div class="flex items-center justify-center gap-6 order-2 font-medium">
-        <a class="hover:text-rose-600 transition-colors" href="./index.html">Home</a>
-        <a class="text-rose-600 font-semibold border-b border-rose-500 pb-0.5" href="./vision.html">Vision</a>
-        <a class="hover:text-rose-600 transition-colors" href="./dashboard.html">Dashboard</a>
+        <a class="hover:text-white transition-colors" href="./index.html">Home</a>
+        <a class="text-white font-semibold border-b border-white pb-0.5" href="./vision.html">Vision</a>
+        <a class="hover:text-white transition-colors" href="./dashboard.html">Dashboard</a>
       </div>
     </div>
   </footer>

@@ -69,27 +69,28 @@
           float n2 = snoise(p * 2.0 - vec2(t * 0.25, -t * 0.3) + vec2(n1 * 0.5));
           float n3 = snoise(p * 0.7 + vec2(-t * 0.15, t * 0.25) + vec2(n2 * 0.4));
 
-          vec3 colWhite = vec3(0.99, 0.99, 1.0);
-          vec3 colRed = vec3(1.0, 0.26, 0.42);
-          vec3 colSoftRose = vec3(1.0, 0.84, 0.88);
-          vec3 colBlue = vec3(0.22, 0.68, 0.98);
-          vec3 colDeepBlue = vec3(0.35, 0.48, 0.96);
+          // Matte Black + Silver Liquid Titanium Palette
+          vec3 colMatteBlack = vec3(0.035, 0.035, 0.042);
+          vec3 colCharcoal   = vec3(0.08, 0.08, 0.098);
+          vec3 colMutedSilver = vec3(0.24, 0.26, 0.30);
+          vec3 colSilver     = vec3(0.62, 0.66, 0.72);
+          vec3 colPlatinum   = vec3(0.92, 0.94, 0.98);
 
-          float redWeight = smoothstep(-0.25, 0.8, n1 * 0.7 + n2 * 0.5);
-          float blueWeight = smoothstep(-0.2, 0.85, n3 * 0.8 - n1 * 0.3);
+          float wave1 = smoothstep(-0.25, 0.85, n1 * 0.7 + n2 * 0.5);
+          float wave2 = smoothstep(-0.2, 0.9, n3 * 0.8 - n1 * 0.3);
 
-          vec3 color = colWhite;
-          color = mix(color, colSoftRose, redWeight * 0.42);
-          color = mix(color, colRed, pow(redWeight, 2.2) * 0.28);
-          color = mix(color, colBlue, pow(blueWeight, 1.8) * 0.24);
-          color = mix(color, colDeepBlue, pow(blueWeight * redWeight, 2.0) * 0.15);
+          vec3 color = colMatteBlack;
+          color = mix(color, colCharcoal, wave1 * 0.65);
+          color = mix(color, colMutedSilver, pow(wave1, 2.2) * 0.32);
+          color = mix(color, colSilver, pow(wave2, 2.6) * 0.28);
+          color = mix(color, colPlatinum, pow(wave1 * wave2, 3.0) * 0.22);
 
           vec2 center = vec2(0.5 * aspect, 0.5);
           float d = length(p - center);
-          color += vec3(0.04) * (1.0 - smoothstep(0.0, 1.2, d));
+          color += vec3(0.015) * (1.0 - smoothstep(0.0, 1.2, d));
 
-          float grain = fract(sin(dot(uv.xy, vec2(12.9898,78.233))) * 43758.5453) * 0.012;
-          color -= grain;
+          float grain = fract(sin(dot(uv.xy, vec2(12.9898,78.233))) * 43758.5453) * 0.009;
+          color += grain;
 
           gl_FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);
         }
@@ -191,18 +192,18 @@
           this.pulsePhase = Math.random() * Math.PI * 2;
           
           const rnd = Math.random();
-          if (rnd < 0.65) {
-            this.color = 'rgba(148, 163, 184, 0.75)'; // slate-400
+          if (rnd < 0.60) {
+            this.color = 'rgba(148, 163, 184, 0.55)'; // muted silver
             this.accent = false;
-            this.type = 'slate';
+            this.type = 'silver-muted';
           } else if (rnd < 0.88) {
-            this.color = 'rgba(244, 63, 94, 0.9)'; // rose-500
+            this.color = 'rgba(226, 232, 240, 0.85)'; // bright silver
             this.accent = true;
-            this.type = 'rose';
+            this.type = 'silver';
           } else {
-            this.color = 'rgba(56, 189, 248, 0.9)'; // sky-400
+            this.color = 'rgba(255, 255, 255, 0.98)'; // platinum white
             this.accent = true;
-            this.type = 'sky';
+            this.type = 'platinum';
           }
         }
 
@@ -236,15 +237,15 @@
           c.fillStyle = this.color;
           c.fill();
 
-          if (this.type === 'rose') {
+          if (this.type === 'platinum') {
             c.beginPath();
             c.arc(this.x, this.y, r * 2.8, 0, Math.PI * 2);
-            c.fillStyle = 'rgba(244, 63, 94, 0.12)';
+            c.fillStyle = 'rgba(255, 255, 255, 0.15)';
             c.fill();
-          } else if (this.type === 'sky') {
+          } else if (this.type === 'silver') {
             c.beginPath();
-            c.arc(this.x, this.y, r * 2.8, 0, Math.PI * 2);
-            c.fillStyle = 'rgba(56, 189, 248, 0.12)';
+            c.arc(this.x, this.y, r * 2.5, 0, Math.PI * 2);
+            c.fillStyle = 'rgba(226, 232, 240, 0.10)';
             c.fill();
           }
         }
@@ -310,11 +311,11 @@
               ctx.lineTo(nodes[j].x, nodes[j].y);
 
               if (nodes[i].accent || nodes[j].accent) {
-                ctx.strokeStyle = (nodes[i].type === 'rose' || nodes[j].type === 'rose')
-                  ? `rgba(244, 63, 94, ${alpha * 1.35})`
-                  : `rgba(56, 189, 248, ${alpha * 1.25})`;
+                ctx.strokeStyle = (nodes[i].type === 'platinum' || nodes[j].type === 'platinum')
+                  ? `rgba(255, 255, 255, ${alpha * 1.2})`
+                  : `rgba(226, 232, 240, ${alpha * 1.1})`;
               } else {
-                ctx.strokeStyle = `rgba(148, 163, 184, ${alpha})`;
+                ctx.strokeStyle = `rgba(148, 163, 184, ${alpha * 0.75})`;
               }
               ctx.lineWidth = 0.85;
               ctx.stroke();
@@ -335,12 +336,8 @@
                   ctx.lineTo(nodes[k].x, nodes[k].y);
                   ctx.closePath();
 
-                  const triAlpha = (1 - Math.max(dist, dist2, dist3) / maxTriangleDist) * 0.065;
-                  if (nodes[i].type === 'rose' || nodes[j].type === 'rose' || nodes[k].type === 'rose') {
-                    ctx.fillStyle = `rgba(244, 63, 94, ${triAlpha * 1.3})`;
-                  } else {
-                    ctx.fillStyle = `rgba(56, 189, 248, ${triAlpha})`;
-                  }
+                  const triAlpha = (1 - Math.max(dist, dist2, dist3) / maxTriangleDist) * 0.045;
+                  ctx.fillStyle = `rgba(255, 255, 255, ${triAlpha})`;
                   ctx.fill();
                 }
               }
@@ -355,11 +352,11 @@
             const dy = nodes[i].y - mousePos.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < 155) {
-              const alpha = (1 - dist / 155) * 0.55;
+              const alpha = (1 - dist / 155) * 0.5;
               ctx.beginPath();
               ctx.moveTo(nodes[i].x, nodes[i].y);
               ctx.lineTo(mousePos.x, mousePos.y);
-              ctx.strokeStyle = `rgba(244, 63, 94, ${alpha})`;
+              ctx.strokeStyle = `rgba(226, 232, 240, ${alpha})`;
               ctx.lineWidth = 1;
               ctx.stroke();
             }
@@ -402,8 +399,8 @@
       badge: "Trigger",
       title: "Technical Failure",
       desc: "API timeouts, 502 bad gateways, rate limit exhaustion, or broken database queries.",
-      badgeBg: "bg-rose-100 text-rose-700",
-      numBg: "bg-rose-100 text-rose-600",
+      badgeBg: "bg-white/10 text-slate-300 border border-white/15",
+      numBg: "bg-white/10 text-slate-200 border border-white/20",
       isSpecial: false,
       isVerified: false
     },
@@ -412,8 +409,8 @@
       badge: "Cascade",
       title: "System Impact",
       desc: "In-flight agent runtime halts, token context is dropped, and background worker jobs stall.",
-      badgeBg: "bg-amber-100 text-amber-800",
-      numBg: "bg-amber-100 text-amber-600",
+      badgeBg: "bg-white/10 text-slate-300 border border-white/15",
+      numBg: "bg-white/10 text-slate-200 border border-white/20",
       isSpecial: false,
       isVerified: false
     },
@@ -422,8 +419,8 @@
       badge: "Progress",
       title: "Work Impact",
       desc: "Multi-step AI reasoning loops and active customer workflows lose critical execution state.",
-      badgeBg: "bg-rose-100 text-rose-700",
-      numBg: "bg-rose-100 text-rose-500",
+      badgeBg: "bg-white/10 text-slate-300 border border-white/15",
+      numBg: "bg-white/10 text-slate-200 border border-white/20",
       isSpecial: false,
       isVerified: false
     },
@@ -432,8 +429,8 @@
       badge: "Customer",
       title: "User Impact",
       desc: "End users experience spinning loading states, failed checkouts, and disruptive service errors.",
-      badgeBg: "bg-amber-100 text-amber-800",
-      numBg: "bg-amber-100 text-amber-700",
+      badgeBg: "bg-white/10 text-slate-300 border border-white/15",
+      numBg: "bg-white/10 text-slate-200 border border-white/20",
       isSpecial: false,
       isVerified: false
     },
@@ -442,8 +439,8 @@
       badge: "Financial",
       title: "Business Impact",
       desc: "High cart abandonment, SLA penalty breaches, and silent repetitive token cost waste.",
-      badgeBg: "bg-rose-100 text-rose-700",
-      numBg: "bg-rose-100 text-rose-700",
+      badgeBg: "bg-white/10 text-slate-300 border border-white/15",
+      numBg: "bg-white/10 text-slate-200 border border-white/20",
       isSpecial: false,
       isVerified: false
     },
@@ -452,8 +449,8 @@
       badge: "Deterministic",
       title: "Deterministic Recovery",
       desc: "Fluxera Engine triggers sub-12ms failover models, state compression, and idempotency recovery.",
-      badgeBg: "bg-white/20 text-white font-mono",
-      numBg: "bg-white/20 text-white font-black",
+      badgeBg: "bg-slate-900 text-white font-mono",
+      numBg: "bg-slate-900 text-white font-black",
       isSpecial: true,
       isVerified: false
     },
@@ -462,8 +459,8 @@
       badge: "Closed-Loop",
       title: "Verified Outcome",
       desc: "100% verified state restoration with full dollarized revenue protection audit telemetry.",
-      badgeBg: "bg-emerald-100 text-emerald-800",
-      numBg: "bg-emerald-500 text-white",
+      badgeBg: "bg-white/15 text-white border border-white/25",
+      numBg: "bg-white text-slate-950 font-bold",
       isSpecial: false,
       isVerified: true
     }
@@ -482,27 +479,27 @@
     const stage = pipelineStages[currentStageIndex];
 
     if (stage.isSpecial) {
-      cardInner.className = "rounded-[22px] bg-gradient-to-tr from-rose-600 via-rose-500 to-rose-400 p-6 text-center min-h-[220px] flex flex-col justify-between text-white shadow-lg transition-all duration-300";
+      cardInner.className = "rounded-[22px] bg-gradient-to-tr from-white via-slate-100 to-slate-300 p-6 text-center min-h-[220px] flex flex-col justify-between text-slate-950 shadow-xl border border-white transition-all duration-300";
       cardInner.innerHTML = `
         <div>
           <div class="flex items-center justify-between mb-3">
-            <span class="text-[10px] font-mono uppercase font-black px-2.5 py-1 rounded-full bg-white/20 border border-white/30 text-rose-100">
+            <span class="text-[10px] font-mono uppercase font-black px-2.5 py-1 rounded-full bg-slate-900/10 border border-slate-900/20 text-slate-900">
               STAGE 06 OF 07 • RECOVERY ENGINE
             </span>
-            <div class="w-8 h-8 rounded-full bg-white/25 text-white font-black text-sm flex items-center justify-center font-mono shadow-sm">
+            <div class="w-8 h-8 rounded-full bg-slate-950 text-white font-black text-sm flex items-center justify-center font-mono shadow-sm">
               ${stage.num}
             </div>
           </div>
-          <h4 class="text-xl font-black tracking-tight text-white mb-2">${stage.title}</h4>
-          <p class="text-xs text-rose-100 leading-relaxed font-medium">${stage.desc}</p>
+          <h4 class="text-xl font-black tracking-tight text-slate-950 mb-2">${stage.title}</h4>
+          <p class="text-xs text-slate-700 leading-relaxed font-semibold">${stage.desc}</p>
         </div>
-        <div class="pt-3 mt-3 border-t border-white/20 flex items-center justify-between text-[11px] font-bold text-white">
+        <div class="pt-3 mt-3 border-t border-slate-900/15 flex items-center justify-between text-[11px] font-bold text-slate-900">
           <span>Autonomous Failover &amp; Replay</span>
           <span>⚡ 12ms SLA</span>
         </div>
       `;
     } else {
-      cardInner.className = `rounded-[22px] bg-white p-6 text-center min-h-[220px] flex flex-col justify-between text-slate-900 shadow-md transition-all duration-300 ${stage.isVerified ? 'border-2 border-emerald-300 bg-emerald-50/40' : ''}`;
+      cardInner.className = `rounded-[22px] bg-[#121217] p-6 text-center min-h-[220px] flex flex-col justify-between text-white border border-white/15 shadow-lg transition-all duration-300 ${stage.isVerified ? 'border-2 border-white/40 bg-[#161a24]' : ''}`;
       cardInner.innerHTML = `
         <div>
           <div class="flex items-center justify-between mb-3">
@@ -513,10 +510,10 @@
               ${stage.num}
             </div>
           </div>
-          <h4 class="text-xl font-extrabold tracking-tight text-slate-900 mb-2">${stage.title}</h4>
-          <p class="text-xs text-slate-600 leading-relaxed font-medium">${stage.desc}</p>
+          <h4 class="text-xl font-extrabold tracking-tight text-white mb-2">${stage.title}</h4>
+          <p class="text-xs text-slate-400 leading-relaxed font-medium">${stage.desc}</p>
         </div>
-        <div class="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold ${stage.isVerified ? 'text-emerald-700' : 'text-slate-500'}">
+        <div class="pt-3 mt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-bold ${stage.isVerified ? 'text-white' : 'text-slate-400'}">
           <span>${stage.isVerified ? 'Closed-Loop Restored' : 'Chain Impact'}</span>
           <span>↓ Next Stage</span>
         </div>
@@ -529,8 +526,8 @@
       const dot = document.createElement('button');
       dot.setAttribute('aria-label', `Go to stage ${idx + 1}`);
       dot.className = idx === currentStageIndex
-        ? 'w-6 h-2 rounded-full bg-rose-600 transition-all duration-300 cursor-pointer border-0'
-        : 'w-2 h-2 rounded-full bg-slate-200 hover:bg-slate-300 transition-all duration-300 cursor-pointer border-0';
+        ? 'w-6 h-2 rounded-full bg-white shadow-[0_0_8px_#ffffff] transition-all duration-300 cursor-pointer border-0'
+        : 'w-2 h-2 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300 cursor-pointer border-0';
       dot.addEventListener('click', () => {
         currentStageIndex = idx;
         renderMobileCarousel();
@@ -616,21 +613,21 @@ window.selectSdkStep = function(stepNum) {
       const indicator = btn.querySelector('.sdk-step-indicator');
       const label = btn.querySelector('span');
       if (i === stepNum) {
-        btn.className = 'sdk-step-card text-left p-5 sm:p-6 rounded-2xl border-2 transition-all duration-300 cursor-pointer w-full bg-white shadow-md border-rose-500 ring-2 ring-rose-500/20';
-        if (indicator) indicator.className = 'sdk-step-indicator w-2.5 h-2.5 rounded-full bg-rose-500';
-        if (label) label.className = 'text-[11px] font-mono font-bold tracking-widest text-rose-600 uppercase';
+        btn.className = 'sdk-step-card text-left p-5 sm:p-6 rounded-2xl border transition-all duration-300 cursor-pointer w-full bg-[#18181f] shadow-[0_0_25px_rgba(255,255,255,0.08)] border-white/40 ring-1 ring-white/20';
+        if (indicator) indicator.className = 'sdk-step-indicator w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_8px_#ffffff]';
+        if (label) label.className = 'text-[11px] font-mono font-bold tracking-widest text-slate-200 uppercase';
       } else {
-        btn.className = 'sdk-step-card text-left p-5 sm:p-6 rounded-2xl border-2 transition-all duration-300 cursor-pointer w-full bg-white/70 hover:bg-white border-slate-200 shadow-sm hover:border-slate-300';
+        btn.className = 'sdk-step-card text-left p-5 sm:p-6 rounded-2xl border transition-all duration-300 cursor-pointer w-full bg-[#111115]/90 hover:bg-[#16161b] border-white/10 shadow-sm hover:border-white/20';
         if (indicator) indicator.className = 'sdk-step-indicator w-2.5 h-2.5 rounded-full bg-transparent';
-        if (label) label.className = 'text-[11px] font-mono font-bold tracking-widest text-slate-400 uppercase';
+        if (label) label.className = 'text-[11px] font-mono font-bold tracking-widest text-slate-500 uppercase';
       }
     }
 
     if (tab) {
       if (i === stepNum) {
-        tab.className = 'flex-1 py-2 px-2 text-center rounded-xl font-mono text-xs font-bold transition-all bg-white text-rose-600 shadow-sm border border-rose-200/80';
+        tab.className = 'flex-1 py-2 px-2 text-center rounded-xl font-mono text-xs font-bold transition-all bg-white text-slate-950 shadow-sm border border-white';
       } else {
-        tab.className = 'flex-1 py-2 px-2 text-center rounded-xl font-mono text-xs font-semibold transition-all text-slate-600 hover:text-slate-900';
+        tab.className = 'flex-1 py-2 px-2 text-center rounded-xl font-mono text-xs font-semibold transition-all text-slate-400 hover:text-white';
       }
     }
 
@@ -673,15 +670,15 @@ window.selectSdkStep = function(stepNum) {
 
   if (stepNum === 1) {
     if (filenameEl) filenameEl.textContent = 'fluxera-sdk.js';
-    if (badgeEl) { badgeEl.textContent = 'Step 1 of 3'; badgeEl.className = 'px-2 sm:px-2.5 py-0.5 rounded-md bg-rose-950/60 border border-rose-800/70 text-rose-400 font-semibold'; }
+    if (badgeEl) { badgeEl.textContent = 'Step 1 of 3'; badgeEl.className = 'px-2 sm:px-2.5 py-0.5 rounded-md bg-white/10 border border-white/20 text-slate-200 font-semibold'; }
     if (statusEl) statusEl.textContent = 'Ready to execute in Node.js / Python';
   } else if (stepNum === 2) {
     if (filenameEl) filenameEl.textContent = 'telemetry-event.json';
-    if (badgeEl) { badgeEl.textContent = 'Step 2 of 3'; badgeEl.className = 'px-2 sm:px-2.5 py-0.5 rounded-md bg-cyan-950/60 border border-cyan-800/70 text-cyan-400 font-semibold'; }
+    if (badgeEl) { badgeEl.textContent = 'Step 2 of 3'; badgeEl.className = 'px-2 sm:px-2.5 py-0.5 rounded-md bg-white/10 border border-white/20 text-slate-200 font-semibold'; }
     if (statusEl) statusEl.textContent = 'Auto-logged telemetry packet emitted';
   } else if (stepNum === 3) {
     if (filenameEl) filenameEl.textContent = 'cost-analytics.ts';
-    if (badgeEl) { badgeEl.textContent = 'Step 3 of 3'; badgeEl.className = 'px-2 sm:px-2.5 py-0.5 rounded-md bg-amber-950/60 border border-amber-800/70 text-amber-400 font-semibold'; }
+    if (badgeEl) { badgeEl.textContent = 'Step 3 of 3'; badgeEl.className = 'px-2 sm:px-2.5 py-0.5 rounded-md bg-white/10 border border-white/20 text-slate-200 font-semibold'; }
     if (statusEl) statusEl.textContent = 'Financial impact formula evaluated';
   }
 };
