@@ -105,18 +105,18 @@
         <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400 drop-shadow-sm block">Recover the Cost of Failure.</span>
       </h1>
 
-      <p class="text-sm sm:text-base md:text-lg text-slate-400 font-normal max-w-2xl mx-auto leading-relaxed mb-8">
-        Fluxera detects and diagnoses failures across your tech stack, recovers interrupted work, keeps services running, and reduces wasted compute, API spend, and operational costs.
+            <p class="text-sm sm:text-base md:text-lg text-slate-400 font-normal max-w-2xl mx-auto leading-relaxed mb-8">
+        Fluxera brings evolving intelligence to software systems. It identifies failures, initiates recovery, verifies outcomes, and measures avoidable execution costs.
       </p>
 
       <div class="mt-4 flex flex-wrap items-center justify-center gap-4">
         <a class="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-white via-slate-100 to-slate-300 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-white/10 hover:shadow-white/25 hover:scale-[1.03] transition-all" href="./dashboard.html">
-          Open Dashboard
+          Explore the Platform
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
         </a>
-        <a class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#121217] hover:bg-[#181820] text-slate-200 hover:text-white border border-white/20 hover:border-white/40 text-xs sm:text-sm font-semibold transition-all shadow-xs hover:shadow-sm" href="./dashboard.html">
-          <span class="w-2 h-2 rounded-full bg-slate-300 animate-ping"></span>
-          Live Telemetry Demo
+        <a class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#121217] hover:bg-[#181820] text-slate-200 hover:text-white border border-white/20 hover:border-white/40 text-xs sm:text-sm font-semibold transition-all shadow-xs hover:shadow-sm" href="#early-access">
+          <span class="w-2 h-2 rounded-full bg-slate-300 animate-pulse"></span>
+          Become an Early Design Partner
         </a>
       </div>
     </div>
@@ -349,637 +349,590 @@
     </div>
   </section>
 
-  <!-- SECTION: HOW IT WORKS (3-STEP DEVELOPER INTEGRATION WALKTHROUGH) -->
-  <section class="relative pt-16 pb-12 px-4 max-w-6xl mx-auto reveal-on-scroll" id="how-it-works" data-purpose="developer-sdk-steps">
-    <div class="text-center mb-8 sm:mb-10">
-      <span class="px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/[0.06] text-slate-300 border border-white/20">
-        INTEGRATION IN 2 MINUTES
-      </span>
-      <h2 class="mt-3 text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-        HOW FLUXERA WORKS
+  <!-- ========================================================================= -->
+  <!-- SECTION 2: EVOLVING INTELLIGENCE (FROM FAILURE TO RECOVERY) -->
+  <!-- ========================================================================= -->
+  <section class="relative pt-20 pb-16 px-4 max-w-6xl mx-auto reveal-on-scroll" id="evolving-intelligence">
+    <div class="text-center mb-12 sm:mb-16">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/[0.06] text-slate-300 border border-white/20 mb-4 backdrop-blur-md">
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 animate-pulse"></span>
+        EVOLVING INTELLIGENCE
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+        From Failure to Recovery
       </h2>
-      <p class="mt-2 text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
-        Click each step below to inspect the code, payload, and financial formula in the live terminal.
+      <p class="mt-4 text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Fluxera helps software systems respond intelligently when execution fails.
       </p>
-    </div>
 
-    <!-- MOBILE-ONLY SEGMENTED TABS (Visible on < lg screens) -->
-    <div class="lg:hidden mb-4">
-      <div class="flex items-center justify-between p-1 bg-[#121217] rounded-2xl border border-white/15">
-        <button
-          type="button"
-          onclick="selectSdkStep(1)"
-          id="sdk-tab-btn-1"
-          class="flex-1 py-2 px-2 text-center rounded-xl font-mono text-xs font-bold transition-all bg-gradient-to-r from-white via-slate-100 to-slate-300 text-slate-950 shadow-sm border border-white/40"
-        >
-          01 Understand Work
-        </button>
-        <button
-          type="button"
-          onclick="selectSdkStep(2)"
-          id="sdk-tab-btn-2"
-          class="flex-1 py-2 px-2 text-center rounded-xl font-mono text-xs font-semibold transition-all text-slate-400 hover:text-white"
-        >
-          02 Detect Failures
-        </button>
-        <button
-          type="button"
-          onclick="selectSdkStep(3)"
-          id="sdk-tab-btn-3"
-          class="flex-1 py-2 px-2 text-center rounded-xl font-mono text-xs font-semibold transition-all text-slate-400 hover:text-white"
-        >
-          03 Recover Work
-        </button>
-      </div>
-
-      <!-- Mobile Active Step Info Banner -->
-      <div class="mt-3 p-4 rounded-2xl bg-[#121217] border border-white/15 shadow-xs text-left" id="sdk-mobile-desc">
-        <div class="flex items-center gap-2 mb-1">
-          <span class="text-[10px] font-mono font-bold tracking-widest text-slate-300 uppercase" id="sdk-mobile-step-tag">STEP 1</span>
-          <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
-        </div>
-        <h4 class="text-base font-bold text-white" id="sdk-mobile-step-title">Understand Work</h4>
-        <p class="text-xs text-slate-400 mt-1" id="sdk-mobile-step-text">
-          Connect and understand the services, models, and workflows your software runs.
-        </p>
+      <!-- 6-Stage Evolution Track Badges -->
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-4xl mx-auto">
+        <span class="px-3.5 py-1.5 rounded-xl bg-[#14141a] border border-white/20 text-xs font-mono font-bold text-white shadow-sm flex items-center gap-1.5">
+          <span class="text-slate-400">01</span> Instrument
+        </span>
+        <span class="text-slate-600 font-bold hidden sm:inline">→</span>
+        <span class="px-3.5 py-1.5 rounded-xl bg-[#14141a] border border-white/20 text-xs font-mono font-bold text-white shadow-sm flex items-center gap-1.5">
+          <span class="text-slate-400">02</span> Understand
+        </span>
+        <span class="text-slate-600 font-bold hidden sm:inline">→</span>
+        <span class="px-3.5 py-1.5 rounded-xl bg-[#14141a] border border-white/20 text-xs font-mono font-bold text-white shadow-sm flex items-center gap-1.5">
+          <span class="text-slate-400">03</span> Analyze
+        </span>
+        <span class="text-slate-600 font-bold hidden sm:inline">→</span>
+        <span class="px-3.5 py-1.5 rounded-xl bg-[#1a1a24] border border-white/40 text-xs font-mono font-bold text-white shadow-[0_0_15px_rgba(255,255,255,0.12)] flex items-center gap-1.5 ring-1 ring-white/25">
+          <span class="text-slate-300">04</span> Recover
+        </span>
+        <span class="text-slate-600 font-bold hidden sm:inline">→</span>
+        <span class="px-3.5 py-1.5 rounded-xl bg-[#14141a] border border-white/20 text-xs font-mono font-bold text-white shadow-sm flex items-center gap-1.5">
+          <span class="text-slate-400">05</span> Verify
+        </span>
+        <span class="text-slate-600 font-bold hidden sm:inline">→</span>
+        <span class="px-3.5 py-1.5 rounded-xl bg-[#14141a] border border-white/20 text-xs font-mono font-bold text-white shadow-sm flex items-center gap-1.5">
+          <span class="text-slate-400">06</span> Improve
+        </span>
       </div>
     </div>
 
-    <!-- Master-Detail Grid: Desktop Side-by-Side & Mobile Terminal Viewport -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-      
-      <!-- DESKTOP LEFT COLUMN: 3 CLICKABLE STEP CARDS (Hidden on < lg, visible on lg+) -->
-      <div class="hidden lg:flex lg:col-span-5 flex-col justify-between gap-3.5">
-        <!-- Step 1 Button -->
-        <button
-          type="button"
-          onclick="selectSdkStep(1)"
-          id="sdk-step-btn-1"
-          class="sdk-step-card text-left p-5 sm:p-6 rounded-2xl border-2 transition-all duration-300 cursor-pointer w-full bg-[#18181f] shadow-lg border-white/50 ring-2 ring-white/15"
-        >
-          <div class="flex items-center justify-between mb-1.5">
-            <span class="text-[11px] font-mono font-bold tracking-widest text-slate-200 uppercase">STEP 1</span>
-            <span class="sdk-step-indicator w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_8px_#ffffff]"></span>
+    <!-- 6 Core Steps Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Step 1: Instrument -->
+      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold px-2.5 py-1 rounded-md bg-white/5 border border-white/10">STAGE 01</span>
+            <div class="w-8 h-8 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-slate-300 text-xs font-mono font-bold group-hover:border-white/40 transition-colors">
+              01
+            </div>
           </div>
-          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-1.5">Understand Work</h3>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-slate-100">Instrument</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+            Track workflows, APIs, tools, and AI agent executions.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-[11px] font-mono text-slate-500">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+          Non-blocking execution telemetry
+        </div>
+      </div>
+
+      <!-- Step 2: Understand -->
+      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold px-2.5 py-1 rounded-md bg-white/5 border border-white/10">STAGE 02</span>
+            <div class="w-8 h-8 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-slate-300 text-xs font-mono font-bold group-hover:border-white/40 transition-colors">
+              02
+            </div>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-slate-100">Understand</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+            Identify failures and their impact.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-[11px] font-mono text-slate-500">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+          Dependency &amp; cascade detection
+        </div>
+      </div>
+
+      <!-- Step 3: Analyze -->
+      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold px-2.5 py-1 rounded-md bg-white/5 border border-white/10">STAGE 03</span>
+            <div class="w-8 h-8 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-slate-300 text-xs font-mono font-bold group-hover:border-white/40 transition-colors">
+              03
+            </div>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-slate-100">Analyze</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+            Determine likely causes and available recovery options.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-[11px] font-mono text-slate-500">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+          Root cause &amp; fallback evaluation
+        </div>
+      </div>
+
+      <!-- Step 4: Recover (Highlighted Titanium Card) -->
+      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border-2 border-white/30 bg-gradient-to-b from-[#181822] via-[#121218] to-[#0e0e14] shadow-[0_10px_35px_rgba(255,255,255,0.06)] group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-white font-bold px-2.5 py-1 rounded-md bg-white/15 border border-white/25">STAGE 04 • ENGINE</span>
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-white via-slate-100 to-slate-300 text-slate-950 flex items-center justify-center font-mono font-black text-xs shadow-sm">
+              fx
+            </div>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Recover</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+            Initiate configured retries, fallbacks, or eligible workflow resumption.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-300">
+          <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Sub-12ms execution</span>
+          <span class="font-bold text-white">Continuous</span>
+        </div>
+      </div>
+
+      <!-- Step 5: Verify -->
+      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold px-2.5 py-1 rounded-md bg-white/5 border border-white/10">STAGE 05</span>
+            <div class="w-8 h-8 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-slate-300 text-xs font-mono font-bold group-hover:border-white/40 transition-colors">
+              05
+            </div>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-slate-100">Verify</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+            Check whether the intended operation succeeded.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-[11px] font-mono text-slate-500">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+          Closed-loop validation
+        </div>
+      </div>
+
+      <!-- Step 6: Improve -->
+      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold px-2.5 py-1 rounded-md bg-white/5 border border-white/10">STAGE 06</span>
+            <div class="w-8 h-8 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-slate-300 text-xs font-mono font-bold group-hover:border-white/40 transition-colors">
+              06
+            </div>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-slate-100">Improve</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+            Use execution history and outcomes to inform future decisions.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-[11px] font-mono text-slate-500">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+          Evolving system resilience
+        </div>
+      </div>
+    </div>
+
+    <!-- Example Callout Box -->
+    <div class="mt-8 p-6 sm:p-8 rounded-2xl bg-[#0f0f14] border border-white/15 relative overflow-hidden">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+        <div class="space-y-2 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md bg-white/10 border border-white/15 text-[11px] font-mono font-bold text-slate-300">
+            <span>LIVE SCENARIO</span>
+          </div>
+          <h4 class="text-base sm:text-lg font-bold text-white">
+            Example: An AI agent's API call fails.
+          </h4>
           <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Connect and understand the services, models, and workflows your software runs.
+            Fluxera identifies the failure, initiates a configured fallback, verifies the result, and records the outcome.
           </p>
-        </button>
-
-        <!-- Step 2 Button -->
-        <button
-          type="button"
-          onclick="selectSdkStep(2)"
-          id="sdk-step-btn-2"
-          class="sdk-step-card text-left p-5 sm:p-6 rounded-2xl border-2 transition-all duration-300 cursor-pointer w-full bg-[#101014]/80 hover:bg-[#14141a] border-white/10 hover:border-white/25 shadow-sm"
-        >
-          <div class="flex items-center justify-between mb-1.5">
-            <span class="text-[11px] font-mono font-bold tracking-widest text-slate-400 uppercase">STEP 2</span>
-            <span class="sdk-step-indicator w-2.5 h-2.5 rounded-full bg-transparent"></span>
-          </div>
-          <h3 class="text-lg sm:text-xl font-bold text-slate-300 tracking-tight mb-1.5">Detect Failures</h3>
-          <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-            Identify timeouts, rate limits, 502s, and broken queries across your tech stack in real time.
+          <p class="text-[11px] font-mono text-slate-500">
+            Recovery depends on supported integrations, available state, permissions, and configured policies.
           </p>
-        </button>
-
-        <!-- Step 3 Button -->
-        <button
-          type="button"
-          onclick="selectSdkStep(3)"
-          id="sdk-step-btn-3"
-          class="sdk-step-card text-left p-5 sm:p-6 rounded-2xl border-2 transition-all duration-300 cursor-pointer w-full bg-[#101014]/80 hover:bg-[#14141a] border-white/10 hover:border-white/25 shadow-sm"
-        >
-          <div class="flex items-center justify-between mb-1.5">
-            <span class="text-[11px] font-mono font-bold tracking-widest text-slate-400 uppercase">STEP 3</span>
-            <span class="sdk-step-indicator w-2.5 h-2.5 rounded-full bg-transparent"></span>
+        </div>
+        <div class="w-full lg:w-auto shrink-0 flex items-center gap-2 p-3.5 rounded-xl bg-[#15151c] border border-white/10 text-xs font-mono text-slate-300">
+          <div class="flex items-center gap-1.5 text-rose-400">
+            <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+            <span>API Timeout (504)</span>
           </div>
-          <h3 class="text-lg sm:text-xl font-bold text-slate-300 tracking-tight mb-1.5">Recover Work</h3>
-          <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-            Preserve state, resume interrupted operations, avoid cold reruns, and recover wasted costs.
-          </p>
-        </button>
-      </div>
-
-      <!-- RIGHT COLUMN: DYNAMIC LIVE TERMINAL WINDOW -->
-      <div class="lg:col-span-7 flex flex-col">
-        <div class="bg-[#0c0c10] rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl border border-white/15 flex flex-col justify-between h-full min-h-[320px] sm:min-h-[360px] relative overflow-hidden">
-          <!-- Terminal Header with Tabs & Dots -->
-          <div class="flex items-center justify-between pb-3 sm:pb-4 border-b border-slate-800/80 mb-3 sm:mb-5">
-            <div class="flex items-center space-x-2">
-              <span class="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-rose-500/90"></span>
-              <span class="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-amber-400/90"></span>
-              <span class="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-emerald-400/90"></span>
-              <span id="terminal-filename" class="ml-2 sm:ml-3 font-mono text-[11px] sm:text-xs text-slate-400 font-medium">fluxera-sdk.js</span>
-            </div>
-            <div class="flex items-center gap-2 font-mono text-[10px] sm:text-[11px] text-slate-500">
-              <span id="terminal-badge" class="px-2 sm:px-2.5 py-0.5 rounded-md bg-white/10 border border-white/20 text-slate-300 font-semibold">Step 1 of 3</span>
-            </div>
+          <span class="text-slate-600">→</span>
+          <div class="flex items-center gap-1.5 text-white font-bold">
+            <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+            <span>Fallback Route</span>
           </div>
-
-          <!-- Dynamic Terminal Body Snippets -->
-          <div class="flex-1 flex flex-col justify-center overflow-x-auto py-2">
-            <!-- Snippet 1 -->
-            <div id="terminal-code-1" class="terminal-snippet block">
-              <pre class="font-mono text-[11px] sm:text-xs md:text-sm text-slate-200 leading-relaxed overflow-x-auto"><code><span class="text-[#ff5c8a]">const</span> fluxera = <span class="text-[#38bdf8]">require</span>(<span class="text-[#34d399]">'@fluxera/sdk'</span>)(<span class="text-[#fbbf24]">'fx_your_key'</span>)
-
-<span class="text-[#ff5c8a]">const</span> result = <span class="text-[#ff5c8a]">await</span> fluxera.<span class="text-[#38bdf8]">track</span>(
-  () =&gt; <span class="text-[#fbbf24]">your_api_call</span>(),
-  { <span class="text-slate-300">endpoint</span>: <span class="text-[#34d399]">'/v1/chat'</span>, <span class="text-slate-300">price</span>: <span class="text-[#facc15]">0.04</span> }
-)</code></pre>
-            </div>
-
-            <!-- Snippet 2 -->
-            <div id="terminal-code-2" class="terminal-snippet hidden">
-              <pre class="font-mono text-[11px] sm:text-xs md:text-sm text-slate-200 leading-relaxed overflow-x-auto"><code>{
-  <span class="text-[#38bdf8]">"endpoint"</span>: <span class="text-[#34d399]">"/v1/chat"</span>,
-  <span class="text-[#38bdf8]">"status"</span>: <span class="text-[#ff5c8a]">"fail"</span>,
-  <span class="text-[#38bdf8]">"latency_ms"</span>: <span class="text-[#facc15]">4200</span>,
-  <span class="text-[#38bdf8]">"price"</span>: <span class="text-[#facc15]">0.04</span>,
-  <span class="text-[#38bdf8]">"error_type"</span>: <span class="text-[#ff5c8a]">"timeout"</span>
-}</code></pre>
-            </div>
-
-            <!-- Snippet 3 -->
-            <div id="terminal-code-3" class="terminal-snippet hidden">
-              <pre class="font-mono text-[11px] sm:text-xs md:text-sm text-slate-200 leading-relaxed overflow-x-auto"><code><span class="text-[#38bdf8]">failed_api_cost</span> = <span class="text-slate-300">failed_requests</span> × <span class="text-slate-300">avg_price</span>
-
-<span class="text-[#64748b]">// Only if you've set these in Settings:</span>
-<span class="text-[#fbbf24]">revenue_at_risk</span> = (<span class="text-slate-300">failed_requests</span> × <span class="text-slate-300">abandonment_rate</span>)
-                  × <span class="text-slate-300">avg_order_value</span>
-
-<span class="text-slate-400">Example:</span>
-<span class="text-[#34d399]">140 failures</span> × <span class="text-[#facc15]">$0.05</span> = <span class="text-[#fb7185] font-bold">$7.00 failed API cost</span></code></pre>
-            </div>
-          </div>
-
-          <!-- Terminal Footer Status -->
-          <div class="pt-3 sm:pt-4 mt-3 sm:mt-4 border-t border-slate-800/80 flex items-center justify-between text-[10px] sm:text-xs font-mono text-slate-500">
-            <span class="flex items-center gap-1.5 truncate"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span><span id="terminal-status-text" class="truncate">Ready to execute in Node.js / Python</span></span>
-            <span class="text-slate-600 shrink-0 ml-2">UTF-8</span>
+          <span class="text-slate-600">→</span>
+          <div class="flex items-center gap-1.5 text-emerald-400 font-bold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>Verified 200 OK</span>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- SECTION 1: MAIN VALUE PROPOSITION -->
-  <section class="relative pt-12 pb-16 px-4 max-w-5xl mx-auto reveal-on-scroll" data-purpose="main-value-prop">
-    <div class="futuristic-card rounded-3xl p-8 sm:p-12 text-center border border-white/15 shadow-2xl bg-[#121217]/95">
-      <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.06] text-slate-300 border border-white/20">VALUE PROPOSITION</span>
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mt-3">
-        Keep Services Running. Recover Work. Reduce Costs.
+  <!-- CONNECTOR 1 -->
+  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-2 pointer-events-none z-10">
+    <div class="h-16 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
+    <div class="w-3.5 h-3.5 rounded-full border-2 border-white/50 bg-[#08080a] flex items-center justify-center shadow-md shadow-white/20">
+      <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 3: COST INTELLIGENCE (UNDERSTAND THE COST OF FAILURE) -->
+  <!-- ========================================================================= -->
+  <section class="relative pt-16 pb-16 px-4 max-w-6xl mx-auto reveal-on-scroll" id="cost-intelligence">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/[0.06] text-slate-300 border border-white/20 mb-4 backdrop-blur-md">
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 animate-pulse"></span>
+        COST INTELLIGENCE
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+        Understand the Cost of Failure
       </h2>
-      <p class="mt-4 text-base sm:text-lg text-slate-400 font-normal max-w-3xl mx-auto leading-relaxed">
-        When one dependency fails, your entire workflow shouldn't have to start again. Fluxera identifies the failure, preserves recoverable progress, resumes supported operations, verifies the outcome, and reduces unnecessary retries and repeated compute.
+      <p class="mt-4 text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Fluxera helps identify unnecessary model calls, repeated API requests, and expensive workflow restarts—and measures the potential economic impact of recovery.
       </p>
-      
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-bold">
-        <div class="px-4 py-2.5 rounded-xl bg-white/5 text-slate-200 border border-white/15 shadow-sm flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-slate-400"></span><span>Understand</span>
+
+      <!-- 4 Badges -->
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-mono font-bold text-slate-300">
+        <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10">Track</span>
+        <span class="text-slate-600">→</span>
+        <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10">Identify</span>
+        <span class="text-slate-600">→</span>
+        <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10">Calculate</span>
+        <span class="text-slate-600">→</span>
+        <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10">Measure</span>
+      </div>
+
+      <!-- Formula Pill -->
+      <div class="mt-8 inline-flex items-center gap-2 sm:gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-white/10 via-white/5 to-white/10 border border-white/20 text-xs sm:text-sm font-mono text-slate-200 shadow-md">
+        <span class="text-white font-bold">Net Savings</span>
+        <span class="text-slate-400">=</span>
+        <span class="text-slate-300">Avoided Repeat-Execution Costs</span>
+        <span class="text-slate-400">−</span>
+        <span class="text-slate-400">Additional Recovery Costs</span>
+      </div>
+    </div>
+
+    <!-- Financial Examples Header -->
+    <div class="text-center mb-8">
+      <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+        What Could That Mean Financially?
+      </h3>
+      <p class="text-xs text-slate-400 mt-1">
+        Illustrative net savings modeled across common software architectures.
+      </p>
+    </div>
+
+    <!-- 3 Clean, Short Scenario Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Card 1: AI Workflows -->
+      <div class="futuristic-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border border-white/15 hover:border-white/35 transition-all group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-1 rounded-md text-[10px] font-mono uppercase font-bold bg-white/10 text-slate-200 border border-white/15">
+              AI Workflows
+            </span>
+            <span class="text-xs text-slate-500 font-mono">Monthly Model</span>
+          </div>
+
+          <div class="my-4">
+            <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              $40,000<span class="text-xs sm:text-sm text-slate-400 font-normal"> / mo</span>
+            </div>
+            <div class="text-xs font-mono font-semibold text-emerald-400 mt-1">
+              $480,000 illustrative annual savings
+            </div>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal mt-3">
+            A company incurs <span class="text-slate-200 font-semibold">$50,000</span> in monthly repeat-execution costs. Targeted recovery reduces those costs to <span class="text-slate-200 font-semibold">$10,000</span>, yielding $40,000 in monthly net savings.
+          </p>
         </div>
-        <span class="text-slate-400 font-black">→</span>
-        <div class="px-4 py-2.5 rounded-xl bg-white/5 text-slate-200 border border-white/15 shadow-sm flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-slate-400"></span><span>Detect</span>
-        </div>
-        <span class="text-slate-400 font-black">→</span>
-        <div class="px-4 py-2.5 rounded-xl bg-white/10 text-white border border-white/30 font-bold shadow-sm flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-slate-300"></span><span>Recover</span>
-        </div>
-        <span class="text-slate-400 font-black">→</span>
-        <div class="px-4 py-2.5 rounded-xl bg-white/5 text-slate-200 border border-white/15 shadow-sm flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-slate-400"></span><span>Verify</span>
-        </div>
-        <span class="text-slate-400 font-black">→</span>
-        <div class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-white via-slate-100 to-slate-300 text-slate-950 font-black border border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-slate-950 animate-pulse"></span><span>Continue</span>
+
+        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
+          <span>Targeted Recovery</span>
+          <span class="text-white font-bold">80% Reduction</span>
         </div>
       </div>
 
-      <div class="mt-8 p-4 rounded-2xl bg-gradient-to-r from-[#181820] via-[#121217] to-[#181820] border border-white/20 max-w-2xl mx-auto shadow-sm">
-        <p class="text-base sm:text-lg font-black text-white tracking-tight">The problem isn't simply that software breaks. It's what happens after it breaks.</p>
+      <!-- Card 2: AI Agent Platform -->
+      <div class="futuristic-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border-2 border-white/30 bg-gradient-to-b from-[#161620] via-[#111116] to-[#0c0c10] shadow-[0_10px_35px_rgba(255,255,255,0.06)] group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-1 rounded-md text-[10px] font-mono uppercase font-black bg-white/20 text-white border border-white/30">
+              AI Agent Platform
+            </span>
+            <span class="text-xs text-slate-400 font-mono">Autonomous</span>
+          </div>
+
+          <div class="my-4">
+            <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              $70,000<span class="text-xs sm:text-sm text-slate-400 font-normal"> / mo</span>
+            </div>
+            <div class="text-xs font-mono font-semibold text-emerald-400 mt-1">
+              $840,000 illustrative annual savings
+            </div>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mt-3">
+            A company identifies <span class="text-white font-semibold">$90,000</span> in monthly avoidable costs. With recovery costs of <span class="text-white font-semibold">$20,000</span> and full avoidance, net savings reach $70,000 per month.
+          </p>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-white/15 flex items-center justify-between text-[11px] font-mono text-slate-300">
+          <span>Avoidable Spend Halted</span>
+          <span class="text-white font-bold">Net $70k/mo</span>
+        </div>
       </div>
+
+      <!-- Card 3: Enterprise Software -->
+      <div class="futuristic-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border border-white/15 hover:border-white/35 transition-all group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-1 rounded-md text-[10px] font-mono uppercase font-bold bg-white/10 text-slate-200 border border-white/15">
+              Enterprise Software
+            </span>
+            <span class="text-xs text-slate-500 font-mono">Annual Scale</span>
+          </div>
+
+          <div class="my-4">
+            <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              $500,000<span class="text-xs sm:text-sm text-slate-400 font-normal"> / yr</span>
+            </div>
+            <div class="text-xs font-mono font-semibold text-emerald-400 mt-1">
+              Illustrative annual net savings
+            </div>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal mt-3">
+            A company incurs <span class="text-slate-200 font-semibold">$1.5M</span> annually in avoidable repeat-execution costs. Reducing costs by 40% minus <span class="text-slate-200 font-semibold">$100,000</span> in recovery costs produces $500,000 net savings.
+          </p>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
+          <span>Batch &amp; ETL Workflows</span>
+          <span class="text-white font-bold">$1.5M Baseline</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclaimer Note -->
+    <div class="mt-6 text-center">
+      <p class="text-[11px] font-mono text-slate-500">
+        Examples are hypothetical, not actual customer results or guaranteed savings.
+      </p>
     </div>
   </section>
 
   <!-- CONNECTOR 2 -->
-  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-1 pointer-events-none z-10">
-    <div class="h-20 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
-    <div class="w-4 h-4 rounded-full border-2 border-white/50 bg-[#08080a] flex items-center justify-center shadow-md shadow-white/20">
-      <div class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></div>
+  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-2 pointer-events-none z-10">
+    <div class="h-16 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
+    <div class="w-3.5 h-3.5 rounded-full border-2 border-white/50 bg-[#08080a] flex items-center justify-center shadow-md shadow-white/20">
+      <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
     </div>
   </div>
 
-  <!-- SECTION 4: WHY COMPANIES NEED FLUXERA -->
-  <section class="relative py-20 px-4 max-w-6xl mx-auto reveal-on-scroll" id="why-fluxera">
-    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-white/[0.04] blur-[120px] pointer-events-none rounded-full"></div>
-    <div class="text-center mb-12 relative z-10">
-      <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.06] text-slate-300 border border-white/20">THE PROBLEM &amp; SOLUTION</span>
-      <h2 class="mt-4 text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-        Software Can Be Running While Its Work Is Failing.
+  <!-- ========================================================================= -->
+  <!-- SECTION 4: YEAR 0 CAPABILITIES (THE FOUNDATION) -->
+  <!-- ========================================================================= -->
+  <section class="relative pt-16 pb-16 px-4 max-w-6xl mx-auto reveal-on-scroll" id="capabilities">
+    <div class="text-center mb-12 sm:mb-14">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/[0.06] text-slate-300 border border-white/20 mb-4 backdrop-blur-md">
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 animate-pulse"></span>
+        YEAR 0 CAPABILITIES
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+        The Foundation
       </h2>
-      <div class="mt-4 max-w-3xl mx-auto space-y-3">
-        <p class="text-base sm:text-lg text-slate-300 font-medium">
-          A single failed dependency can interrupt an AI agent, break a workflow, waste API calls, consume compute, and leave customers waiting.
-        </p>
-        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-2xl mx-auto">
-          Fluxera understands your systems, identifies what failed, determines what can be recovered, restores interrupted work where supported, verifies outcomes, and measures the costs saved.
-        </p>
+      <div class="mt-4 inline-block px-4 py-2 rounded-xl bg-white/5 border border-white/15 text-xs sm:text-sm text-slate-300 font-medium max-w-2xl mx-auto">
+        <span class="text-white font-bold">Objective:</span> Establish the execution visibility and technical foundation for evolving intelligence.
       </div>
     </div>
 
-    <!-- Core Capabilities -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-7 relative z-10">
-      <!-- 01 — Work Continuity -->
-      <div class="md:col-span-6 futuristic-card rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between border border-white/15 shadow-2xl bg-[#121217]/95">
+    <!-- 7 Bento Capabilities Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- 1: SDK Instrumentation -->
+      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
         <div>
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono font-bold text-slate-300 bg-white/10 px-3 py-1 rounded-full border border-white/20 uppercase">
-              CAPABILITY 01
-            </span>
-            <span class="text-2xl font-black text-slate-400 font-mono">01</span>
+          <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white mb-4 group-hover:border-white/40 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
           </div>
-          <h3 class="text-2xl font-extrabold text-white tracking-tight">Work Continuity</h3>
-          <p class="text-xs font-bold text-slate-300 mt-1">Keep your systems running when dependencies fail.</p>
-          <p class="text-xs text-slate-400 mt-2.5 leading-relaxed font-medium">
-            Detect failures, identify root causes, preserve recoverable state, resume supported workflows, and verify successful completion.
+          <h3 class="text-base font-bold text-white mb-2 group-hover:text-slate-100">SDK Instrumentation</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            SDK instrumentation for supported workflows and executions.
           </p>
         </div>
-        <div class="mt-6 pt-5 border-t border-white/10">
-          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2.5">Key Continuity Features</span>
-          <ul class="space-y-2 text-xs font-semibold text-slate-300">
-            <li class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
-              <span>Failure detection and diagnosis</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
-              <span>Work and state continuity</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
-              <span>Automated recovery for supported failures</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 font-bold"></span>
-              <span class="text-emerald-700">Recovery verification</span>
-            </li>
-          </ul>
+        <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+          Node.js, Python, &amp; Go clients
         </div>
       </div>
 
-      <!-- 02 — Cost Recovery Intelligence -->
-      <div class="md:col-span-6 futuristic-card rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between border border-white/15 shadow-2xl bg-[#121217]/95">
+      <!-- 2: Execution Tracking -->
+      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
         <div>
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono font-bold text-slate-300 bg-white/10 px-3 py-1 rounded-full border border-white/20 uppercase">
-              CAPABILITY 02
-            </span>
-            <span class="text-2xl font-black text-slate-400 font-mono">02</span>
+          <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white mb-4 group-hover:border-white/40 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
           </div>
-          <h3 class="text-2xl font-extrabold text-white tracking-tight">Cost Recovery Intelligence</h3>
-          <p class="text-xs font-bold text-slate-300 mt-1">Recover wasted work and reduce unnecessary spending.</p>
-          <p class="text-xs text-slate-400 mt-2.5 leading-relaxed font-medium">
-            Avoid restarting entire workflows when only one step needs recovery. Reduce repeated API calls, wasted tokens, redundant compute, and unnecessary execution.
+          <h3 class="text-base font-bold text-white mb-2 group-hover:text-slate-100">Execution Tracking</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Execution tracking for steps, statuses, errors, and attempts.
           </p>
         </div>
-        <div class="mt-6 pt-5 border-t border-white/10">
-          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2.5">Key Cost Features</span>
-          <ul class="space-y-2 text-xs font-semibold text-slate-300">
-            <li class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-              <span>Wasted API and compute cost analysis</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-              <span>Recovery of interrupted work</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-              <span>Reduced redundant retries and reruns</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-rose-500 font-bold"></span>
-              <span class="text-rose-700">Measured cost savings and business impact</span>
-            </li>
-          </ul>
+        <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+          Step-by-step telemetry audit
         </div>
       </div>
-    </div>
 
-    <!-- 3D iPHONE SHOWCASE -->
-    <div class="mt-8 futuristic-card rounded-3xl p-8 sm:p-10 relative overflow-hidden border border-white/15 bg-gradient-to-br from-[#121217] via-[#0e0e13] to-[#14141a]">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/[0.06] text-slate-300 border border-white/20">
-            <span class="w-2 h-2 rounded-full bg-slate-300 animate-ping"></span> REAL-TIME TELEMETRY ON ANY DEVICE
+      <!-- 3: Failure Detection -->
+      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white mb-4 group-hover:border-white/40 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
           </div>
-          <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
-            Live Work Recovery
-          </h3>
-          <p class="text-sm text-slate-400 leading-relaxed font-normal">
-            Whether managing complex agent workflows, database deadlocks, or third-party webhooks, Fluxera automatically checkpoints state in-flight and broadcasts instant recovery confirmations to your on-call engineers.
+          <h3 class="text-base font-bold text-white mb-2 group-hover:text-slate-100">Failure Detection</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Failure detection using available data and configured rules.
           </p>
-          <div class="pt-2 grid grid-cols-2 gap-3 text-xs">
-            <div class="p-3 rounded-2xl bg-[#181822] border border-white/15 shadow-sm">
-              <span class="font-bold text-white block text-xs">Dynamic Island Updates</span>
-              <span class="text-slate-400 text-[11px] mt-0.5 block">Sub-15ms push notices for intercepted cascades</span>
-            </div>
-            <div class="p-3 rounded-2xl bg-[#181822] border border-white/15 shadow-sm">
-              <span class="font-bold text-white block text-xs">Zero-Cold-Rerun SLA</span>
-              <span class="text-slate-400 text-[11px] mt-0.5 block">Instant confirmation of preserved runtime state</span>
-            </div>
-          </div>
-          <div class="pt-2 flex items-center gap-4 text-xs font-bold text-slate-300">
-            <span class="flex items-center gap-1.5 text-slate-200"><span class="w-2 h-2 rounded-full bg-slate-300"></span> 99.98% Checkpoint Fidelity</span>
-            <span class="text-slate-600">•</span>
-            <span class="flex items-center gap-1.5 text-slate-200"><span class="w-2 h-2 rounded-full bg-slate-300"></span> Real-time Deterministic Replay</span>
-          </div>
         </div>
+        <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+          Configured rule matching
+        </div>
+      </div>
 
-        <div class="lg:col-span-5 relative flex justify-center lg:justify-end overflow-hidden pt-4 pb-0 h-[380px] lg:h-[400px]">
-          <div class="iphone-integrated-stage w-72 relative">
-            <div class="iphone-half-peek rounded-t-[44px] rounded-b-none p-3 pb-16 bg-[#0a0a0d] border-t-2 border-x-2 border-white/30 shadow-2xl relative w-full h-[520px]">
-              <div class="absolute inset-0 rounded-t-[44px] border-t-2 border-x-2 border-white pointer-events-none"></div>
-              <div class="rounded-t-[36px] bg-[#0d0d12] overflow-hidden text-white p-3.5 border-t border-x border-white/20 shadow-sm relative h-full">
-                <div class="w-48 h-6 mx-auto bg-slate-900 text-white rounded-full flex items-center justify-between px-2.5 mb-3 shadow-md border border-slate-800">
-                  <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
-                  <span class="text-[8px] text-rose-200 font-mono font-bold tracking-tight">⚠️ Stripe 502 • Resumed 12ms</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                </div>
-                <div class="flex items-center justify-between text-[10px] text-slate-500 font-semibold px-1 mb-2.5">
-                  <span>9:41</span>
-                  <span class="text-rose-600 text-[9px] font-bold">FLUXERA ON-CALL</span>
-                  <div class="flex items-center gap-1">
-                    <span>5G</span>
-                    <div class="w-4 h-2 border border-slate-400 rounded-xs p-0.5"><div class="h-full w-full bg-emerald-500"></div></div>
-                  </div>
-                </div>
-                <div class="p-2.5 rounded-2xl bg-[#181824] border border-white/20 shadow-sm mb-3">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="flex items-center gap-1 text-[10px] font-bold text-rose-700">
-                      <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></span> INCIDENT INTERCEPTED
-                    </span>
-                    <span class="text-[9px] text-slate-500 font-mono">12ms ago</span>
-                  </div>
-                  <p class="text-[11px] font-bold text-white leading-tight">Stripe Auth 502 Gateway Dropped</p>
-                  <p class="text-[10px] text-slate-300 font-mono mt-0.5">$14,783 in-flight state saved</p>
-                </div>
-                <div class="p-2.5 rounded-xl bg-[#121217] border border-white/15 mb-2.5">
-                  <div class="flex items-center justify-between text-[10px] text-slate-600 mb-1">
-                    <span>Deterministic Replay Engine</span>
-                    <span class="text-emerald-600 font-bold">94.2%</span>
-                  </div>
-                  <div class="h-10 w-full">
-                    <svg class="w-full h-full overflow-visible" viewBox="0 0 100 40">
-                      <path d="M0,30 Q25,35 50,15 T100,8" fill="none" stroke="#f43f5e" stroke-width="2"></path>
-                      <path d="M0,30 Q25,35 50,15 T100,8 L100,40 L0,40 Z" fill="rgba(244,63,94,0.12)"></path>
-                      <!-- Traveling Graph Point Animation -->
-                      <circle r="2.5" fill="#38bdf8" class="filter drop-shadow-[0_0_6px_rgba(56,189,248,0.9)]">
-                        <animateMotion path="M0,30 Q25,35 50,15 T100,8" dur="3s" repeatCount="indefinite" />
-                      </circle>
-                      <circle cx="50" cy="15" fill="#f43f5e" r="2.5" class="animate-ping opacity-75"></circle>
-                      <circle cx="50" cy="15" fill="#38bdf8" r="2.5"></circle>
-                    </svg>
-                  </div>
-                </div>
-                <div class="p-2 rounded-xl bg-[#181822] border border-white/20 flex items-center justify-between">
-                  <span class="text-[10px] font-semibold text-emerald-800">Auto-Checkpoint Verified</span>
-                  <span class="text-[10px] bg-white text-slate-950 font-bold px-2 py-0.5 rounded-full shadow-xs">RECOVERED</span>
-                </div>
-              </div>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#121217] via-[#121217]/80 to-transparent pointer-events-none z-20"></div>
+      <!-- 4: Linked History -->
+      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white mb-4 group-hover:border-white/40 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
           </div>
+          <h3 class="text-base font-bold text-white mb-2 group-hover:text-slate-100">Linked History</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Linked execution and recovery history.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+          Traceable incident lineage
+        </div>
+      </div>
+
+      <!-- 5: Usage-Cost Visibility -->
+      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white mb-4 group-hover:border-white/40 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h3 class="text-base font-bold text-white mb-2 group-hover:text-slate-100">Usage-Cost Visibility</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Basic API, model, and compute usage-cost visibility where data is available.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+          Dollarized execution analytics
+        </div>
+      </div>
+
+      <!-- 6: Dashboard & API Access -->
+      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white mb-4 group-hover:border-white/40 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
+          </div>
+          <h3 class="text-base font-bold text-white mb-2 group-hover:text-slate-100">Dashboard &amp; API Access</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Dashboard and API access for continuous observability.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+          REST &amp; Webhook endpoints
+        </div>
+      </div>
+
+      <!-- 7: Configured Recovery Handlers (Spans across) -->
+      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/15 md:col-span-2 lg:col-span-3 bg-gradient-to-r from-[#14141c] via-[#101015] to-[#14141c] group">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-white via-slate-100 to-slate-300 text-slate-950 flex items-center justify-center font-mono font-bold text-sm shrink-0 shadow-sm">
+              fx
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-white mb-1">Configured Recovery Handlers</h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-3xl">
+                Integration with configured recovery handlers through supported APIs or webhooks.
+              </p>
+            </div>
+          </div>
+          <span class="shrink-0 px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-white/10 text-white border border-white/20">
+            Configured Policy Handlers
+          </span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CONNECTOR 3 -->
-  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-1 pointer-events-none z-10">
-    <div class="h-20 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
-    <div class="w-4 h-4 rounded-full border-2 border-white/50 bg-[#08080a] flex items-center justify-center shadow-md shadow-white/20">
-      <div class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></div>
+  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-2 pointer-events-none z-10">
+    <div class="h-16 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
+    <div class="w-3.5 h-3.5 rounded-full border-2 border-white/50 bg-[#08080a] flex items-center justify-center shadow-md shadow-white/20">
+      <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
     </div>
   </div>
 
-  <!-- SECTION 6: HOW FLUXERA WORKS (5-STEP PROCESS) -->
-  <section class="relative py-20 px-4 max-w-6xl mx-auto reveal-on-scroll" id="how-fluxera-works-process">
-    <div class="text-center mb-14">
-      <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.06] text-slate-300 border border-white/20">HOW IT WORKS</span>
-      <h2 class="mt-4 text-3xl sm:text-5xl font-extrabold text-white tracking-tight">From Failure to Recovery</h2>
-      <p class="mt-3 text-base text-slate-400 max-w-2xl mx-auto font-normal">Fluxera provides an automated 5-step lifecycle: Understand, Detect, Recover, Verify, and Continue.</p>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 relative z-10">
-      <!-- 01 Understand -->
-      <div class="pillar-tile-3d rounded-2xl p-5 flex flex-col justify-between border border-white/15 bg-[#121217] shadow-lg hover:border-white/35 transition-all">
-        <div>
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono font-bold text-slate-300 bg-white/10 px-2.5 py-0.5 rounded border border-white/20 uppercase">01 UNDERSTAND</span>
-            <span class="text-lg">🔍</span>
-          </div>
-          <h3 class="text-base font-extrabold text-white tracking-tight">Understand</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed font-medium">
-            Understand workflows, execution state, and dependencies across your stack.
-          </p>
-        </div>
-      </div>
-
-      <!-- 02 Detect -->
-      <div class="pillar-tile-3d rounded-2xl p-5 flex flex-col justify-between border border-white/15 bg-[#121217] shadow-lg hover:border-white/35 transition-all">
-        <div>
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono font-bold text-slate-300 bg-white/10 px-2.5 py-0.5 rounded border border-white/20 uppercase">02 DETECT</span>
-            <span class="text-lg">⚡</span>
-          </div>
-          <h3 class="text-base font-extrabold text-white tracking-tight">Detect</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed font-medium">
-            Identify failures, timeouts, rate limits, and broken dependencies in real time.
-          </p>
-        </div>
-      </div>
-
-      <!-- 03 Recover -->
-      <div class="pillar-tile-3d rounded-2xl p-5 flex flex-col justify-between border border-white/15 bg-[#121217] shadow-lg hover:border-white/35 transition-all">
-        <div>
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono font-bold text-slate-300 bg-white/10 px-2.5 py-0.5 rounded border border-white/20 uppercase">03 RECOVER</span>
-            <span class="text-lg">🛠️</span>
-          </div>
-          <h3 class="text-base font-extrabold text-white tracking-tight">Recover</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed font-medium">
-            Retry, resume, restore, or replay supported operations from recoverable state.
-          </p>
-        </div>
-      </div>
-
-      <!-- 04 Verify -->
-      <div class="pillar-tile-3d rounded-2xl p-5 flex flex-col justify-between border border-white/15 bg-[#121217] shadow-lg hover:border-white/35 transition-all">
-        <div>
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono font-bold text-slate-300 bg-white/10 px-2.5 py-0.5 rounded border border-white/20 uppercase">04 VERIFY</span>
-            <span class="text-lg">🛡️</span>
-          </div>
-          <h3 class="text-base font-extrabold text-white tracking-tight">Verify</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed font-medium">
-            Confirm whether the intended outcome was achieved before proceeding.
-          </p>
-        </div>
-      </div>
-
-      <!-- 05 Continue -->
-      <div class="pillar-tile-3d rounded-2xl p-5 flex flex-col justify-between border border-white/15 bg-[#121217] shadow-lg hover:border-white/35 transition-all col-span-1 sm:col-span-2 lg:col-span-1">
-        <div>
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono font-bold text-slate-300 bg-white/10 px-2.5 py-0.5 rounded border border-white/20 uppercase">05 CONTINUE</span>
-            <span class="text-lg">🚀</span>
-          </div>
-          <h3 class="text-base font-extrabold text-white tracking-tight">Continue</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed font-medium">
-            Keep workflows running seamlessly, preserve work, and eliminate wasted compute.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONNECTOR 4 -->
-  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-1 pointer-events-none z-10">
-    <div class="h-20 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
-    <div class="w-4 h-4 rounded-full border-2 border-white/50 bg-[#08080a] flex items-center justify-center shadow-md shadow-white/20">
-      <div class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></div>
-    </div>
-  </div>
-
-  <!-- SECTION C: CYBERNETIC PIPELINE -->
-  <section class="relative py-20 px-4 overflow-hidden reveal-on-scroll" id="impact-chain">
-    <div class="max-w-4xl mx-auto text-center relative z-10 mb-14">
-      <span class="px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/[0.06] text-slate-300 border border-white/20">CYBERNETIC PIPELINE</span>
-      <h2 class="mt-4 text-3xl sm:text-5xl font-extrabold text-white tracking-tight">FROM FAILURE TO VALUE</h2>
-      <p class="mt-3 text-base sm:text-lg text-slate-400 font-medium max-w-xl mx-auto">Fluxera connects the entire chain.</p>
-    </div>
-
-    <!-- DESKTOP CHAIN (hidden on mobile, visible on md+) -->
-    <div class="hidden md:block relative max-w-6xl mx-auto my-6 px-4">
-      <div class="hidden xl:block absolute top-1/2 left-8 right-8 h-1.5 -translate-y-1/2 fiber-laser-line rounded-full z-0">
-        <div class="laser-beam-pulse"></div>
-      </div>
-      <div class="grid grid-cols-4 xl:grid-cols-7 gap-3.5 relative z-10">
-        <div class="p-3.5 rounded-2xl bg-[#121217] border border-white/15 text-center shadow-lg hover:border-white/40 transition-all hover:-translate-y-1.5 cursor-pointer backdrop-blur-md">
-          <div class="w-6 h-6 mx-auto rounded-full bg-white/10 text-slate-200 font-bold text-xs flex items-center justify-center mb-1.5">01</div>
-          <div class="text-[9px] font-bold text-slate-400 uppercase">Trigger</div>
-          <div class="text-xs font-extrabold text-white mt-0.5">Technical Failure</div>
-          <span class="text-[9px] text-slate-400 block mt-1">↓</span>
-        </div>
-        <div class="p-3.5 rounded-2xl bg-[#121217] border border-white/15 text-center shadow-lg hover:border-white/40 transition-all hover:-translate-y-1.5 cursor-pointer backdrop-blur-md">
-          <div class="w-6 h-6 mx-auto rounded-full bg-white/10 text-slate-200 font-bold text-xs flex items-center justify-center mb-1.5">02</div>
-          <div class="text-[9px] font-bold text-slate-400 uppercase">Cascade</div>
-          <div class="text-xs font-extrabold text-white mt-0.5">System Impact</div>
-          <span class="text-[9px] text-slate-400 block mt-1">↓</span>
-        </div>
-        <div class="p-3.5 rounded-2xl bg-[#121217] border border-white/15 text-center shadow-lg hover:border-white/40 transition-all hover:-translate-y-1.5 cursor-pointer backdrop-blur-md">
-          <div class="w-6 h-6 mx-auto rounded-full bg-white/10 text-slate-200 font-bold text-xs flex items-center justify-center mb-1.5">03</div>
-          <div class="text-[9px] font-bold text-slate-400 uppercase">Progress</div>
-          <div class="text-xs font-extrabold text-white mt-0.5">Work Impact</div>
-          <span class="text-[9px] text-slate-400 block mt-1">↓</span>
-        </div>
-        <div class="p-3.5 rounded-2xl bg-[#121217] border border-white/15 text-center shadow-lg hover:border-white/40 transition-all hover:-translate-y-1.5 cursor-pointer backdrop-blur-md">
-          <div class="w-6 h-6 mx-auto rounded-full bg-white/10 text-slate-200 font-bold text-xs flex items-center justify-center mb-1.5">04</div>
-          <div class="text-[9px] font-bold text-slate-400 uppercase">Customer</div>
-          <div class="text-xs font-extrabold text-white mt-0.5">User Impact</div>
-          <span class="text-[9px] text-slate-400 block mt-1">↓</span>
-        </div>
-        <div class="p-3.5 rounded-2xl bg-[#121217] border border-white/15 text-center shadow-lg hover:border-white/40 transition-all hover:-translate-y-1.5 cursor-pointer backdrop-blur-md">
-          <div class="w-6 h-6 mx-auto rounded-full bg-white/10 text-slate-200 font-bold text-xs flex items-center justify-center mb-1.5">05</div>
-          <div class="text-[9px] font-bold text-slate-400 uppercase">Financial</div>
-          <div class="text-xs font-extrabold text-white mt-0.5">Business Impact</div>
-          <span class="text-[9px] text-slate-400 block mt-1">↓</span>
-        </div>
-        <div class="p-3.5 rounded-2xl bg-gradient-to-tr from-white via-slate-100 to-slate-300 border-2 border-white text-slate-950 text-center shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:-translate-y-2 transition-all cursor-pointer ring-4 ring-white/20 scale-105">
-          <div class="w-6 h-6 mx-auto rounded-full bg-slate-950 text-white font-black text-xs flex items-center justify-center mb-1.5">fx</div>
-          <div class="text-[9px] font-mono uppercase font-black tracking-wider text-slate-800">Deterministic</div>
-          <div class="text-xs font-black mt-0.5 text-slate-950">Recovery</div>
-          <span class="text-[9px] text-slate-800 block mt-1">↓</span>
-        </div>
-        <div class="p-3.5 rounded-2xl bg-[#151922] border border-white/30 text-center shadow-lg hover:border-white/50 transition-all hover:-translate-y-1.5 cursor-pointer backdrop-blur-md">
-          <div class="w-6 h-6 mx-auto rounded-full bg-white text-slate-950 font-bold text-xs flex items-center justify-center mb-1.5">✓</div>
-          <div class="text-[9px] font-bold text-slate-400 uppercase">Closed-Loop</div>
-          <div class="text-xs font-extrabold text-white mt-0.5">Verified Outcome</div>
-          <span class="text-[9px] text-slate-300 font-bold block mt-1">Restored</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- MOBILE INTERACTIVE AUTOMATIC CAROUSEL (md:hidden) -->
-    <div class="md:hidden relative max-w-sm mx-auto px-2" id="pipeline-mobile-carousel">
-      <!-- Carousel Card Container -->
-      <div class="relative overflow-hidden rounded-3xl p-1 bg-gradient-to-b from-white/30 via-white/10 to-white/5 shadow-xl">
-        <div class="rounded-[22px] bg-white p-6 text-center min-h-[220px] flex flex-col justify-between transition-all duration-300" id="carousel-card-inner">
-          <!-- Populated by JS -->
-        </div>
-      </div>
-
-      <!-- Carousel Controls: Prev Button, Dots, Next Button -->
-      <div class="flex items-center justify-between mt-5 px-3">
-        <button id="carousel-prev" aria-label="Previous step" class="w-10 h-10 rounded-full bg-[#141419] border border-white/20 shadow-md flex items-center justify-center text-slate-200 hover:text-white hover:border-white/40 active:scale-95 transition-all cursor-pointer">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-
-        <!-- 7 Indicator Dots -->
-        <div class="flex items-center gap-1.5" id="carousel-dots">
-          <!-- Populated by JS -->
-        </div>
-
-        <button id="carousel-next" aria-label="Next step" class="w-10 h-10 rounded-full bg-[#141419] border border-white/20 shadow-md flex items-center justify-center text-slate-200 hover:text-white hover:border-white/40 active:scale-95 transition-all cursor-pointer">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-
-      <div class="text-center mt-3">
-        <span class="text-[11px] font-mono text-slate-400">Auto-playing · Swipe or click buttons</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONNECTOR 5 -->
-  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-1 pointer-events-none z-10">
-    <div class="h-20 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
-    <div class="w-4 h-4 rounded-full border-2 border-white/50 bg-[#08080a] flex items-center justify-center shadow-md shadow-white/20">
-      <div class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></div>
-    </div>
-  </div>
-
-  <!-- SECTION D: BOTTOM CALLOUT -->
-  <section class="relative py-16 px-4 max-w-5xl mx-auto reveal-on-scroll" data-purpose="ai-native-callout">
-    <div class="futuristic-card rounded-3xl p-8 sm:p-14 text-center border border-white/20 relative overflow-hidden bg-gradient-to-b from-[#14141a] via-[#101015] to-[#0d0d12] shadow-2xl">
+  <!-- ========================================================================= -->
+  <!-- SECTION 5: THE VISION (BUILD AI: THE NEXT EVOLUTION OF FLUXERA) -->
+  <!-- ========================================================================= -->
+  <section class="relative pt-16 pb-16 px-4 max-w-6xl mx-auto reveal-on-scroll" id="the-vision">
+    <div class="futuristic-card rounded-3xl p-8 sm:p-14 border border-white/20 relative overflow-hidden bg-gradient-to-b from-[#161620] via-[#101016] to-[#0a0a0e] shadow-2xl">
       <div class="absolute -left-12 -bottom-12 w-48 h-48 bg-white/5 rounded-full blur-[80px] pointer-events-none"></div>
       <div class="absolute -right-12 -top-12 w-48 h-48 bg-white/5 rounded-full blur-[80px] pointer-events-none"></div>
-      <span class="px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/[0.06] text-slate-300 border border-white/20">BUILDING SELF-EVOLVING SYSTEMS</span>
-      <h2 class="mt-6 text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
-        IF YOUR SAAS DEPENDS ON SOFTWARE, <br class="hidden sm:inline" />
-        IT DEPENDS ON SYSTEMS.
-      </h2>
-      <p class="mt-4 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
-        And as software becomes more AI-native, the reliability problem only gets more complex.
-      </p>
-      <p class="mt-2 text-base sm:text-lg bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400 max-w-2xl mx-auto font-extrabold">Fluxera is built to solve it.</p>
-      <div class="mt-8 flex justify-center">
-        <div class="inline-flex flex-wrap items-center justify-center gap-4 text-xs font-bold text-slate-300">
-          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Agent Resumption</span>
-          <span class="text-slate-300 hidden sm:inline">•</span>
-          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-rose-500"></span> State Checkpoints</span>
-          <span class="text-slate-300 hidden sm:inline">•</span>
-          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-sky-500"></span> Spend Protection</span>
+
+      <div class="text-center max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/[0.08] text-slate-200 border border-white/25 mb-5 backdrop-blur-md">
+          <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+          THE VISION · $1.5M PRE-SEED
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          Build AI: The Next Evolution of Fluxera
+        </h2>
+
+        <p class="mt-4 text-sm sm:text-base md:text-lg text-slate-300 font-normal leading-relaxed">
+          Following a $1.5 million pre-seed round, Fluxera plans to develop a <span class="text-white font-bold">Build AI</span> layer designed to help software build and improve itself.
+        </p>
+
+        <p class="mt-3 text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          Build AI will aim to analyze code, identify weaknesses, propose improvements, generate or modify code, and test changes within defined permissions and safeguards.
+        </p>
+      </div>
+
+      <!-- Evolution Diagram -->
+      <div class="mt-12 pt-8 border-t border-white/10 text-center">
+        <span class="text-xs font-mono uppercase tracking-widest text-slate-400 font-bold">
+          From Recovery to Self-Evolving Software
+        </span>
+        <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-xl mx-auto">
+          The long-term goal is to combine Fluxera's evolving intelligence foundation with Build AI:
+        </p>
+
+        <!-- 8-Step Long Term Pipeline -->
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-4xl mx-auto">
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono font-medium text-slate-300">Understand</span>
+          <span class="text-slate-600 font-bold text-xs">→</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono font-medium text-slate-300">Analyze</span>
+          <span class="text-slate-600 font-bold text-xs">→</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono font-medium text-slate-300">Recover</span>
+          <span class="text-slate-600 font-bold text-xs">→</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/15 border border-white/30 text-[11px] font-mono font-bold text-white shadow-sm">Build</span>
+          <span class="text-slate-600 font-bold text-xs">→</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/15 border border-white/30 text-[11px] font-mono font-bold text-white shadow-sm">Test</span>
+          <span class="text-slate-600 font-bold text-xs">→</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono font-medium text-slate-300">Verify</span>
+          <span class="text-slate-600 font-bold text-xs">→</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono font-medium text-slate-300">Improve</span>
+          <span class="text-slate-600 font-bold text-xs">→</span>
+          <span class="px-3 py-1 rounded-lg bg-gradient-to-r from-white via-slate-100 to-slate-300 text-slate-950 font-mono font-extrabold text-[11px] shadow-sm">Evolve</span>
+        </div>
+
+        <p class="mt-6 text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          This would move Fluxera beyond responding to failures toward helping software systems continuously improve their own code and behavior.
+        </p>
+
+        <!-- Clear Disclaimer Banner -->
+        <div class="mt-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/15 text-[11px] font-mono text-slate-400">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+          Build AI is a planned future capability, not part of the current product.
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER CONVERSION SECTION (HORIZON ARCH DOME - SMOOTH EDGE-TO-EDGE PLANET HORIZON) -->
+  <!-- ========================================================================= -->
+  <!-- SECTION 6 & 7: EARLY DESIGN PARTNERS & CLOSING STATEMENT (HORIZON DOME) -->
+  <!-- ========================================================================= -->
   <section class="relative pt-24 pb-0 overflow-hidden text-center reveal-on-scroll flex flex-col justify-end items-center w-full" id="early-access">
     <div class="horizon-arc-wrapper w-full">
       <div class="horizon-arc-dome">
@@ -992,23 +945,60 @@
               fx
             </div>
           </div>
-          <h2 class="text-xl sm:text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-snug px-2 sm:px-4">
-            Keep Systems Running. <br class="hidden sm:inline" />
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400 block sm:inline mt-1 sm:mt-0">Recover the Cost of Failure.</span>
+
+          <!-- Section 6: Early Design Partners Header -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-white/[0.08] text-slate-300 border border-white/20 mb-4 backdrop-blur-md">
+            EARLY DESIGN PARTNERS
+          </div>
+
+          <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-snug px-2 sm:px-4">
+            Help Shape the Future of <br class="hidden sm:inline" />
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400 block sm:inline mt-1 sm:mt-0">Software Intelligence</span>
           </h2>
-          <p class="mt-4 text-xs sm:text-base text-slate-400 max-w-xl mx-auto font-normal leading-relaxed px-2">
-            Add a reliability and recovery layer to your software stack—designed to restore interrupted work, keep services running, and reduce wasted compute and operational costs.
+
+          <p class="mt-4 text-xs sm:text-base text-slate-300 max-w-xl mx-auto font-normal leading-relaxed px-2">
+            We're looking to collaborate with a small number of teams building AI agents, automated workflows, and API-driven applications.
           </p>
 
-          <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href="./dashboard.html" class="w-full sm:w-auto px-7 py-3 rounded-full bg-gradient-to-r from-white via-slate-100 to-slate-300 text-slate-950 font-bold text-xs tracking-wide shadow-lg shadow-white/15 hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] hover:scale-[1.02] transition-all whitespace-nowrap">
-              Get Early Access
-            </a>
-            <a href="./dashboard.html" class="w-full sm:w-auto px-7 py-3 rounded-full bg-[#141419] hover:bg-[#1a1a22] text-slate-200 hover:text-white border border-white/20 font-bold text-xs shadow-sm hover:shadow-md transition-all whitespace-nowrap">
-              Explore the Dashboard
-            </a>
+          <p class="mt-2 text-xs sm:text-sm text-slate-400 max-w-lg mx-auto font-normal leading-relaxed px-2">
+            Together, we'll explore integrations, recovery behavior, outcome verification, and measurable execution-cost reduction.
+          </p>
+
+          <!-- Interactive Email Contact Card -->
+          <div class="mt-8 p-5 sm:p-6 rounded-2xl bg-[#121218]/90 border border-white/20 max-w-lg mx-auto shadow-2xl backdrop-blur-xl">
+            <div class="text-[11px] font-mono text-slate-400 uppercase tracking-widest font-semibold mb-2">
+              Direct Design Partner Channel
+            </div>
+            <div class="flex items-center justify-center gap-2 p-3 rounded-xl bg-[#0a0a0e] border border-white/15 text-slate-200 font-mono text-xs sm:text-sm font-bold selection:bg-white/30">
+              <span class="text-slate-400">✉</span>
+              <span id="partner-email-display">shubhamchansoriya13@gmail.com</span>
+            </div>
+
+            <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2.5">
+              <a href="mailto:shubhamchansoriya13@gmail.com?subject=Fluxera%20Design%20Partner%20Inquiry" class="w-full sm:w-auto flex-1 px-5 py-2.5 rounded-xl bg-gradient-to-r from-white via-slate-100 to-slate-300 text-slate-950 font-bold text-xs tracking-wide shadow-lg shadow-white/15 hover:shadow-[0_0_25px_rgba(255,255,255,0.35)] hover:scale-[1.02] transition-all whitespace-nowrap flex items-center justify-center gap-2">
+                <span>Become an Early Design Partner</span>
+                <span>→</span>
+              </a>
+              <button type="button" id="copy-email-btn" onclick="copyPartnerEmail()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-[#1a1a24] hover:bg-[#22222e] text-slate-200 hover:text-white border border-white/20 text-xs font-semibold transition-all cursor-pointer flex items-center justify-center gap-1.5">
+                <span id="copy-btn-icon">📋</span>
+                <span id="copy-btn-text">Copy Email</span>
+              </button>
+            </div>
+            <div class="mt-3 text-[10px] text-slate-400 font-mono flex items-center justify-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              Direct founder collaboration &amp; early access roadmap
+            </div>
           </div>
-          <p class="text-[11px] text-slate-500 mt-4 font-medium">Join the early-access program for AI-native SaaS teams.</p>
+
+          <!-- Section 7: Closing Statement (Full Horizon Arch Base) -->
+          <div class="mt-14 pt-8 border-t border-white/10 max-w-xl mx-auto">
+            <p class="text-sm sm:text-base font-semibold text-slate-300 leading-relaxed">
+              Software that responds intelligently to failures—and evolves toward improving itself.
+            </p>
+            <div class="mt-3 text-xs sm:text-sm font-extrabold tracking-wider uppercase text-white font-mono bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
+              Fluxera — Building toward Self-Evolving Systems.
+            </div>
+          </div>
         </div>
       </div>
     </div>

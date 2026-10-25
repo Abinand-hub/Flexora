@@ -62,20 +62,20 @@ body {
   transform-origin: center top;
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.65s ease;
   will-change: transform, box-shadow;
-  border: 1px solid rgba(244, 63, 94, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 
-    0 25px 60px -15px rgba(244, 63, 94, 0.22),
-    0 15px 35px -5px rgba(56, 189, 248, 0.18),
-    0 0 0 1px rgba(255, 255, 255, 0.95) inset;
+    0 25px 60px -15px rgba(0, 0, 0, 0.8),
+    0 15px 35px -5px rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
 }
 
 .dashboard-viewport-peek:hover {
   transform: rotateX(1.5deg) translateY(-14px) scale(1.028);
   box-shadow: 
-    0 48px 105px -15px rgba(244, 63, 94, 0.38),
-    0 25px 50px -5px rgba(56, 189, 248, 0.3),
+    0 48px 105px -15px rgba(0, 0, 0, 0.95),
+    0 25px 50px -5px rgba(255, 255, 255, 0.15),
     0 0 0 1px rgba(255, 255, 255, 1) inset;
-  border-color: rgba(244, 63, 94, 0.45);
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
 /* Mobile Responsiveness & Layout Safety Overrides */
@@ -93,7 +93,7 @@ html, body {
   
   .dashboard-viewport-peek {
     transform: none !important;
-    box-shadow: 0 12px 35px -5px rgba(244, 63, 94, 0.22), 0 0 0 1px rgba(226, 232, 240, 0.9) !important;
+    box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(226, 232, 240, 0.4) !important;
     border-radius: 1.25rem !important;
   }
 

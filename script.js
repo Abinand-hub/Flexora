@@ -726,14 +726,14 @@ function initAmbientParticles() {
   for (let i = 0; i < particleCount; i++) {
     const particle = document.createElement('div');
     particle.className = 'floating-particle';
-    const size = Math.random() * 4 + 2;
-    const isRose = Math.random() > 0.4;
+    const size = Math.random() * 3 + 2;
+    const isPlatinum = Math.random() > 0.5;
     particle.style.width = `${size}px`;
     particle.style.height = `${size}px`;
     particle.style.left = `${Math.random() * 95}%`;
     particle.style.top = `${Math.random() * 85 + 10}%`;
-    particle.style.background = isRose ? 'rgba(244, 63, 94, 0.5)' : 'rgba(56, 189, 248, 0.5)';
-    particle.style.boxShadow = isRose ? '0 0 12px rgba(244, 63, 94, 0.7)' : '0 0 12px rgba(56, 189, 248, 0.7)';
+    particle.style.background = isPlatinum ? 'rgba(255, 255, 255, 0.65)' : 'rgba(203, 213, 225, 0.45)';
+    particle.style.boxShadow = isPlatinum ? '0 0 10px rgba(255, 255, 255, 0.8)' : '0 0 10px rgba(203, 213, 225, 0.6)';
     particle.style.animationDuration = `${7 + Math.random() * 9}s`;
     particle.style.animationDelay = `${Math.random() * 6}s`;
     particleContainer.appendChild(particle);
@@ -750,5 +750,28 @@ if (document.readyState === 'loading') {
   initMobileMenu();
   initAmbientParticles();
 }
+
+// ==========================================
+// 7. COPY PARTNER EMAIL HELPER
+// ==========================================
+window.copyPartnerEmail = function() {
+  const email = 'shubhamchansoriya13@gmail.com';
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(email).then(() => {
+      const textEl = document.getElementById('copy-btn-text');
+      const iconEl = document.getElementById('copy-btn-icon');
+      if (textEl) textEl.textContent = 'Copied!';
+      if (iconEl) iconEl.textContent = '✓';
+      setTimeout(() => {
+        if (textEl) textEl.textContent = 'Copy Email';
+        if (iconEl) iconEl.textContent = '📋';
+      }, 2500);
+    }).catch(() => {
+      prompt('Copy email:', email);
+    });
+  } else {
+    prompt('Copy email:', email);
+  }
+};
 
 
