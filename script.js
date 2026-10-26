@@ -166,17 +166,6 @@
       let height = 0;
       let dpr = 1;
       let nodes = [];
-      let mousePos = { x: -1000, y: -1000, active: false };
-
-      window.addEventListener('mousemove', (e) => {
-        mousePos.x = e.clientX;
-        mousePos.y = e.clientY;
-        mousePos.active = true;
-      });
-
-      window.addEventListener('mouseleave', () => {
-        mousePos.active = false;
-      });
 
       class Node {
         constructor(w, h) {
@@ -216,18 +205,6 @@
           if (this.x > w + 20) this.x = -20;
           if (this.y < -20) this.y = h + 20;
           if (this.y > h + 20) this.y = -20;
-
-          if (mousePos.active) {
-            const dx = this.x - mousePos.x;
-            const dy = this.y - mousePos.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            const maxDist = 160;
-            if (dist < maxDist && dist > 0) {
-              const force = (1 - dist / maxDist) * 0.75;
-              this.x += (dx / dist) * force;
-              this.y += (dy / dist) * force;
-            }
-          }
         }
 
         draw(c) {
@@ -305,19 +282,19 @@
             const dist = Math.sqrt(dx * dx + dy * dy);
 
             if (dist < maxDist) {
-              const alpha = (1 - dist / maxDist) * 0.42;
+              const alpha = (1 - dist / maxDist) * 0.28;
               ctx.beginPath();
               ctx.moveTo(nodes[i].x, nodes[i].y);
               ctx.lineTo(nodes[j].x, nodes[j].y);
 
               if (nodes[i].accent || nodes[j].accent) {
                 ctx.strokeStyle = (nodes[i].type === 'platinum' || nodes[j].type === 'platinum')
-                  ? `rgba(255, 255, 255, ${alpha * 1.2})`
-                  : `rgba(226, 232, 240, ${alpha * 1.1})`;
+                  ? `rgba(255, 255, 255, ${alpha * 1.1})`
+                  : `rgba(226, 232, 240, ${alpha * 0.9})`;
               } else {
-                ctx.strokeStyle = `rgba(148, 163, 184, ${alpha * 0.75})`;
+                ctx.strokeStyle = `rgba(148, 163, 184, ${alpha * 0.6})`;
               }
-              ctx.lineWidth = 0.85;
+              ctx.lineWidth = 0.65;
               ctx.stroke();
 
               for (let k = j + 1; k < nodes.length; k++) {
@@ -336,7 +313,7 @@
                   ctx.lineTo(nodes[k].x, nodes[k].y);
                   ctx.closePath();
 
-                  const triAlpha = (1 - Math.max(dist, dist2, dist3) / maxTriangleDist) * 0.045;
+                  const triAlpha = (1 - Math.max(dist, dist2, dist3) / maxTriangleDist) * 0.025;
                   ctx.fillStyle = `rgba(255, 255, 255, ${triAlpha})`;
                   ctx.fill();
                 }
@@ -345,25 +322,7 @@
           }
         }
 
-        // 4. Mouse Interactive Connection Lines
-        if (mousePos.active) {
-          for (let i = 0; i < nodes.length; i++) {
-            const dx = nodes[i].x - mousePos.x;
-            const dy = nodes[i].y - mousePos.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 155) {
-              const alpha = (1 - dist / 155) * 0.5;
-              ctx.beginPath();
-              ctx.moveTo(nodes[i].x, nodes[i].y);
-              ctx.lineTo(mousePos.x, mousePos.y);
-              ctx.strokeStyle = `rgba(226, 232, 240, ${alpha})`;
-              ctx.lineWidth = 1;
-              ctx.stroke();
-            }
-          }
-        }
-
-        // 5. Draw Node Dots
+        // 4. Draw Node Dots (Subtle Floating Constellation Stars)
         for (let i = 0; i < nodes.length; i++) {
           nodes[i].draw(ctx);
         }
