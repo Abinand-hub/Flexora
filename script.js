@@ -251,78 +251,12 @@
       function animate() {
         ctx.clearRect(0, 0, width, height);
 
-        // 1. Draw Architectural Crosshairs (+) on Grid Intersections
-        const gridSize = 128;
-        ctx.strokeStyle = 'rgba(203, 213, 225, 0.28)';
-        ctx.lineWidth = 1;
-        for (let x = gridSize; x < width; x += gridSize * 2) {
-          for (let y = gridSize; y < height; y += gridSize * 2) {
-            ctx.beginPath();
-            ctx.moveTo(x - 4, y);
-            ctx.lineTo(x + 4, y);
-            ctx.moveTo(x, y - 4);
-            ctx.lineTo(x, y + 4);
-            ctx.stroke();
-          }
-        }
-
-        // 2. Update Nodes
+        // 1. Update Floating Nodes
         for (let i = 0; i < nodes.length; i++) {
           nodes[i].update(width, height);
         }
 
-        // 3. Draw Geometric Wireframe Triangles & Connections
-        const maxDist = 135;
-        const maxTriangleDist = 105;
-
-        for (let i = 0; i < nodes.length; i++) {
-          for (let j = i + 1; j < nodes.length; j++) {
-            const dx = nodes[i].x - nodes[j].x;
-            const dy = nodes[i].y - nodes[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < maxDist) {
-              const alpha = (1 - dist / maxDist) * 0.28;
-              ctx.beginPath();
-              ctx.moveTo(nodes[i].x, nodes[i].y);
-              ctx.lineTo(nodes[j].x, nodes[j].y);
-
-              if (nodes[i].accent || nodes[j].accent) {
-                ctx.strokeStyle = (nodes[i].type === 'platinum' || nodes[j].type === 'platinum')
-                  ? `rgba(255, 255, 255, ${alpha * 1.1})`
-                  : `rgba(226, 232, 240, ${alpha * 0.9})`;
-              } else {
-                ctx.strokeStyle = `rgba(148, 163, 184, ${alpha * 0.6})`;
-              }
-              ctx.lineWidth = 0.65;
-              ctx.stroke();
-
-              for (let k = j + 1; k < nodes.length; k++) {
-                const dx2 = nodes[j].x - nodes[k].x;
-                const dy2 = nodes[j].y - nodes[k].y;
-                const dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
-
-                const dx3 = nodes[k].x - nodes[i].x;
-                const dy3 = nodes[k].y - nodes[i].y;
-                const dist3 = Math.sqrt(dx3 * dx3 + dy3 * dy3);
-
-                if (dist2 < maxTriangleDist && dist3 < maxTriangleDist) {
-                  ctx.beginPath();
-                  ctx.moveTo(nodes[i].x, nodes[i].y);
-                  ctx.lineTo(nodes[j].x, nodes[j].y);
-                  ctx.lineTo(nodes[k].x, nodes[k].y);
-                  ctx.closePath();
-
-                  const triAlpha = (1 - Math.max(dist, dist2, dist3) / maxTriangleDist) * 0.025;
-                  ctx.fillStyle = `rgba(255, 255, 255, ${triAlpha})`;
-                  ctx.fill();
-                }
-              }
-            }
-          }
-        }
-
-        // 4. Draw Node Dots (Subtle Floating Constellation Stars)
+        // 2. Draw Subtle Floating Constellation Stars (Pure Stars, No Connecting Lines)
         for (let i = 0; i < nodes.length; i++) {
           nodes[i].draw(ctx);
         }
@@ -671,43 +605,18 @@ function initMobileMenu() {
 }
 
 // ==========================================
-// AMBIENT BACKGROUND PARTICLES INITIALIZATION
+// AMBIENT PARTICLES (DISABLED: PURE CLEAN GRID ONLY)
 // ==========================================
 function initAmbientParticles() {
-  const heroSection = document.getElementById('overview') || document.querySelector('main');
-  if (!heroSection) return;
-  
-  const particleContainer = document.createElement('div');
-  particleContainer.className = 'absolute inset-0 pointer-events-none overflow-hidden z-10';
-  particleContainer.id = 'ambient-particles';
-  
-  const particleCount = window.innerWidth < 768 ? 6 : 14;
-  for (let i = 0; i < particleCount; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'floating-particle';
-    const size = Math.random() * 3 + 2;
-    const isPlatinum = Math.random() > 0.5;
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.left = `${Math.random() * 95}%`;
-    particle.style.top = `${Math.random() * 85 + 10}%`;
-    particle.style.background = isPlatinum ? 'rgba(255, 255, 255, 0.65)' : 'rgba(203, 213, 225, 0.45)';
-    particle.style.boxShadow = isPlatinum ? '0 0 10px rgba(255, 255, 255, 0.8)' : '0 0 10px rgba(203, 213, 225, 0.6)';
-    particle.style.animationDuration = `${7 + Math.random() * 9}s`;
-    particle.style.animationDelay = `${Math.random() * 6}s`;
-    particleContainer.appendChild(particle);
-  }
-  heroSection.appendChild(particleContainer);
+  // Ambient particle dots removed for clean architectural grid aesthetic
 }
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
-    initAmbientParticles();
   });
 } else {
   initMobileMenu();
-  initAmbientParticles();
 }
 
 // ==========================================
