@@ -643,3 +643,62 @@ window.copyPartnerEmail = function() {
 };
 
 
+
+
+// ==========================================
+// 8. SCI-FI HUD & VIDEO FEED CONTROLLER
+// ==========================================
+const videoFeeds = {
+  mars: {
+    url: "https://upload.wikimedia.org/wikipedia/commons/d/dc/Mars_Science_Laboratory_Curiosity_Rover_Animation.webm",
+    label: "SYS.TEL // MARS ROVER TRAVERSE",
+    badge: "18.38°N 77.58°E (JEZERO)",
+    detail: "AUTONOMOUS NAVIGATION ENGAGED"
+  },
+  robotics: {
+    url: "https://svs.gsfc.nasa.gov/vis/a010000/a013000/a013020/AUDIOGRAM_ROBOTS.mp4",
+    label: "SYS.TEL // ROBOTIC AUTOMATION & ASSEMBLY",
+    badge: "6-AXIS ACTUATORS NOMINAL",
+    detail: "PRECISION EXECUTION ONLINE"
+  },
+  aerial: {
+    url: "https://svs.gsfc.nasa.gov/vis/a030000/a031200/a031246/PIA25970-1280.mp4",
+    label: "SYS.TEL // MARS INGENUITY FLIGHT",
+    badge: "ALT: 16FT // HOVER LOCK ACTIVE",
+    detail: "TERRAIN SCANNING SYNCED"
+  }
+};
+
+window.switchFeed = function(feedKey) {
+  const video = document.getElementById('hero-cinematic-video');
+  const feed = videoFeeds[feedKey];
+  if (!video || !feed) return;
+
+  const statusLabel = document.getElementById('hud-status-label');
+  const statusCoord = document.getElementById('hud-status-coord');
+
+  if (statusLabel) statusLabel.textContent = feed.label;
+  if (statusCoord) statusCoord.textContent = feed.badge;
+
+  video.style.opacity = '0.05';
+  setTimeout(() => {
+    video.src = feed.url;
+    video.load();
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay policy fallback
+      });
+    }
+    video.style.opacity = '0.45';
+  }, 300);
+
+  // Update active pill button
+  document.querySelectorAll('.feed-btn').forEach(btn => {
+    btn.classList.remove('hud-pill-active');
+  });
+  const activeBtn = document.getElementById(`btn-feed-${feedKey}`);
+  if (activeBtn) {
+    activeBtn.classList.add('hud-pill-active');
+  }
+};
