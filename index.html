@@ -14,12 +14,15 @@
 </head>
 <body class="relative bg-[#08080a] text-slate-200 selection:bg-white/20 selection:text-white">
 
-  <!-- CINEMATIC BACKGROUND VIDEO (MARS LANDSCAPE, ROBOTICS & MACHINES) -->
+  <!-- CINEMATIC BACKGROUND VIDEO (AUTONOMOUS CROSSFADE: MARS LANDSCAPE, ROBOTICS & MACHINES) -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none -z-20 bg-[#08080a]" id="cinematic-bg-container">
-    <video id="hero-cinematic-video" class="absolute inset-0 w-full h-full object-cover opacity-85 transition-opacity duration-700" autoplay muted loop playsinline preload="auto" style="filter: brightness(1.08) contrast(1.1);">
+    <video id="hero-video-a" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out" autoplay muted loop playsinline preload="auto" style="opacity: 0.85; filter: brightness(1.08) contrast(1.1);">
       <source src="/videos/mars-surface.mp4" type="video/mp4">
     </video>
-    <!-- Cinematic Vignette Overlay (Leaves the visual clearly visible while protecting text readability) -->
+    <video id="hero-video-b" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out" muted loop playsinline preload="auto" style="opacity: 0; filter: brightness(1.08) contrast(1.1);">
+      <source src="/videos/robotics.mp4" type="video/mp4">
+    </video>
+    <!-- Cinematic Vignette Overlay -->
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(8,8,10,0.15)_0%,rgba(8,8,10,0.5)_60%,#08080a_98%)] pointer-events-none"></div>
     <div class="absolute inset-0 bg-gradient-to-b from-[#08080a]/50 via-transparent to-[#08080a] pointer-events-none"></div>
   </div>
@@ -47,7 +50,7 @@
       <nav class="hidden md:flex items-center text-xs font-medium text-slate-300">
         <ul class="flex items-center space-x-1 sm:space-x-2">
           <li><a class="px-3.5 py-1.5 rounded-full text-white font-semibold bg-white/10 transition-all shadow-xs" href="./index.html#overview">Home</a></li>
-          <li><a class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all font-medium text-slate-400" href="./vision.html">Vision</a></li>
+          <li><a class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all font-medium text-slate-400" href="#the-vision">Vision</a></li>
         </ul>
       </nav>
 
@@ -76,7 +79,7 @@
       </span>
       <span class="text-xs text-slate-400">→</span>
     </a>
-    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-200 font-bold text-sm hover:bg-white/10 hover:text-white transition-colors" href="./vision.html">
+    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-200 font-bold text-sm hover:bg-white/10 hover:text-white transition-colors" href="#the-vision">
       <span class="flex items-center gap-2.5">
         <span class="text-base">👁️</span>
         <span>Vision</span>
@@ -101,23 +104,7 @@
   <section class="relative min-h-[60vh] flex flex-col justify-center pt-32 md:pt-40 pb-12 overflow-visible" id="overview">
     <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-white/[0.04] blur-[140px] pointer-events-none rounded-full"></div>
 
-        <!-- CLEAN SCENE FEED SWITCHER (MARS, ROBOTICS, AERIAL) -->
-    <div class="relative z-20 max-w-md mx-auto px-4 mb-6">
-      <div class="flex items-center justify-center gap-2 p-1.5 rounded-full bg-[#0f0f14]/80 backdrop-blur-xl border border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.7)] text-xs font-mono">
-        <button type="button" onclick="switchFeed('mars')" id="btn-feed-mars" class="feed-btn px-4 py-1.5 rounded-full hud-pill-active text-white font-bold transition-all cursor-pointer flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
-          <span>Mars Surface</span>
-        </button>
-        <button type="button" onclick="switchFeed('robotics')" id="btn-feed-robotics" class="feed-btn px-4 py-1.5 rounded-full bg-white/5 text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-          <span>Robotics</span>
-        </button>
-        <button type="button" onclick="switchFeed('aerial')" id="btn-feed-aerial" class="feed-btn px-4 py-1.5 rounded-full bg-white/5 text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-          <span>Aerial Flight</span>
-        </button>
-      </div>
-    </div>
+        
 
     <div class="max-w-3xl mx-auto px-6 text-center relative z-20 pt-2 shrink-0">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-white/[0.06] text-slate-200 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.06)] mb-6 backdrop-blur-md">
@@ -944,6 +931,14 @@
         </p>
 
         <!-- Clear Disclaimer Banner -->
+        <!-- Deep-Dive Vision Architecture Link -->
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <a href="./vision.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white text-xs font-semibold shadow-md transition-all duration-200 hover:scale-[1.03]">
+            <span>Explore Full 3D Architecture Engine</span>
+            <span class="text-sm">→</span>
+          </a>
+        </div>
+
         <div class="mt-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/15 text-[11px] font-mono text-slate-400">
           <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
           Build AI is a planned future capability, not part of the current product.

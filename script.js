@@ -646,66 +646,91 @@ window.copyPartnerEmail = function() {
 
 
 // ==========================================
-// 8. SCI-FI VIDEO BACKGROUND & FEED CONTROLLER
+// 8. CONTINUOUS CINEMATIC BACKGROUND STREAM
+// Seamless cross-fading playlist: Mars terrain, robotics, autonomous machines, aerial flight
+// Cycles automatically in the background on Home and Vision without manual buttons
 // ==========================================
-const videoFeeds = {
-  mars: {
-    url: "/videos/mars-surface.mp4",
-    title: "Mars Surface"
-  },
-  robotics: {
-    url: "/videos/robotics.mp4",
-    title: "Robotic Assembly"
-  },
-  aerial: {
-    url: "/videos/mars-flight.mp4",
-    title: "Aerial Flight"
-  }
-};
+const CINEMATIC_PLAYLIST = [
+  { url: '/videos/mars-surface.mp4', title: 'Mars Surface Exploration' },
+  { url: '/videos/robotics.mp4', title: 'Robotics & Advanced Machinery' },
+  { url: '/videos/mars-flight.mp4', title: 'Mars Aerial Autonomous Flight' }
+];
 
-window.switchFeed = function(feedKey) {
-  const video = document.getElementById('hero-cinematic-video');
-  const feed = videoFeeds[feedKey];
-  if (!video || !feed) return;
+function initCinematicBackground() {
+  const container = document.getElementById('cinematic-bg-container');
+  if (!container) return;
 
-  video.style.opacity = '0.1';
-  setTimeout(() => {
-    video.src = feed.url;
-    video.load();
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {});
-    }
-    video.style.opacity = '0.85';
-  }, 300);
+  const videoA = document.getElementById('hero-video-a');
+  const videoB = document.getElementById('hero-video-b');
+  if (!videoA || !videoB) return;
 
-  // Update active pill button
-  document.querySelectorAll('.feed-btn').forEach(btn => {
-    btn.classList.remove('hud-pill-active', 'bg-white/15', 'text-white', 'font-bold');
-    btn.classList.add('bg-white/5', 'text-slate-300');
-  });
-  const activeBtn = document.getElementById(`btn-feed-${feedKey}`);
-  if (activeBtn) {
-    activeBtn.classList.add('hud-pill-active', 'text-white', 'font-bold');
-    activeBtn.classList.remove('bg-white/5', 'text-slate-300');
-  }
-};
+  let currentIndex = 0;
+  let activeVideo = videoA;
+  let nextVideo = videoB;
+  const SCENE_DURATION_MS = 14000; // 14 seconds per scene for rich visual progression
 
-
-// Ensure cinematic video starts smoothly on initial load
-document.addEventListener('DOMContentLoaded', () => {
-  const heroVideo = document.getElementById('hero-cinematic-video');
-  if (heroVideo) {
-    heroVideo.muted = true;
-    const playAttempt = heroVideo.play();
-    if (playAttempt !== undefined) {
-      playAttempt.catch(() => {
-        const startOnInteraction = () => {
-          heroVideo.play().catch(() => {});
-        };
-        window.addEventListener('click', startOnInteraction, { once: true });
-        window.addEventListener('keydown', startOnInteraction, { once: true });
-      });
+  function playVideoSafely(v) {
+    if (!v) return;
+    v.muted = true;
+    const p = v.play();
+    if (p !== undefined) {
+      p.catch(() => {});
     }
   }
-});
+
+  // Pre-load initial videos
+  videoA.src = CINEMATIC_PLAYLIST[0].url;
+  videoB.src = CINEMATIC_PLAYLIST[1].url;
+
+  playVideoSafely(activeVideo);
+
+  function crossfadeToNext() {
+    currentIndex = (currentIndex + 1) % CINEMATIC_PLAYLIST.length;
+    const currentItem = CINEMATIC_PLAYLIST[currentIndex];
+
+    // Load next clip into the inactive layer
+    nextVideo.src = currentItem.url;
+    nextVideo.currentTime = 0;
+    nextVideo.load();
+
+    let hasSwapped = false;
+    const doSwap = () => {
+      if (hasSwapped) return;
+      hasSwapped = true;
+      nextVideo.oncanplay = null;
+      playVideoSafely(nextVideo);
+
+      // Smooth cross-fade: incoming video to 85%, outgoing to 0%
+      nextVideo.style.opacity = '0.85';
+      activeVideo.style.opacity = '0';
+
+      // Swap pointers
+      const temp = activeVideo;
+      activeVideo = nextVideo;
+      nextVideo = temp;
+
+      // Schedule next transition
+      setTimeout(crossfadeToNext, SCENE_DURATION_MS);
+    };
+
+    nextVideo.oncanplay = doSwap;
+    // Fallback if event is missed or already buffered
+    setTimeout(doSwap, 1200);
+  }
+
+  // Schedule initial transition
+  setTimeout(crossfadeToNext, SCENE_DURATION_MS);
+
+  // Playback safeguard on user click/touch if browser blocked unmuted/initial autoplay
+  const unlock = () => {
+    if (activeVideo && activeVideo.paused) playVideoSafely(activeVideo);
+  };
+  window.addEventListener('click', unlock, { once: true });
+  window.addEventListener('touchstart', unlock, { once: true });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCinematicBackground);
+} else {
+  initCinematicBackground();
+}
