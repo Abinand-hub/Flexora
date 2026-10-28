@@ -676,7 +676,7 @@ window.switchFeed = function(feedKey) {
     if (playPromise !== undefined) {
       playPromise.catch(() => {});
     }
-    video.style.opacity = '0.75';
+    video.style.opacity = '0.85';
   }, 300);
 
   // Update active pill button
@@ -690,3 +690,22 @@ window.switchFeed = function(feedKey) {
     activeBtn.classList.remove('bg-white/5', 'text-slate-300');
   }
 };
+
+
+// Ensure cinematic video starts smoothly on initial load
+document.addEventListener('DOMContentLoaded', () => {
+  const heroVideo = document.getElementById('hero-cinematic-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    const playAttempt = heroVideo.play();
+    if (playAttempt !== undefined) {
+      playAttempt.catch(() => {
+        const startOnInteraction = () => {
+          heroVideo.play().catch(() => {});
+        };
+        window.addEventListener('click', startOnInteraction, { once: true });
+        window.addEventListener('keydown', startOnInteraction, { once: true });
+      });
+    }
+  }
+});
