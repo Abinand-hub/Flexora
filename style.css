@@ -391,11 +391,13 @@ html, body {
 /* HIGH-TECH CYBER GRID & AMBIENT SPATIAL BACKGROUND (VISION & HOME SHARED) */
 /* ========================================================================= */
 
+/* Low-Opacity Subtle High-Tech Cyber Grid (Visible & Delicate over Video) */
 .cyber-grid {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
+  opacity: 0.30; /* Low opacity: subtle delicate lines */
   background-image: 
     radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 42%, transparent 70%),
     radial-gradient(circle at 82% 18%, rgba(200, 215, 230, 0.05) 0%, transparent 65%),
@@ -412,9 +414,10 @@ html, body {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  opacity: 0.34; /* Low opacity: visible subtle matrix */
   background-image: 
-    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.35) 1.5px, transparent 0),
-    radial-gradient(circle at 17px 17px, rgba(255, 255, 255, 0.22) 1.2px, transparent 0),
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.4) 1.2px, transparent 0),
+    radial-gradient(circle at 17px 17px, rgba(255, 255, 255, 0.25) 1px, transparent 0),
     linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
   background-size: 32px 32px, 32px 32px, 32px 32px, 32px 32px;
@@ -423,12 +426,13 @@ html, body {
   -webkit-mask-image: radial-gradient(ellipse 95% 90% at 50% 25%, rgba(0,0,0,0.98) 35%, rgba(0,0,0,0.65) 75%, transparent 100%);
 }
 
-/* Additional Minimal Ambient Dots Layer (Sparse focal points, does not cover background) */
+/* Subtle Sparse Ambient Dots */
 .ambient-small-dots {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
+  opacity: 0.28; /* Low opacity: delicate points */
   background-image: 
     radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.65) 1.5px, transparent 2px),
     radial-gradient(circle at 85% 18%, rgba(255, 255, 255, 0.6) 1.2px, transparent 2px),
@@ -445,6 +449,42 @@ html, body {
     radial-gradient(circle at 42% 80%, rgba(255, 255, 255, 0.45) 1.2px, transparent 2px),
     radial-gradient(circle at 74% 84%, rgba(255, 255, 255, 0.5) 1.2px, transparent 2px);
   background-size: 100% 100%;
+}
+
+/* Mobile Responsive Optimization for Video & Grids */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  #cinematic-bg-container {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  #hero-cinematic-video {
+    object-position: center center;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  .cyber-grid {
+    opacity: 0.18;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+  }
+  .design-dot-grid {
+    opacity: 0.20;
+    background-size: 24px 24px, 24px 24px, 24px 24px, 24px 24px;
+  }
+  .ambient-small-dots {
+    opacity: 0.18;
+  }
 }
 
 /* Ambient Spatial Orbs */
@@ -555,3 +595,128 @@ html, body {
 .hud-telemetry-beacon {
   animation: hudPulseSlow 3s ease-in-out infinite;
 }
+
+
+/* ========================================================================= */
+/* TRANSPARENT WHITE VECTOR ROBOTS & MACHINES FLOWING BACKGROUND              */
+/* ========================================================================= */
+
+.floating-robots-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -5;
+}
+
+.robot-vector {
+  position: absolute;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+  will-change: transform;
+}
+
+/* Mars Rover Vector Flow (Traversing lower Martian terrain) */
+@keyframes roverDrift {
+  0% { transform: translate3d(-140px, 0, 0); }
+  50% { transform: translate3d(calc(50vw - 45px), -5px, 0); }
+  100% { transform: translate3d(calc(100vw + 60px), 0, 0); }
+}
+.rover-entity {
+  top: 74%;
+  width: 90px;
+  height: 58px;
+  animation: roverDrift 45s linear infinite;
+  animation-delay: -18s;
+}
+
+/* Scout Drone Vector Flow (Gliding across upper airspace) */
+@keyframes droneFlow {
+  0% { transform: translate3d(calc(100vw + 100px), 0, 0); }
+  25% { transform: translate3d(calc(75vw), -12px, 0); }
+  50% { transform: translate3d(calc(50vw), 6px, 0); }
+  75% { transform: translate3d(calc(25vw), -10px, 0); }
+  100% { transform: translate3d(-120px, 0, 0); }
+}
+.drone-entity {
+  top: 20%;
+  width: 78px;
+  height: 57px;
+  animation: droneFlow 36s ease-in-out infinite;
+  animation-delay: -9s;
+}
+
+/* Orbital Satellite Machine (Slow diagonal celestial glide) */
+@keyframes satelliteDrift {
+  0% { transform: translate3d(calc(100vw + 80px), 6vh, 0) rotate(-4deg); }
+  100% { transform: translate3d(-140px, 18vh, 0) rotate(4deg); }
+}
+.satellite-entity {
+  top: 8%;
+  width: 88px;
+  height: 48px;
+  animation: satelliteDrift 58s linear infinite;
+  animation-delay: -24s;
+}
+
+/* Quadruped Scout Robot Machine Flow */
+@keyframes quadrupedWalk {
+  0% { transform: translate3d(-120px, 0, 0); }
+  50% { transform: translate3d(calc(50vw), -4px, 0); }
+  100% { transform: translate3d(calc(100vw + 80px), 0, 0); }
+}
+.quadruped-entity {
+  top: 54%;
+  width: 75px;
+  height: 52px;
+  animation: quadrupedWalk 48s linear infinite;
+  animation-delay: -32s;
+}
+
+/* Articulated Robotic Arm Outpost Station */
+@keyframes armFlexMovement {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-15deg); }
+  70% { transform: rotate(18deg); }
+}
+.arm-forearm-flex {
+  transform-origin: 40px 48px;
+  animation: armFlexMovement 8s ease-in-out infinite;
+}
+.arm-entity {
+  top: 38%;
+  left: 5%;
+  width: 72px;
+  height: 72px;
+  opacity: 0.8;
+}
+
+/* Rotor spinning for drone */
+@keyframes rotorBladesSpin {
+  0% { transform: scaleX(1); opacity: 0.95; }
+  50% { transform: scaleX(-1); opacity: 0.65; }
+  100% { transform: scaleX(1); opacity: 0.95; }
+}
+.rotor-spin {
+  transform-origin: 55px 18px;
+  animation: rotorBladesSpin 0.2s linear infinite;
+}
+.rotor-spin-rev {
+  transform-origin: 55px 24px;
+  animation: rotorBladesSpin 0.2s linear infinite reverse;
+}
+
+/* ========================================================================= */
+/* MARTIAN AUTONOMOUS COLONY ANIMATED BACKDROP                               */
+/* ========================================================================= */
+
+@keyframes marsColonyBreathing {
+  0% { transform: scale(1.01) translate3d(0, 0, 0); }
+  50% { transform: scale(1.05) translate3d(-0.8%, -0.4%, 0); }
+  100% { transform: scale(1.01) translate3d(0, 0, 0); }
+}
+
+.mars-colony-backdrop {
+  animation: marsColonyBreathing 48s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
