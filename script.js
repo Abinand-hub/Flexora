@@ -623,7 +623,7 @@ if (document.readyState === 'loading') {
 // 7. COPY PARTNER EMAIL HELPER
 // ==========================================
 window.copyPartnerEmail = function() {
-  const email = 'shubhamchansoriya13@gmail.com';
+  const email = 'ceo@getfluxera.com';
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(email).then(() => {
       const textEl = document.getElementById('copy-btn-text');

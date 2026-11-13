@@ -21,7 +21,7 @@ const PALETTES = {
   },
 };
 
-const PARTNER_EMAIL = 'shubhamchansoriya13@gmail.com';
+const PARTNER_EMAIL = 'ceo@getfluxera.com';
 
 /* --------------------------------------------------------------------------
    1. ORBITAL LOGO ANIMATION (#fluxera-intro)
