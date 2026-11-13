@@ -1,0 +1,722 @@
+/* ========================================================================= */
+/* FLUXERA STANDALONE STYLESHEET (style.css)                                 */
+/* ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+body {
+  background-color: #08080a;
+  color: #e2e8f0;
+  overflow-x: hidden;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Ambient Cosmic Arcs (Matte Black + Silver Horizon Aura) */
+.cosmic-arc-top {
+  position: absolute;
+  top: -140px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1100px;
+  height: 540px;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.14) 0%, rgba(203, 213, 225, 0.05) 45%, transparent 75%);
+  pointer-events: none;
+  filter: blur(8px);
+  animation: auraFloat 7s ease-in-out infinite alternate;
+}
+
+.cosmic-arc-rim {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 450px;
+  border-top: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  box-shadow: 0 -12px 40px rgba(255, 255, 255, 0.22), 0 0 15px rgba(203, 213, 225, 0.5);
+  pointer-events: none;
+  animation: rimPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes auraFloat {
+  0% { transform: translateX(-50%) scale(0.97); opacity: 0.85; }
+  100% { transform: translateX(-50%) scale(1.03); opacity: 1; }
+}
+
+@keyframes rimPulse {
+  0% { opacity: 0.7; filter: drop-shadow(0 -5px 15px rgba(255, 255, 255, 0.25)); }
+  100% { opacity: 1; filter: drop-shadow(0 -12px 35px rgba(255, 255, 255, 0.45)); }
+}
+
+/* 3D Dashboard Perspective Stage */
+.hero-perspective-stage {
+  perspective: 1600px;
+  transform-style: preserve-3d;
+}
+
+.dashboard-viewport-peek {
+  transform: rotateX(5deg) translateY(0px) scale(1);
+  transform-origin: center top;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.65s ease;
+  will-change: transform, box-shadow;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 25px 60px -15px rgba(0, 0, 0, 0.8),
+    0 15px 35px -5px rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+}
+
+.dashboard-viewport-peek:hover {
+  transform: rotateX(1.5deg) translateY(-14px) scale(1.028);
+  box-shadow: 
+    0 48px 105px -15px rgba(0, 0, 0, 0.95),
+    0 25px 50px -5px rgba(255, 255, 255, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 1) inset;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+/* Mobile Responsiveness & Layout Safety Overrides */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .hero-perspective-stage {
+    perspective: none !important;
+    transform-style: flat !important;
+  }
+  
+  .dashboard-viewport-peek {
+    transform: none !important;
+    box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(226, 232, 240, 0.4) !important;
+    border-radius: 1.25rem !important;
+  }
+
+  .dashboard-viewport-peek:hover {
+    transform: none !important;
+  }
+
+  .horizon-arc-dome {
+    width: 170% !important;
+    border-radius: 50% 50% 0 0 / 110px 110px 0 0 !important;
+    padding-top: 3.5rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
+/* 3D MATTE BLACK + SILVER iPHONE STYLING */
+.iphone-integrated-stage {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.iphone-half-peek {
+  transform: rotateY(-8deg) rotateX(5deg) translateY(0px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #111115;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    -18px 28px 60px -12px rgba(0, 0, 0, 0.7),
+    -5px 12px 30px -5px rgba(0, 0, 0, 0.5),
+    0 0 0 2px rgba(255, 255, 255, 0.08),
+    0 0 35px rgba(255, 255, 255, 0.1);
+  animation: iphoneFloatLower 6s ease-in-out infinite alternate;
+}
+
+.iphone-half-peek:hover {
+  transform: rotateY(-3deg) rotateX(2deg) translateY(-10px) scale(1.02);
+  box-shadow: 
+    -22px 36px 75px -12px rgba(0, 0, 0, 0.85),
+    -8px 18px 40px -5px rgba(255, 255, 255, 0.15),
+    0 0 0 2px rgba(255, 255, 255, 0.2),
+    0 0 45px rgba(255, 255, 255, 0.18);
+}
+
+@keyframes iphoneFloatLower {
+  0% { transform: rotateY(-8deg) rotateX(5deg) translateY(0px); }
+  100% { transform: rotateY(-6deg) rotateX(3deg) translateY(-12px); }
+}
+
+/* 3D Holographic Matte Black + Silver Glass Cards */
+.futuristic-card {
+  background: linear-gradient(135deg, rgba(18, 18, 23, 0.94) 0%, rgba(11, 11, 14, 0.98) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.futuristic-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 28px 65px -12px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 255, 255, 0.08);
+}
+
+/* 3D Pillar Holographic Tiles */
+.pillar-tile-3d {
+  background: linear-gradient(145deg, rgba(18, 18, 23, 0.94) 0%, rgba(11, 11, 14, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.pillar-tile-3d:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 255, 255, 0.1);
+}
+
+/* Cybernetic Vertical Connector Lines */
+.circuit-line-stem {
+  width: 2px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.75) 50%, rgba(148, 163, 184, 0.5) 100%);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+  position: relative;
+}
+
+.pulse-dot-vertical {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  box-shadow: 0 0 12px #ffffff, 0 0 20px rgba(255, 255, 255, 0.6);
+  left: -3px;
+  animation: pulseDown 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseDown {
+  0% { top: 0%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { top: 96%; opacity: 0; }
+}
+
+/* Glowing Fiber-Optic Laser Path */
+.fiber-laser-line {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.85) 50%, rgba(148, 163, 184, 0.75) 80%, rgba(226, 232, 240, 0.8) 100%);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+.laser-beam-pulse {
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 9999px;
+  box-shadow: 0 0 15px #ffffff, 0 0 25px rgba(255, 255, 255, 0.8);
+  animation: laserTravel 3.2s linear infinite;
+}
+@keyframes laserTravel {
+  0% { left: 0%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { left: 95%; opacity: 0; }
+}
+
+/* Holographic Circular Gauge Rings */
+.gauge-glow-ring {
+  animation: gaugeRotate 14s linear infinite;
+  transform-origin: center;
+}
+@keyframes gaugeRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Horizon Arc Bottom Dome (Smooth Edge-to-Edge Planet Horizon - No Sharp Sides) */
+.horizon-arc-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.horizon-arc-dome {
+  position: relative;
+  width: 135%;
+  border-radius: 50% 50% 0 0 / 240px 240px 0 0;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  background: radial-gradient(ellipse at 50% 100%, #16161f 0%, #0d0d12 60%, #08080a 100%);
+  box-shadow: 0 -20px 60px -10px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5rem;
+  padding-bottom: 5.5rem;
+}
+
+@media (max-width: 1024px) {
+  .horizon-arc-dome {
+    width: 145%;
+    border-radius: 50% 50% 0 0 / 180px 180px 0 0;
+    padding-top: 4rem;
+    padding-bottom: 4.5rem;
+  }
+}
+
+/* Scroll reveal styling */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Continuous Infinite Connected Services Carousel */
+@keyframes toolMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.tool-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: toolMarquee 32s linear infinite;
+}
+
+.tool-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Floating Badges Micro-Physics */
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+.floating-pill {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+.floating-pill:nth-child(2n) {
+  animation-delay: 0.8s;
+}
+.floating-pill:nth-child(3n) {
+  animation-delay: 1.6s;
+}
+.floating-pill:nth-child(4n) {
+  animation-delay: 2.4s;
+}
+
+/* ========================================== */
+/* AMBIENT BACKGROUND MICRO-ANIMATIONS & SHIMMER */
+/* ========================================== */
+
+/* 1. Animated Ambient Grid Matrix Shift */
+@keyframes gridShift {
+  0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
+  100% { background-position: 0 0, 0 0, 0 0, 0 0, 48px 48px, 48px 48px; }
+}
+
+.animated-grid {
+  animation: gridShift 35s linear infinite;
+}
+
+/* 2. Floating Ambient Light Orbs */
+@keyframes floatOrb1 {
+  0% { transform: translate(-50%, 0px) scale(1); opacity: 0.85; }
+  50% { transform: translate(-48%, -25px) scale(1.08); opacity: 1; }
+  100% { transform: translate(-52%, 15px) scale(0.95); opacity: 0.9; }
+}
+
+@keyframes floatOrb2 {
+  0% { transform: translate(0px, 0px) scale(1); opacity: 0.8; }
+  50% { transform: translate(25px, -30px) scale(1.1); opacity: 1; }
+  100% { transform: translate(-15px, 20px) scale(0.92); opacity: 0.85; }
+}
+
+.ambient-orb-1 {
+  animation: floatOrb1 12s ease-in-out infinite alternate;
+}
+
+.ambient-orb-2 {
+  animation: floatOrb2 16s ease-in-out infinite alternate;
+}
+
+/* 3. Subtle Particle Drifting Points */
+@keyframes floatParticleUp {
+  0% { transform: translateY(0px) rotate(0deg); opacity: 0.2; }
+  50% { opacity: 0.7; }
+  100% { transform: translateY(-120px) rotate(180deg); opacity: 0; }
+}
+
+.floating-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatParticleUp 8s ease-in-out infinite;
+}
+
+/* 4. Shimmering Card Gradient Border Effect */
+@keyframes borderShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.shimmer-border {
+  background-size: 200% 200%;
+  animation: borderShimmer 6s ease infinite;
+}
+
+/* 5. Concentric Glowing LED Dot Pulse */
+@keyframes dotPulseRing {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.pulse-led-ring {
+  animation: dotPulseRing 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* ========================================================================= */
+/* HIGH-TECH CYBER GRID & AMBIENT SPATIAL BACKGROUND (VISION & HOME SHARED) */
+/* ========================================================================= */
+
+/* Low-Opacity Subtle High-Tech Cyber Grid (Visible & Delicate over Video) */
+.cyber-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.30; /* Low opacity: subtle delicate lines */
+  background-image: 
+    radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 42%, transparent 70%),
+    radial-gradient(circle at 82% 18%, rgba(200, 215, 230, 0.05) 0%, transparent 65%),
+    radial-gradient(circle at 18% 65%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.05) 0%, transparent 60%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+}
+
+.design-dot-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.34; /* Low opacity: visible subtle matrix */
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.4) 1.2px, transparent 0),
+    radial-gradient(circle at 17px 17px, rgba(255, 255, 255, 0.25) 1px, transparent 0),
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 32px 32px, 32px 32px, 32px 32px, 32px 32px;
+  background-position: -1px -1px;
+  mask-image: radial-gradient(ellipse 95% 90% at 50% 25%, rgba(0,0,0,0.98) 35%, rgba(0,0,0,0.65) 75%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 90% at 50% 25%, rgba(0,0,0,0.98) 35%, rgba(0,0,0,0.65) 75%, transparent 100%);
+}
+
+/* Subtle Sparse Ambient Dots */
+.ambient-small-dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.28; /* Low opacity: delicate points */
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.65) 1.5px, transparent 2px),
+    radial-gradient(circle at 85% 18%, rgba(255, 255, 255, 0.6) 1.2px, transparent 2px),
+    radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.55) 1.5px, transparent 2px),
+    radial-gradient(circle at 70% 32%, rgba(255, 255, 255, 0.6) 1.2px, transparent 2px),
+    radial-gradient(circle at 48% 22%, rgba(255, 255, 255, 0.5) 1px, transparent 2px),
+    radial-gradient(circle at 52% 40%, rgba(255, 255, 255, 0.55) 1.5px, transparent 2px),
+    radial-gradient(circle at 22% 48%, rgba(255, 255, 255, 0.5) 1.2px, transparent 2px),
+    radial-gradient(circle at 80% 46%, rgba(255, 255, 255, 0.6) 1.5px, transparent 2px),
+    radial-gradient(circle at 38% 62%, rgba(255, 255, 255, 0.45) 1.2px, transparent 2px),
+    radial-gradient(circle at 62% 58%, rgba(255, 255, 255, 0.55) 1.5px, transparent 2px),
+    radial-gradient(circle at 14% 72%, rgba(255, 255, 255, 0.5) 1.5px, transparent 2px),
+    radial-gradient(circle at 86% 70%, rgba(255, 255, 255, 0.55) 1.2px, transparent 2px),
+    radial-gradient(circle at 42% 80%, rgba(255, 255, 255, 0.45) 1.2px, transparent 2px),
+    radial-gradient(circle at 74% 84%, rgba(255, 255, 255, 0.5) 1.2px, transparent 2px);
+  background-size: 100% 100%;
+}
+
+/* Mobile Responsive Optimization for Video & Grids */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  #cinematic-bg-container {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  #hero-cinematic-video {
+    object-position: center center;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  .cyber-grid {
+    opacity: 0.18;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+  }
+  .design-dot-grid {
+    opacity: 0.20;
+    background-size: 24px 24px, 24px 24px, 24px 24px, 24px 24px;
+  }
+  .ambient-small-dots {
+    opacity: 0.18;
+  }
+}
+
+/* Ambient Spatial Orbs */
+.spatial-orb-rose {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 45%, rgba(8, 8, 10, 0) 70%);
+  filter: blur(60px);
+}
+.spatial-orb-cyan {
+  background: radial-gradient(circle, rgba(200, 215, 230, 0.06) 0%, rgba(200, 215, 230, 0.01) 50%, rgba(8, 8, 10, 0) 72%);
+  filter: blur(65px);
+}
+
+/* Pulsing Intersection Node Points for Design Grid */
+.grid-node-glow {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 10px #ffffff, 0 0 20px rgba(226, 232, 240, 0.7);
+  pointer-events: none;
+  animation: gridNodePulse 3.5s ease-in-out infinite alternate;
+}
+
+.grid-node-glow-sky {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  box-shadow: 0 0 10px #cbd5e1, 0 0 20px rgba(203, 213, 225, 0.7);
+  pointer-events: none;
+  animation: gridNodePulse 4s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes gridNodePulse {
+  0% { transform: scale(0.75); opacity: 0.35; box-shadow: 0 0 4px currentColor; }
+  100% { transform: scale(1.35); opacity: 0.95; box-shadow: 0 0 14px currentColor, 0 0 28px currentColor; }
+}
+
+.grid-crosshair {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  pointer-events: none;
+  opacity: 0.4;
+  color: #64748b;
+  transform: translate(-50%, -50%);
+}
+
+
+
+/* ========================================================================= */
+/* FUTURISTIC MISSION CONTROL & SCI-FI VIDEO HUD OVERLAYS                    */
+/* ========================================================================= */
+
+.scanline-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.35) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 255, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+}
+
+.hud-bracket {
+  position: relative;
+}
+.hud-bracket::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+.hud-bracket::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  border-right: 2px solid rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+.hud-pill-active {
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15) !important;
+}
+
+@keyframes hudPulseSlow {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 0.35; }
+}
+
+.hud-telemetry-beacon {
+  animation: hudPulseSlow 3s ease-in-out infinite;
+}
+
+
+/* ========================================================================= */
+/* TRANSPARENT WHITE VECTOR ROBOTS & MACHINES FLOWING BACKGROUND              */
+/* ========================================================================= */
+
+.floating-robots-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -5;
+}
+
+.robot-vector {
+  position: absolute;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+  will-change: transform;
+}
+
+/* Mars Rover Vector Flow (Traversing lower Martian terrain) */
+@keyframes roverDrift {
+  0% { transform: translate3d(-140px, 0, 0); }
+  50% { transform: translate3d(calc(50vw - 45px), -5px, 0); }
+  100% { transform: translate3d(calc(100vw + 60px), 0, 0); }
+}
+.rover-entity {
+  top: 74%;
+  width: 90px;
+  height: 58px;
+  animation: roverDrift 45s linear infinite;
+  animation-delay: -18s;
+}
+
+/* Scout Drone Vector Flow (Gliding across upper airspace) */
+@keyframes droneFlow {
+  0% { transform: translate3d(calc(100vw + 100px), 0, 0); }
+  25% { transform: translate3d(calc(75vw), -12px, 0); }
+  50% { transform: translate3d(calc(50vw), 6px, 0); }
+  75% { transform: translate3d(calc(25vw), -10px, 0); }
+  100% { transform: translate3d(-120px, 0, 0); }
+}
+.drone-entity {
+  top: 20%;
+  width: 78px;
+  height: 57px;
+  animation: droneFlow 36s ease-in-out infinite;
+  animation-delay: -9s;
+}
+
+/* Orbital Satellite Machine (Slow diagonal celestial glide) */
+@keyframes satelliteDrift {
+  0% { transform: translate3d(calc(100vw + 80px), 6vh, 0) rotate(-4deg); }
+  100% { transform: translate3d(-140px, 18vh, 0) rotate(4deg); }
+}
+.satellite-entity {
+  top: 8%;
+  width: 88px;
+  height: 48px;
+  animation: satelliteDrift 58s linear infinite;
+  animation-delay: -24s;
+}
+
+/* Quadruped Scout Robot Machine Flow */
+@keyframes quadrupedWalk {
+  0% { transform: translate3d(-120px, 0, 0); }
+  50% { transform: translate3d(calc(50vw), -4px, 0); }
+  100% { transform: translate3d(calc(100vw + 80px), 0, 0); }
+}
+.quadruped-entity {
+  top: 54%;
+  width: 75px;
+  height: 52px;
+  animation: quadrupedWalk 48s linear infinite;
+  animation-delay: -32s;
+}
+
+/* Articulated Robotic Arm Outpost Station */
+@keyframes armFlexMovement {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-15deg); }
+  70% { transform: rotate(18deg); }
+}
+.arm-forearm-flex {
+  transform-origin: 40px 48px;
+  animation: armFlexMovement 8s ease-in-out infinite;
+}
+.arm-entity {
+  top: 38%;
+  left: 5%;
+  width: 72px;
+  height: 72px;
+  opacity: 0.8;
+}
+
+/* Rotor spinning for drone */
+@keyframes rotorBladesSpin {
+  0% { transform: scaleX(1); opacity: 0.95; }
+  50% { transform: scaleX(-1); opacity: 0.65; }
+  100% { transform: scaleX(1); opacity: 0.95; }
+}
+.rotor-spin {
+  transform-origin: 55px 18px;
+  animation: rotorBladesSpin 0.2s linear infinite;
+}
+.rotor-spin-rev {
+  transform-origin: 55px 24px;
+  animation: rotorBladesSpin 0.2s linear infinite reverse;
+}
+
+/* ========================================================================= */
+/* MARTIAN AUTONOMOUS COLONY ANIMATED BACKDROP                               */
+/* ========================================================================= */
+
+@keyframes marsColonyBreathing {
+  0% { transform: scale(1.01) translate3d(0, 0, 0); }
+  50% { transform: scale(1.05) translate3d(-0.8%, -0.4%, 0); }
+  100% { transform: scale(1.01) translate3d(0, 0, 0); }
+}
+
+.mars-colony-backdrop {
+  animation: marsColonyBreathing 48s ease-in-out infinite alternate;
+  will-change: transform;
+}
+

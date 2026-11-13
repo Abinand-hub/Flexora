@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="emerald-diamond" data-layout="enterprise">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#E8F1EF" id="meta-theme-color" />
+  <title>Fluxera — Autonomous Intelligence Initiative</title>
+  <meta name="description" content="Fluxera: Building autonomous intelligence that enables systems to think, understand, learn, adapt, and evolve." />
+  <link rel="icon" type="image/png" sizes="64x64" href="./favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./favicon-192.png" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+  <link rel="preload" as="image" href="./assets/fluxera-logo.jpg" fetchpriority="high" />
+  <link rel="stylesheet" href="./sevol.css" />
+  <link rel="stylesheet" href="./formats.css" />
+</head>
+<body>
+  <div class="ambient-backdrop" aria-hidden="true"></div>
+
+  <!-- =====================================================================
+       #fluxera-intro — ORBITAL LOGO ANIMATION (MATCHING SENT FLUXERA EMBLEM)
+       ===================================================================== -->
+  <div id="fluxera-intro" aria-label="Fluxera logo intro animation">
+    <div class="li-ground"></div>
+    <div class="li-grain"></div>
+
+    <div class="li-stage" id="li-stage">
+      <div class="li-orb" id="li-orb">
+        <div class="li-glow" id="li-glow"></div>
+        <div class="li-orbit-wrap">
+          <div class="li-orbit" id="li-orbit">
+            <span class="li-head"></span>
+          </div>
+        </div>
+        <div class="li-ping-halo" id="li-ping-halo"></div>
+        <div class="li-ping-ring" id="li-ping-ring"></div>
+
+        <div class="li-sphere" id="li-sphere">
+          <img
+            src="./assets/fluxera-logo.jpg"
+            alt=""
+            class="li-emblem-img"
+            id="li-emblem-img"
+            loading="eager"
+            decoding="sync"
+            fetchpriority="high"
+          />
+          <div class="li-sheen"><i id="li-sheen-bar"></i></div>
+        </div>
+      </div>
+
+      <div class="li-wordmark">
+        <div class="li-title-row" aria-label="FLUXERA">
+          <span class="li-l"><span>F</span></span>
+          <span class="li-l"><span>L</span></span>
+          <span class="li-l"><span>U</span></span>
+          <span class="li-l"><span>X</span></span>
+          <span class="li-l is-cyan"><span>E</span></span>
+          <span class="li-l"><span>R</span></span>
+          <span class="li-l"><span>A</span></span>
+        </div>
+        <div class="li-sub" id="li-sub">Technology Initiative · Autonomous Intelligence</div>
+      </div>
+    </div>
+
+    <button type="button" class="li-skip-hint" id="li-skip-btn">Click or press any key to enter →</button>
+  </div>
+
+  <!-- =====================================================================
+       STICKY FROSTED HEADER NAVIGATION (ATTUNEFY STYLE)
+       ===================================================================== -->
+  <header class="site-header" data-purpose="site-header">
+    <div class="header-bar">
+      <button type="button" class="brand-btn tactile-btn" id="header-replay-btn" title="Replay Fluxera logo animation">
+        <span class="flux-logo-lens brand-emblem-sm">
+          <span class="flux-logo-clip">
+            <img src="./assets/fluxera-logo.jpg" alt="Fluxera" loading="eager" decoding="sync" />
+          </span>
+        </span>
+        <span class="brand-text-wrap">
+          <span class="brand-name">FLUXERA</span>
+          <span class="brand-initiative">Autonomous AI</span>
+        </span>
+      </button>
+
+      <nav class="nav-links" aria-label="Primary sections">
+        <a href="#vision">Vision</a>
+        <a href="#changing">Changing</a>
+        <a href="#global-need">Global Need</a>
+        <a href="#systems">Systems</a>
+        <a href="#contact">Partner</a>
+        <a href="./vision.html">Architecture ↗</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="./dashboard.html" class="nav-signin tactile-btn">Sign In</a>
+        <a href="#contact" class="btn-header-solid tactile-btn">Get in Touch</a>
+        <button type="button" class="compact-menu-btn tactile-btn" id="sevol-menu-toggle" aria-label="Open menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER MENU -->
+  <div id="sevol-mobile-drawer" class="mobile-drawer hidden" role="dialog" aria-label="Mobile navigation">
+    <a href="#hero"><span>01 · Fluxera</span><span>→</span></a>
+    <a href="#vision"><span>02 · Our Vision</span><span>→</span></a>
+    <a href="#changing"><span>03 · What We're Changing</span><span>→</span></a>
+    <a href="#global-need"><span>04 · Global Need</span><span>→</span></a>
+    <a href="#systems"><span>05 · Future of Systems</span><span>→</span></a>
+    <a href="#contact"><span>06 · Help Build What Comes Next</span><span>→</span></a>
+    <a href="./vision.html"><span>Technical Architecture</span><span>↗</span></a>
+    <a href="./dashboard.html"><span>Platform Dashboard</span><span>↗</span></a>
+    <button type="button" class="drawer-action" id="drawer-replay-btn">
+      <span>Replay Fluxera Logo Animation</span><span>↻</span>
+    </button>
+  </div>
+
+  <!-- =====================================================================
+       LEFT FIXED CHAPTER SPINE (ATTUNEFY DESKTOP NAVIGATION RAIL >= 1180px)
+       ===================================================================== -->
+  <nav data-spine aria-label="Story chapters">
+    <span class="spine-track" aria-hidden="true"></span>
+    <span class="spine-progress" id="spine-progress" aria-hidden="true"></span>
+    <a href="#hero" data-chapter="hero" data-index="1" class="is-active"><span class="spine-dash"></span><span class="spine-label">01 Fluxera</span></a>
+    <a href="#vision" data-chapter="vision" data-index="2"><span class="spine-dash"></span><span class="spine-label">02 Vision</span></a>
+    <a href="#changing" data-chapter="changing" data-index="3"><span class="spine-dash"></span><span class="spine-label">03 Changing</span></a>
+    <a href="#global-need" data-chapter="global-need" data-index="4"><span class="spine-dash"></span><span class="spine-label">04 Global Need</span></a>
+    <a href="#systems" data-chapter="systems" data-index="5"><span class="spine-dash"></span><span class="spine-label">05 Systems</span></a>
+    <a href="#contact" data-chapter="contact" data-index="6"><span class="spine-dash"></span><span class="spine-label">06 Build Next</span></a>
+  </nav>
+
+  <!-- =====================================================================
+       MAIN EDITORIAL CONTENT
+       ===================================================================== -->
+  <main class="page-main">
+
+    <!-- 01. HERO SECTION (PROMINENT ANIMATED FLUXERA LOGO + ATTUNEFY BENTO) -->
+    <section class="band band-hero" id="hero" data-section="hero">
+      <div class="hero-centered">
+
+        <!-- Prominent Animated Circular Fluxera Logo Crest (Always Visible!) -->
+        <div class="hero-emblem-centerpiece">
+          <button type="button" class="hero-crest-orb tactile-btn" id="hero-logo-crest" title="Click to play Fluxera orbital intro" aria-label="Fluxera circular emblem — click to replay orbital intro">
+            <span class="hero-crest-orbit" aria-hidden="true"><span class="hero-crest-comet"></span></span>
+            <span class="flux-logo-lens" style="width: 100%; height: 100%;">
+              <span class="flux-logo-clip">
+                <img src="./assets/fluxera-logo.jpg" alt="Fluxera" loading="eager" decoding="sync" fetchpriority="high" />
+                <span class="crest-sheen" aria-hidden="true"></span>
+              </span>
+            </span>
+          </button>
+          <button type="button" class="hero-crest-caption tactile-btn" id="hero-replay-btn">
+            <span class="eyebrow-dot"></span>
+            <span>FLUXERA · Technology Initiative</span>
+            <span aria-hidden="true">↻</span>
+          </button>
+        </div>
+
+        <div class="hero-kicker-tag">TECHNOLOGY INITIATIVE · FLUXERA</div>
+
+        <h1 class="hero-h1">
+          Intelligence That Builds,
+          <span class="heading-muted">Think and Evolve.</span>
+        </h1>
+
+        <p class="hero-sub">
+          Building autonomous intelligence for the next generation of software and systems.
+          Building intelligence that enables systems to think, understand, learn, adapt, and evolve.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#vision" class="btn-pill-solid tactile-btn">
+            <span>Explore Our Vision</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="#contact" class="btn-pill-primary tactile-btn">
+            <span>Get in Touch</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="./dashboard.html" class="btn-pill-secondary tactile-btn">
+            <span>View Platform</span>
+          </a>
+        </div>
+
+        <p class="hero-trust-note">A Fluxera technology initiative</p>
+
+        <!-- ATTUNEFY-INSPIRED HERO WORKSPACE SHOWCASE BENTO FRAME -->
+        <div class="hero-showcase-frame">
+          <div class="showcase-topbar">
+            <div class="showcase-emblem-chip">
+              <span class="flux-logo-lens" style="width: 32px; height: 32px;">
+                <span class="flux-logo-clip">
+                  <img src="./assets/fluxera-logo.jpg" alt="Fluxera" loading="eager" decoding="sync" />
+                </span>
+              </span>
+              <span style="font-size: 13px; font-weight: 600; color: var(--ink-primary);">
+                Fluxera · Autonomous Intelligence Layer
+              </span>
+            </div>
+            <div class="showcase-pill-right">
+              <span class="mini-pill-tag">Active Layer · Think → Evolve</span>
+            </div>
+          </div>
+
+          <div class="showcase-kpi-grid">
+            <a href="#vision" class="kpi-bento-card is-grad-1 tactile-card">
+              <span style="font-size: 12.5px; font-weight: 600; opacity: 0.92;">01 · Think &amp; Understand</span>
+              <div>
+                <div class="kpi-metric-big">Self-Thinking</div>
+                <div style="font-size: 12.5px; opacity: 0.92; margin-top: 6px;">Reads real system context instead of brittle rules.</div>
+              </div>
+            </a>
+
+            <a href="#changing" class="kpi-bento-card is-grad-2 tactile-card">
+              <span style="font-size: 12.5px; font-weight: 600; opacity: 0.92;">02 · Learn &amp; Adapt</span>
+              <div>
+                <div class="kpi-metric-big">Adaptive Core</div>
+                <div style="font-size: 12.5px; opacity: 0.9; margin-top: 6px;">Adjusts execution in motion with less human overhead.</div>
+              </div>
+            </a>
+
+            <a href="#systems" class="kpi-bento-card is-surface tactile-card">
+              <span style="font-size: 12.5px; font-weight: 600; color: var(--ink-muted);">03 · Evolution Cycle</span>
+              <div>
+                <div class="kpi-metric-big" style="color: var(--accent-solid);">5 Stages</div>
+                <div style="font-size: 12.5px; color: var(--ink-muted); margin-top: 6px;">Think · Understand · Learn · Adapt · Evolve</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="showcase-rows">
+            <div class="showcase-row">
+              <span class="row-badge" id="cog-badge">THINK</span>
+              <span style="font-size: 14.5px; font-weight: 600; color: var(--ink-primary);" id="cog-title">01 · Systems That Think</span>
+              <span style="font-size: 13.5px; color: var(--ink-muted); flex: 1; min-width: 220px;" id="cog-desc">
+                Evaluates live operational state rather than blindly running fixed scripts when unexpected conditions occur.
+              </span>
+            </div>
+
+            <div class="showcase-command-bar">
+              <span style="font-size: 13px; color: var(--ink-muted); font-weight: 500;">
+                Inspect intelligence stage:
+              </span>
+              <div class="cog-tabs" id="hero-cog-tabs" role="tablist">
+                <button type="button" class="cog-tab is-active" data-cog="think" role="tab" aria-selected="true">Think</button>
+                <button type="button" class="cog-tab" data-cog="understand" role="tab" aria-selected="false">Understand</button>
+                <button type="button" class="cog-tab" data-cog="learn" role="tab" aria-selected="false">Learn</button>
+                <button type="button" class="cog-tab" data-cog="adapt" role="tab" aria-selected="false">Adapt</button>
+                <button type="button" class="cog-tab" data-cog="evolve" role="tab" aria-selected="false">Evolve</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02. WHAT WE'RE BUILDING (OUR VISION) -->
+    <section class="band" id="vision" data-section="vision">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>02 · What We're Building · OUR VISION</span>
+          </div>
+          <h2 class="section-h2">
+            We're Building the Self-Thinking,
+            <span class="heading-muted">Self-Learning, and Evolving Future.</span>
+          </h2>
+          <p class="section-lead">
+            A future where intelligence doesn't just follow instructions. It understands, reasons, creates, adapts, and continuously evolves.
+          </p>
+        </div>
+
+        <div class="vision-grid">
+          <div class="tier-stack" id="vision-capability-list">
+            <button type="button" class="tier-btn is-active tactile-card" data-cap="understand">
+              <span class="tier-dot"></span>
+              <span style="font-size: 16px; font-weight: 600; flex: 1;">01 · Understands Context</span>
+              <span style="font-size: 11px; font-weight: 600; opacity: 0.78;">Perception</span>
+            </button>
+            <button type="button" class="tier-btn tactile-card" data-cap="reasons">
+              <span class="tier-dot"></span>
+              <span style="font-size: 16px; font-weight: 600; flex: 1;">02 · Reasons Independently</span>
+              <span style="font-size: 11px; font-weight: 600; opacity: 0.78;">Judgment</span>
+            </button>
+            <button type="button" class="tier-btn tactile-card" data-cap="creates">
+              <span class="tier-dot"></span>
+              <span style="font-size: 16px; font-weight: 600; flex: 1;">03 · Creates Solutions</span>
+              <span style="font-size: 11px; font-weight: 600; opacity: 0.78;">Synthesis</span>
+            </button>
+            <button type="button" class="tier-btn tactile-card" data-cap="adapts">
+              <span class="tier-dot"></span>
+              <span style="font-size: 16px; font-weight: 600; flex: 1;">04 · Adapts in Motion</span>
+              <span style="font-size: 11px; font-weight: 600; opacity: 0.78;">Resilience</span>
+            </button>
+            <button type="button" class="tier-btn tactile-card" data-cap="evolves">
+              <span class="tier-dot"></span>
+              <span style="font-size: 16px; font-weight: 600; flex: 1;">05 · Continuously Evolves</span>
+              <span style="font-size: 11px; font-weight: 600; opacity: 0.78;">Compounding</span>
+            </button>
+          </div>
+
+          <div class="card">
+            <div class="eyebrow" style="margin-bottom: 10px;">
+              <span class="eyebrow-dot"></span>
+              <span>Instruction-Based vs. Self-Evolving</span>
+            </div>
+            <h3 id="vision-cap-heading" style="font-size: 24px; margin-bottom: 10px;">Environmental &amp; System Understanding</h3>
+            <p id="vision-cap-summary" style="color: var(--ink-muted); font-size: 15px;">
+              Instead of breaking whenever inputs stray from pre-programmed assumptions, intelligence reads real environment signals before acting.
+            </p>
+
+            <div class="vision-contrast-cards">
+              <div class="contrast-col">
+                <div class="mono" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; color: var(--ink-muted); margin-bottom: 6px;">FIXED INSTRUCTIONS</div>
+                <p id="vision-legacy-text" style="font-size: 13.5px; color: var(--ink-body);">
+                  Halts or throws unhandled errors when an environment variable, dependency, or edge case shifts.
+                </p>
+              </div>
+              <div class="contrast-col is-sevol">
+                <div class="mono" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; color: var(--accent-solid); margin-bottom: 6px;">FLUXERA</div>
+                <p id="vision-sevol-text" style="font-size: 13.5px; color: var(--ink-primary); font-weight: 500;">
+                  Continuously interprets system context, identifies root shifts, and restructures execution paths autonomously.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. WHAT WE'RE CHANGING (ATTUNEFY REWIND SCRUBBER + 2x2 BENTO GRID) -->
+    <section class="band" id="changing" data-section="changing">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>03 · What We're Changing</span>
+          </div>
+          <h2 class="section-h2">
+            Reducing the resources required to
+            <span class="heading-muted">build, operate, and evolve systems.</span>
+          </h2>
+        </div>
+
+        <div class="changing-split">
+          <!-- Attunefy #how Interactive Maturity Rewind Panel -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div>
+              <div class="mono" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; color: var(--ink-muted); margin-bottom: 10px;">
+                <span id="horizon-stage-label">STAGE 3 · SELF-EVOLVING</span>
+              </div>
+              <input type="range" id="horizon-slider" class="scrubber-range" min="1" max="3" step="1" value="3" aria-label="System maturity stage" />
+              <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-muted); font-weight: 600; margin-top: 4px;">
+                <span>1. Predefined</span>
+                <span>2. Assisted</span>
+                <span>3. Self-Evolving</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="metric-list-row">
+                <span class="metric-list-num" id="meter-val-labor">92%</span>
+                <span style="font-size: 13.5px; color: var(--ink-muted);">Autonomous execution share</span>
+              </div>
+              <div class="metric-list-row">
+                <span class="metric-list-num" id="meter-val-capital">88%</span>
+                <span style="font-size: 13.5px; color: var(--ink-muted);">Productive capital shift</span>
+              </div>
+              <div class="metric-list-row">
+                <span class="metric-list-num" id="meter-val-time">95%</span>
+                <span style="font-size: 13.5px; color: var(--ink-muted);">Creation &amp; improvement velocity</span>
+              </div>
+              <div class="metric-list-row" style="border-bottom: 0; padding-bottom: 0;">
+                <span class="metric-list-num" id="meter-val-compute">90%</span>
+                <span style="font-size: 13.5px; color: var(--ink-muted);">Intelligent compute utilization</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-4">
+            <article class="card resource-card">
+              <div class="resource-icon-chip mono">01</div>
+              <div>
+                <h3 style="font-size: 20px; margin-bottom: 6px;">Engineering &amp; Labor</h3>
+                <p style="font-size: 14.5px; color: var(--ink-muted);">Less repetitive human work. More autonomous execution.</p>
+              </div>
+            </article>
+
+            <article class="card resource-card">
+              <div class="resource-icon-chip mono">02</div>
+              <div>
+                <h3 style="font-size: 20px; margin-bottom: 6px;">Capital</h3>
+                <p style="font-size: 14.5px; color: var(--ink-muted);">Less operational overhead. More productive investment.</p>
+              </div>
+            </article>
+
+            <article class="card resource-card">
+              <div class="resource-icon-chip mono">03</div>
+              <div>
+                <h3 style="font-size: 20px; margin-bottom: 6px;">Time</h3>
+                <p style="font-size: 14.5px; color: var(--ink-muted);">Faster creation, execution, and improvement.</p>
+              </div>
+            </article>
+
+            <article class="card resource-card" style="background: var(--accent-primary-grad); color: var(--ink-on-accent); border-color: transparent; box-shadow: var(--shadow-cta);">
+              <div class="resource-icon-chip mono" style="background: rgba(255,255,255,0.2); color: #fff;">04</div>
+              <div>
+                <h3 style="font-size: 20px; margin-bottom: 6px; color: inherit;">Compute</h3>
+                <p style="font-size: 14.5px; opacity: 0.92;">More intelligent utilization of AI and computing resources.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. WHY THE WORLD NEEDS THIS -->
+    <section class="band" id="global-need" data-section="global-need">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>04 · Why the World Needs This · GLOBAL NEED</span>
+          </div>
+          <h2 class="section-h2">
+            The Next Generation of Technology
+            <span class="heading-muted">Needs a New Kind of Intelligence.</span>
+          </h2>
+        </div>
+
+        <div class="need-split">
+          <div class="editorial-stack">
+            <p>
+              As the world becomes increasingly connected and automated, digital and physical systems are becoming more complex.
+            </p>
+            <p>
+              Software, AI agents, robotics, factories, vehicles, energy networks, and infrastructure will need more than predefined instructions and constant human intervention.
+            </p>
+            <p>
+              They will need intelligence that can understand their environment, make decisions, adapt to change, and continuously improve.
+            </p>
+            <div class="editorial-highlight">
+              Self-evolving intelligence will become a foundational capability of the future.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="eyebrow" style="margin-bottom: 12px;">
+              <span class="eyebrow-dot"></span>
+              <span>Connected Domains</span>
+            </div>
+            <h3 style="font-size: 20px; margin-bottom: 14px;">Select a domain to inspect:</h3>
+
+            <div class="domain-tiles-grid" id="domain-chips">
+              <button type="button" class="domain-tile is-active tactile-card" data-domain="software">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">Software</span>
+              </button>
+
+              <button type="button" class="domain-tile tactile-card" data-domain="agents">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="4"/><path d="M9 10h.01M15 10h.01M8 20h8"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">AI Agents</span>
+              </button>
+
+              <button type="button" class="domain-tile tactile-card" data-domain="robotics">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="6" r="3"/><path d="M5 20l4-8h6l4 8"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">Robotics</span>
+              </button>
+
+              <button type="button" class="domain-tile tactile-card" data-domain="factories">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V10l6 4V10l6 4V6h6v15H3z"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">Factories</span>
+              </button>
+
+              <button type="button" class="domain-tile tactile-card" data-domain="vehicles">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="7" rx="2"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">Vehicles</span>
+              </button>
+
+              <button type="button" class="domain-tile tactile-card" data-domain="energy">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">Energy Networks</span>
+              </button>
+
+              <button type="button" class="domain-tile tactile-card" data-domain="infrastructure">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">Infrastructure</span>
+              </button>
+            </div>
+
+            <div class="domain-output">
+              <div class="mono" style="font-size: 11px; color: var(--accent-solid); font-weight: 700; letter-spacing: 0.12em;" id="domain-tag">DOMAIN · SOFTWARE</div>
+              <h4 id="domain-title" style="font-size: 18px; margin-top: 4px; margin-bottom: 12px;">Adaptive Software Ecosystems</h4>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="padding: 12px 14px; border-radius: 14px; background: var(--bg-surface); border: 1px solid var(--border-hairline);">
+                  <div style="font-size: 11px; font-weight: 700; color: var(--ink-muted); text-transform: uppercase;">Where Predefined Rules Break</div>
+                  <div id="domain-break" style="font-size: 13.5px; color: var(--ink-body); margin-top: 4px;">
+                    Static exception handlers fail under cascading API drift, dependency latency, and unmodeled edge states.
+                  </div>
+                </div>
+                <div style="padding: 12px 14px; border-radius: 14px; background: var(--bg-surface); border: 1px solid var(--accent-solid);">
+                  <div style="font-size: 11px; font-weight: 700; color: var(--accent-solid); text-transform: uppercase;">Fluxera Capability</div>
+                  <div id="domain-sevol" style="font-size: 13.5px; color: var(--ink-primary); font-weight: 500; margin-top: 4px;">
+                    Understands runtime context, adapts execution paths on the fly, and hardens future decisions automatically.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. THE FUTURE OF SYSTEMS (DARK CONTRAST PULSE CARD) -->
+    <section class="band" id="systems" data-section="systems">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>05 · The Future of Systems</span>
+          </div>
+          <h2 class="section-h2">
+            Systems That Think. Understand.
+            <span class="heading-muted">Learn. Adapt. Evolve.</span>
+          </h2>
+        </div>
+
+        <div class="systems-grid">
+          <div class="editorial-stack">
+            <p>
+              We believe the future belongs to systems that can do more than simply follow predefined instructions.
+            </p>
+            <p>
+              Systems that can think, understand their surroundings, learn from experience, adapt to changing conditions, and evolve over time.
+            </p>
+            <p>
+              From software and AI agents to robotics, factories, vehicles, energy networks, and intelligent infrastructure — intelligence must become autonomous, adaptive, and continuously improving.
+            </p>
+            <div class="editorial-highlight">
+              We're building toward that future.
+            </div>
+          </div>
+
+          <div class="card-dark">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px;">
+              <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600;">
+                <span class="pulse-dot"></span>
+                <span id="loop-status-text">Fluxera · Continuous Loop Active</span>
+              </div>
+              <button type="button" class="loop-toggle-btn" id="loop-toggle-btn">
+                Pause Cycle
+              </button>
+            </div>
+
+            <div class="loop-steps" id="loop-steps">
+              <button type="button" class="loop-step is-active" data-step="0">
+                <div class="mono" style="font-size: 11px; opacity: 0.8; margin-bottom: 4px;">01 · THINK</div>
+                <div style="font-size: 14px; font-weight: 600;">Evaluate Intent &amp; State</div>
+              </button>
+              <button type="button" class="loop-step" data-step="1">
+                <div class="mono" style="font-size: 11px; opacity: 0.8; margin-bottom: 4px;">02 · UNDERSTAND</div>
+                <div style="font-size: 14px; font-weight: 600;">Map Surroundings</div>
+              </button>
+              <button type="button" class="loop-step" data-step="2">
+                <div class="mono" style="font-size: 11px; opacity: 0.8; margin-bottom: 4px;">03 · ADAPT</div>
+                <div style="font-size: 14px; font-weight: 600;">Re-Route &amp; Execute</div>
+              </button>
+              <button type="button" class="loop-step" data-step="3">
+                <div class="mono" style="font-size: 11px; opacity: 0.8; margin-bottom: 4px;">04 · EVOLVE</div>
+                <div style="font-size: 14px; font-weight: 600;">Retain Verified Learning</div>
+              </button>
+            </div>
+
+            <div style="padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);">
+              <div class="mono" style="font-size: 11px; opacity: 0.85; margin-bottom: 6px;" id="loop-readout-code">
+                CYCLE_STATE // 01 · THINK
+              </div>
+              <div style="font-size: 14px; color: var(--ink-on-dark); line-height: 1.5;" id="loop-readout-desc">
+                Evaluates objectives against current environment constraints before committing compute or physical actuation.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06. VERIFIED PRODUCT PROOF & DESIGN PARTNER CTA -->
+    <section class="band" id="contact" data-section="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>06 · BUILDING THE FUTURE</span>
+          </div>
+          <h2 class="section-h2">Help Build What Comes Next.</h2>
+          <p class="section-lead">
+            We're working with forward-thinking companies to build the next generation of self-evolving systems.
+          </p>
+        </div>
+
+        <div class="proof-grid">
+          <article class="card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 12px;">
+            <span class="mini-pill-tag" style="width: fit-content;">Verified Product Proof</span>
+            <div>
+              <h3 style="font-size: 19px; margin-bottom: 6px;">Interactive Platform Preview</h3>
+              <p style="font-size: 14px; color: var(--ink-muted);">
+                Explore Fluxera's live runtime control surface, operational state inspection, and recovery workflows directly in your browser.
+              </p>
+            </div>
+            <a href="./dashboard.html" style="font-size: 13.5px; font-weight: 700; color: var(--accent-solid);">
+              Open Platform Dashboard →
+            </a>
+          </article>
+
+          <article class="card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 12px;">
+            <span class="mini-pill-tag" style="width: fit-content;">System Architecture</span>
+            <div>
+              <h3 style="font-size: 19px; margin-bottom: 6px;">Self-Evolving Architecture</h3>
+              <p style="font-size: 14px; color: var(--ink-muted);">
+                Inspect the execution mechanics across software stacks, automated recovery paths, and measurable resource efficiency.
+              </p>
+            </div>
+            <a href="./vision.html" style="font-size: 13.5px; font-weight: 700; color: var(--accent-solid);">
+              Read System Architecture →
+            </a>
+          </article>
+
+          <article class="card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 12px;">
+            <span class="mini-pill-tag" style="width: fit-content;">Design Partner Program</span>
+            <div>
+              <h3 style="font-size: 19px; margin-bottom: 6px;">Direct Founder Collaboration</h3>
+              <p style="font-size: 14px; color: var(--ink-muted);">
+                Collaborate directly on autonomous software systems, AI agents, robotics, factories, and adaptive infrastructure.
+              </p>
+            </div>
+            <a href="mailto:shubhamchansoriya13@gmail.com?subject=Fluxera%20%E2%80%94%20Design%20Partner%20Inquiry" style="font-size: 13.5px; font-weight: 700; color: var(--accent-solid);">
+              Email Fluxera Team →
+            </a>
+          </article>
+        </div>
+
+        <div class="card partner-cta-card">
+          <div>
+            <div class="eyebrow" style="margin-bottom: 10px;">
+              <span class="eyebrow-dot"></span>
+              <span>Partner With Fluxera</span>
+            </div>
+            <h3 style="font-size: clamp(24px, 3vw, 34px); margin-bottom: 10px;">
+              Ready to test Fluxera on real-world systems?
+            </h3>
+            <p style="font-size: 15px; color: var(--ink-muted); margin-bottom: 20px;">
+              Connect directly with the Fluxera team to build the next generation of self-evolving systems.
+            </p>
+            <div class="hero-ctas" style="justify-content: flex-start;">
+              <a
+                href="mailto:shubhamchansoriya13@gmail.com?subject=Fluxera%20%E2%80%94%20Become%20a%20Design%20Partner"
+                class="btn-pill-solid tactile-btn"
+              >
+                <span>Become a Design Partner</span>
+                <span aria-hidden="true">→</span>
+              </a>
+              <button type="button" class="btn-pill-secondary tactile-btn" id="copy-partner-btn">
+                <span id="copy-partner-label">Contact Fluxera →</span>
+              </button>
+            </div>
+          </div>
+
+          <form class="partner-form-box" id="partner-inquiry-form">
+            <div style="font-size: 13.5px; font-weight: 700; color: var(--ink-primary);">Start a Direct Conversation</div>
+            <input type="email" id="partner-email-input" class="input-pill" placeholder="name@company.com" required />
+            <select id="partner-domain-select" class="input-pill" aria-label="Primary system domain">
+              <option value="Software & API Systems">Domain: Software &amp; API Systems</option>
+              <option value="AI Agents & Workflows">Domain: AI Agents &amp; Workflows</option>
+              <option value="Robotics & Factories">Domain: Robotics &amp; Factories</option>
+              <option value="Vehicles, Energy & Infrastructure">Domain: Vehicles, Energy &amp; Infrastructure</option>
+            </select>
+            <button type="submit" class="btn-pill-primary" style="width: 100%;">
+              Send Design Partner Inquiry →
+            </button>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px; border-radius: 14px; background: var(--bg-surface); border: 1px solid var(--border-hairline); font-size: 12.5px;">
+              <span class="mono" style="color: var(--ink-body);">shubhamchansoriya13@gmail.com</span>
+              <span id="form-feedback-msg" style="font-size: 11.5px; font-weight: 600; color: var(--accent-solid);">Direct channel</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       EDITORIAL FOOTER WITH ATTUNEFY CTA STRIP & OVERSIZED FLUXERA WORDMARK
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-cta-row">
+        <div class="footer-cta-heading">
+          Systems that think.<br />
+          <span class="heading-muted">Intelligence that evolves.</span>
+        </div>
+        <div class="footer-cta-actions">
+          <a
+            href="mailto:shubhamchansoriya13@gmail.com?subject=Fluxera%20%E2%80%94%20Become%20a%20Design%20Partner"
+            class="btn-pill-solid tactile-btn"
+          >
+            <span>Become a Design Partner</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="#contact" class="btn-pill-secondary tactile-btn">
+            <span>Get in Touch</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-nav-grid">
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 11px; margin-bottom: 14px;">
+            <span class="flux-logo-lens brand-emblem-sm">
+              <span class="flux-logo-clip">
+                <img src="./assets/fluxera-logo.jpg" alt="Fluxera" loading="eager" decoding="sync" />
+              </span>
+            </span>
+            <div class="brand-text-wrap">
+              <span class="brand-name">FLUXERA</span>
+              <span class="brand-initiative">Autonomous Intelligence Initiative</span>
+            </div>
+          </div>
+          <p class="footer-brand-desc">
+            Building intelligence that enables systems to think, understand, learn, adapt, and evolve.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Explore</div>
+          <div class="footer-links">
+            <a href="#hero">01 · Overview →</a>
+            <a href="#vision">02 · Our Vision →</a>
+            <a href="#changing">03 · What We're Changing →</a>
+            <a href="#global-need">04 · Global Need →</a>
+            <a href="#systems">05 · Future of Systems →</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Capabilities</div>
+          <div class="footer-links">
+            <a href="#vision">Understand Context</a>
+            <a href="#vision">Reason Independently</a>
+            <a href="#vision">Create Solutions</a>
+            <a href="#systems">Adapt in Motion</a>
+            <a href="#systems">Continuously Evolve</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Connect</div>
+          <div class="footer-links">
+            <a href="#global-need">Software &amp; AI Agents</a>
+            <a href="#global-need">Robotics &amp; Factories</a>
+            <a href="#global-need">Energy &amp; Infrastructure</a>
+            <a href="#contact">Partner Inquiry →</a>
+            <a href="mailto:shubhamchansoriya13@gmail.com">shubhamchansoriya13@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-meta-bar">
+        <span>© 2026 Fluxera · Autonomous Intelligence Initiative</span>
+        <a href="#hero" class="footer-top-btn tactile-btn">
+          <span>Back to top</span>
+          <span aria-hidden="true">↑</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-wordmark-wrap" aria-hidden="true">
+      <div class="footer-wordmark">FLUXERA</div>
+    </div>
+  </footer>
+
+  <script type="module" src="./sevol.js"></script>
+</body>
+</html>

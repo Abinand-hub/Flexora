@@ -1,0 +1,16 @@
+{
+  "name": "fluxera-design",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/sync-palette-previews.mjs",
+    "dev": "vite",
+    "prebuild": "node scripts/sync-palette-previews.mjs",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  }
+}

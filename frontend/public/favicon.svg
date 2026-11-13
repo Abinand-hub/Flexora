@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#0D1A2B"/>
+      <stop offset="100%" stop-color="#050810"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4C91FF"/>
+      <stop offset="50%" stop-color="#00C6D7"/>
+      <stop offset="100%" stop-color="#287BFF"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="55%" stop-color="#B8F1F5"/>
+      <stop offset="100%" stop-color="#4C91FF"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#bg)" stroke="url(#ring)" stroke-width="2.4"/>
+  <!-- Stylized brushed F -->
+  <path d="M18 42 L26 26 L44 26 L47 21 L25 21 L22 25.5 C19.5 29.5 16.2 35.5 13.8 42 Z" fill="url(#metal)"/>
+  <path d="M23 33 L37 33 L39.5 29 L25 29 Z" fill="url(#metal)"/>
+  <!-- 4 ascending blue bars -->
+  <rect x="29" y="38.5" width="3.2" height="3.5" rx="0.8" fill="#00C6D7"/>
+  <rect x="33.8" y="36" width="3.2" height="6" rx="0.8" fill="#18A8FF"/>
+  <rect x="38.6" y="33" width="3.2" height="9" rx="0.8" fill="#287BFF"/>
+  <rect x="43.4" y="29.5" width="3.2" height="12.5" rx="0.8" fill="#4C91FF"/>
+</svg>
