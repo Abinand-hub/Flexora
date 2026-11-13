@@ -1,1057 +1,803 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-palette="emerald-diamond" data-layout="enterprise">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fluxera — Building Self-Evolving Systems</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  
-  <!-- Separated Stylesheet -->
-  <link rel="stylesheet" href="./style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#E8F1EF" id="meta-theme-color" />
+  <title>Fluxera — Autonomous Intelligence Initiative</title>
+  <meta name="description" content="Fluxera: Building autonomous intelligence that enables systems to think, understand, learn, adapt, and evolve." />
+  <link rel="icon" type="image/png" sizes="64x64" href="./favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./favicon-192.png" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+  <link rel="preload" as="image" href="./assets/fluxera-logo.jpg" fetchpriority="high" />
+  <link rel="stylesheet" href="./sevol.css" />
+  <link rel="stylesheet" href="./formats.css" />
 </head>
-<body class="relative bg-[#08080a] text-slate-200 selection:bg-white/20 selection:text-white">
+<body>
+  <div class="ambient-backdrop" aria-hidden="true"></div>
 
-    <!-- CINEMATIC AUTONOMOUS MARTIAN ROBOTIC COLONY (ANIMATED BACKGROUND) -->
-    <!-- CINEMATIC VIDEO BACKGROUND (USER'S MARS VIDEO RUNNING AUTOMATICALLY FULL-TIME) -->
-    <!-- CINEMATIC VIDEO BACKGROUND (USER'S UPLOADED MARS BG VIDEO) -->
-  <div class="fixed inset-0 w-full h-full min-h-screen overflow-hidden pointer-events-none -z-20 bg-[#08080a]" id="cinematic-bg-container">
-    <video
-      id="hero-cinematic-video"
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      autoplay
-      muted
-      loop
-      playsinline
-      webkit-playsinline
-      x5-playsinline
-      preload="auto"
-      style="opacity: 0.90; filter: brightness(1.05) contrast(1.06);"
-    >
-      <source src="/videos/mars-bg.mp4" type="video/mp4">
-      <source src="./Mars bg.mp4" type="video/mp4">
-    </video>
+  <!-- =====================================================================
+       #fluxera-intro — ORBITAL LOGO ANIMATION (MATCHING SENT FLUXERA EMBLEM)
+       ===================================================================== -->
+  <div id="fluxera-intro" aria-label="Fluxera logo intro animation">
+    <div class="li-ground"></div>
+    <div class="li-grain"></div>
 
-    <!-- Subtle Vignette to Protect Content Readability while keeping Video clearly visible -->
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(8,8,10,0.10)_0%,rgba(8,8,10,0.45)_65%,#08080a_98%)] pointer-events-none z-10"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-[#08080a]/50 via-transparent to-[#08080a] pointer-events-none z-10"></div>
+    <div class="li-stage" id="li-stage">
+      <div class="li-orb" id="li-orb">
+        <div class="li-glow" id="li-glow"></div>
+        <div class="li-orbit-wrap">
+          <div class="li-orbit" id="li-orbit">
+            <span class="li-head"></span>
+          </div>
+        </div>
+        <div class="li-ping-halo" id="li-ping-halo"></div>
+        <div class="li-ping-ring" id="li-ping-ring"></div>
+
+        <div class="li-sphere" id="li-sphere">
+          <img
+            src="./assets/fluxera-logo.jpg"
+            alt=""
+            class="li-emblem-img"
+            id="li-emblem-img"
+            loading="eager"
+            decoding="sync"
+            fetchpriority="high"
+          />
+          <div class="li-sheen"><i id="li-sheen-bar"></i></div>
+        </div>
+      </div>
+
+      <div class="li-wordmark">
+        <div class="li-title-row" aria-label="FLUXERA">
+          <span class="li-l"><span>F</span></span>
+          <span class="li-l"><span>L</span></span>
+          <span class="li-l"><span>U</span></span>
+          <span class="li-l"><span>X</span></span>
+          <span class="li-l is-cyan"><span>E</span></span>
+          <span class="li-l"><span>R</span></span>
+          <span class="li-l"><span>A</span></span>
+        </div>
+        <div class="li-sub" id="li-sub">Technology Initiative · Autonomous Intelligence</div>
+      </div>
+    </div>
+
+    <button type="button" class="li-skip-hint" id="li-skip-btn">Click or press any key to enter →</button>
   </div>
 
-  <!-- High-Tech Cyber Grid & Aurora Glow Layers (Identical to Vision) -->
-  <div class="fixed inset-0 cyber-grid design-dot-grid pointer-events-none -z-10"></div>
-  <div class="fixed inset-0 ambient-small-dots pointer-events-none -z-10"></div>
+  <!-- =====================================================================
+       STICKY FROSTED HEADER NAVIGATION (ATTUNEFY STYLE)
+       ===================================================================== -->
+  <header class="site-header" data-purpose="site-header">
+    <div class="header-bar">
+      <button type="button" class="brand-btn tactile-btn" id="header-replay-btn" title="Replay Fluxera logo animation">
+        <span class="flux-logo-lens brand-emblem-sm">
+          <span class="flux-logo-clip">
+            <img src="./assets/fluxera-logo.jpg" alt="Fluxera" loading="eager" decoding="sync" />
+          </span>
+        </span>
+        <span class="brand-text-wrap">
+          <span class="brand-name">FLUXERA</span>
+          <span class="brand-initiative">Autonomous AI</span>
+        </span>
+      </button>
 
-  
-  <div class="fixed top-10 left-1/2 -translate-x-1/2 w-[900px] h-[550px] spatial-orb-rose pointer-events-none -z-10"></div>
-  <div class="fixed top-48 right-[-10%] w-[650px] h-[650px] spatial-orb-cyan pointer-events-none -z-10"></div>
-  <div class="fixed bottom-36 left-[-10%] w-[600px] h-[600px] spatial-orb-rose pointer-events-none -z-10"></div>
-  <div class="grid-node-glow top-[15%] left-[12%] hidden lg:block pointer-events-none z-0"></div>
-  <div class="grid-node-glow-sky top-[28%] right-[15%] hidden lg:block pointer-events-none z-0"></div>
-  <div class="grid-node-glow top-[55%] left-[8%] hidden lg:block pointer-events-none z-0"></div>
-
-  <!-- SITE NAVIGATION (MATTE BLACK + SILVER CHASSIS) -->
-  <header class="fixed top-5 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none" data-purpose="site-header">
-    <div class="pointer-events-auto flex items-center justify-between gap-3 md:gap-8 px-4 sm:px-6 py-2.5 rounded-full backdrop-blur-xl bg-[#0f0f13]/85 border border-white/15 shadow-[0_10px_35px_-8px_rgba(0,0,0,0.8)] max-w-4xl w-full">
-      <a aria-label="Fluxera Home" class="flex items-center gap-2.5 group shrink-0" href="./index.html">
-        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-slate-800 to-slate-700 border border-white/25 flex items-center justify-center shadow-md p-1.5 transition-transform group-hover:scale-105">
-          <span class="text-white font-extrabold tracking-tighter text-xs font-mono">fx</span>
-        </div>
-        <span class="text-white font-bold text-base tracking-tight group-hover:text-slate-300 transition-colors">Fluxera</span>
-      </a>
-      
-      <nav class="hidden md:flex items-center text-xs font-medium text-slate-300">
-        <ul class="flex items-center space-x-1 sm:space-x-2">
-          <li><a class="px-3.5 py-1.5 rounded-full text-white font-semibold bg-white/10 transition-all shadow-xs" href="./index.html#overview">Home</a></li>
-          <li><a class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all font-medium text-slate-400" href="./vision.html">Vision</a></li>
-        </ul>
+      <nav class="nav-links" aria-label="Primary sections">
+        <a href="#vision">Vision</a>
+        <a href="#changing">Changing</a>
+        <a href="#global-need">Global Need</a>
+        <a href="#systems">Systems</a>
+        <a href="#contact">Partner</a>
+        <a href="./vision.html">Architecture ↗</a>
       </nav>
 
-      <div class="flex items-center gap-2 shrink-0">
-        <a class="hidden sm:inline-block text-xs font-semibold text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all" href="./dashboard.html">
-          Sign In
-        </a>
-        <a class="px-4 sm:px-5 py-2 text-xs font-bold rounded-full bg-gradient-to-r from-white via-slate-100 to-slate-300 hover:from-slate-100 hover:to-white text-slate-950 shadow-[0_0_20px_rgba(255,255,255,0.22)] hover:shadow-[0_0_30px_rgba(255,255,255,0.38)] transition-all duration-200 hover:scale-[1.03]" href="./dashboard.html">
-          Dashboard
-        </a>
-        <button id="mobile-menu-toggle" aria-label="Toggle Mobile Menu" class="md:hidden p-1.5 text-slate-300 hover:text-white focus:outline-none cursor-pointer">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      <div class="nav-actions">
+        <a href="./dashboard.html" class="nav-signin tactile-btn">Sign In</a>
+        <a href="#contact" class="btn-header-solid tactile-btn">Get in Touch</a>
+        <button type="button" class="compact-menu-btn tactile-btn" id="sevol-menu-toggle" aria-label="Open menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16" />
           </svg>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- MOBILE NAVIGATION DROPDOWN MENU -->
-  <div id="mobile-menu" class="hidden md:hidden pointer-events-auto fixed top-[72px] left-4 right-4 bg-[#0e0e12]/95 backdrop-blur-2xl border border-white/15 shadow-2xl rounded-2xl p-4 z-50 flex flex-col gap-2">
-    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-200 font-bold text-sm hover:bg-white/10 hover:text-white transition-colors" href="./index.html#overview">
-      <span class="flex items-center gap-2.5">
-        <span class="text-base">🏠</span>
-        <span>Home</span>
-      </span>
-      <span class="text-xs text-slate-400">→</span>
-    </a>
-    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-200 font-bold text-sm hover:bg-white/10 hover:text-white transition-colors" href="./vision.html">
-      <span class="flex items-center gap-2.5">
-        <span class="text-base">👁️</span>
-        <span>Vision</span>
-      </span>
-      <span class="text-xs text-slate-400">→</span>
-    </a>
-    <a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-200 font-bold text-sm hover:bg-white/10 hover:text-white transition-colors" href="./dashboard.html">
-      <span class="flex items-center gap-2.5">
-        <span class="text-base">📊</span>
-        <span>Dashboard</span>
-      </span>
-      <span class="text-xs text-slate-400">→</span>
-    </a>
-    <hr class="border-white/10 my-1" />
-    <div class="flex items-center gap-2 pt-1">
-      <a class="w-full text-center text-xs font-semibold text-slate-200 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors" href="./dashboard.html">Sign In</a>
-      <a class="w-full text-center text-xs font-bold text-slate-950 py-2.5 rounded-xl bg-gradient-to-r from-white via-slate-100 to-slate-300 shadow-[0_0_20px_rgba(255,255,255,0.22)] hover:scale-[1.02] transition-transform" href="./dashboard.html">Open Dashboard</a>
-    </div>
+  <!-- MOBILE DRAWER MENU -->
+  <div id="sevol-mobile-drawer" class="mobile-drawer hidden" role="dialog" aria-label="Mobile navigation">
+    <a href="#hero"><span>01 · Fluxera</span><span>→</span></a>
+    <a href="#vision"><span>02 · Our Vision</span><span>→</span></a>
+    <a href="#changing"><span>03 · What We're Changing</span><span>→</span></a>
+    <a href="#global-need"><span>04 · Global Need</span><span>→</span></a>
+    <a href="#systems"><span>05 · Future of Systems</span><span>→</span></a>
+    <a href="#contact"><span>06 · Help Build What Comes Next</span><span>→</span></a>
+    <a href="./vision.html"><span>Technical Architecture</span><span>↗</span></a>
+    <a href="./dashboard.html"><span>Platform Dashboard</span><span>↗</span></a>
+    <button type="button" class="drawer-action" id="drawer-replay-btn">
+      <span>Replay Fluxera Logo Animation</span><span>↻</span>
+    </button>
   </div>
 
-  <!-- HERO SECTION -->
-  <section class="relative min-h-[60vh] flex flex-col justify-center pt-32 md:pt-40 pb-12 overflow-visible" id="overview">
-    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-white/[0.04] blur-[140px] pointer-events-none rounded-full"></div>
-    <div class="max-w-3xl mx-auto px-6 text-center relative z-20 pt-2 shrink-0">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-white/[0.06] text-slate-200 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.06)] mb-6 backdrop-blur-md">
-        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 animate-pulse"></span>
-        SELF-EVOLVING SYSTEMS
-      </div>
+  <!-- =====================================================================
+       LEFT FIXED CHAPTER SPINE (ATTUNEFY DESKTOP NAVIGATION RAIL >= 1180px)
+       ===================================================================== -->
+  <nav data-spine aria-label="Story chapters">
+    <span class="spine-track" aria-hidden="true"></span>
+    <span class="spine-progress" id="spine-progress" aria-hidden="true"></span>
+    <a href="#hero" data-chapter="hero" data-index="1" class="is-active"><span class="spine-dash"></span><span class="spine-label">01 Fluxera</span></a>
+    <a href="#vision" data-chapter="vision" data-index="2"><span class="spine-dash"></span><span class="spine-label">02 Vision</span></a>
+    <a href="#changing" data-chapter="changing" data-index="3"><span class="spine-dash"></span><span class="spine-label">03 Changing</span></a>
+    <a href="#global-need" data-chapter="global-need" data-index="4"><span class="spine-dash"></span><span class="spine-label">04 Global Need</span></a>
+    <a href="#systems" data-chapter="systems" data-index="5"><span class="spine-dash"></span><span class="spine-label">05 Systems</span></a>
+    <a href="#contact" data-chapter="contact" data-index="6"><span class="spine-dash"></span><span class="spine-label">06 Build Next</span></a>
+  </nav>
 
-      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-extrabold tracking-tight text-white leading-[1.18] mb-6">
-        <span class="block">Keep Systems Running When Things Fail.</span>
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400 drop-shadow-sm block">Recover the Cost of Failure.</span>
-      </h1>
+  <!-- =====================================================================
+       MAIN EDITORIAL CONTENT
+       ===================================================================== -->
+  <main class="page-main">
 
-            <p class="text-sm sm:text-base md:text-lg text-slate-400 font-normal max-w-2xl mx-auto leading-relaxed mb-8">
-        Fluxera brings evolving intelligence to software systems. It identifies failures, initiates recovery, verifies outcomes, and measures avoidable execution costs.
-      </p>
+    <!-- 01. HERO SECTION (PROMINENT ANIMATED FLUXERA LOGO + ATTUNEFY BENTO) -->
+    <section class="band band-hero" id="hero" data-section="hero">
+      <div class="hero-centered">
 
-      <div class="mt-4 flex flex-wrap items-center justify-center gap-4">
-        <a class="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-white via-slate-100 to-slate-300 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-white/10 hover:shadow-white/25 hover:scale-[1.03] transition-all" href="./dashboard.html">
-          Explore the Platform
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
-        </a>
-        <a class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#121217] hover:bg-[#181820] text-slate-200 hover:text-white border border-white/20 hover:border-white/40 text-xs sm:text-sm font-semibold transition-all shadow-xs hover:shadow-sm" href="#early-access">
-          <span class="w-2 h-2 rounded-full bg-slate-300 animate-pulse"></span>
-          Become an Early Design Partner
-        </a>
-      </div>
-    </div>
-
-    <!-- FLOATING CONTINUOUS CAROUSEL OF CONNECTED APIS / SERVICES / TOOLS (BELOW DASHBOARD) -->
-    <div class="relative w-full max-w-6xl mx-auto px-4 mt-10 md:mt-14 overflow-hidden z-20" data-purpose="connected-integrations-carousel">
-      <div class="text-center mb-6 max-w-3xl mx-auto">
-        <span class="px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/[0.06] text-slate-300 border border-white/20">INTEGRATIONS</span>
-        <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight mt-2.5">
-          Work Continuity Across Your Software Stack
-        </h3>
-        <p class="text-xs sm:text-sm text-slate-300 font-semibold mt-1">
-          Connect the services, models, databases, infrastructure, and agent frameworks your software depends on.
-        </p>
-        <p class="text-xs text-slate-400 mt-1">
-          Fluxera helps identify failures across connected dependencies, recover supported operations, maintain work continuity, and reduce unnecessary execution costs.
-        </p>
-      </div>
-
-      <!-- Infinite Floating Auto-Carousel Track with Edge Masking -->
-      <div class="relative w-full overflow-hidden py-3 [mask-image:linear-gradient(to_right,transparent,#08080a_10%,#08080a_90%,transparent)]">
-        <div class="tool-marquee-track flex items-center gap-3">
-          <!-- Item Set 1 -->
-          <!-- 1: OpenAI -->
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-emerald-400 hover:shadow-[0_8px_20px_-4px_rgba(16,185,129,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-600">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M22.28 9.82a5.98 5.98 0 0 0-.51-4.91 6.05 6.05 0 0 0-6.51-2.9 6.07 6.07 0 0 0-4.28 2.17 5.98 5.98 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.1 5.98 5.98 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.51 2.9 5.98 5.98 0 0 0 3.74 1.91 6.06 6.06 0 0 0 5.77-4.2 5.99 5.99 0 0 0 4-2.9 6.06 6.06 0 0 0-.75-7.08zm-9.02 12.61a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.8.8 0 0 0 .39-.68v-6.74l2.02 1.17c.02.01.04.03.04.05v5.58a4.5 4.5 0 0 1-4.49 4.5zM3.6 17.91a4.47 4.47 0 0 1-.53-3.01l.14.08 4.78 2.76a.77.77 0 0 0 .78 0l5.85-3.37v2.33c0 .03-.02.05-.04.06L9.74 19.95a4.5 4.5 0 0 1-6.14-2.04zm-1.88-8.84a4.47 4.47 0 0 1 2.34-1.97l-.01.16v5.52a.78.78 0 0 0 .39.68l5.84 3.37-2.02 1.17a.08.08 0 0 1-.07 0l-4.83-2.8a4.5 4.5 0 0 1-1.64-6.13zm16.6 3.86-5.85-3.37 2.02-1.17a.08.08 0 0 1 .07 0l4.83 2.8a4.5 4.5 0 0 1-.68 8.1v-5.68a.79.79 0 0 0-.39-.68zm2.01-3.02-.14-.09-4.78-2.78a.78.78 0 0 0-.78 0L8.81 10.4V8.07c0-.02.01-.05.03-.06l4.88-2.82a4.5 4.5 0 0 1 6.68 4.2zM12 13.5l-2.6-1.5L12 10.5l2.6 1.5-2.6 1.5z"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">OpenAI</span>
-            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200/70">AI Models</span>
-          </div>
-
-          <!-- 2: Anthropic Claude -->
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-amber-400 hover:shadow-[0_8px_20px_-4px_rgba(245,158,11,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-[#D97757]/10 border border-[#D97757]/30 flex items-center justify-center text-[#D97757] font-serif font-black text-xs">
-              C
-            </div>
-            <span class="text-xs font-bold text-slate-200">Claude</span>
-            <span class="text-[10px] font-mono text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded font-semibold border border-amber-200/70">LLM APIs</span>
-          </div>
-
-          <!-- 3: Stripe -->
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-indigo-400 hover:shadow-[0_8px_20px_-4px_rgba(99,91,255,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-indigo-50 border border-indigo-200/60 flex items-center justify-center text-[#635BFF] font-bold text-xs font-mono">
-              S
-            </div>
-            <span class="text-xs font-bold text-slate-200">Stripe</span>
-            <span class="text-[10px] font-mono text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded font-semibold border border-indigo-200/70">Payments</span>
-          </div>
-
-          <!-- 4: PostgreSQL -->
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-sky-400 hover:shadow-[0_8px_20px_-4px_rgba(56,189,248,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-sky-50 border border-sky-200/60 flex items-center justify-center text-[#336791]">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">PostgreSQL</span>
-            <span class="text-[10px] font-mono text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded font-semibold border border-sky-200/70">Databases</span>
-          </div>
-
-          <!-- 5: AWS Cloud -->
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-amber-400 hover:shadow-[0_8px_20px_-4px_rgba(245,158,11,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-amber-50 border border-amber-200/60 flex items-center justify-center text-[#FF9900]">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">AWS Cloud</span>
-            <span class="text-[10px] font-mono text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded font-semibold border border-amber-200/70">Infrastructure</span>
-          </div>
-
-          <!-- 6: LangChain -->
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-emerald-400 hover:shadow-[0_8px_20px_-4px_rgba(16,185,129,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-600 font-bold text-[10px]">
-              🦜
-            </div>
-            <span class="text-xs font-bold text-slate-200">LangChain</span>
-            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200/70">AI Agents</span>
-          </div>
-
-          <!-- 7: Supabase -->
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-emerald-400 hover:shadow-[0_8px_20px_-4px_rgba(16,185,129,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-[#3ECF8E]">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M21.36 9.87a1.44 1.44 0 0 0-1.2-.64H13.5V1.44A1.44 1.44 0 0 0 11.04.42l-9.6 12.24a1.44 1.44 0 0 0 1.13 2.32h6.67v7.79a1.44 1.44 0 0 0 2.46 1.02l9.6-12.24a1.44 1.44 0 0 0 .06-1.68z"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">Supabase</span>
-            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200/70">Database / Auth</span>
-          </div>
-
-          <!-- 8: Pinecone -->
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-cyan-400 hover:shadow-[0_8px_20px_-4px_rgba(6,182,212,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-cyan-50 border border-cyan-200/60 flex items-center justify-center text-cyan-600 font-bold text-xs">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">Pinecone</span>
-            <span class="text-[10px] font-mono text-cyan-700 bg-cyan-50 px-1.5 py-0.5 rounded font-semibold border border-cyan-200/70">Vector DB / RAG</span>
-          </div>
-
-          <!-- 9: Redis -->
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-rose-400 hover:shadow-[0_8px_20px_-4px_rgba(244,63,94,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-rose-50 border border-rose-200/60 flex items-center justify-center text-[#DC382D]">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7.5v9L12 22l10-5.5v-9L12 2zm0 3.3l7 3.85-7 3.85-7-3.85 7-3.85zM4.5 9.8l6.5 3.58v6.82L4.5 16.62V9.8zm15 6.82l-6.5 3.58v-6.82l6.5-3.58v6.82z"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">Redis</span>
-            <span class="text-[10px] font-mono text-rose-700 bg-rose-50 px-1.5 py-0.5 rounded font-semibold border border-rose-200/70">Cache &amp; Memory</span>
-          </div>
-
-          <!-- 10: Vercel -->
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-slate-400 hover:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900">
-              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 1 12 21H0z"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">Vercel</span>
-            <span class="text-[10px] font-mono text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded font-semibold border border-slate-200">Edge &amp; Workflows</span>
-          </div>
-
-          <!-- 11: GitHub -->
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-slate-400 hover:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">GitHub</span>
-            <span class="text-[10px] font-mono text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded font-semibold border border-slate-200">Webhooks</span>
-          </div>
-
-          <!-- 12: Resend -->
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-slate-400 hover:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900 font-mono font-bold text-xs">
-              ✉
-            </div>
-            <span class="text-xs font-bold text-slate-200">Resend</span>
-            <span class="text-[10px] font-mono text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded font-semibold border border-slate-200">Email APIs</span>
-          </div>
-
-          <!-- Item Set 2 (Duplicate for Seamless Endless Loop) -->
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-emerald-400 hover:shadow-[0_8px_20px_-4px_rgba(16,185,129,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-600">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M22.28 9.82a5.98 5.98 0 0 0-.51-4.91 6.05 6.05 0 0 0-6.51-2.9 6.07 6.07 0 0 0-4.28 2.17 5.98 5.98 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.1 5.98 5.98 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.51 2.9 5.98 5.98 0 0 0 3.74 1.91 6.06 6.06 0 0 0 5.77-4.2 5.99 5.99 0 0 0 4-2.9 6.06 6.06 0 0 0-.75-7.08zm-9.02 12.61a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.8.8 0 0 0 .39-.68v-6.74l2.02 1.17c.02.01.04.03.04.05v5.58a4.5 4.5 0 0 1-4.49 4.5zM3.6 17.91a4.47 4.47 0 0 1-.53-3.01l.14.08 4.78 2.76a.77.77 0 0 0 .78 0l5.85-3.37v2.33c0 .03-.02.05-.04.06L9.74 19.95a4.5 4.5 0 0 1-6.14-2.04zm-1.88-8.84a4.47 4.47 0 0 1 2.34-1.97l-.01.16v5.52a.78.78 0 0 0 .39.68l5.84 3.37-2.02 1.17a.08.08 0 0 1-.07 0l-4.83-2.8a4.5 4.5 0 0 1-1.64-6.13zm16.6 3.86-5.85-3.37 2.02-1.17a.08.08 0 0 1 .07 0l4.83 2.8a4.5 4.5 0 0 1-.68 8.1v-5.68a.79.79 0 0 0-.39-.68zm2.01-3.02-.14-.09-4.78-2.78a.78.78 0 0 0-.78 0L8.81 10.4V8.07c0-.02.01-.05.03-.06l4.88-2.82a4.5 4.5 0 0 1 6.68 4.2zM12 13.5l-2.6-1.5L12 10.5l2.6 1.5-2.6 1.5z"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">OpenAI</span>
-            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200/70">AI Models</span>
-          </div>
-
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-amber-400 hover:shadow-[0_8px_20px_-4px_rgba(245,158,11,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-[#D97757]/10 border border-[#D97757]/30 flex items-center justify-center text-[#D97757] font-serif font-black text-xs">
-              C
-            </div>
-            <span class="text-xs font-bold text-slate-200">Claude</span>
-            <span class="text-[10px] font-mono text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded font-semibold border border-amber-200/70">LLM APIs</span>
-          </div>
-
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-indigo-400 hover:shadow-[0_8px_20px_-4px_rgba(99,91,255,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-indigo-50 border border-indigo-200/60 flex items-center justify-center text-[#635BFF] font-bold text-xs font-mono">
-              S
-            </div>
-            <span class="text-xs font-bold text-slate-200">Stripe</span>
-            <span class="text-[10px] font-mono text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded font-semibold border border-indigo-200/70">Payments</span>
-          </div>
-
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-sky-400 hover:shadow-[0_8px_20px_-4px_rgba(56,189,248,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-sky-50 border border-sky-200/60 flex items-center justify-center text-[#336791]">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">PostgreSQL</span>
-            <span class="text-[10px] font-mono text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded font-semibold border border-sky-200/70">Databases</span>
-          </div>
-
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-amber-400 hover:shadow-[0_8px_20px_-4px_rgba(245,158,11,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-amber-50 border border-amber-200/60 flex items-center justify-center text-[#FF9900]">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">AWS Cloud</span>
-            <span class="text-[10px] font-mono text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded font-semibold border border-amber-200/70">Infrastructure</span>
-          </div>
-
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-emerald-400 hover:shadow-[0_8px_20px_-4px_rgba(16,185,129,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-600 font-bold text-[10px]">
-              🦜
-            </div>
-            <span class="text-xs font-bold text-slate-200">LangChain</span>
-            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200/70">AI Agents</span>
-          </div>
-
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-emerald-400 hover:shadow-[0_8px_20px_-4px_rgba(16,185,129,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-[#3ECF8E]">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M21.36 9.87a1.44 1.44 0 0 0-1.2-.64H13.5V1.44A1.44 1.44 0 0 0 11.04.42l-9.6 12.24a1.44 1.44 0 0 0 1.13 2.32h6.67v7.79a1.44 1.44 0 0 0 2.46 1.02l9.6-12.24a1.44 1.44 0 0 0 .06-1.68z"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">Supabase</span>
-            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200/70">Database / Auth</span>
-          </div>
-
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-cyan-400 hover:shadow-[0_8px_20px_-4px_rgba(6,182,212,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-cyan-50 border border-cyan-200/60 flex items-center justify-center text-cyan-600 font-bold text-xs">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">Pinecone</span>
-            <span class="text-[10px] font-mono text-cyan-700 bg-cyan-50 px-1.5 py-0.5 rounded font-semibold border border-cyan-200/70">Vector DB / RAG</span>
-          </div>
-
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-rose-400 hover:shadow-[0_8px_20px_-4px_rgba(244,63,94,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-rose-50 border border-rose-200/60 flex items-center justify-center text-[#DC382D]">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7.5v9L12 22l10-5.5v-9L12 2zm0 3.3l7 3.85-7 3.85-7-3.85 7-3.85zM4.5 9.8l6.5 3.58v6.82L4.5 16.62V9.8zm15 6.82l-6.5 3.58v-6.82l6.5-3.58v6.82z"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">Redis</span>
-            <span class="text-[10px] font-mono text-rose-700 bg-rose-50 px-1.5 py-0.5 rounded font-semibold border border-rose-200/70">Cache &amp; Memory</span>
-          </div>
-
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-slate-400 hover:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900">
-              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 1 12 21H0z"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">Vercel</span>
-            <span class="text-[10px] font-mono text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded font-semibold border border-slate-200">Edge &amp; Workflows</span>
-          </div>
-
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-slate-400 hover:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-200">GitHub</span>
-            <span class="text-[10px] font-mono text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded font-semibold border border-slate-200">Webhooks</span>
-          </div>
-
-          <div class="floating-pill group px-3.5 py-2 rounded-2xl bg-[#121217]/90 backdrop-blur-xl border border-white/15 shadow-sm hover:border-white/40 hover:shadow-[0_8px_25px_-4px_rgba(255,255,255,0.15)] hover:border-slate-400 hover:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-200 flex items-center gap-2.5 shrink-0 cursor-default">
-            <div class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900 font-mono font-bold text-xs">
-              ✉
-            </div>
-            <span class="text-xs font-bold text-slate-200">Resend</span>
-            <span class="text-[10px] font-mono text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded font-semibold border border-slate-200">Email APIs</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- SECTION 2: EVOLVING INTELLIGENCE (FROM FAILURE TO RECOVERY) -->
-  <!-- ========================================================================= -->
-  <section class="relative pt-20 pb-16 px-4 max-w-6xl mx-auto reveal-on-scroll" id="evolving-intelligence">
-    <div class="text-center mb-12 sm:mb-16">
-      <h2 class="inline-flex items-center gap-2.5 px-6 py-2.5 sm:px-7 sm:py-3 rounded-full text-sm sm:text-base md:text-lg font-bold tracking-wider uppercase bg-white/[0.08] text-white border border-white/25 shadow-[0_0_25px_rgba(255,255,255,0.08)] mb-4 backdrop-blur-md">
-        <span class="w-2 h-2 rounded-full bg-slate-300 animate-pulse"></span>
-        EVOLVING INTELLIGENCE
-      </h2>
-      <p class="mt-2 text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-        Fluxera helps software systems respond intelligently when execution fails.
-      </p>
-
-      <!-- 6-Stage Evolution Track Badges -->
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-4xl mx-auto">
-        <span class="px-3.5 py-1.5 rounded-xl bg-[#14141a] border border-white/20 text-xs font-mono font-bold text-white shadow-sm flex items-center gap-1.5">
-          <span class="text-slate-400">01</span> Instrument
-        </span>
-        <span class="text-slate-600 font-bold hidden sm:inline">→</span>
-        <span class="px-3.5 py-1.5 rounded-xl bg-[#14141a] border border-white/20 text-xs font-mono font-bold text-white shadow-sm flex items-center gap-1.5">
-          <span class="text-slate-400">02</span> Understand
-        </span>
-        <span class="text-slate-600 font-bold hidden sm:inline">→</span>
-        <span class="px-3.5 py-1.5 rounded-xl bg-[#14141a] border border-white/20 text-xs font-mono font-bold text-white shadow-sm flex items-center gap-1.5">
-          <span class="text-slate-400">03</span> Analyze
-        </span>
-        <span class="text-slate-600 font-bold hidden sm:inline">→</span>
-        <span class="px-3.5 py-1.5 rounded-xl bg-[#1a1a24] border border-white/40 text-xs font-mono font-bold text-white shadow-[0_0_15px_rgba(255,255,255,0.12)] flex items-center gap-1.5 ring-1 ring-white/25">
-          <span class="text-slate-300">04</span> Recover
-        </span>
-        <span class="text-slate-600 font-bold hidden sm:inline">→</span>
-        <span class="px-3.5 py-1.5 rounded-xl bg-[#14141a] border border-white/20 text-xs font-mono font-bold text-white shadow-sm flex items-center gap-1.5">
-          <span class="text-slate-400">05</span> Verify
-        </span>
-        <span class="text-slate-600 font-bold hidden sm:inline">→</span>
-        <span class="px-3.5 py-1.5 rounded-xl bg-[#14141a] border border-white/20 text-xs font-mono font-bold text-white shadow-sm flex items-center gap-1.5">
-          <span class="text-slate-400">06</span> Improve
-        </span>
-      </div>
-    </div>
-
-    <!-- 6 Core Steps Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <!-- Step 1: Instrument -->
-      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold px-2.5 py-1 rounded-md bg-white/5 border border-white/10">STAGE 01</span>
-            <div class="w-8 h-8 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-slate-300 text-xs font-mono font-bold group-hover:border-white/40 transition-colors">
-              01
-            </div>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-slate-100">Instrument</h3>
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
-            Track workflows, APIs, tools, and AI agent executions.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-[11px] font-mono text-slate-500">
-          <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-          Non-blocking execution telemetry
-        </div>
-      </div>
-
-      <!-- Step 2: Understand -->
-      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold px-2.5 py-1 rounded-md bg-white/5 border border-white/10">STAGE 02</span>
-            <div class="w-8 h-8 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-slate-300 text-xs font-mono font-bold group-hover:border-white/40 transition-colors">
-              02
-            </div>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-slate-100">Understand</h3>
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
-            Identify failures and their impact.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-[11px] font-mono text-slate-500">
-          <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-          Dependency &amp; cascade detection
-        </div>
-      </div>
-
-      <!-- Step 3: Analyze -->
-      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold px-2.5 py-1 rounded-md bg-white/5 border border-white/10">STAGE 03</span>
-            <div class="w-8 h-8 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-slate-300 text-xs font-mono font-bold group-hover:border-white/40 transition-colors">
-              03
-            </div>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-slate-100">Analyze</h3>
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
-            Determine likely causes and available recovery options.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-[11px] font-mono text-slate-500">
-          <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-          Root cause &amp; fallback evaluation
-        </div>
-      </div>
-
-      <!-- Step 4: Recover (Highlighted Titanium Card) -->
-      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border-2 border-white/30 bg-gradient-to-b from-[#181822] via-[#121218] to-[#0e0e14] shadow-[0_10px_35px_rgba(255,255,255,0.06)] group">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-white font-bold px-2.5 py-1 rounded-md bg-white/15 border border-white/25">STAGE 04 • ENGINE</span>
-            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-white via-slate-100 to-slate-300 text-slate-950 flex items-center justify-center font-mono font-black text-xs shadow-sm">
-              fx
-            </div>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Recover</h3>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-            Initiate configured retries, fallbacks, or eligible workflow resumption.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-300">
-          <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Sub-12ms execution</span>
-          <span class="font-bold text-white">Continuous</span>
-        </div>
-      </div>
-
-      <!-- Step 5: Verify -->
-      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold px-2.5 py-1 rounded-md bg-white/5 border border-white/10">STAGE 05</span>
-            <div class="w-8 h-8 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-slate-300 text-xs font-mono font-bold group-hover:border-white/40 transition-colors">
-              05
-            </div>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-slate-100">Verify</h3>
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
-            Check whether the intended operation succeeded.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-[11px] font-mono text-slate-500">
-          <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-          Closed-loop validation
-        </div>
-      </div>
-
-      <!-- Step 6: Improve -->
-      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold px-2.5 py-1 rounded-md bg-white/5 border border-white/10">STAGE 06</span>
-            <div class="w-8 h-8 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-slate-300 text-xs font-mono font-bold group-hover:border-white/40 transition-colors">
-              06
-            </div>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-slate-100">Improve</h3>
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
-            Use execution history and outcomes to inform future decisions.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-[11px] font-mono text-slate-500">
-          <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-          Evolving system resilience
-        </div>
-      </div>
-    </div>
-
-    <!-- Example Callout Box -->
-    <div class="mt-8 p-6 sm:p-8 rounded-2xl bg-[#0f0f14] border border-white/15 relative overflow-hidden">
-      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-        <div class="space-y-2 max-w-2xl">
-          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md bg-white/10 border border-white/15 text-[11px] font-mono font-bold text-slate-300">
-            <span>LIVE SCENARIO</span>
-          </div>
-          <h4 class="text-base sm:text-lg font-bold text-white">
-            Example: An AI agent's API call fails.
-          </h4>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Fluxera identifies the failure, initiates a configured fallback, verifies the result, and records the outcome.
-          </p>
-          <p class="text-[11px] font-mono text-slate-500">
-            Recovery depends on supported integrations, available state, permissions, and configured policies.
-          </p>
-        </div>
-        <div class="w-full lg:w-auto shrink-0 flex items-center gap-2 p-3.5 rounded-xl bg-[#15151c] border border-white/10 text-xs font-mono text-slate-300">
-          <div class="flex items-center gap-1.5 text-rose-400">
-            <span class="w-2 h-2 rounded-full bg-rose-500"></span>
-            <span>API Timeout (504)</span>
-          </div>
-          <span class="text-slate-600">→</span>
-          <div class="flex items-center gap-1.5 text-white font-bold">
-            <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-            <span>Fallback Route</span>
-          </div>
-          <span class="text-slate-600">→</span>
-          <div class="flex items-center gap-1.5 text-emerald-400 font-bold">
-            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span>Verified 200 OK</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONNECTOR 1 -->
-  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-2 pointer-events-none z-10">
-    <div class="h-16 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
-    <div class="w-3.5 h-3.5 rounded-full border-2 border-white/50 bg-[#08080a] flex items-center justify-center shadow-md shadow-white/20">
-      <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
-    </div>
-  </div>
-
-  <!-- ========================================================================= -->
-  <!-- SECTION 3: COST INTELLIGENCE (UNDERSTAND THE COST OF FAILURE) -->
-  <!-- ========================================================================= -->
-  <section class="relative pt-16 pb-16 px-4 max-w-6xl mx-auto reveal-on-scroll" id="cost-intelligence">
-    <div class="text-center mb-12">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/[0.06] text-slate-300 border border-white/20 mb-4 backdrop-blur-md">
-        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 animate-pulse"></span>
-        COST INTELLIGENCE
-      </div>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-        Understand the Cost of Failure
-      </h2>
-      <p class="mt-4 text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-        Fluxera helps identify unnecessary model calls, repeated API requests, and expensive workflow restarts—and measures the potential economic impact of recovery.
-      </p>
-
-      <!-- 4 Badges -->
-      <div class="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-mono font-bold text-slate-300">
-        <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10">Track</span>
-        <span class="text-slate-600">→</span>
-        <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10">Identify</span>
-        <span class="text-slate-600">→</span>
-        <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10">Calculate</span>
-        <span class="text-slate-600">→</span>
-        <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10">Measure</span>
-      </div>
-
-      <!-- Formula Pill -->
-      <div class="mt-8 inline-flex items-center gap-2 sm:gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-white/10 via-white/5 to-white/10 border border-white/20 text-xs sm:text-sm font-mono text-slate-200 shadow-md">
-        <span class="text-white font-bold">Net Savings</span>
-        <span class="text-slate-400">=</span>
-        <span class="text-slate-300">Avoided Repeat-Execution Costs</span>
-        <span class="text-slate-400">−</span>
-        <span class="text-slate-400">Additional Recovery Costs</span>
-      </div>
-    </div>
-
-    <!-- Financial Examples Header -->
-    <div class="text-center mb-8">
-      <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
-        What Could That Mean Financially?
-      </h3>
-      <p class="text-xs text-slate-400 mt-1">
-        Illustrative net savings modeled across common software architectures.
-      </p>
-    </div>
-
-    <!-- 3 Clean, Short Scenario Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Card 1: AI Workflows -->
-      <div class="futuristic-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border border-white/15 hover:border-white/35 transition-all group">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-1 rounded-md text-[10px] font-mono uppercase font-bold bg-white/10 text-slate-200 border border-white/15">
-              AI Workflows
+        <!-- Prominent Animated Circular Fluxera Logo Crest (Always Visible!) -->
+        <div class="hero-emblem-centerpiece">
+          <button type="button" class="hero-crest-orb tactile-btn" id="hero-logo-crest" title="Click to play Fluxera orbital intro" aria-label="Fluxera circular emblem — click to replay orbital intro">
+            <span class="hero-crest-orbit" aria-hidden="true"><span class="hero-crest-comet"></span></span>
+            <span class="flux-logo-lens" style="width: 100%; height: 100%;">
+              <span class="flux-logo-clip">
+                <img src="./assets/fluxera-logo.jpg" alt="Fluxera" loading="eager" decoding="sync" fetchpriority="high" />
+                <span class="crest-sheen" aria-hidden="true"></span>
+              </span>
             </span>
-            <span class="text-xs text-slate-500 font-mono">Monthly Model</span>
-          </div>
-
-          <div class="my-4">
-            <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              $40,000<span class="text-xs sm:text-sm text-slate-400 font-normal"> / mo</span>
-            </div>
-            <div class="text-xs font-mono font-semibold text-emerald-400 mt-1">
-              $480,000 illustrative annual savings
-            </div>
-          </div>
-
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal mt-3">
-            A company incurs <span class="text-slate-200 font-semibold">$50,000</span> in monthly repeat-execution costs. Targeted recovery reduces those costs to <span class="text-slate-200 font-semibold">$10,000</span>, yielding $40,000 in monthly net savings.
-          </p>
+          </button>
+          <button type="button" class="hero-crest-caption tactile-btn" id="hero-replay-btn">
+            <span class="eyebrow-dot"></span>
+            <span>FLUXERA · Technology Initiative</span>
+            <span aria-hidden="true">↻</span>
+          </button>
         </div>
 
-        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
-          <span>Targeted Recovery</span>
-          <span class="text-white font-bold">80% Reduction</span>
-        </div>
-      </div>
+        <div class="hero-kicker-tag">TECHNOLOGY INITIATIVE · FLUXERA</div>
 
-      <!-- Card 2: AI Agent Platform -->
-      <div class="futuristic-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border-2 border-white/30 bg-gradient-to-b from-[#161620] via-[#111116] to-[#0c0c10] shadow-[0_10px_35px_rgba(255,255,255,0.06)] group">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-1 rounded-md text-[10px] font-mono uppercase font-black bg-white/20 text-white border border-white/30">
-              AI Agent Platform
-            </span>
-            <span class="text-xs text-slate-400 font-mono">Autonomous</span>
-          </div>
+        <h1 class="hero-h1">
+          Intelligence That Builds,
+          <span class="heading-muted">Think and Evolve.</span>
+        </h1>
 
-          <div class="my-4">
-            <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              $70,000<span class="text-xs sm:text-sm text-slate-400 font-normal"> / mo</span>
-            </div>
-            <div class="text-xs font-mono font-semibold text-emerald-400 mt-1">
-              $840,000 illustrative annual savings
-            </div>
-          </div>
-
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mt-3">
-            A company identifies <span class="text-white font-semibold">$90,000</span> in monthly avoidable costs. With recovery costs of <span class="text-white font-semibold">$20,000</span> and full avoidance, net savings reach $70,000 per month.
-          </p>
-        </div>
-
-        <div class="mt-6 pt-4 border-t border-white/15 flex items-center justify-between text-[11px] font-mono text-slate-300">
-          <span>Avoidable Spend Halted</span>
-          <span class="text-white font-bold">Net $70k/mo</span>
-        </div>
-      </div>
-
-      <!-- Card 3: Enterprise Software -->
-      <div class="futuristic-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border border-white/15 hover:border-white/35 transition-all group">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-1 rounded-md text-[10px] font-mono uppercase font-bold bg-white/10 text-slate-200 border border-white/15">
-              Enterprise Software
-            </span>
-            <span class="text-xs text-slate-500 font-mono">Annual Scale</span>
-          </div>
-
-          <div class="my-4">
-            <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              $500,000<span class="text-xs sm:text-sm text-slate-400 font-normal"> / yr</span>
-            </div>
-            <div class="text-xs font-mono font-semibold text-emerald-400 mt-1">
-              Illustrative annual net savings
-            </div>
-          </div>
-
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal mt-3">
-            A company incurs <span class="text-slate-200 font-semibold">$1.5M</span> annually in avoidable repeat-execution costs. Reducing costs by 40% minus <span class="text-slate-200 font-semibold">$100,000</span> in recovery costs produces $500,000 net savings.
-          </p>
-        </div>
-
-        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
-          <span>Batch &amp; ETL Workflows</span>
-          <span class="text-white font-bold">$1.5M Baseline</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Disclaimer Note -->
-    <div class="mt-6 text-center">
-      <p class="text-[11px] font-mono text-slate-500">
-        Examples are hypothetical, not actual customer results or guaranteed savings.
-      </p>
-    </div>
-  </section>
-
-  <!-- CONNECTOR 2 -->
-  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-2 pointer-events-none z-10">
-    <div class="h-16 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
-    <div class="w-3.5 h-3.5 rounded-full border-2 border-white/50 bg-[#08080a] flex items-center justify-center shadow-md shadow-white/20">
-      <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
-    </div>
-  </div>
-
-  <!-- ========================================================================= -->
-  <!-- SECTION 4: YEAR 0 CAPABILITIES (THE FOUNDATION) -->
-  <!-- ========================================================================= -->
-  <section class="relative pt-16 pb-16 px-4 max-w-6xl mx-auto reveal-on-scroll" id="capabilities">
-    <div class="text-center mb-12 sm:mb-14">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/[0.06] text-slate-300 border border-white/20 mb-4 backdrop-blur-md">
-        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 animate-pulse"></span>
-        YEAR 0 CAPABILITIES
-      </div>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-        The Foundation
-      </h2>
-      <div class="mt-4 inline-block px-4 py-2 rounded-xl bg-white/5 border border-white/15 text-xs sm:text-sm text-slate-300 font-medium max-w-2xl mx-auto">
-        <span class="text-white font-bold">Objective:</span> Establish the execution visibility and technical foundation for evolving intelligence.
-      </div>
-    </div>
-
-    <!-- 7 Bento Capabilities Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <!-- 1: SDK Instrumentation -->
-      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
-        <div>
-          <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white mb-4 group-hover:border-white/40 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-          </div>
-          <h3 class="text-base font-bold text-white mb-2 group-hover:text-slate-100">SDK Instrumentation</h3>
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-            SDK instrumentation for supported workflows and executions.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
-          Node.js, Python, &amp; Go clients
-        </div>
-      </div>
-
-      <!-- 2: Execution Tracking -->
-      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
-        <div>
-          <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white mb-4 group-hover:border-white/40 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-          </div>
-          <h3 class="text-base font-bold text-white mb-2 group-hover:text-slate-100">Execution Tracking</h3>
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-            Execution tracking for steps, statuses, errors, and attempts.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
-          Step-by-step telemetry audit
-        </div>
-      </div>
-
-      <!-- 3: Failure Detection -->
-      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
-        <div>
-          <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white mb-4 group-hover:border-white/40 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-          </div>
-          <h3 class="text-base font-bold text-white mb-2 group-hover:text-slate-100">Failure Detection</h3>
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-            Failure detection using available data and configured rules.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
-          Configured rule matching
-        </div>
-      </div>
-
-      <!-- 4: Linked History -->
-      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
-        <div>
-          <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white mb-4 group-hover:border-white/40 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
-          </div>
-          <h3 class="text-base font-bold text-white mb-2 group-hover:text-slate-100">Linked History</h3>
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-            Linked execution and recovery history.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
-          Traceable incident lineage
-        </div>
-      </div>
-
-      <!-- 5: Usage-Cost Visibility -->
-      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
-        <div>
-          <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white mb-4 group-hover:border-white/40 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          </div>
-          <h3 class="text-base font-bold text-white mb-2 group-hover:text-slate-100">Usage-Cost Visibility</h3>
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-            Basic API, model, and compute usage-cost visibility where data is available.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
-          Dollarized execution analytics
-        </div>
-      </div>
-
-      <!-- 6: Dashboard & API Access -->
-      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-white/30 transition-all group">
-        <div>
-          <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white mb-4 group-hover:border-white/40 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
-          </div>
-          <h3 class="text-base font-bold text-white mb-2 group-hover:text-slate-100">Dashboard &amp; API Access</h3>
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-            Dashboard and API access for continuous observability.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
-          REST &amp; Webhook endpoints
-        </div>
-      </div>
-
-      <!-- 7: Configured Recovery Handlers (Spans across) -->
-      <div class="futuristic-card p-6 rounded-2xl flex flex-col justify-between border border-white/15 md:col-span-2 lg:col-span-3 bg-gradient-to-r from-[#14141c] via-[#101015] to-[#14141c] group">
-        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-white via-slate-100 to-slate-300 text-slate-950 flex items-center justify-center font-mono font-bold text-sm shrink-0 shadow-sm">
-              fx
-            </div>
-            <div>
-              <h3 class="text-base font-bold text-white mb-1">Configured Recovery Handlers</h3>
-              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-3xl">
-                Integration with configured recovery handlers through supported APIs or webhooks.
-              </p>
-            </div>
-          </div>
-          <span class="shrink-0 px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-white/10 text-white border border-white/20">
-            Configured Policy Handlers
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONNECTOR 3 -->
-  <div aria-hidden="true" class="relative w-full flex flex-col items-center justify-center my-2 pointer-events-none z-10">
-    <div class="h-16 circuit-line-stem rounded-full"><div class="pulse-dot-vertical"></div></div>
-    <div class="w-3.5 h-3.5 rounded-full border-2 border-white/50 bg-[#08080a] flex items-center justify-center shadow-md shadow-white/20">
-      <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
-    </div>
-  </div>
-
-  <!-- ========================================================================= -->
-  <!-- SECTION 5: THE VISION (BUILD AI: THE NEXT EVOLUTION OF FLUXERA) -->
-  <!-- ========================================================================= -->
-  <section class="relative pt-16 pb-16 px-4 max-w-6xl mx-auto reveal-on-scroll" id="the-vision">
-    <div class="futuristic-card rounded-3xl p-8 sm:p-14 border border-white/20 relative overflow-hidden bg-gradient-to-b from-[#161620] via-[#101016] to-[#0a0a0e] shadow-2xl">
-      <div class="absolute -left-12 -bottom-12 w-48 h-48 bg-white/5 rounded-full blur-[80px] pointer-events-none"></div>
-      <div class="absolute -right-12 -top-12 w-48 h-48 bg-white/5 rounded-full blur-[80px] pointer-events-none"></div>
-
-      <div class="text-center max-w-3xl mx-auto">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/[0.08] text-slate-200 border border-white/25 mb-5 backdrop-blur-md">
-          <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-          THE VISION · $1.5M PRE-SEED
-        </div>
-
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-          Build AI: The Next Evolution of Fluxera
-        </h2>
-
-        <p class="mt-4 text-sm sm:text-base md:text-lg text-slate-300 font-normal leading-relaxed">
-          Following a $1.5 million pre-seed round, Fluxera plans to develop a <span class="text-white font-bold">Build AI</span> layer designed to help software build and improve itself.
+        <p class="hero-sub">
+          Building autonomous intelligence for the next generation of software and systems.
+          Building intelligence that enables systems to think, understand, learn, adapt, and evolve.
         </p>
 
-        <p class="mt-3 text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed">
-          Build AI will aim to analyze code, identify weaknesses, propose improvements, generate or modify code, and test changes within defined permissions and safeguards.
-        </p>
-      </div>
-
-      <!-- Evolution Diagram -->
-      <div class="mt-12 pt-8 border-t border-white/10 text-center">
-        <span class="text-xs font-mono uppercase tracking-widest text-slate-400 font-bold">
-          From Recovery to Self-Evolving Software
-        </span>
-        <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-xl mx-auto">
-          The long-term goal is to combine Fluxera's evolving intelligence foundation with Build AI:
-        </p>
-
-        <!-- 8-Step Long Term Pipeline -->
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-4xl mx-auto">
-          <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono font-medium text-slate-300">Understand</span>
-          <span class="text-slate-600 font-bold text-xs">→</span>
-          <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono font-medium text-slate-300">Analyze</span>
-          <span class="text-slate-600 font-bold text-xs">→</span>
-          <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono font-medium text-slate-300">Recover</span>
-          <span class="text-slate-600 font-bold text-xs">→</span>
-          <span class="px-2.5 py-1 rounded-lg bg-white/15 border border-white/30 text-[11px] font-mono font-bold text-white shadow-sm">Build</span>
-          <span class="text-slate-600 font-bold text-xs">→</span>
-          <span class="px-2.5 py-1 rounded-lg bg-white/15 border border-white/30 text-[11px] font-mono font-bold text-white shadow-sm">Test</span>
-          <span class="text-slate-600 font-bold text-xs">→</span>
-          <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono font-medium text-slate-300">Verify</span>
-          <span class="text-slate-600 font-bold text-xs">→</span>
-          <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono font-medium text-slate-300">Improve</span>
-          <span class="text-slate-600 font-bold text-xs">→</span>
-          <span class="px-3 py-1 rounded-lg bg-gradient-to-r from-white via-slate-100 to-slate-300 text-slate-950 font-mono font-extrabold text-[11px] shadow-sm">Evolve</span>
-        </div>
-
-        <p class="mt-6 text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed">
-          This would move Fluxera beyond responding to failures toward helping software systems continuously improve their own code and behavior.
-        </p>
-
-        <!-- Clear Disclaimer Banner -->
-        <!-- Deep-Dive Vision Architecture Link -->
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-          <a href="./vision.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white text-xs font-semibold shadow-md transition-all duration-200 hover:scale-[1.03]">
-            <span>Explore Full 3D Architecture Engine</span>
-            <span class="text-sm">→</span>
+        <div class="hero-ctas">
+          <a href="#vision" class="btn-pill-solid tactile-btn">
+            <span>Explore Our Vision</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="#contact" class="btn-pill-primary tactile-btn">
+            <span>Get in Touch</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="./dashboard.html" class="btn-pill-secondary tactile-btn">
+            <span>View Platform</span>
           </a>
         </div>
 
-        <div class="mt-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/15 text-[11px] font-mono text-slate-400">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-          Build AI is a planned future capability, not part of the current product.
+        <p class="hero-trust-note">A Fluxera technology initiative</p>
+
+        <!-- ATTUNEFY-INSPIRED HERO WORKSPACE SHOWCASE BENTO FRAME -->
+        <div class="hero-showcase-frame">
+          <div class="showcase-topbar">
+            <div class="showcase-emblem-chip">
+              <span class="flux-logo-lens" style="width: 32px; height: 32px;">
+                <span class="flux-logo-clip">
+                  <img src="./assets/fluxera-logo.jpg" alt="Fluxera" loading="eager" decoding="sync" />
+                </span>
+              </span>
+              <span style="font-size: 13px; font-weight: 600; color: var(--ink-primary);">
+                Fluxera · Autonomous Intelligence Layer
+              </span>
+            </div>
+            <div class="showcase-pill-right">
+              <span class="mini-pill-tag">Active Layer · Think → Evolve</span>
+            </div>
+          </div>
+
+          <div class="showcase-kpi-grid">
+            <a href="#vision" class="kpi-bento-card is-grad-1 tactile-card">
+              <span style="font-size: 12.5px; font-weight: 600; opacity: 0.92;">01 · Think &amp; Understand</span>
+              <div>
+                <div class="kpi-metric-big">Self-Thinking</div>
+                <div style="font-size: 12.5px; opacity: 0.92; margin-top: 6px;">Reads real system context instead of brittle rules.</div>
+              </div>
+            </a>
+
+            <a href="#changing" class="kpi-bento-card is-grad-2 tactile-card">
+              <span style="font-size: 12.5px; font-weight: 600; opacity: 0.92;">02 · Learn &amp; Adapt</span>
+              <div>
+                <div class="kpi-metric-big">Adaptive Core</div>
+                <div style="font-size: 12.5px; opacity: 0.9; margin-top: 6px;">Adjusts execution in motion with less human overhead.</div>
+              </div>
+            </a>
+
+            <a href="#systems" class="kpi-bento-card is-surface tactile-card">
+              <span style="font-size: 12.5px; font-weight: 600; color: var(--ink-muted);">03 · Evolution Cycle</span>
+              <div>
+                <div class="kpi-metric-big" style="color: var(--accent-solid);">5 Stages</div>
+                <div style="font-size: 12.5px; color: var(--ink-muted); margin-top: 6px;">Think · Understand · Learn · Adapt · Evolve</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="showcase-rows">
+            <div class="showcase-row">
+              <span class="row-badge" id="cog-badge">THINK</span>
+              <span style="font-size: 14.5px; font-weight: 600; color: var(--ink-primary);" id="cog-title">01 · Systems That Think</span>
+              <span style="font-size: 13.5px; color: var(--ink-muted); flex: 1; min-width: 220px;" id="cog-desc">
+                Evaluates live operational state rather than blindly running fixed scripts when unexpected conditions occur.
+              </span>
+            </div>
+
+            <div class="showcase-command-bar">
+              <span style="font-size: 13px; color: var(--ink-muted); font-weight: 500;">
+                Inspect intelligence stage:
+              </span>
+              <div class="cog-tabs" id="hero-cog-tabs" role="tablist">
+                <button type="button" class="cog-tab is-active" data-cog="think" role="tab" aria-selected="true">Think</button>
+                <button type="button" class="cog-tab" data-cog="understand" role="tab" aria-selected="false">Understand</button>
+                <button type="button" class="cog-tab" data-cog="learn" role="tab" aria-selected="false">Learn</button>
+                <button type="button" class="cog-tab" data-cog="adapt" role="tab" aria-selected="false">Adapt</button>
+                <button type="button" class="cog-tab" data-cog="evolve" role="tab" aria-selected="false">Evolve</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========================================================================= -->
-  <!-- SECTION 6 & 7: EARLY DESIGN PARTNERS & CLOSING STATEMENT (HORIZON DOME) -->
-  <!-- ========================================================================= -->
-  <section class="relative pt-24 pb-0 overflow-hidden text-center reveal-on-scroll flex flex-col justify-end items-center w-full" id="early-access">
-    <div class="horizon-arc-wrapper w-full">
-      <div class="horizon-arc-dome">
-        <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-white/10 blur-[120px] pointer-events-none rounded-full"></div>
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent blur-[1px] pointer-events-none"></div>
-
-        <div class="w-full max-w-[100vw] sm:max-w-3xl mx-auto relative z-10 px-4 sm:px-6">
-          <div class="w-12 h-12 mx-auto mb-5 rounded-2xl bg-[#181822] border border-white/20 flex items-center justify-center shadow-lg shadow-white/10">
-            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-white via-slate-200 to-slate-400 flex items-center justify-center text-slate-950 font-mono font-bold text-xs">
-              fx
-            </div>
+    <!-- 02. WHAT WE'RE BUILDING (OUR VISION) -->
+    <section class="band" id="vision" data-section="vision">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>02 · What We're Building · OUR VISION</span>
           </div>
-
-          <!-- Section 6: Early Design Partners Header -->
-          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-white/[0.08] text-slate-300 border border-white/20 mb-4 backdrop-blur-md">
-            EARLY DESIGN PARTNERS
-          </div>
-
-          <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-snug px-2 sm:px-4">
-            Help Shape the Future of <br class="hidden sm:inline" />
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400 block sm:inline mt-1 sm:mt-0">Software Intelligence</span>
+          <h2 class="section-h2">
+            We're Building the Self-Thinking,
+            <span class="heading-muted">Self-Learning, and Evolving Future.</span>
           </h2>
-
-          <p class="mt-4 text-xs sm:text-base text-slate-300 max-w-xl mx-auto font-normal leading-relaxed px-2">
-            We're looking to collaborate with a small number of teams building AI agents, automated workflows, and API-driven applications.
+          <p class="section-lead">
+            A future where intelligence doesn't just follow instructions. It understands, reasons, creates, adapts, and continuously evolves.
           </p>
+        </div>
 
-          <p class="mt-2 text-xs sm:text-sm text-slate-400 max-w-lg mx-auto font-normal leading-relaxed px-2">
-            Together, we'll explore integrations, recovery behavior, outcome verification, and measurable execution-cost reduction.
-          </p>
+        <div class="vision-grid">
+          <div class="tier-stack" id="vision-capability-list">
+            <button type="button" class="tier-btn is-active tactile-card" data-cap="understand">
+              <span class="tier-dot"></span>
+              <span style="font-size: 16px; font-weight: 600; flex: 1;">01 · Understands Context</span>
+              <span style="font-size: 11px; font-weight: 600; opacity: 0.78;">Perception</span>
+            </button>
+            <button type="button" class="tier-btn tactile-card" data-cap="reasons">
+              <span class="tier-dot"></span>
+              <span style="font-size: 16px; font-weight: 600; flex: 1;">02 · Reasons Independently</span>
+              <span style="font-size: 11px; font-weight: 600; opacity: 0.78;">Judgment</span>
+            </button>
+            <button type="button" class="tier-btn tactile-card" data-cap="creates">
+              <span class="tier-dot"></span>
+              <span style="font-size: 16px; font-weight: 600; flex: 1;">03 · Creates Solutions</span>
+              <span style="font-size: 11px; font-weight: 600; opacity: 0.78;">Synthesis</span>
+            </button>
+            <button type="button" class="tier-btn tactile-card" data-cap="adapts">
+              <span class="tier-dot"></span>
+              <span style="font-size: 16px; font-weight: 600; flex: 1;">04 · Adapts in Motion</span>
+              <span style="font-size: 11px; font-weight: 600; opacity: 0.78;">Resilience</span>
+            </button>
+            <button type="button" class="tier-btn tactile-card" data-cap="evolves">
+              <span class="tier-dot"></span>
+              <span style="font-size: 16px; font-weight: 600; flex: 1;">05 · Continuously Evolves</span>
+              <span style="font-size: 11px; font-weight: 600; opacity: 0.78;">Compounding</span>
+            </button>
+          </div>
 
-          <!-- Interactive Email Contact Card -->
-          <div class="mt-8 p-5 sm:p-6 rounded-2xl bg-[#121218]/90 border border-white/20 max-w-lg mx-auto shadow-2xl backdrop-blur-xl">
-            <div class="text-[11px] font-mono text-slate-400 uppercase tracking-widest font-semibold mb-2">
-              Direct Design Partner Channel
+          <div class="card">
+            <div class="eyebrow" style="margin-bottom: 10px;">
+              <span class="eyebrow-dot"></span>
+              <span>Instruction-Based vs. Self-Evolving</span>
             </div>
-            <div class="flex items-center justify-center gap-2 p-3 rounded-xl bg-[#0a0a0e] border border-white/15 text-slate-200 font-mono text-xs sm:text-sm font-bold selection:bg-white/30">
-              <span class="text-slate-400">✉</span>
-              <span id="partner-email-display">shubhamchansoriya13@gmail.com</span>
+            <h3 id="vision-cap-heading" style="font-size: 24px; margin-bottom: 10px;">Environmental &amp; System Understanding</h3>
+            <p id="vision-cap-summary" style="color: var(--ink-muted); font-size: 15px;">
+              Instead of breaking whenever inputs stray from pre-programmed assumptions, intelligence reads real environment signals before acting.
+            </p>
+
+            <div class="vision-contrast-cards">
+              <div class="contrast-col">
+                <div class="mono" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; color: var(--ink-muted); margin-bottom: 6px;">FIXED INSTRUCTIONS</div>
+                <p id="vision-legacy-text" style="font-size: 13.5px; color: var(--ink-body);">
+                  Halts or throws unhandled errors when an environment variable, dependency, or edge case shifts.
+                </p>
+              </div>
+              <div class="contrast-col is-sevol">
+                <div class="mono" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; color: var(--accent-solid); margin-bottom: 6px;">FLUXERA</div>
+                <p id="vision-sevol-text" style="font-size: 13.5px; color: var(--ink-primary); font-weight: 500;">
+                  Continuously interprets system context, identifies root shifts, and restructures execution paths autonomously.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. WHAT WE'RE CHANGING (ATTUNEFY REWIND SCRUBBER + 2x2 BENTO GRID) -->
+    <section class="band" id="changing" data-section="changing">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>03 · What We're Changing</span>
+          </div>
+          <h2 class="section-h2">
+            Reducing the resources required to
+            <span class="heading-muted">build, operate, and evolve systems.</span>
+          </h2>
+        </div>
+
+        <div class="changing-split">
+          <!-- Attunefy #how Interactive Maturity Rewind Panel -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div>
+              <div class="mono" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; color: var(--ink-muted); margin-bottom: 10px;">
+                <span id="horizon-stage-label">STAGE 3 · SELF-EVOLVING</span>
+              </div>
+              <input type="range" id="horizon-slider" class="scrubber-range" min="1" max="3" step="1" value="3" aria-label="System maturity stage" />
+              <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-muted); font-weight: 600; margin-top: 4px;">
+                <span>1. Predefined</span>
+                <span>2. Assisted</span>
+                <span>3. Self-Evolving</span>
+              </div>
             </div>
 
-            <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2.5">
-              <a href="mailto:shubhamchansoriya13@gmail.com?subject=Fluxera%20Design%20Partner%20Inquiry" class="w-full sm:w-auto flex-1 px-5 py-2.5 rounded-xl bg-gradient-to-r from-white via-slate-100 to-slate-300 text-slate-950 font-bold text-xs tracking-wide shadow-lg shadow-white/15 hover:shadow-[0_0_25px_rgba(255,255,255,0.35)] hover:scale-[1.02] transition-all whitespace-nowrap flex items-center justify-center gap-2">
-                <span>Become an Early Design Partner</span>
-                <span>→</span>
-              </a>
-              <button type="button" id="copy-email-btn" onclick="copyPartnerEmail()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-[#1a1a24] hover:bg-[#22222e] text-slate-200 hover:text-white border border-white/20 text-xs font-semibold transition-all cursor-pointer flex items-center justify-center gap-1.5">
-                <span id="copy-btn-icon">📋</span>
-                <span id="copy-btn-text">Copy Email</span>
+            <div>
+              <div class="metric-list-row">
+                <span class="metric-list-num" id="meter-val-labor">92%</span>
+                <span style="font-size: 13.5px; color: var(--ink-muted);">Autonomous execution share</span>
+              </div>
+              <div class="metric-list-row">
+                <span class="metric-list-num" id="meter-val-capital">88%</span>
+                <span style="font-size: 13.5px; color: var(--ink-muted);">Productive capital shift</span>
+              </div>
+              <div class="metric-list-row">
+                <span class="metric-list-num" id="meter-val-time">95%</span>
+                <span style="font-size: 13.5px; color: var(--ink-muted);">Creation &amp; improvement velocity</span>
+              </div>
+              <div class="metric-list-row" style="border-bottom: 0; padding-bottom: 0;">
+                <span class="metric-list-num" id="meter-val-compute">90%</span>
+                <span style="font-size: 13.5px; color: var(--ink-muted);">Intelligent compute utilization</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-4">
+            <article class="card resource-card">
+              <div class="resource-icon-chip mono">01</div>
+              <div>
+                <h3 style="font-size: 20px; margin-bottom: 6px;">Engineering &amp; Labor</h3>
+                <p style="font-size: 14.5px; color: var(--ink-muted);">Less repetitive human work. More autonomous execution.</p>
+              </div>
+            </article>
+
+            <article class="card resource-card">
+              <div class="resource-icon-chip mono">02</div>
+              <div>
+                <h3 style="font-size: 20px; margin-bottom: 6px;">Capital</h3>
+                <p style="font-size: 14.5px; color: var(--ink-muted);">Less operational overhead. More productive investment.</p>
+              </div>
+            </article>
+
+            <article class="card resource-card">
+              <div class="resource-icon-chip mono">03</div>
+              <div>
+                <h3 style="font-size: 20px; margin-bottom: 6px;">Time</h3>
+                <p style="font-size: 14.5px; color: var(--ink-muted);">Faster creation, execution, and improvement.</p>
+              </div>
+            </article>
+
+            <article class="card resource-card" style="background: var(--accent-primary-grad); color: var(--ink-on-accent); border-color: transparent; box-shadow: var(--shadow-cta);">
+              <div class="resource-icon-chip mono" style="background: rgba(255,255,255,0.2); color: #fff;">04</div>
+              <div>
+                <h3 style="font-size: 20px; margin-bottom: 6px; color: inherit;">Compute</h3>
+                <p style="font-size: 14.5px; opacity: 0.92;">More intelligent utilization of AI and computing resources.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. WHY THE WORLD NEEDS THIS -->
+    <section class="band" id="global-need" data-section="global-need">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>04 · Why the World Needs This · GLOBAL NEED</span>
+          </div>
+          <h2 class="section-h2">
+            The Next Generation of Technology
+            <span class="heading-muted">Needs a New Kind of Intelligence.</span>
+          </h2>
+        </div>
+
+        <div class="need-split">
+          <div class="editorial-stack">
+            <p>
+              As the world becomes increasingly connected and automated, digital and physical systems are becoming more complex.
+            </p>
+            <p>
+              Software, AI agents, robotics, factories, vehicles, energy networks, and infrastructure will need more than predefined instructions and constant human intervention.
+            </p>
+            <p>
+              They will need intelligence that can understand their environment, make decisions, adapt to change, and continuously improve.
+            </p>
+            <div class="editorial-highlight">
+              Self-evolving intelligence will become a foundational capability of the future.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="eyebrow" style="margin-bottom: 12px;">
+              <span class="eyebrow-dot"></span>
+              <span>Connected Domains</span>
+            </div>
+            <h3 style="font-size: 20px; margin-bottom: 14px;">Select a domain to inspect:</h3>
+
+            <div class="domain-tiles-grid" id="domain-chips">
+              <button type="button" class="domain-tile is-active tactile-card" data-domain="software">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">Software</span>
+              </button>
+
+              <button type="button" class="domain-tile tactile-card" data-domain="agents">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="4"/><path d="M9 10h.01M15 10h.01M8 20h8"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">AI Agents</span>
+              </button>
+
+              <button type="button" class="domain-tile tactile-card" data-domain="robotics">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="6" r="3"/><path d="M5 20l4-8h6l4 8"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">Robotics</span>
+              </button>
+
+              <button type="button" class="domain-tile tactile-card" data-domain="factories">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V10l6 4V10l6 4V6h6v15H3z"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">Factories</span>
+              </button>
+
+              <button type="button" class="domain-tile tactile-card" data-domain="vehicles">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="7" rx="2"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">Vehicles</span>
+              </button>
+
+              <button type="button" class="domain-tile tactile-card" data-domain="energy">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">Energy Networks</span>
+              </button>
+
+              <button type="button" class="domain-tile tactile-card" data-domain="infrastructure">
+                <span class="domain-tile-ic" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+                </span>
+                <span style="font-size: 13px; font-weight: 600;">Infrastructure</span>
               </button>
             </div>
-            <div class="mt-3 text-[10px] text-slate-400 font-mono flex items-center justify-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              Direct founder collaboration &amp; early access roadmap
-            </div>
-          </div>
 
-          <!-- Section 7: Closing Statement (Full Horizon Arch Base) -->
-          <div class="mt-14 pt-8 border-t border-white/10 max-w-xl mx-auto">
-            <p class="text-sm sm:text-base font-semibold text-slate-300 leading-relaxed">
-              Software that responds intelligently to failures—and evolves toward improving itself.
-            </p>
-            <div class="mt-3 text-xs sm:text-sm font-extrabold tracking-wider uppercase text-white font-mono bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
-              Fluxera — Building toward Self-Evolving Systems.
+            <div class="domain-output">
+              <div class="mono" style="font-size: 11px; color: var(--accent-solid); font-weight: 700; letter-spacing: 0.12em;" id="domain-tag">DOMAIN · SOFTWARE</div>
+              <h4 id="domain-title" style="font-size: 18px; margin-top: 4px; margin-bottom: 12px;">Adaptive Software Ecosystems</h4>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="padding: 12px 14px; border-radius: 14px; background: var(--bg-surface); border: 1px solid var(--border-hairline);">
+                  <div style="font-size: 11px; font-weight: 700; color: var(--ink-muted); text-transform: uppercase;">Where Predefined Rules Break</div>
+                  <div id="domain-break" style="font-size: 13.5px; color: var(--ink-body); margin-top: 4px;">
+                    Static exception handlers fail under cascading API drift, dependency latency, and unmodeled edge states.
+                  </div>
+                </div>
+                <div style="padding: 12px 14px; border-radius: 14px; background: var(--bg-surface); border: 1px solid var(--accent-solid);">
+                  <div style="font-size: 11px; font-weight: 700; color: var(--accent-solid); text-transform: uppercase;">Fluxera Capability</div>
+                  <div id="domain-sevol" style="font-size: 13.5px; color: var(--ink-primary); font-weight: 500; margin-top: 4px;">
+                    Understands runtime context, adapts execution paths on the fly, and hardens future decisions automatically.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- 05. THE FUTURE OF SYSTEMS (DARK CONTRAST PULSE CARD) -->
+    <section class="band" id="systems" data-section="systems">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>05 · The Future of Systems</span>
+          </div>
+          <h2 class="section-h2">
+            Systems That Think. Understand.
+            <span class="heading-muted">Learn. Adapt. Evolve.</span>
+          </h2>
+        </div>
+
+        <div class="systems-grid">
+          <div class="editorial-stack">
+            <p>
+              We believe the future belongs to systems that can do more than simply follow predefined instructions.
+            </p>
+            <p>
+              Systems that can think, understand their surroundings, learn from experience, adapt to changing conditions, and evolve over time.
+            </p>
+            <p>
+              From software and AI agents to robotics, factories, vehicles, energy networks, and intelligent infrastructure — intelligence must become autonomous, adaptive, and continuously improving.
+            </p>
+            <div class="editorial-highlight">
+              We're building toward that future.
+            </div>
+          </div>
+
+          <div class="card-dark">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px;">
+              <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600;">
+                <span class="pulse-dot"></span>
+                <span id="loop-status-text">Fluxera · Continuous Loop Active</span>
+              </div>
+              <button type="button" class="loop-toggle-btn" id="loop-toggle-btn">
+                Pause Cycle
+              </button>
+            </div>
+
+            <div class="loop-steps" id="loop-steps">
+              <button type="button" class="loop-step is-active" data-step="0">
+                <div class="mono" style="font-size: 11px; opacity: 0.8; margin-bottom: 4px;">01 · THINK</div>
+                <div style="font-size: 14px; font-weight: 600;">Evaluate Intent &amp; State</div>
+              </button>
+              <button type="button" class="loop-step" data-step="1">
+                <div class="mono" style="font-size: 11px; opacity: 0.8; margin-bottom: 4px;">02 · UNDERSTAND</div>
+                <div style="font-size: 14px; font-weight: 600;">Map Surroundings</div>
+              </button>
+              <button type="button" class="loop-step" data-step="2">
+                <div class="mono" style="font-size: 11px; opacity: 0.8; margin-bottom: 4px;">03 · ADAPT</div>
+                <div style="font-size: 14px; font-weight: 600;">Re-Route &amp; Execute</div>
+              </button>
+              <button type="button" class="loop-step" data-step="3">
+                <div class="mono" style="font-size: 11px; opacity: 0.8; margin-bottom: 4px;">04 · EVOLVE</div>
+                <div style="font-size: 14px; font-weight: 600;">Retain Verified Learning</div>
+              </button>
+            </div>
+
+            <div style="padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);">
+              <div class="mono" style="font-size: 11px; opacity: 0.85; margin-bottom: 6px;" id="loop-readout-code">
+                CYCLE_STATE // 01 · THINK
+              </div>
+              <div style="font-size: 14px; color: var(--ink-on-dark); line-height: 1.5;" id="loop-readout-desc">
+                Evaluates objectives against current environment constraints before committing compute or physical actuation.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06. VERIFIED PRODUCT PROOF & DESIGN PARTNER CTA -->
+    <section class="band" id="contact" data-section="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>06 · BUILDING THE FUTURE</span>
+          </div>
+          <h2 class="section-h2">Help Build What Comes Next.</h2>
+          <p class="section-lead">
+            We're working with forward-thinking companies to build the next generation of self-evolving systems.
+          </p>
+        </div>
+
+        <div class="proof-grid">
+          <article class="card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 12px;">
+            <span class="mini-pill-tag" style="width: fit-content;">Verified Product Proof</span>
+            <div>
+              <h3 style="font-size: 19px; margin-bottom: 6px;">Interactive Platform Preview</h3>
+              <p style="font-size: 14px; color: var(--ink-muted);">
+                Explore Fluxera's live runtime control surface, operational state inspection, and recovery workflows directly in your browser.
+              </p>
+            </div>
+            <a href="./dashboard.html" style="font-size: 13.5px; font-weight: 700; color: var(--accent-solid);">
+              Open Platform Dashboard →
+            </a>
+          </article>
+
+          <article class="card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 12px;">
+            <span class="mini-pill-tag" style="width: fit-content;">System Architecture</span>
+            <div>
+              <h3 style="font-size: 19px; margin-bottom: 6px;">Self-Evolving Architecture</h3>
+              <p style="font-size: 14px; color: var(--ink-muted);">
+                Inspect the execution mechanics across software stacks, automated recovery paths, and measurable resource efficiency.
+              </p>
+            </div>
+            <a href="./vision.html" style="font-size: 13.5px; font-weight: 700; color: var(--accent-solid);">
+              Read System Architecture →
+            </a>
+          </article>
+
+          <article class="card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 12px;">
+            <span class="mini-pill-tag" style="width: fit-content;">Design Partner Program</span>
+            <div>
+              <h3 style="font-size: 19px; margin-bottom: 6px;">Direct Founder Collaboration</h3>
+              <p style="font-size: 14px; color: var(--ink-muted);">
+                Collaborate directly on autonomous software systems, AI agents, robotics, factories, and adaptive infrastructure.
+              </p>
+            </div>
+            <a href="mailto:shubhamchansoriya13@gmail.com?subject=Fluxera%20%E2%80%94%20Design%20Partner%20Inquiry" style="font-size: 13.5px; font-weight: 700; color: var(--accent-solid);">
+              Email Fluxera Team →
+            </a>
+          </article>
+        </div>
+
+        <div class="card partner-cta-card">
+          <div>
+            <div class="eyebrow" style="margin-bottom: 10px;">
+              <span class="eyebrow-dot"></span>
+              <span>Partner With Fluxera</span>
+            </div>
+            <h3 style="font-size: clamp(24px, 3vw, 34px); margin-bottom: 10px;">
+              Ready to test Fluxera on real-world systems?
+            </h3>
+            <p style="font-size: 15px; color: var(--ink-muted); margin-bottom: 20px;">
+              Connect directly with the Fluxera team to build the next generation of self-evolving systems.
+            </p>
+            <div class="hero-ctas" style="justify-content: flex-start;">
+              <a
+                href="mailto:shubhamchansoriya13@gmail.com?subject=Fluxera%20%E2%80%94%20Become%20a%20Design%20Partner"
+                class="btn-pill-solid tactile-btn"
+              >
+                <span>Become a Design Partner</span>
+                <span aria-hidden="true">→</span>
+              </a>
+              <button type="button" class="btn-pill-secondary tactile-btn" id="copy-partner-btn">
+                <span id="copy-partner-label">Contact Fluxera →</span>
+              </button>
+            </div>
+          </div>
+
+          <form class="partner-form-box" id="partner-inquiry-form">
+            <div style="font-size: 13.5px; font-weight: 700; color: var(--ink-primary);">Start a Direct Conversation</div>
+            <input type="email" id="partner-email-input" class="input-pill" placeholder="name@company.com" required />
+            <select id="partner-domain-select" class="input-pill" aria-label="Primary system domain">
+              <option value="Software & API Systems">Domain: Software &amp; API Systems</option>
+              <option value="AI Agents & Workflows">Domain: AI Agents &amp; Workflows</option>
+              <option value="Robotics & Factories">Domain: Robotics &amp; Factories</option>
+              <option value="Vehicles, Energy & Infrastructure">Domain: Vehicles, Energy &amp; Infrastructure</option>
+            </select>
+            <button type="submit" class="btn-pill-primary" style="width: 100%;">
+              Send Design Partner Inquiry →
+            </button>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px; border-radius: 14px; background: var(--bg-surface); border: 1px solid var(--border-hairline); font-size: 12.5px;">
+              <span class="mono" style="color: var(--ink-body);">shubhamchansoriya13@gmail.com</span>
+              <span id="form-feedback-msg" style="font-size: 11.5px; font-weight: 600; color: var(--accent-solid);">Direct channel</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       EDITORIAL FOOTER WITH ATTUNEFY CTA STRIP & OVERSIZED FLUXERA WORDMARK
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-cta-row">
+        <div class="footer-cta-heading">
+          Systems that think.<br />
+          <span class="heading-muted">Intelligence that evolves.</span>
+        </div>
+        <div class="footer-cta-actions">
+          <a
+            href="mailto:shubhamchansoriya13@gmail.com?subject=Fluxera%20%E2%80%94%20Become%20a%20Design%20Partner"
+            class="btn-pill-solid tactile-btn"
+          >
+            <span>Become a Design Partner</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="#contact" class="btn-pill-secondary tactile-btn">
+            <span>Get in Touch</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-nav-grid">
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 11px; margin-bottom: 14px;">
+            <span class="flux-logo-lens brand-emblem-sm">
+              <span class="flux-logo-clip">
+                <img src="./assets/fluxera-logo.jpg" alt="Fluxera" loading="eager" decoding="sync" />
+              </span>
+            </span>
+            <div class="brand-text-wrap">
+              <span class="brand-name">FLUXERA</span>
+              <span class="brand-initiative">Autonomous Intelligence Initiative</span>
+            </div>
+          </div>
+          <p class="footer-brand-desc">
+            Building intelligence that enables systems to think, understand, learn, adapt, and evolve.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Explore</div>
+          <div class="footer-links">
+            <a href="#hero">01 · Overview →</a>
+            <a href="#vision">02 · Our Vision →</a>
+            <a href="#changing">03 · What We're Changing →</a>
+            <a href="#global-need">04 · Global Need →</a>
+            <a href="#systems">05 · Future of Systems →</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Capabilities</div>
+          <div class="footer-links">
+            <a href="#vision">Understand Context</a>
+            <a href="#vision">Reason Independently</a>
+            <a href="#vision">Create Solutions</a>
+            <a href="#systems">Adapt in Motion</a>
+            <a href="#systems">Continuously Evolve</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Connect</div>
+          <div class="footer-links">
+            <a href="#global-need">Software &amp; AI Agents</a>
+            <a href="#global-need">Robotics &amp; Factories</a>
+            <a href="#global-need">Energy &amp; Infrastructure</a>
+            <a href="#contact">Partner Inquiry →</a>
+            <a href="mailto:shubhamchansoriya13@gmail.com">shubhamchansoriya13@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-meta-bar">
+        <span>© 2026 Fluxera · Autonomous Intelligence Initiative</span>
+        <a href="#hero" class="footer-top-btn tactile-btn">
+          <span>Back to top</span>
+          <span aria-hidden="true">↑</span>
+        </a>
       </div>
     </div>
-  </section>
 
-  <!-- SITE FOOTER -->
-  <footer class="border-t border-white/10 py-6 px-6 text-xs text-slate-400 relative z-10 bg-[#0a0a0e]/90 backdrop-blur-md" data-purpose="site-footer">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex flex-col sm:flex-row items-center gap-2 order-1 text-center sm:text-left">
-        <div class="flex items-center gap-2">
-          <div class="w-5 h-5 rounded bg-[#181822] border border-white/20 flex items-center justify-center text-white text-[10px] font-mono font-bold">fx</div>
-          <span class="font-bold text-white">Fluxera — Building Self-Evolving Systems</span>
-        </div>
-        <span class="hidden sm:inline text-slate-300">•</span>
-        <span class="text-slate-400 font-medium">Keep systems running. Recover interrupted work. Reduce costs.</span>
-      </div>
-      <div class="flex items-center gap-6 order-2">
-        <a class="hover:text-white transition-colors font-semibold text-slate-300" href="./index.html">Home</a>
-        <a class="hover:text-white transition-colors text-slate-400" href="./vision.html">Vision</a>
-        <a class="hover:text-white transition-colors text-slate-400" href="./dashboard.html">Dashboard</a>
-      </div>
+    <div class="footer-wordmark-wrap" aria-hidden="true">
+      <div class="footer-wordmark">FLUXERA</div>
     </div>
   </footer>
 
-  <!-- Separated JavaScript -->
-  <script type="module" src="./script.js"></script>
+  <script type="module" src="./sevol.js"></script>
 </body>
 </html>
