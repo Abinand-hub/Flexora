@@ -973,70 +973,69 @@ html[data-palette="arctic-blue"] .footer-wordmark {
 }
 
 /* ==========================================================================
-   EMERALD + WHITE + DIAMOND WITH ENTERPRISE (ARCTIC BLUE) LAYOUT POLISH
+   EMERALD + WHITE + DIAMOND IN ENTERPRISE (ARCTIC BLUE) DESIGN LAYOUT
    ========================================================================== */
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .band-hero {
-  background:
-    radial-gradient(82% 58% at 50% 8%, rgba(25, 186, 240, 0.18) 0%, rgba(16, 185, 129, 0.13) 36%, rgba(184, 240, 213, 0.20) 64%, transparent 85%);
+  background: radial-gradient(82% 58% at 50% 10%, rgba(16, 185, 129, 0.18) 0%, rgba(184, 240, 213, 0.24) 48%, transparent 78%);
 }
 
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .hero-crest-orb {
-  box-shadow: 0 0 0 1px rgba(25, 186, 240, 0.28), 0 12px 36px rgba(18, 61, 50, 0.10), 0 0 40px rgba(25, 186, 240, 0.18);
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.28), 0 12px 36px rgba(18, 61, 50, 0.10), 0 0 40px rgba(16, 185, 129, 0.18);
   border-radius: 50%;
 }
 
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .hero-crest-orbit {
-  border-color: rgba(25, 186, 240, 0.55);
+  border-color: rgba(16, 185, 129, 0.55);
 }
 
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .hero-crest-comet {
-  background: #19BAF0;
-  box-shadow: 0 0 14px #19BAF0, 0 0 24px rgba(25, 186, 240, 0.6);
+  background: #10B981;
+  box-shadow: 0 0 14px #10B981, 0 0 24px rgba(16, 185, 129, 0.6);
 }
 
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .eyebrow-dot,
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .pill-live-dot {
-  background: #19BAF0;
-  box-shadow: 0 0 10px #19BAF0;
+  background: #10B981;
+  box-shadow: 0 0 10px #10B981;
 }
 
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .hero-kicker-tag {
   color: #087A55;
-  background: rgba(25, 186, 240, 0.10);
-  border: 1px solid rgba(25, 186, 240, 0.28);
+  background: rgba(184, 240, 213, 0.36);
+  border: 1px solid rgba(8, 122, 85, 0.28);
 }
 
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .hero-showcase-frame {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F0F8F6 60%, #E6F5F2 100%);
-  border-color: rgba(25, 186, 240, 0.25);
-  box-shadow: 0 20px 50px rgba(18, 61, 50, 0.08), 0 0 36px rgba(25, 186, 240, 0.12);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F4FAF7 60%, #E8F5F0 100%);
+  border-color: rgba(8, 122, 85, 0.22);
+  box-shadow: 0 20px 50px rgba(18, 61, 50, 0.08), 0 0 36px rgba(16, 185, 129, 0.12);
 }
 
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .tier-btn.is-active,
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .domain-tile.is-active,
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .cog-tab.is-active {
-  background: linear-gradient(135deg, #087A55 0%, #10B981 50%, #19BAF0 100%);
+  background: linear-gradient(135deg, #087A55 0%, #10B981 100%);
   color: #FFFFFF;
-  box-shadow: 0 10px 24px rgba(8, 122, 85, 0.24), 0 0 18px rgba(25, 186, 240, 0.26);
+  box-shadow: 0 10px 24px rgba(8, 122, 85, 0.28);
 }
 
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .editorial-highlight {
-  background: linear-gradient(135deg, #FFFFFF 0%, #EFF8F6 100%);
-  border-color: rgba(25, 186, 240, 0.32);
-  box-shadow: 0 16px 40px rgba(18, 61, 50, 0.07), 0 0 28px rgba(25, 186, 240, 0.10);
+  background: linear-gradient(135deg, #FFFFFF 0%, #E8F5F0 100%);
+  border-color: rgba(16, 185, 129, 0.34);
+  box-shadow: 0 16px 40px rgba(18, 61, 50, 0.07);
 }
 
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .site-footer {
   background:
-    radial-gradient(85% 65% at 50% 0%, rgba(25, 186, 240, 0.16) 0%, rgba(16, 185, 129, 0.08) 45%, transparent 70%),
-    linear-gradient(180deg, #E8F1EF 0%, #D8EAE4 100%);
+    radial-gradient(85% 65% at 50% 0%, rgba(16, 185, 129, 0.14) 0%, transparent 65%),
+    linear-gradient(180deg, #E8F1EF 0%, #D9EAE5 100%);
 }
 
 html[data-palette="emerald-diamond"][data-layout="enterprise"] .footer-wordmark {
-  background: linear-gradient(180deg, #123D32 0%, #10B981 65%, #19BAF0 115%);
+  background: linear-gradient(180deg, #123D32 0%, #10B981 112%);
   -webkit-background-clip: text;
   background-clip: text;
-  opacity: 0.24;
+  opacity: 0.22;
 }
 
 /* ==========================================================================

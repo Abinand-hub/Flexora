@@ -130,28 +130,25 @@
   --accent-secondary: #10B981;
   --accent-glow: rgba(16, 185, 129, 0.28);
   --accent-soft: rgba(184, 240, 213, 0.56);
-  --accent-arctic: #19BAF0;
-  --accent-arctic-glow: rgba(25, 186, 240, 0.35);
-  --accent-arctic-soft: rgba(25, 186, 240, 0.14);
-  --accent-primary-grad: radial-gradient(130% 100% at 50% 45%, #19BAF0 0%, #10B981 44%, #087A55 78%, #123D32 100%);
+  --accent-primary-grad: radial-gradient(130% 100% at 50% 45%, #10B981 0%, #087A55 62%, #123D32 100%);
   --accent-secondary-grad: radial-gradient(130% 100% at 50% 45%, #087A55 0%, #123D32 68%, #0B271F 100%);
-  --accent-warm-grad: radial-gradient(120% 100% at 50% 40%, #19BAF0 0%, #10B981 50%, #087A55 82%, #123D32 100%);
+  --accent-warm-grad: radial-gradient(120% 100% at 50% 40%, #10B981 0%, #087A55 58%, #123D32 100%);
 
   --accent-badge-ink: #087A55;
   --accent-badge-bg: #B8F0D5;
 
   --border-hairline: rgba(18, 61, 50, 0.09);
-  --border-strong: rgba(25, 186, 240, 0.26);
+  --border-strong: rgba(8, 122, 85, 0.22);
   --card-top-sheen: rgba(255, 255, 255, 0.96);
   --shadow-card: 0 2px 6px rgba(18, 61, 50, 0.04), 0 18px 40px rgba(18, 61, 50, 0.075), inset 0 1px 0 var(--card-top-sheen);
   --shadow-pill: 0 2px 8px rgba(18, 61, 50, 0.05), 0 12px 28px rgba(18, 61, 50, 0.08);
-  --shadow-cta: 0 10px 26px rgba(8, 122, 85, 0.24), 0 0 18px rgba(25, 186, 240, 0.28);
+  --shadow-cta: 0 10px 26px rgba(8, 122, 85, 0.28);
   --wordmark-ink: rgba(18, 61, 50, 0.075);
   --intro-bg: #E8F1EF;
   --intro-ink: #123D32;
-  --intro-ring: #19BAF0;
+  --intro-ring: #10B981;
   --ambient-aura-1: rgba(16, 185, 129, 0.14);
-  --ambient-aura-2: rgba(25, 186, 240, 0.22);
+  --ambient-aura-2: rgba(184, 240, 213, 0.35);
 }
 
 [data-palette="midnight-carbon"] {
