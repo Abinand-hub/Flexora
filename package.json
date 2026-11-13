@@ -4,11 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/sync-palette-previews.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/sync-palette-previews.mjs",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync:showcase": "node scripts/sync-palette-previews.mjs"
   },
   "devDependencies": {
     "vite": "^5.4.11"
