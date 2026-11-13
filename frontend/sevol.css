@@ -420,10 +420,7 @@ body {
     radial-gradient(110% 70% at 100% 100%, var(--ambient-aura-2) 0%, transparent 64%);
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   margin: 0;
   color: var(--ink-primary);
   font-weight: 600;
@@ -431,18 +428,9 @@ h4 {
   text-wrap: pretty;
 }
 
-p {
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font-family: inherit;
-}
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
 
 .mono {
   font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
@@ -455,11 +443,11 @@ button,
 .tactile-card,
 [data-spine] a {
   transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 0.22s ease,
-    border-color 0.22s ease,
-    box-shadow 0.22s ease,
-    opacity 0.22s ease,
-    color 0.22s ease;
+              background-color 0.22s ease,
+              border-color 0.22s ease,
+              box-shadow 0.22s ease,
+              opacity 0.22s ease,
+              color 0.22s ease;
 }
 
 button:active,
@@ -552,48 +540,20 @@ button:active,
 }
 
 @keyframes emblemSheen {
-
-  0%,
-  58% {
-    left: -80%;
-    opacity: 0;
-  }
-
-  66% {
-    opacity: 1;
-  }
-
-  88% {
-    left: 140%;
-    opacity: 0.9;
-  }
-
-  100% {
-    left: 150%;
-    opacity: 0;
-  }
+  0%, 58% { left: -80%; opacity: 0; }
+  66% { opacity: 1; }
+  88% { left: 140%; opacity: 0.9; }
+  100% { left: 150%; opacity: 0; }
 }
 
 @keyframes spinOrbit {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes heroCrestFloat {
-
-  0%,
-  100% {
-    transform: translateY(0px) scale(1);
-  }
-
-  50% {
-    transform: translateY(-4px) scale(1.015);
-  }
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-4px) scale(1.015); }
 }
 
 /* Hero Prominent Animated Logo Crest */
@@ -639,12 +599,14 @@ button:active,
   inset: 0;
   border-radius: 999px;
   padding: 1.5px;
-  background: conic-gradient(from -90deg,
-      transparent 0deg,
-      rgba(0, 198, 215, 0.08) 120deg,
-      #00C6D7 270deg,
-      #FFFFFF 352deg,
-      transparent 360deg);
+  background: conic-gradient(
+    from -90deg,
+    transparent 0deg,
+    rgba(0, 198, 215, 0.08) 120deg,
+    #00C6D7 270deg,
+    #FFFFFF 352deg,
+    transparent 360deg
+  );
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -761,12 +723,14 @@ button:active,
   inset: 0;
   border-radius: 999px;
   padding: 2.5px;
-  background: conic-gradient(from -90deg,
-      transparent 0deg,
-      rgba(0, 198, 215, 0.06) 110deg,
-      var(--intro-ring) 265deg,
-      #FFFFFF 352deg,
-      transparent 360deg);
+  background: conic-gradient(
+    from -90deg,
+    transparent 0deg,
+    rgba(0, 198, 215, 0.06) 110deg,
+    var(--intro-ring) 265deg,
+    #FFFFFF 352deg,
+    transparent 360deg
+  );
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -833,7 +797,7 @@ button:active,
   pointer-events: none;
 }
 
-#fluxera-intro .li-sheen>i {
+#fluxera-intro .li-sheen > i {
   position: absolute;
   top: -20%;
   left: -65%;
@@ -862,17 +826,9 @@ button:active,
   overflow: hidden;
 }
 
-#fluxera-intro .li-l {
-  display: inline-block;
-  overflow: hidden;
-}
-
-#fluxera-intro .li-l>span {
-  display: inline-block;
-  transform: translateY(110%);
-}
-
-#fluxera-intro .li-l.is-cyan>span {
+#fluxera-intro .li-l { display: inline-block; overflow: hidden; }
+#fluxera-intro .li-l > span { display: inline-block; transform: translateY(110%); }
+#fluxera-intro .li-l.is-cyan > span {
   color: var(--accent-solid);
   text-shadow: 0 0 18px var(--accent-glow);
 }
@@ -1011,9 +967,7 @@ button:active,
   color: var(--ink-body);
 }
 
-.nav-signin:hover {
-  background: var(--bg-soft);
-}
+.nav-signin:hover { background: var(--bg-soft); }
 
 .btn-header-solid {
   height: 44px;
@@ -1097,30 +1051,11 @@ button:active,
 }
 
 @media (max-width: 448px) {
-  .site-header {
-    padding: 12px 12px 0;
-  }
-
-  .header-bar {
-    padding: 0 8px 0 12px;
-    gap: 8px;
-  }
-
-  .brand-emblem-sm {
-    width: 38px;
-    height: 38px;
-  }
-
-  .btn-header-solid {
-    padding: 0 14px;
-    font-size: 12.5px;
-    height: 40px;
-  }
-
-  .compact-menu-btn {
-    width: 40px;
-    height: 40px;
-  }
+  .site-header { padding: 12px 12px 0; }
+  .header-bar { padding: 0 8px 0 12px; gap: 8px; }
+  .brand-emblem-sm { width: 38px; height: 38px; }
+  .btn-header-solid { padding: 0 14px; font-size: 12.5px; height: 40px; }
+  .compact-menu-btn { width: 40px; height: 40px; }
 }
 
 .mobile-drawer {
@@ -1139,9 +1074,7 @@ button:active,
   gap: 6px;
 }
 
-.mobile-drawer.hidden {
-  display: none;
-}
+.mobile-drawer.hidden { display: none; }
 
 .mobile-drawer a,
 .mobile-drawer button.drawer-action {
@@ -1167,22 +1100,12 @@ button:active,
 /* ==========================================================================
    LEFT CHAPTER SPINE (ATTUNEFY SIGNATURE RAIL >= 1180px)
    ========================================================================== */
-[data-spine] {
-  display: none;
-}
+[data-spine] { display: none; }
 
 @media (min-width: 900px) {
-  .nav-links {
-    display: flex;
-  }
-
-  .nav-signin {
-    display: inline-flex;
-  }
-
-  .compact-menu-btn {
-    display: none;
-  }
+  .nav-links { display: flex; }
+  .nav-signin { display: inline-flex; }
+  .compact-menu-btn { display: none; }
 }
 
 @media (min-width: 1180px) {
@@ -1241,10 +1164,7 @@ button:active,
     transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease;
   }
 
-  [data-spine] a .spine-label {
-    opacity: 0.55;
-    transition: opacity 0.25s ease;
-  }
+  [data-spine] a .spine-label { opacity: 0.55; transition: opacity 0.25s ease; }
 
   [data-spine] a:hover .spine-label,
   [data-spine] a.is-active .spine-label {
@@ -1261,10 +1181,7 @@ button:active,
 /* ==========================================================================
    MAIN SECTIONS & CONTAINER RHYTHM
    ========================================================================== */
-.page-main {
-  position: relative;
-  z-index: 40;
-}
+.page-main { position: relative; z-index: 40; }
 
 .band {
   padding: clamp(56px, 8vw, 110px) 20px;
@@ -1280,7 +1197,6 @@ button:active,
     padding-left: max(24px, calc(149px - max(0px, 50vw - 640px)));
     padding-right: max(24px, calc(48px - max(0px, 50vw - 640px)));
   }
-
   .band-hero {
     padding-left: 20px;
     padding-right: 20px;
@@ -1317,15 +1233,8 @@ button:active,
 }
 
 @media (max-width: 600px) {
-  .card {
-    padding: 20px;
-    border-radius: 24px;
-  }
-
-  .card-dark {
-    padding: 22px;
-    border-radius: 24px;
-  }
+  .card { padding: 20px; border-radius: 24px; }
+  .card-dark { padding: 22px; border-radius: 24px; }
 }
 
 /* ==========================================================================
@@ -1378,7 +1287,6 @@ button:active,
     flex-direction: column;
     align-items: stretch;
   }
-
   .btn-pill-solid,
   .btn-pill-primary,
   .btn-pill-secondary {
@@ -1553,10 +1461,7 @@ button:active,
 /* ==========================================================================
    02 – 06 SECTION GRIDS (RESPONSIVE ON MOBILE & DESKTOP)
    ========================================================================== */
-.section-header {
-  max-width: 820px;
-  margin-bottom: 36px;
-}
+.section-header { max-width: 820px; margin-bottom: 36px; }
 
 .section-h2 {
   font-size: clamp(28px, 4.4vw, 56px);
@@ -1585,7 +1490,6 @@ button:active,
 }
 
 @media (min-width: 880px) {
-
   .vision-grid,
   .need-split,
   .systems-grid,
@@ -1596,11 +1500,7 @@ button:active,
   }
 }
 
-.tier-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+.tier-stack { display: flex; flex-direction: column; gap: 10px; }
 
 .tier-btn {
   display: flex;
@@ -1630,9 +1530,7 @@ button:active,
   flex-shrink: 0;
 }
 
-.tier-btn.is-active .tier-dot {
-  background: var(--accent-secondary);
-}
+.tier-btn.is-active .tier-dot { background: var(--accent-secondary); }
 
 .vision-contrast-cards {
   display: grid;
@@ -1642,9 +1540,7 @@ button:active,
 }
 
 @media (min-width: 540px) {
-  .vision-contrast-cards {
-    grid-template-columns: 1fr 1fr;
-  }
+  .vision-contrast-cards { grid-template-columns: 1fr 1fr; }
 }
 
 .contrast-col {
@@ -1680,9 +1576,7 @@ button:active,
 }
 
 @media (min-width: 600px) {
-  .bento-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .bento-4 { grid-template-columns: repeat(2, 1fr); }
 }
 
 .resource-card {
@@ -1805,9 +1699,7 @@ button:active,
 }
 
 @media (max-width: 460px) {
-  .loop-steps {
-    grid-template-columns: 1fr;
-  }
+  .loop-steps { grid-template-columns: 1fr; }
 }
 
 .loop-step {
@@ -1835,17 +1727,8 @@ button:active,
 }
 
 @keyframes lpPulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  50% {
-    transform: scale(1.45);
-    opacity: 0.6;
-  }
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.45); opacity: 0.6; }
 }
 
 /* 06. Proof & Design Partner Box */
@@ -1857,9 +1740,7 @@ button:active,
 }
 
 @media (min-width: 760px) {
-  .proof-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .proof-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 .partner-form-box {
@@ -2070,11 +1951,419 @@ button:active,
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .hero-crest-orb,
   .hero-crest-orbit,
   .crest-sheen::after,
   .pulse-dot {
     animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   COMPREHENSIVE RESPONSIVE DESIGN SUITE (MOBILE, TABLET, DESKTOP, ULTRA-WIDE)
+   ========================================================================== */
+
+/* 1. Global Viewport Safety & Elastic Scaling */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+img, svg, video, canvas, audio, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 2. Responsive Band / Section Spacing */
+@media (max-width: 768px) {
+  .band {
+    padding: clamp(40px, 7vw, 68px) 16px;
+  }
+  .band-hero {
+    padding-top: clamp(20px, 4vw, 36px);
+    padding-bottom: clamp(40px, 6vw, 64px);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .section-header {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .band {
+    padding: clamp(34px, 6vw, 52px) 14px;
+  }
+  .band-hero {
+    padding-top: 18px;
+    padding-bottom: 40px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+/* 3. Header & Navigation (Ultra-responsive on all phone sizes) */
+@media (max-width: 900px) {
+  .site-header {
+    padding: 12px 14px 0;
+  }
+  .header-bar {
+    height: 60px;
+    padding: 0 10px 0 14px;
+  }
+  .nav-links {
+    display: none !important;
+  }
+  .compact-menu-btn {
+    display: grid !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .brand-initiative {
+    display: none !important;
+  }
+  .brand-name {
+    font-size: 14.5px;
+    letter-spacing: 0.08em;
+  }
+  .brand-link {
+    gap: 8px;
+  }
+  .btn-header-solid {
+    padding: 0 14px;
+    font-size: 12.5px;
+    height: 38px;
+  }
+  .compact-menu-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-header {
+    padding: 8px 8px 0;
+  }
+  .header-bar {
+    height: 54px;
+    padding: 0 6px 0 10px;
+    gap: 6px;
+  }
+  .brand-emblem-sm {
+    width: 32px;
+    height: 32px;
+  }
+  .brand-name {
+    font-size: 13.5px;
+  }
+  .btn-header-solid {
+    padding: 0 11px;
+    font-size: 11.5px;
+    height: 34px;
+  }
+  .compact-menu-btn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* Mobile Drawer Popout */
+.mobile-drawer {
+  position: fixed;
+  top: 76px;
+  left: 14px;
+  right: 14px;
+  max-width: 440px;
+  margin-left: auto;
+  max-height: calc(100vh - 92px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 62;
+  border-radius: 22px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  box-shadow: 0 20px 48px rgba(18, 61, 50, 0.16);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* 4. Hero Section Typography & Centerpiece Emblem */
+@media (max-width: 768px) {
+  .hero-h1 {
+    font-size: clamp(30px, 7.5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .hero-sub {
+    font-size: clamp(14.5px, 2.5vw, 17px);
+    line-height: 1.55;
+    padding: 0 6px;
+  }
+  .hero-crest-orb {
+    width: 136px;
+    height: 136px;
+    margin: 6px auto 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-h1 {
+    font-size: clamp(26px, 8.5vw, 38px);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+  .hero-sub {
+    font-size: 14px;
+    line-height: 1.52;
+  }
+  .hero-crest-orb {
+    width: 118px;
+    height: 118px;
+  }
+  .hero-crest-caption {
+    font-size: 10px;
+    padding: 4px 10px;
+    gap: 6px;
+  }
+  .hero-kicker-tag {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+  .hero-ctas {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .hero-ctas .btn-pill-solid,
+  .hero-ctas .btn-pill-primary,
+  .hero-ctas .btn-pill-secondary {
+    width: 100%;
+    height: 48px;
+    font-size: 14px;
+  }
+}
+
+/* 5. Attunefy Hero Workspace Showcase Frame (Responsive Bento) */
+@media (max-width: 768px) {
+  .hero-showcase-frame {
+    border-radius: 22px;
+    margin-top: 26px;
+  }
+  .showcase-topbar {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+  .showcase-kpi-grid {
+    padding: 12px;
+    gap: 10px;
+    grid-template-columns: 1fr;
+  }
+  .kpi-bento-card {
+    min-height: auto;
+    padding: 18px 16px;
+    border-radius: 18px;
+    gap: 12px;
+  }
+  .kpi-metric-big {
+    font-size: 26px;
+  }
+  .showcase-rows {
+    padding: 0 12px 12px;
+    gap: 8px;
+  }
+  .showcase-row {
+    padding: 14px;
+    border-radius: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .showcase-command-bar {
+    padding: 12px 14px;
+    border-radius: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .cog-tabs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    padding: 3px;
+    width: 100%;
+  }
+  .cog-tab {
+    padding: 7px 2px;
+    font-size: 11px;
+    text-align: center;
+    border-radius: 999px;
+  }
+}
+
+@media (max-width: 440px) {
+  .showcase-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .showcase-pill-right {
+    margin-left: 0;
+    width: 100%;
+  }
+  .cog-tabs {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+}
+
+/* 6. Section 2 Vision & Contrast Cards */
+@media (max-width: 600px) {
+  .tier-btn {
+    padding: 13px 14px;
+    border-radius: 14px;
+    font-size: 13.5px;
+    gap: 10px;
+  }
+  .vision-contrast-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+}
+
+/* 7. Section 3 Changing Landscape & Resource Scrubber */
+@media (max-width: 640px) {
+  .metric-list-row {
+    padding: 10px 0;
+  }
+  .metric-list-num {
+    font-size: 24px;
+  }
+  .bento-4 {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .resource-card {
+    padding: 18px 16px;
+    border-radius: 18px;
+    gap: 12px;
+  }
+}
+
+/* 8. Section 4 Connected Domains */
+@media (max-width: 680px) {
+  .domain-tiles-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .domain-tile {
+    padding: 10px 12px;
+    border-radius: 14px;
+    font-size: 12.5px;
+  }
+  .domain-output {
+    padding: 16px 14px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 340px) {
+  .domain-tiles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 9. Section 5 Systems & Dark Pulse Loop Card */
+@media (max-width: 680px) {
+  .card-dark {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+  .loop-steps {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 14px 0;
+  }
+  .loop-step {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+}
+
+/* 10. Section 6 Proof Grid & Partner Inquiry Box */
+@media (max-width: 760px) {
+  .proof-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .partner-cta-card {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+  .partner-form-box {
+    padding: 16px 14px;
+    border-radius: 18px;
+    gap: 10px;
+  }
+  .input-pill {
+    padding: 11px 14px;
+    font-size: 13.5px;
+    border-radius: 14px;
+  }
+}
+
+/* 11. Editorial Footer */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 44px 16px 0;
+  }
+  .footer-cta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding-bottom: 24px;
+  }
+  .footer-cta-heading {
+    font-size: 26px;
+    max-width: 100%;
+  }
+  .footer-cta-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .footer-cta-actions .btn-pill-solid,
+  .footer-cta-actions .btn-pill-secondary {
+    width: 100%;
+    height: 48px;
+  }
+  .footer-nav-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .footer-meta-bar {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .footer-wordmark {
+    font-size: clamp(34px, 15vw, 76px);
+    letter-spacing: -0.04em;
+    line-height: 0.85;
   }
 }

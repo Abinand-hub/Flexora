@@ -1958,3 +1958,412 @@ button:active,
     animation: none !important;
   }
 }
+
+/* ==========================================================================
+   COMPREHENSIVE RESPONSIVE DESIGN SUITE (MOBILE, TABLET, DESKTOP, ULTRA-WIDE)
+   ========================================================================== */
+
+/* 1. Global Viewport Safety & Elastic Scaling */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+img, svg, video, canvas, audio, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 2. Responsive Band / Section Spacing */
+@media (max-width: 768px) {
+  .band {
+    padding: clamp(40px, 7vw, 68px) 16px;
+  }
+  .band-hero {
+    padding-top: clamp(20px, 4vw, 36px);
+    padding-bottom: clamp(40px, 6vw, 64px);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .section-header {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .band {
+    padding: clamp(34px, 6vw, 52px) 14px;
+  }
+  .band-hero {
+    padding-top: 18px;
+    padding-bottom: 40px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+/* 3. Header & Navigation (Ultra-responsive on all phone sizes) */
+@media (max-width: 900px) {
+  .site-header {
+    padding: 12px 14px 0;
+  }
+  .header-bar {
+    height: 60px;
+    padding: 0 10px 0 14px;
+  }
+  .nav-links {
+    display: none !important;
+  }
+  .compact-menu-btn {
+    display: grid !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .brand-initiative {
+    display: none !important;
+  }
+  .brand-name {
+    font-size: 14.5px;
+    letter-spacing: 0.08em;
+  }
+  .brand-link {
+    gap: 8px;
+  }
+  .btn-header-solid {
+    padding: 0 14px;
+    font-size: 12.5px;
+    height: 38px;
+  }
+  .compact-menu-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-header {
+    padding: 8px 8px 0;
+  }
+  .header-bar {
+    height: 54px;
+    padding: 0 6px 0 10px;
+    gap: 6px;
+  }
+  .brand-emblem-sm {
+    width: 32px;
+    height: 32px;
+  }
+  .brand-name {
+    font-size: 13.5px;
+  }
+  .btn-header-solid {
+    padding: 0 11px;
+    font-size: 11.5px;
+    height: 34px;
+  }
+  .compact-menu-btn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* Mobile Drawer Popout */
+.mobile-drawer {
+  position: fixed;
+  top: 76px;
+  left: 14px;
+  right: 14px;
+  max-width: 440px;
+  margin-left: auto;
+  max-height: calc(100vh - 92px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 62;
+  border-radius: 22px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  box-shadow: 0 20px 48px rgba(18, 61, 50, 0.16);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* 4. Hero Section Typography & Centerpiece Emblem */
+@media (max-width: 768px) {
+  .hero-h1 {
+    font-size: clamp(30px, 7.5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .hero-sub {
+    font-size: clamp(14.5px, 2.5vw, 17px);
+    line-height: 1.55;
+    padding: 0 6px;
+  }
+  .hero-crest-orb {
+    width: 136px;
+    height: 136px;
+    margin: 6px auto 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-h1 {
+    font-size: clamp(26px, 8.5vw, 38px);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+  .hero-sub {
+    font-size: 14px;
+    line-height: 1.52;
+  }
+  .hero-crest-orb {
+    width: 118px;
+    height: 118px;
+  }
+  .hero-crest-caption {
+    font-size: 10px;
+    padding: 4px 10px;
+    gap: 6px;
+  }
+  .hero-kicker-tag {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+  .hero-ctas {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .hero-ctas .btn-pill-solid,
+  .hero-ctas .btn-pill-primary,
+  .hero-ctas .btn-pill-secondary {
+    width: 100%;
+    height: 48px;
+    font-size: 14px;
+  }
+}
+
+/* 5. Attunefy Hero Workspace Showcase Frame (Responsive Bento) */
+@media (max-width: 768px) {
+  .hero-showcase-frame {
+    border-radius: 22px;
+    margin-top: 26px;
+  }
+  .showcase-topbar {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+  .showcase-kpi-grid {
+    padding: 12px;
+    gap: 10px;
+    grid-template-columns: 1fr;
+  }
+  .kpi-bento-card {
+    min-height: auto;
+    padding: 18px 16px;
+    border-radius: 18px;
+    gap: 12px;
+  }
+  .kpi-metric-big {
+    font-size: 26px;
+  }
+  .showcase-rows {
+    padding: 0 12px 12px;
+    gap: 8px;
+  }
+  .showcase-row {
+    padding: 14px;
+    border-radius: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .showcase-command-bar {
+    padding: 12px 14px;
+    border-radius: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .cog-tabs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    padding: 3px;
+    width: 100%;
+  }
+  .cog-tab {
+    padding: 7px 2px;
+    font-size: 11px;
+    text-align: center;
+    border-radius: 999px;
+  }
+}
+
+@media (max-width: 440px) {
+  .showcase-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .showcase-pill-right {
+    margin-left: 0;
+    width: 100%;
+  }
+  .cog-tabs {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+}
+
+/* 6. Section 2 Vision & Contrast Cards */
+@media (max-width: 600px) {
+  .tier-btn {
+    padding: 13px 14px;
+    border-radius: 14px;
+    font-size: 13.5px;
+    gap: 10px;
+  }
+  .vision-contrast-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+}
+
+/* 7. Section 3 Changing Landscape & Resource Scrubber */
+@media (max-width: 640px) {
+  .metric-list-row {
+    padding: 10px 0;
+  }
+  .metric-list-num {
+    font-size: 24px;
+  }
+  .bento-4 {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .resource-card {
+    padding: 18px 16px;
+    border-radius: 18px;
+    gap: 12px;
+  }
+}
+
+/* 8. Section 4 Connected Domains */
+@media (max-width: 680px) {
+  .domain-tiles-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .domain-tile {
+    padding: 10px 12px;
+    border-radius: 14px;
+    font-size: 12.5px;
+  }
+  .domain-output {
+    padding: 16px 14px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 340px) {
+  .domain-tiles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 9. Section 5 Systems & Dark Pulse Loop Card */
+@media (max-width: 680px) {
+  .card-dark {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+  .loop-steps {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 14px 0;
+  }
+  .loop-step {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+}
+
+/* 10. Section 6 Proof Grid & Partner Inquiry Box */
+@media (max-width: 760px) {
+  .proof-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .partner-cta-card {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+  .partner-form-box {
+    padding: 16px 14px;
+    border-radius: 18px;
+    gap: 10px;
+  }
+  .input-pill {
+    padding: 11px 14px;
+    font-size: 13.5px;
+    border-radius: 14px;
+  }
+}
+
+/* 11. Editorial Footer */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 44px 16px 0;
+  }
+  .footer-cta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding-bottom: 24px;
+  }
+  .footer-cta-heading {
+    font-size: 26px;
+    max-width: 100%;
+  }
+  .footer-cta-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .footer-cta-actions .btn-pill-solid,
+  .footer-cta-actions .btn-pill-secondary {
+    width: 100%;
+    height: 48px;
+  }
+  .footer-nav-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .footer-meta-bar {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .footer-wordmark {
+    font-size: clamp(34px, 15vw, 76px);
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+  }
+}
