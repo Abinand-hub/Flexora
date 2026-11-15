@@ -7,6 +7,9 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 const input = {
   main: resolve(__dirname, 'index.html'),
+  product: resolve(__dirname, 'product.html'),
+  team: resolve(__dirname, 'team.html'),
+  about: resolve(__dirname, 'about.html'),
   dashboard: resolve(__dirname, 'dashboard.html'),
   vision: resolve(__dirname, 'vision.html'),
 }
